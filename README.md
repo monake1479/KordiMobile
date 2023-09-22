@@ -1,0 +1,1 @@
+# kordi_mobile
