@@ -1,0 +1,8 @@
+version: "Apple Swift version 5.7.2 (swiftlang-5.7.2.135.5 clang-1400.0.29.51)"
+options: "83e965a071082bdcf8fdb1d7e0481d708eb5e108cf4a75a4612ed8aa08c2de01"
+build_start_time: [1695425610, 512970924]
+build_end_time: [1695425616, 477429866]
+inputs:
+  "/Users/danieloblak/dev/kordi_mobile/macos/Flutter/GeneratedPluginRegistrant.swift": [1695425599, 590794086]
+  "/Users/danieloblak/dev/kordi_mobile/macos/Runner/AppDelegate.swift": [1695239333, 0]
+  "/Users/danieloblak/dev/kordi_mobile/macos/Runner/MainFlutterWindow.swift": [1695239333, 0]
