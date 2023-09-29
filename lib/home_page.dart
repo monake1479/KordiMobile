@@ -1,4 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:kordi_mobile/core/pages/kordi_scaffold.dart';
+
+@TypedGoRoute<HomePageRoute>(
+  path: '/',
+)
+@immutable
+class HomePageRoute extends GoRouteData {
+  @override
+  Widget build(BuildContext context, GoRouterState state) => const HomePage();
+}
 
 class HomePage extends StatefulWidget {
   const HomePage({
@@ -20,12 +31,8 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text('Kordi Mobile'),
-      ),
-      body: Center(
+    return KordiScaffold(
+      child: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
@@ -38,11 +45,6 @@ class _HomePageState extends State<HomePage> {
             ),
           ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
       ),
     );
   }
