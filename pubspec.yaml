@@ -39,6 +39,7 @@ dev_dependencies:
   freezed: ^2.4.2
   json_annotation: ^4.8.1
   injectable_generator: ^2.4.0
+  go_router_builder: ^2.3.3
 
 flutter:
 
