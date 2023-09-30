@@ -30,6 +30,6 @@ use_references_list: false
 package: resources
 
 groups:
-  - path: assets/images
-    class_name: Images
-    types: [ .png, .jpg, .jpeg, .webp, .webm, .bmp ]
+  - path: assets/icons
+    class_name: KordiIcons
+    types: [ .png, .jpg, .jpeg, .bmp, .svg ]
