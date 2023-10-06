@@ -1,3 +1,18 @@
 {
-    "homePageTitle": "Strona główna"
+    "@@locale": "pl",
+    "appName": "Kordi mobile",
+    "collectionPageTitle": "Kolekcje",
+    "aboutPageTitle": "Strona o nas",
+    "drawerUserGreetings": "Cześć, {countryCode, select, pl{użytkowniku} en{user} other{other}}!",
+    "@drawerUserGreetings": {
+        "description": "Welcome message on the main drawer",
+        "placeholders": {
+            "countryCode": {}
+        }
+    },
+    "drawerSignInButtonLabel": "Logowanie",
+    "drawerSignUpButtonLabel": "Rejestracja",
+    "drawerCollectionButtonLabel": "Kolekcje",
+    "drawerAboutButtonLabel": "O nas",
+    "drawerChangeLanguageButtonLabel": "Zmień język"
 }
