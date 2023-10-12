@@ -2,15 +2,17 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:kordi_mobile/core/pages/about_page.dart';
 import 'package:kordi_mobile/collections/pages/collection_page.dart';
+import 'package:kordi_mobile/core/pages/about_page.dart';
 import 'package:kordi_mobile/core/widgets/kordi_drawer.dart';
 import 'package:kordi_mobile/resources/resources.dart';
+import 'package:kordi_mobile/sign_up/pages/sign_up_page.dart';
 
 part 'kordi_scaffold.g.dart';
 
 @TypedShellRoute<KordiScaffoldShellRoute>(
   routes: <TypedRoute<RouteData>>[
+    TypedGoRoute<SignUpPageRoute>(path: '/sign-up'),
     TypedGoRoute<CollectionPageRoute>(path: '/collection'),
     TypedGoRoute<AboutPageRoute>(path: '/about'),
   ],
