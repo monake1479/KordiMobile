@@ -7,5 +7,32 @@
     // Remove from file watching
     "files.watcherExclude": {
         "**/.fvm": true
-    }
+    },
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Kordi dev",
+            "request": "launch",
+            "type": "dart",
+            "program": "${workspaceFolder}/lib/main.dart",
+            "args": [
+                "--flavor",
+                "dev",
+                "--target",
+                "lib/main_dev.dart",
+            ]
+        },
+        {
+            "name": "Kordi prod",
+            "request": "launch",
+            "type": "dart",
+            "program": "${workspaceFolder}/lib/main.dart",
+            "args": [
+                "--flavor",
+                "prod",
+                "--target",
+                "lib/main.dart",
+            ]
+        }
+    ]
 }
