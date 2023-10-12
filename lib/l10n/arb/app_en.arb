@@ -3,16 +3,39 @@
     "appName": "Kordi mobile",
     "collectionPageTitle": "Collection page",
     "aboutPageTitle": "About page",
-    "drawerUserGreetings": "Hello, {countryCode, select, pl{użytkowniku} en{user} other{other}}!",
+    "drawerUserGreetings": "Hello, {username}!",
     "@drawerUserGreetings": {
         "description": "Welcome message on the main drawer",
         "placeholders": {
-            "countryCode": {}
+            "username": {
+                "type": "String",
+                "description": "Username",
+                "example": "John Doe"
+            }
         }
+    },
+    "drawerGreetings": "Hello, user!",
+    "@drawerGreetings": {
+        "description": "Welcome message on the main drawer without username."
     },
     "drawerSignInButtonLabel": "Sign in",
     "drawerSignUpButtonLabel": "Sign up",
     "drawerCollectionButtonLabel": "Collection",
     "drawerAboutButtonLabel": "About",
-    "drawerChangeLanguageButtonLabel": "Change language"
+    "drawerChangeLanguageButtonLabel": "Change language",
+    "signUpPageUsernameLabelTextField": "Username",
+    "signUpPageUsernameHintTextField": "Enter your username",
+    "signUpPageFirstNameLabelTextField": "First name",
+    "signUpPageFirstNameHintTextField": "Enter your first name",
+    "signUpPageLastNameLabelTextField": "Last name",
+    "signUpPageLastNameHintTextField": "Enter your last name",
+    "signUpPagePasswordLabelTextField": "Password",
+    "signUpPagePasswordHintTextField": "Enter your password",
+    "signUpPageEmailLabelTextField": "Email",
+    "signUpPageEmailHintTextField": "Enter your email",
+    "signUpPagePhoneNumberLabelTextField": "Phone number",
+    "signUpPagePhoneNumberHintTextField": "Enter your phone number",
+    "signUpPageSignUpButtonLabel": "Sign up",
+    "signUpPageAlreadyHaveAccountLabel": "Already have an account? ",
+    "signUpPageSignInButtonLabel": "Sign in"
 }

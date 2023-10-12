@@ -3,16 +3,39 @@
     "appName": "Kordi mobile",
     "collectionPageTitle": "Kolekcje",
     "aboutPageTitle": "Strona o nas",
-    "drawerUserGreetings": "Cześć, {countryCode, select, pl{użytkowniku} en{user} other{other}}!",
+    "drawerUserGreetings": "Cześć, {username}!",
     "@drawerUserGreetings": {
-        "description": "Welcome message on the main drawer",
+        "description": "Welcome message on the main drawer with username.",
         "placeholders": {
-            "countryCode": {}
+            "username": {
+                "type": "String",
+                "description": "Username",
+                "example": "John Doe"
+            }
         }
+    },
+    "drawerGreetings": "Cześć, użytkowniku!",
+    "@drawerGreetings": {
+        "description": "Welcome message on the main drawer without username."
     },
     "drawerSignInButtonLabel": "Logowanie",
     "drawerSignUpButtonLabel": "Rejestracja",
     "drawerCollectionButtonLabel": "Kolekcje",
     "drawerAboutButtonLabel": "O nas",
-    "drawerChangeLanguageButtonLabel": "Zmień język"
+    "drawerChangeLanguageButtonLabel": "Zmień język",
+    "signUpPageUsernameLabelTextField": "Nazwa użytkownika",
+    "signUpPageUsernameHintTextField": "Wprowadź nazwę użytkownika",
+    "signUpPageFirstNameLabelTextField": "Imię",
+    "signUpPageFirstNameHintTextField": "Wprowadź imię",
+    "signUpPageLastNameLabelTextField": "Nazwisko",
+    "signUpPageLastNameHintTextField": "Wprowadź nazwisko",
+    "signUpPagePasswordLabelTextField": "Hasło",
+    "signUpPagePasswordHintTextField": "Wprowadź hasło",
+    "signUpPageEmailLabelTextField": "Email",
+    "signUpPageEmailHintTextField": "Wprowadź email",
+    "signUpPagePhoneNumberLabelTextField": "Numer telefonu",
+    "signUpPagePhoneNumberHintTextField": "Wprowadź numer telefonu",
+    "signUpPageSignUpButtonLabel": "Zarejestruj",
+    "signUpPageAlreadyHaveAccountLabel": "Masz już konto? ",
+    "signUpPageSignInButtonLabel": "Zaloguj się"
 }
