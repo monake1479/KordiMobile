@@ -8,6 +8,7 @@ import 'package:kordi_mobile/core/controllers/localization_bloc.dart';
 import 'package:kordi_mobile/core/pages/about_page.dart';
 import 'package:kordi_mobile/core/pages/kordi_scaffold.dart';
 import 'package:kordi_mobile/l10n/l10n.dart';
+import 'package:kordi_mobile/sign_up/pages/sign_up_page.dart';
 
 class KordiDrawer extends StatelessWidget {
   const KordiDrawer({super.key});
@@ -22,9 +23,9 @@ class KordiDrawer extends StatelessWidget {
             children: [
               ListTile(
                 title: Text(
-                  context.l10n.drawerUserGreetings(
-                    context.read<LocalizationBloc>().state.languageCode,
-                  ),
+                  'dante' != null
+                      ? context.l10n.drawerUserGreetings('dante')
+                      : context.l10n.drawerGreetings,
                 ),
                 leading: CircleAvatar(
                   backgroundColor: theme.colorScheme.primary,
@@ -46,8 +47,8 @@ class KordiDrawer extends StatelessWidget {
                 title: Text(context.l10n.drawerSignUpButtonLabel),
                 leading: Icon(Icons.edit_document),
                 onTap: () {
-                  // Scaffold.of(outerContext).closeDrawer();
-                  // HomePageRoute().go(context);
+                  Scaffold.of(outerContext).closeDrawer();
+                  SignUpPageRoute().go(context);
                 },
               ),
               ListTile(
