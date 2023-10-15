@@ -1,5 +1,5 @@
 import 'package:injectable/injectable.dart';
-import 'package:kordi_mobile/kordi_environment.dart';
+import 'package:kordi_mobile/core/utils/kordi_environment.dart';
 
 @singleton
 class EnvironmentService {
