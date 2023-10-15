@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:kordi_mobile/auth/controllers/authentication/authentication_bloc.dart';
-import 'package:kordi_mobile/environment_service.dart';
+import 'package:kordi_mobile/core/services/environment_service.dart';
 
 @lazySingleton
 class DioClient {
@@ -23,8 +23,12 @@ class DioClient {
           log(
             '[DioClient] REQUEST[${options.method}] => PATH: ${options.path}',
           );
-          options.headers['Authorization'] =
-              'Bearer ${_authenticationBloc.state}';
+          if (_authenticationBloc.state.token.isNotEmpty) {
+            options.headers['Authorization'] =
+                'Bearer ${_authenticationBloc.state.token}';
+          } else {
+            options.headers['Authorization'] = '';
+          }
           return handler.next(options);
         },
       ),
