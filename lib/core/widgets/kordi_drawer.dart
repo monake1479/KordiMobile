@@ -3,11 +3,13 @@ import 'dart:developer';
 import 'package:flag/flag.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:kordi_mobile/collections/pages/collection_page.dart';
 import 'package:kordi_mobile/core/controllers/localization_bloc.dart';
 import 'package:kordi_mobile/core/pages/about_page.dart';
 import 'package:kordi_mobile/core/pages/kordi_scaffold.dart';
 import 'package:kordi_mobile/l10n/l10n.dart';
+import 'package:kordi_mobile/sign_in/pages/sign_in_page.dart';
 import 'package:kordi_mobile/sign_up/pages/sign_up_page.dart';
 
 class KordiDrawer extends StatelessWidget {
@@ -16,6 +18,7 @@ class KordiDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final fullPath = GoRouterState.of(context).fullPath;
     return Builder(
       builder: (outerContext) {
         return Drawer(
@@ -38,14 +41,24 @@ class KordiDrawer extends StatelessWidget {
               ListTile(
                 title: Text(context.l10n.drawerSignInButtonLabel),
                 leading: Icon(Icons.login),
+                selected: fullPath == SignInPageRoute().location,
+                selectedTileColor: theme.colorScheme.onPrimary,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(16),
+                ),
                 onTap: () {
-                  // Scaffold.of(outerContext).closeDrawer();
-                  // HomePageRoute().go(context);
+                  Scaffold.of(outerContext).closeDrawer();
+                  SignInPageRoute().go(context);
                 },
               ),
               ListTile(
                 title: Text(context.l10n.drawerSignUpButtonLabel),
                 leading: Icon(Icons.edit_document),
+                selected: fullPath == SignUpPageRoute().location,
+                selectedTileColor: theme.colorScheme.onPrimary,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(16),
+                ),
                 onTap: () {
                   Scaffold.of(outerContext).closeDrawer();
                   SignUpPageRoute().go(context);
@@ -54,6 +67,11 @@ class KordiDrawer extends StatelessWidget {
               ListTile(
                 title: Text(context.l10n.drawerCollectionButtonLabel),
                 leading: Icon(Icons.collections_bookmark_rounded),
+                selected: fullPath == CollectionPageRoute().location,
+                selectedTileColor: theme.colorScheme.onPrimary,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(16),
+                ),
                 onTap: () {
                   Scaffold.of(outerContext).closeDrawer();
                   CollectionPageRoute().go(context);
@@ -62,6 +80,11 @@ class KordiDrawer extends StatelessWidget {
               ListTile(
                 title: Text(context.l10n.drawerAboutButtonLabel),
                 leading: Icon(Icons.info),
+                selected: fullPath == AboutPageRoute().location,
+                selectedTileColor: theme.colorScheme.onPrimary,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(16),
+                ),
                 onTap: () {
                   Scaffold.of(outerContext).closeDrawer();
                   AboutPageRoute().go(context);
