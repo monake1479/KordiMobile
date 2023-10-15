@@ -17,4 +17,6 @@ class SignUpFormEvent with _$SignUpFormEvent {
   const factory SignUpFormEvent.updateVerificationType(
     VerificationType verificationType,
   ) = _UpdateVerificationType;
+  const factory SignUpFormEvent.validateFields() = _ValidateFields;
+  const factory SignUpFormEvent.signUp() = _SignUp;
 }
