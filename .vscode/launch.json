@@ -20,6 +20,8 @@
                 "dev",
                 "--target",
                 "lib/main_dev.dart",
+                "--web-port",
+                "8081",
             ]
         },
         {
