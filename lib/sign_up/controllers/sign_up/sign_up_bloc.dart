@@ -1,6 +1,9 @@
+import 'dart:developer';
+
 import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:injectable/injectable.dart';
 import 'package:kordi_mobile/core/models/kordi_exception.dart';
 import 'package:kordi_mobile/core/utils/either_extension.dart';
 import 'package:kordi_mobile/sign_up/interfaces/sign_up_interface.dart';
@@ -10,6 +13,7 @@ part 'sign_up_bloc.freezed.dart';
 part 'sign_up_state.dart';
 part 'sign_up_event.dart';
 
+@Singleton()
 class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
   SignUpBloc(this._service) : super(SignUpState.initial()) {
     on<_Reset>(_reset);
@@ -22,6 +26,7 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
   }
 
   Future<void> _signUp(_SignUp event, Emitter<SignUpState> emit) async {
+    log('[SignUpBloc] _signUp()');
     emit(state.copyWith(isLoading: true));
     final response = await _service.signUp(event.dto);
     if (response.isLeft()) {
