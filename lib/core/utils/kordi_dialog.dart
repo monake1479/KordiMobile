@@ -5,12 +5,16 @@ import 'package:kordi_mobile/core/widgets/kordi_exception_dialog.dart';
 class KordiDialog {
   static Future<void> showException(
     BuildContext context,
-    KordiException exception,
-  ) async =>
+    KordiException exception, {
+    void Function()? overrideOnPressed,
+  }) async =>
       showDialog(
         context: context,
+        barrierDismissible: false,
+        useRootNavigator: true,
         builder: (context) => KordiExceptionDialog(
           exception: exception,
+          overrideOnPressed: overrideOnPressed,
         ),
       );
 }
