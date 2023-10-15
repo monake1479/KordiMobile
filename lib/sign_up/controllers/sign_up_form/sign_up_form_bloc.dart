@@ -1,6 +1,9 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
+import 'package:kordi_mobile/core/models/kordi_exception.dart';
+import 'package:kordi_mobile/sign_up/controllers/sign_up/sign_up_bloc.dart';
+import 'package:kordi_mobile/sign_up/models/sign_up_dto.dart';
 import 'package:kordi_mobile/sign_up/models/verification_type.dart';
 
 part 'sign_up_form_bloc.freezed.dart';
@@ -9,8 +12,7 @@ part 'sign_up_form_state.dart';
 
 @injectable
 class SignUpFormBloc extends Bloc<SignUpFormEvent, SignUpFormState> {
-  SignUpFormBloc() : super(SignUpFormState.initial()) {
-    on<_Reset>(_reset);
+  SignUpFormBloc(this._signUpBloc) : super(SignUpFormState.initial()) {
     on<_UpdateFirstName>(_updateFirstName);
     on<_UpdateLastName>(_updateLastName);
     on<_UpdateUsername>(_updateUsername);
@@ -18,13 +20,11 @@ class SignUpFormBloc extends Bloc<SignUpFormEvent, SignUpFormState> {
     on<_UpdateEmail>(_updateEmail);
     on<_UpdatePhoneNumber>(_updatePhoneNumber);
     on<_UpdateVerificationType>(_updateVerificationType);
+    on<_ValidateFields>(_validateFields);
+    on<_SignUp>(_signUp);
+    on<_Reset>(_reset);
   }
-  void _reset(
-    SignUpFormEvent event,
-    Emitter<SignUpFormState> emit,
-  ) {
-    emit(SignUpFormState.initial());
-  }
+  final SignUpBloc _signUpBloc;
 
   void _updateFirstName(
     _UpdateFirstName event,
@@ -73,5 +73,48 @@ class SignUpFormBloc extends Bloc<SignUpFormEvent, SignUpFormState> {
     Emitter<SignUpFormState> emit,
   ) {
     emit(state.copyWith(verificationType: event.verificationType));
+  }
+
+  void _validateFields(
+    _ValidateFields event,
+    Emitter<SignUpFormState> emit,
+  ) {
+    if (!state.isUsernameValid) {
+      emit(state.copyWith(username: ''));
+    }
+    if (!state.isFirstNameValid) {
+      emit(state.copyWith(firstName: ''));
+    }
+    if (!state.isLastNameValid) {
+      emit(state.copyWith(lastName: ''));
+    }
+    if (!state.isPasswordValid) {
+      emit(state.copyWith(password: ''));
+    }
+    if (!state.isEmailValid) {
+      emit(state.copyWith(email: ''));
+    }
+    if (!state.isPhoneNumberValid) {
+      emit(state.copyWith(phoneNumber: ''));
+    }
+
+    ;
+  }
+
+  void _signUp(
+    _SignUp event,
+    Emitter<SignUpFormState> emit,
+  ) {
+    emit(state.copyWith(isLoading: true));
+    final SignUpDto dto = state.dto;
+    _signUpBloc.add(SignUpEvent.signUp(dto));
+    emit(state.copyWith(isLoading: false));
+  }
+
+  void _reset(
+    SignUpFormEvent event,
+    Emitter<SignUpFormState> emit,
+  ) {
+    emit(SignUpFormState.initial());
   }
 }
