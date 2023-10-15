@@ -5,8 +5,8 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kordi_mobile/core/controllers/localization_bloc.dart';
 import 'package:kordi_mobile/core/utils/custom_scroll_behavior.dart';
+import 'package:kordi_mobile/core/utils/kordi_router.dart';
 import 'package:kordi_mobile/dependency_injection.dart';
-import 'package:kordi_mobile/kordi_router.dart';
 import 'package:kordi_mobile/theme/color_schemes.dart';
 
 class KordiApp extends StatelessWidget {

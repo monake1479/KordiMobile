@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:kordi_mobile/app.dart';
+import 'package:kordi_mobile/core/services/environment_service.dart';
+import 'package:kordi_mobile/core/utils/kordi_environment.dart';
 import 'package:kordi_mobile/dependency_injection.dart';
-import 'package:kordi_mobile/environment_service.dart';
-import 'package:kordi_mobile/kordi_environment.dart';
 
 Future<void> bootstrap({
   required KordiEnvironment env,
