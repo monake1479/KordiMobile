@@ -18,6 +18,8 @@
     "@drawerGreetings": {
         "description": "Welcome message on the main drawer without username."
     },
+    "exceptionDialogTitle": "Kordi occurred an error...",
+    "exceptionDialogButtonLabel": "OK",
     "drawerSignInButtonLabel": "Sign in",
     "drawerSignUpButtonLabel": "Sign up",
     "drawerCollectionButtonLabel": "Collection",
@@ -44,5 +46,10 @@
     "signUpPageVerificationTypeLabel": "Pick verification type",
     "signUpPageSignUpButtonLabel": "Sign up",
     "signUpPageAlreadyHaveAccountLabel": "Already have an account? ",
-    "signUpPageSignInButtonLabel": "Sign in"
+    "signUpPageSignInButtonLabel": "Sign in",
+    "verificationCodePageTitle": "Last step!",
+    "verificationCodePageLabelTextField": "Enter verification code",
+    "verificationCodePageDescription": "We sent verification code on your email. Please insert it below.",
+    "verificationCodePageHintTextField": "Code",
+    "verificationCodePageButtonLabel": "OK"
 }

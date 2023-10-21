@@ -18,6 +18,8 @@
     "@drawerGreetings": {
         "description": "Welcome message on the main drawer without username."
     },
+    "exceptionDialogTitle": "Kordi napotkał problem...",
+    "exceptionDialogButtonLabel": "OK",
     "drawerSignInButtonLabel": "Logowanie",
     "drawerSignUpButtonLabel": "Rejestracja",
     "drawerCollectionButtonLabel": "Kolekcje",
@@ -44,5 +46,10 @@
     "signUpPageVerificationTypeLabel": "Wybierz sposób weryfikacji",
     "signUpPageSignUpButtonLabel": "Zarejestruj",
     "signUpPageAlreadyHaveAccountLabel": "Masz już konto? ",
-    "signUpPageSignInButtonLabel": "Zaloguj się"
+    "signUpPageSignInButtonLabel": "Zaloguj się",
+    "verificationCodePageTitle": "Ostatni krok!",
+    "verificationCodePageLabelTextField": "Wprowadź kod weryfikacyjny",
+    "verificationCodePageDescription": "Wysłaliśmy kod weryfikacyjny na twój adres email. Wprowadź kod w polu poniżej.",
+    "verificationCodePageHintTextField": "Kod",
+    "verificationCodePageButtonLabel": "OK"
 }
