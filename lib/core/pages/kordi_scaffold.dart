@@ -1,31 +1,10 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:kordi_mobile/collections/pages/collection_page.dart';
-import 'package:kordi_mobile/core/pages/about_page.dart';
+import 'package:kordi_mobile/core/utils/kordi_routes.dart';
 import 'package:kordi_mobile/core/widgets/kordi_drawer.dart';
 import 'package:kordi_mobile/resources/resources.dart';
-import 'package:kordi_mobile/sign_in/pages/sign_in_page.dart';
-import 'package:kordi_mobile/sign_up/pages/sign_up_page.dart';
-
-part 'kordi_scaffold.g.dart';
-
-@TypedShellRoute<KordiScaffoldShellRoute>(
-  routes: <TypedRoute<RouteData>>[
-    TypedGoRoute<SignInPageRoute>(path: '/sign-in'),
-    TypedGoRoute<SignUpPageRoute>(path: '/sign-up'),
-    TypedGoRoute<CollectionPageRoute>(path: '/collection'),
-    TypedGoRoute<AboutPageRoute>(path: '/about'),
-  ],
-)
-class KordiScaffoldShellRoute extends ShellRouteData {
-  const KordiScaffoldShellRoute();
-
-  @override
-  Widget builder(BuildContext context, GoRouterState state, Widget navigator) =>
-      KordiScaffold(child: navigator);
-}
 
 class KordiScaffold extends StatelessWidget {
   const KordiScaffold({super.key, required this.child});
