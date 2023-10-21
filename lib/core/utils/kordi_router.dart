@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:kordi_mobile/collections/pages/collection_page.dart';
 import 'package:kordi_mobile/core/pages/kordi_scaffold.dart';
+import 'package:kordi_mobile/core/utils/kordi_routes.dart';
 
 class KordiRouter {
   static GoRouter router(BuildContext context) {
