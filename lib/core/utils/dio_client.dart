@@ -2,13 +2,13 @@ import 'dart:developer';
 
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
-import 'package:kordi_mobile/auth/controllers/authentication/authentication_bloc.dart';
+import 'package:kordi_mobile/auth/controllers/auth_bloc.dart';
 import 'package:kordi_mobile/core/services/environment_service.dart';
 
 @lazySingleton
 class DioClient {
   DioClient(
-    this._authenticationBloc,
+    this._authBloc,
     this._environmentService,
   ) {
     _dio.options = BaseOptions(
@@ -23,9 +23,9 @@ class DioClient {
           log(
             '[DioClient] REQUEST[${options.method}] => PATH: ${options.path}',
           );
-          if (_authenticationBloc.state.token.isNotEmpty) {
+          if (_authBloc.state.token.isNotEmpty) {
             options.headers['Authorization'] =
-                'Bearer ${_authenticationBloc.state.token}';
+                'Bearer ${_authBloc.state.token}';
           } else {
             options.headers['Authorization'] = '';
           }
@@ -35,7 +35,7 @@ class DioClient {
     );
   }
   final EnvironmentService _environmentService;
-  final AuthenticationBloc _authenticationBloc;
+  final AuthBloc _authBloc;
   Dio _dio = Dio();
 
   Dio get dio => _dio;
