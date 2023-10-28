@@ -4,7 +4,8 @@ import 'package:kordi_mobile/collections/pages/collection_page.dart';
 import 'package:kordi_mobile/core/pages/about_page.dart';
 import 'package:kordi_mobile/core/pages/kordi_scaffold.dart';
 import 'package:kordi_mobile/core/transitions/fade_transition_page.dart';
-import 'package:kordi_mobile/sign_in/pages/sign_in_page.dart';
+import 'package:kordi_mobile/sign_in/controllers/pages/sign_in_page.dart';
+import 'package:kordi_mobile/sign_up/models/verification_type.dart';
 import 'package:kordi_mobile/sign_up/pages/sign_up_page.dart';
 import 'package:kordi_mobile/verification_code/pages/verification_code_page.dart';
 
@@ -32,11 +33,12 @@ class KordiScaffoldShellRoute extends ShellRouteData {
 )
 @immutable
 class VerificationCodePageRoute extends GoRouteData {
-  VerificationCodePageRoute();
+  VerificationCodePageRoute(this.verificationType);
+  final VerificationType verificationType;
 
   @override
   Widget build(BuildContext context, GoRouterState state) {
-    return VerificationCodePage();
+    return VerificationCodePage(verificationType: verificationType);
   }
 
   @override
@@ -46,6 +48,8 @@ class VerificationCodePageRoute extends GoRouteData {
   ) =>
       FadeTransitionPage(
         key: state.pageKey,
-        child: VerificationCodePage(),
+        child: VerificationCodePage(
+          verificationType: verificationType,
+        ),
       );
 }
