@@ -20,4 +20,11 @@ extension SignUpStateEx on SignUpState {
           (_) => null,
         ),
       );
+  bool get isSuccess => failureOrSuccessOption.fold(
+        () => false,
+        (either) => either.fold(
+          (_) => false,
+          (_) => true,
+        ),
+      );
 }
