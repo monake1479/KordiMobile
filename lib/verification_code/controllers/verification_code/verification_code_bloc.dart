@@ -10,21 +10,48 @@ part 'verification_code_state.dart';
 part 'verification_code_event.dart';
 part 'verification_code_bloc.freezed.dart';
 
-@Singleton()
+@Injectable()
 class VerificationCodeBloc
     extends Bloc<VerificationCodeEvent, VerificationCodeState> {
   VerificationCodeBloc(this._service) : super(VerificationCodeState.initial()) {
-    on<_Verify>(_verify);
+    on<_VerifyByEmail>(_verifyByEmail);
+    on<_VerifyByPhone>(_verifyByPhone);
     on<_Resend>(_resend);
   }
   final VerificationCodeInterface _service;
 
-  Future<void> _verify(
-    _Verify event,
+  Future<void> _verifyByEmail(
+    _VerifyByEmail event,
     Emitter<VerificationCodeState> emit,
   ) async {
     emit(state.copyWith(isLoading: true));
-    final response = await _service.verify(event.username, event.code);
+    final response = await _service.verifyByEmail(event.code);
+    if (response.isLeft()) {
+      emit(
+        state.copyWith(
+          isLoading: false,
+          failureOrSuccessOption: some(left(response.getLeftOrThrow())),
+        ),
+      );
+      return;
+    }
+    emit(
+      state.copyWith(
+        isLoading: false,
+        failureOrSuccessOption: some(right(response.getRightOrThrow())),
+      ),
+    );
+  }
+
+  Future<void> _verifyByPhone(
+    _VerifyByPhone event,
+    Emitter<VerificationCodeState> emit,
+  ) async {
+    emit(state.copyWith(isLoading: true));
+    final response = await _service.verifyByPhone(
+      event.phoneNumber,
+      event.code,
+    );
     if (response.isLeft()) {
       emit(
         state.copyWith(

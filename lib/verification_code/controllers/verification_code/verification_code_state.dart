@@ -11,3 +11,13 @@ class VerificationCodeState with _$VerificationCodeState {
         failureOrSuccessOption: none(),
       );
 }
+
+extension VerificationCodeStateEx on VerificationCodeState {
+  KordiException? get exception => failureOrSuccessOption.fold(
+        () => null,
+        (either) => either.fold(
+          (failure) => failure,
+          (_) => null,
+        ),
+      );
+}
