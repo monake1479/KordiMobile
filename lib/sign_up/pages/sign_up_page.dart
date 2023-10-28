@@ -4,9 +4,12 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:kordi_mobile/core/transitions/fade_transition_page.dart';
 import 'package:kordi_mobile/core/utils/kordi_dialog.dart';
+import 'package:kordi_mobile/core/utils/kordi_flushbar.dart';
+import 'package:kordi_mobile/core/utils/kordi_routes.dart';
 import 'package:kordi_mobile/dependency_injection.dart';
 import 'package:kordi_mobile/l10n/l10n.dart';
 import 'package:kordi_mobile/resources/resources.dart';
+import 'package:kordi_mobile/sign_in/controllers/pages/sign_in_page.dart';
 import 'package:kordi_mobile/sign_up/controllers/sign_up_controllers.dart';
 import 'package:kordi_mobile/sign_up/models/verification_type.dart';
 
@@ -32,7 +35,7 @@ class SignUpPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
     final ColorScheme colorScheme = theme.colorScheme;
-
+    final l10n = context.l10n;
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
       child: MultiBlocProvider(
@@ -46,6 +49,15 @@ class SignUpPage extends StatelessWidget {
         ],
         child: BlocListener<SignUpBloc, SignUpState>(
           listener: (context, state) {
+            if (state.isSuccess) {
+              KordiFlushbar(
+                maxWidth: 120,
+                message: l10n.signUpPageFlushbarLabel,
+              ).show(context);
+              final verificationType =
+                  context.read<SignUpFormBloc>().state.verificationType;
+              VerificationCodePageRoute(verificationType).go(context);
+            }
             if (state.exception != null) {
               KordiDialog.showException(
                 context,
@@ -231,15 +243,7 @@ class SignUpPage extends StatelessWidget {
                             ),
                           ),
                           onPressed: () {
-                            if (state.isFormValid) {
-                              signUpFormBloc.add(
-                                SignUpFormEvent.signUp(),
-                              );
-                            } else {
-                              signUpFormBloc.add(
-                                SignUpFormEvent.validateFields(),
-                              );
-                            }
+                            _onSignUpButtonClicked(context);
                           },
                           child: Builder(
                             builder: (context) {
@@ -255,8 +259,7 @@ class SignUpPage extends StatelessWidget {
                           ),
                         ),
                         TextButton(
-                          onPressed: () {},
-                          // onPressed: () => SignInPageRoute().go(context),
+                          onPressed: () => SignInPageRoute().go(context),
                           child: Text.rich(
                             TextSpan(
                               text: context
@@ -280,6 +283,20 @@ class SignUpPage extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+
+  void _onSignUpButtonClicked(BuildContext context) {
+    final signUpFormBloc = context.read<SignUpFormBloc>();
+    final state = signUpFormBloc.state;
+    if (!state.isFormValid) {
+      signUpFormBloc.add(
+        SignUpFormEvent.validateFields(),
+      );
+      return;
+    }
+    signUpFormBloc.add(
+      SignUpFormEvent.signUp(),
     );
   }
 }
