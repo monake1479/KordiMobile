@@ -44,185 +44,195 @@ class VerificationCodePage extends StatelessWidget {
             );
           }
         },
-        child: Scaffold(
-          appBar: AppBar(
-            centerTitle: false,
-            title: Row(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(right: 6),
-                  child: Image(
-                    image: AssetImage(KordiIcons.logo),
-                    width: 38,
+        child: GestureDetector(
+          onTap: () => FocusScope.of(context).unfocus(),
+          child: Scaffold(
+            appBar: AppBar(
+              centerTitle: false,
+              title: Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(right: 6),
+                    child: Image(
+                      image: AssetImage(KordiIcons.logo),
+                      width: 38,
+                    ),
                   ),
-                ),
-                Text(
-                  'KORDI Mobile',
-                  style: TextStyle(color: colorScheme.secondary),
+                  Text(
+                    'KORDI Mobile',
+                    style: TextStyle(color: colorScheme.secondary),
+                  ),
+                ],
+              ),
+              actions: [
+                IconButton(
+                  onPressed: () {
+                    log('Help!');
+                    SignInPageRoute().go(context);
+                  },
+                  icon: Icon(Icons.info_outline_rounded),
                 ),
               ],
             ),
-            actions: [
-              IconButton(
-                onPressed: () {
-                  log('Help!');
-                  SignInPageRoute().go(context);
-                },
-                icon: Icon(Icons.info_outline_rounded),
-              ),
-            ],
-          ),
-          body: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(16),
-                    color: colorScheme.primaryContainer,
-                  ),
-                  height: MediaQuery.of(context).size.height * 0.55,
-                  padding: const EdgeInsets.all(8),
+            body: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Center(
+                child: SingleChildScrollView(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
-                        l10n.verificationCodePageTitle,
-                        style: textTheme.headlineLarge,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 16),
-                        child: Row(
+                      Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(16),
+                          color: colorScheme.primaryContainer,
+                        ),
+                        height: MediaQuery.of(context).size.height * 0.55,
+                        padding: const EdgeInsets.all(8),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            SvgPicture.asset(
-                              KordiImages.authentication,
-                              width: MediaQuery.of(context).size.width * 0.28,
+                            Text(
+                              l10n.verificationCodePageTitle,
+                              style: textTheme.headlineLarge,
                             ),
-                            Flexible(
-                              child: Padding(
-                                padding: const EdgeInsets.all(8),
-                                child: Text(
-                                  l10n.verificationCodePageDescription,
-                                ),
+                            Padding(
+                              padding: const EdgeInsets.only(bottom: 16),
+                              child: Row(
+                                children: [
+                                  SvgPicture.asset(
+                                    KordiImages.authentication,
+                                    width: MediaQuery.of(context).size.width *
+                                        0.28,
+                                  ),
+                                  Flexible(
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8),
+                                      child: Text(
+                                        l10n.verificationCodePageDescription,
+                                      ),
+                                    ),
+                                  ),
+                                ],
                               ),
+                            ),
+                            BlocBuilder<VerificationCodeFormBloc,
+                                VerificationCodeFormState>(
+                              builder: (context, state) {
+                                final verificationCodeFormBloc =
+                                    context.read<VerificationCodeFormBloc>();
+                                return Column(
+                                  children: [
+                                    Builder(
+                                      builder: (context) {
+                                        if (verificationType ==
+                                            VerificationType.phoneNumber) {
+                                          return Padding(
+                                            padding: const EdgeInsets.only(
+                                                bottom: 8),
+                                            child: TextFormField(
+                                              decoration: InputDecoration(
+                                                contentPadding:
+                                                    const EdgeInsets.all(8),
+                                                labelText: l10n
+                                                    .verificationCodePageTextfieldUsernameLabel,
+                                                hintText: l10n
+                                                    .verificationCodePageTextfieldUsernameHint,
+                                                errorText: state
+                                                        .showPhoneNumberError
+                                                    ? l10n
+                                                        .verificationCodePageTextfieldUsernameError
+                                                    : null,
+                                                border: OutlineInputBorder(),
+                                              ),
+                                              onChanged: (username) =>
+                                                  verificationCodeFormBloc.add(
+                                                VerificationCodeFormEvent
+                                                    .updateUsername(
+                                                  username,
+                                                ),
+                                              ),
+                                            ),
+                                          );
+                                        }
+                                        return const SizedBox();
+                                      },
+                                    ),
+                                    TextFormField(
+                                      textAlign: TextAlign.center,
+                                      keyboardType: TextInputType.number,
+                                      maxLength: 6,
+                                      decoration: InputDecoration(
+                                        contentPadding: const EdgeInsets.all(8),
+                                        labelText: l10n
+                                            .verificationCodePageTextfieldCodeLabel,
+                                        hintText: l10n
+                                            .verificationCodePageTextfieldCodeHint,
+                                        errorText: state.showCodeError
+                                            ? l10n
+                                                .verificationCodePageTextfieldCodeError
+                                            : null,
+                                        border: OutlineInputBorder(),
+                                      ),
+                                      onChanged: (code) =>
+                                          verificationCodeFormBloc.add(
+                                        VerificationCodeFormEvent
+                                            .updateVerificationCode(
+                                          code,
+                                        ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(top: 8),
+                                      child: TextButton(
+                                        onPressed: () {
+                                          _onResendButtonClicked(context);
+                                        },
+                                        child: RichText(
+                                          text: TextSpan(
+                                            text: l10n
+                                                .verificationCodePageResendCodeButtonLabel,
+                                            style: TextStyle(
+                                              color: colorScheme.secondary,
+                                            ),
+                                            children: [
+                                              TextSpan(
+                                                text: l10n
+                                                    .verificationCodePageResendCodeButtonLabel2,
+                                                style: TextStyle(
+                                                  color: colorScheme.secondary,
+                                                  fontWeight: FontWeight.bold,
+                                                  decoration:
+                                                      TextDecoration.underline,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(top: 8),
+                                      child: ElevatedButton(
+                                        onPressed: () {
+                                          _onVerificationButtonClicked(context);
+                                        },
+                                        child: Text(
+                                          context.l10n
+                                              .verificationCodePageButtonLabel,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                );
+                              },
                             ),
                           ],
                         ),
                       ),
-                      BlocBuilder<VerificationCodeFormBloc,
-                          VerificationCodeFormState>(
-                        builder: (context, state) {
-                          final verificationCodeFormBloc =
-                              context.read<VerificationCodeFormBloc>();
-                          return Column(
-                            children: [
-                              Builder(
-                                builder: (context) {
-                                  if (verificationType ==
-                                      VerificationType.phoneNumber) {
-                                    return Padding(
-                                      padding: const EdgeInsets.only(bottom: 8),
-                                      child: TextFormField(
-                                        decoration: InputDecoration(
-                                          contentPadding:
-                                              const EdgeInsets.all(8),
-                                          labelText: l10n
-                                              .verificationCodePageTextfieldUsernameLabel,
-                                          hintText: l10n
-                                              .verificationCodePageTextfieldUsernameHint,
-                                          errorText: state.showPhoneNumberError
-                                              ? l10n
-                                                  .verificationCodePageTextfieldUsernameError
-                                              : null,
-                                          border: OutlineInputBorder(),
-                                        ),
-                                        onChanged: (username) =>
-                                            verificationCodeFormBloc.add(
-                                          VerificationCodeFormEvent
-                                              .updateUsername(
-                                            username,
-                                          ),
-                                        ),
-                                      ),
-                                    );
-                                  }
-                                  return const SizedBox();
-                                },
-                              ),
-                              TextFormField(
-                                textAlign: TextAlign.center,
-                                keyboardType: TextInputType.number,
-                                maxLength: 6,
-                                decoration: InputDecoration(
-                                  contentPadding: const EdgeInsets.all(8),
-                                  labelText: l10n
-                                      .verificationCodePageTextfieldCodeLabel,
-                                  hintText: l10n
-                                      .verificationCodePageTextfieldCodeHint,
-                                  errorText: state.showCodeError
-                                      ? l10n
-                                          .verificationCodePageTextfieldCodeError
-                                      : null,
-                                  border: OutlineInputBorder(),
-                                ),
-                                onChanged: (code) =>
-                                    verificationCodeFormBloc.add(
-                                  VerificationCodeFormEvent
-                                      .updateVerificationCode(
-                                    code,
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(top: 8),
-                                child: TextButton(
-                                  onPressed: () {
-                                    _onResendButtonClicked(context);
-                                  },
-                                  child: RichText(
-                                    text: TextSpan(
-                                      text: l10n
-                                          .verificationCodePageResendCodeButtonLabel,
-                                      style: TextStyle(
-                                        color: colorScheme.secondary,
-                                      ),
-                                      children: [
-                                        TextSpan(
-                                          text: l10n
-                                              .verificationCodePageResendCodeButtonLabel2,
-                                          style: TextStyle(
-                                            color: colorScheme.secondary,
-                                            fontWeight: FontWeight.bold,
-                                            decoration:
-                                                TextDecoration.underline,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(top: 8),
-                                child: ElevatedButton(
-                                  onPressed: () {
-                                    _onVerificationButtonClicked(context);
-                                  },
-                                  child: Text(
-                                    context
-                                        .l10n.verificationCodePageButtonLabel,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          );
-                        },
-                      ),
                     ],
                   ),
                 ),
-              ],
+              ),
             ),
           ),
         ),
