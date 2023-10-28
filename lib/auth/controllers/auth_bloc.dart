@@ -5,30 +5,29 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:kordi_mobile/core/models/kordi_exception.dart';
 
-part 'authentication_event.dart';
-part 'authentication_state.dart';
-part 'authentication_bloc.freezed.dart';
+part 'auth_event.dart';
+part 'auth_state.dart';
+part 'auth_bloc.freezed.dart';
 
 @singleton
-class AuthenticationBloc
-    extends Bloc<AuthenticationEvent, AuthenticationState> {
-  AuthenticationBloc() : super(AuthenticationState.unauthorized()) {
+class AuthBloc extends Bloc<AuthEvent, AuthState> {
+  AuthBloc() : super(AuthState.unauthorized()) {
     on<_Init>(_init);
     on<_Login>(_login);
     on<_Reset>(_reset);
   }
-  Future<void> _init(_Init event, Emitter<AuthenticationState> emitter) async {
+  Future<void> _init(_Init event, Emitter<AuthState> emitter) async {
     log('[AuthenticationBloc] _init');
   }
 
   Future<void> _login(
     _Login event,
-    Emitter<AuthenticationState> emitter,
+    Emitter<AuthState> emitter,
   ) async {
     log('[AuthenticationBloc] _login');
   }
 
-  void _reset(_Reset event, Emitter<AuthenticationState> emitter) {
+  void _reset(_Reset event, Emitter<AuthState> emitter) {
     log('[AuthenticationBloc] _reset');
   }
 }
