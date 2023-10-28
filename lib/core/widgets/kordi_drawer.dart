@@ -9,7 +9,7 @@ import 'package:kordi_mobile/core/controllers/localization_bloc.dart';
 import 'package:kordi_mobile/core/pages/about_page.dart';
 import 'package:kordi_mobile/core/utils/kordi_routes.dart';
 import 'package:kordi_mobile/l10n/l10n.dart';
-import 'package:kordi_mobile/sign_in/pages/sign_in_page.dart';
+import 'package:kordi_mobile/sign_in/controllers/pages/sign_in_page.dart';
 import 'package:kordi_mobile/sign_up/pages/sign_up_page.dart';
 
 class KordiDrawer extends StatelessWidget {
@@ -36,7 +36,6 @@ class KordiDrawer extends StatelessWidget {
                 ),
                 onTap: () {
                   log('user tap');
-                  VerificationCodePageRoute().go(context);
                 },
               ),
               ListTile(
