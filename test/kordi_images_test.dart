@@ -8,5 +8,6 @@ void main() {
     expect(File(KordiImages.authentication).existsSync(), isTrue);
     expect(File(KordiImages.exception).existsSync(), isTrue);
     expect(File(KordiImages.join).existsSync(), isTrue);
+    expect(File(KordiImages.welcoming).existsSync(), isTrue);
   });
 }
