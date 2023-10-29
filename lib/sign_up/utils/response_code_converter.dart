@@ -1,5 +1,5 @@
 class ResponseCodeConverter {
-  static String convert(String errorCode) {
+  static String convert(String? errorCode) {
     switch (errorCode) {
       case 'user.not.found':
         return 'User not found.';
@@ -29,6 +29,10 @@ class ResponseCodeConverter {
         return 'Provided email address is already taken.';
       case 'phone.already.exists':
         return 'Provided phone number is already taken.';
+      case 'email.already.confirmed':
+        return 'Provided email address is already verified.';
+      case 'phone.already.confirmed':
+        return 'Provided phone number is already verified.';
       case 'password.too.short.':
         return 'Provided password is too short.';
 
