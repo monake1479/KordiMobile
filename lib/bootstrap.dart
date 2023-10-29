@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
-import 'package:kordi_mobile/auth/controllers/auth_bloc.dart';
+import 'package:kordi_mobile/auth/controllers/auth_cubit.dart';
 import 'package:kordi_mobile/core/services/environment_service.dart';
 import 'package:kordi_mobile/core/utils/kordi_environment.dart';
 import 'package:kordi_mobile/dependency_injection.dart';
