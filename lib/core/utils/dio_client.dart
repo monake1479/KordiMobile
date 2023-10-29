@@ -16,7 +16,6 @@ class DioClient {
       sendTimeout: Duration(seconds: 10),
       connectTimeout: Duration(seconds: 10),
       receiveTimeout: Duration(seconds: 10),
-      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
     );
     _dio.interceptors.add(
       InterceptorsWrapper(
