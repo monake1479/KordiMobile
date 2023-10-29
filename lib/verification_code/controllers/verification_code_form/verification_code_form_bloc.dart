@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
+import 'package:kordi_mobile/sign_up/models/verification_type.dart';
 import 'package:kordi_mobile/verification_code/controllers/verification_code_controllers.dart';
 
 part 'verification_code_form_event.dart';
@@ -13,6 +14,7 @@ class VerificationCodeFormBloc
   VerificationCodeFormBloc(
     this._verificationCodeBloc,
   ) : super(VerificationCodeFormState.initial()) {
+    on<_UpdateVerificationType>(_updateVerificationType);
     on<_UpdatePhoneNumber>(_updatePhoneNumber);
     on<_UpdateVerificationCode>(_updateVerificationCode);
     on<_UpdateUsername>(_updateUsername);
@@ -22,6 +24,14 @@ class VerificationCodeFormBloc
     on<_Resend>(_resend);
   }
   final VerificationCodeBloc _verificationCodeBloc;
+
+  void _updateVerificationType(
+    _UpdateVerificationType event,
+    Emitter<VerificationCodeFormState> emit,
+  ) {
+    emit(state.copyWith(verificationType: event.verificationType));
+  }
+
   void _updatePhoneNumber(
     _UpdatePhoneNumber event,
     Emitter<VerificationCodeFormState> emit,
@@ -62,33 +72,39 @@ class VerificationCodeFormBloc
     _VerifyByEmail event,
     Emitter<VerificationCodeFormState> emit,
   ) {
+    emit(state.copyWith(isLoading: true));
     _verificationCodeBloc.add(
       VerificationCodeEvent.verifyByEmail(
         state.verificationCode!,
       ),
     );
+    emit(state.copyWith(isLoading: false));
   }
 
   void _verifyByPhone(
     _VerifyByPhone event,
     Emitter<VerificationCodeFormState> emit,
   ) {
+    emit(state.copyWith(isLoading: true));
     _verificationCodeBloc.add(
       VerificationCodeEvent.verifyByPhone(
         state.verificationCode!,
         state.phoneNumber!,
       ),
     );
+    emit(state.copyWith(isLoading: false));
   }
 
   void _resend(
     _Resend event,
     Emitter<VerificationCodeFormState> emit,
   ) {
+    emit(state.copyWith(isLoading: true));
     _verificationCodeBloc.add(
       VerificationCodeEvent.resend(
         state.username!,
       ),
     );
+    emit(state.copyWith(isLoading: false));
   }
 }
