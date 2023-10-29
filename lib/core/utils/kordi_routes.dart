@@ -4,7 +4,7 @@ import 'package:kordi_mobile/collections/pages/collection_page.dart';
 import 'package:kordi_mobile/core/pages/about_page.dart';
 import 'package:kordi_mobile/core/pages/kordi_scaffold.dart';
 import 'package:kordi_mobile/core/transitions/fade_transition_page.dart';
-import 'package:kordi_mobile/sign_in/controllers/pages/sign_in_page.dart';
+import 'package:kordi_mobile/sign_in/pages/sign_in_page.dart';
 import 'package:kordi_mobile/sign_up/models/verification_type.dart';
 import 'package:kordi_mobile/sign_up/pages/sign_up_page.dart';
 import 'package:kordi_mobile/verification_code/pages/verification_code_page.dart';
@@ -51,5 +51,59 @@ class VerificationCodePageRoute extends GoRouteData {
         child: VerificationCodePage(
           verificationType: verificationType,
         ),
+      );
+}
+
+@immutable
+class SignInPageRoute extends GoRouteData {
+  SignInPageRoute();
+
+  @override
+  Page<void> buildPage(BuildContext context, GoRouterState state) =>
+      FadeTransitionPage(
+        key: state.pageKey,
+        child: SignInPage(),
+      );
+}
+
+@immutable
+class CollectionPageRoute extends GoRouteData {
+  CollectionPageRoute();
+
+  @override
+  Page<void> buildPage(
+    BuildContext context,
+    GoRouterState state,
+  ) =>
+      FadeTransitionPage(
+        key: state.pageKey,
+        child: CollectionPage(),
+      );
+}
+
+@immutable
+class AboutPageRoute extends GoRouteData {
+  const AboutPageRoute();
+
+  @override
+  Page<void> buildPage(BuildContext context, GoRouterState state) =>
+      FadeTransitionPage(
+        key: state.pageKey,
+        child: AboutPage(),
+      );
+}
+
+@immutable
+class SignUpPageRoute extends GoRouteData {
+  SignUpPageRoute();
+
+  @override
+  Page<void> buildPage(
+    BuildContext context,
+    GoRouterState state,
+  ) =>
+      FadeTransitionPage(
+        key: state.pageKey,
+        child: SignUpPage(),
       );
 }
