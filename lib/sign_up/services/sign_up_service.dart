@@ -23,14 +23,12 @@ class SignUpService implements SignUpInterface {
       log('[SignUpService] signUp() exception: $e', stackTrace: s);
       if (e.response?.statusCode == 401) {
         result = left(KordiException.unauthorized());
-      } else if (e.response?.statusCode == 400) {
+      } else {
         final String message =
             ResponseCodeConverter.convert(e.response?.data['error']);
         result = left(
           KordiException.customMessage(message: message),
         );
-      } else {
-        result = left(KordiException.serverError());
       }
     }
     return result;
