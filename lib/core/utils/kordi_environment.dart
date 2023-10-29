@@ -11,7 +11,7 @@ class KordiEnvironmentDev implements KordiEnvironment {
     if (Platform.isAndroid) {
       return 'http://10.0.2.2:8081';
     } else {
-      return 'http://192.168.8.199:8081';
+      return 'http://192.168.0.2:8081';
     }
   }
 }
@@ -22,7 +22,7 @@ class KordiEnvironmentProd implements KordiEnvironment {
     if (Platform.isAndroid) {
       return 'http://10.0.2.2:8081';
     } else {
-      return 'http://192.168.8.199:8081';
+      return 'http://192.168.0.2:8081';
     }
   }
 }

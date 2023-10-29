@@ -6,14 +6,17 @@ import 'package:injectable/injectable.dart';
 import 'package:kordi_mobile/auth/interfaces/auth_interface.dart';
 import 'package:kordi_mobile/core/models/kordi_exception.dart';
 import 'package:kordi_mobile/dependency_injection.dart';
+import 'package:kordi_mobile/user/controllers/get_user_cubit.dart';
 
 part 'auth_state.dart';
 part 'auth_cubit.freezed.dart';
 
 @LazySingleton()
 class AuthCubit extends HydratedCubit<AuthState> {
-  AuthCubit(this._service) : super(AuthState.unauthorized());
+  AuthCubit(this._service, this._getUserCubit)
+      : super(AuthState.unauthorized());
   final AuthInterface _service;
+  final GetUserCubit _getUserCubit;
   @override
   AuthState? fromJson(Map<String, dynamic> json) {
     log('[AuthCubit] fromJson()');
@@ -42,7 +45,9 @@ class AuthCubit extends HydratedCubit<AuthState> {
       );
       if (response.isLeft()) {
         emit(AuthState.unauthorized());
+        return;
       }
+      await _getUserCubit.get();
     }
   }
 
@@ -52,6 +57,7 @@ class AuthCubit extends HydratedCubit<AuthState> {
 
   void signOut() {
     emit(AuthState.unauthorized());
+    _getUserCubit.reset();
   }
 
   @override

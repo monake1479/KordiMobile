@@ -10,6 +10,7 @@ import 'package:kordi_mobile/l10n/l10n.dart';
 import 'package:kordi_mobile/resources/resources.dart';
 import 'package:kordi_mobile/sign_in/controllers/sign_in/sign_in_bloc.dart';
 import 'package:kordi_mobile/sign_in/controllers/sign_in_form/sign_in_form_bloc.dart';
+import 'package:kordi_mobile/user/controllers/get_user_cubit.dart';
 
 class SignInPage extends StatelessWidget {
   const SignInPage({super.key});
@@ -34,6 +35,7 @@ class SignInPage extends StatelessWidget {
                 maxWidth: 130,
                 message: l10n.signInPageFlushbarLabel,
               ).show(context);
+              await context.read<GetUserCubit>().get();
               CollectionPageRoute().go(context);
             }
             if (state.exception != null) {
