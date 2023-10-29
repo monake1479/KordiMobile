@@ -2,31 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:kordi_mobile/core/transitions/fade_transition_page.dart';
 import 'package:kordi_mobile/core/utils/kordi_dialog.dart';
 import 'package:kordi_mobile/core/utils/kordi_flushbar.dart';
 import 'package:kordi_mobile/core/utils/kordi_routes.dart';
 import 'package:kordi_mobile/dependency_injection.dart';
 import 'package:kordi_mobile/l10n/l10n.dart';
 import 'package:kordi_mobile/resources/resources.dart';
-import 'package:kordi_mobile/sign_in/controllers/pages/sign_in_page.dart';
 import 'package:kordi_mobile/sign_up/controllers/sign_up_controllers.dart';
 import 'package:kordi_mobile/sign_up/models/verification_type.dart';
-
-@immutable
-class SignUpPageRoute extends GoRouteData {
-  SignUpPageRoute();
-
-  @override
-  Page<void> buildPage(
-    BuildContext context,
-    GoRouterState state,
-  ) =>
-      FadeTransitionPage(
-        key: state.pageKey,
-        child: SignUpPage(),
-      );
-}
 
 class SignUpPage extends StatelessWidget {
   const SignUpPage({super.key});
@@ -41,17 +24,17 @@ class SignUpPage extends StatelessWidget {
       child: MultiBlocProvider(
         providers: [
           BlocProvider<SignUpFormBloc>(
-            create: (context) => getIt.get<SignUpFormBloc>(),
+            create: (_) => getIt.get<SignUpFormBloc>(),
           ),
           BlocProvider<SignUpBloc>(
-            create: (context) => getIt.get<SignUpBloc>(),
+            create: (_) => getIt.get<SignUpBloc>(),
           ),
         ],
         child: BlocListener<SignUpBloc, SignUpState>(
-          listener: (context, state) {
+          listener: (context, state) async {
             if (state.isSuccess) {
-              KordiFlushbar(
-                maxWidth: 120,
+              await KordiFlushbar(
+                maxWidth: 130,
                 message: l10n.signUpPageFlushbarLabel,
               ).show(context);
               final verificationType =
@@ -59,7 +42,7 @@ class SignUpPage extends StatelessWidget {
               VerificationCodePageRoute(verificationType).go(context);
             }
             if (state.exception != null) {
-              KordiDialog.showException(
+              await KordiDialog.showException(
                 context,
                 state.exception!,
                 overrideOnPressed: () {
@@ -91,13 +74,10 @@ class SignUpPage extends StatelessWidget {
                           child: TextFormField(
                             decoration: InputDecoration(
                               contentPadding: const EdgeInsets.all(8),
-                              labelText:
-                                  context.l10n.signUpPageUsernameLabelTextField,
-                              hintText:
-                                  context.l10n.signUpPageUsernameHintTextField,
+                              labelText: l10n.signUpPageUsernameLabelTextField,
+                              hintText: l10n.signUpPageUsernameHintTextField,
                               errorText: state.showUsernameError
-                                  ? context
-                                      .l10n.signUpPageUsernameErrorTextField
+                                  ? l10n.signUpPageUsernameErrorTextField
                                   : null,
                               prefixIcon: Icon(Icons.person),
                               border: OutlineInputBorder(),
@@ -112,13 +92,10 @@ class SignUpPage extends StatelessWidget {
                           child: TextFormField(
                             decoration: InputDecoration(
                               contentPadding: const EdgeInsets.all(8),
-                              labelText: context
-                                  .l10n.signUpPageFirstNameLabelTextField,
-                              hintText:
-                                  context.l10n.signUpPageFirstNameHintTextField,
+                              labelText: l10n.signUpPageFirstNameLabelTextField,
+                              hintText: l10n.signUpPageFirstNameHintTextField,
                               errorText: state.showFirstNameError
-                                  ? context
-                                      .l10n.signUpPageFirstNameErrorTextField
+                                  ? l10n.signUpPageFirstNameErrorTextField
                                   : null,
                               prefixIcon: Icon(Icons.person),
                               border: OutlineInputBorder(),
@@ -134,13 +111,10 @@ class SignUpPage extends StatelessWidget {
                           child: TextFormField(
                             decoration: InputDecoration(
                               contentPadding: const EdgeInsets.all(8),
-                              labelText:
-                                  context.l10n.signUpPageLastNameLabelTextField,
-                              hintText:
-                                  context.l10n.signUpPageLastNameHintTextField,
+                              labelText: l10n.signUpPageLastNameLabelTextField,
+                              hintText: l10n.signUpPageLastNameHintTextField,
                               errorText: state.showLastNameError
-                                  ? context
-                                      .l10n.signUpPageLastNameErrorTextField
+                                  ? l10n.signUpPageLastNameErrorTextField
                                   : null,
                               prefixIcon: Icon(Icons.person),
                               border: OutlineInputBorder(),
@@ -156,13 +130,10 @@ class SignUpPage extends StatelessWidget {
                           child: TextFormField(
                             decoration: InputDecoration(
                               contentPadding: const EdgeInsets.all(8),
-                              labelText:
-                                  context.l10n.signUpPagePasswordLabelTextField,
-                              hintText:
-                                  context.l10n.signUpPagePasswordHintTextField,
+                              labelText: l10n.signUpPagePasswordLabelTextField,
+                              hintText: l10n.signUpPagePasswordHintTextField,
                               errorText: state.showPasswordError
-                                  ? context
-                                      .l10n.signUpPagePasswordErrorTextField
+                                  ? l10n.signUpPagePasswordErrorTextField
                                   : null,
                               prefixIcon: Icon(Icons.lock),
                               border: OutlineInputBorder(),
@@ -177,12 +148,10 @@ class SignUpPage extends StatelessWidget {
                           child: TextFormField(
                             decoration: InputDecoration(
                               contentPadding: const EdgeInsets.all(8),
-                              labelText:
-                                  context.l10n.signUpPageEmailLabelTextField,
-                              hintText:
-                                  context.l10n.signUpPageEmailHintTextField,
+                              labelText: l10n.signUpPageEmailLabelTextField,
+                              hintText: l10n.signUpPageEmailHintTextField,
                               errorText: state.showEmailError
-                                  ? context.l10n.signUpPageEmailErrorTextField
+                                  ? l10n.signUpPageEmailErrorTextField
                                   : null,
                               prefixIcon: Icon(Icons.email),
                               border: OutlineInputBorder(),
@@ -198,13 +167,11 @@ class SignUpPage extends StatelessWidget {
                           child: TextFormField(
                             decoration: InputDecoration(
                               contentPadding: const EdgeInsets.all(8),
-                              labelText: context
-                                  .l10n.signUpPagePhoneNumberLabelTextField,
-                              hintText: context
-                                  .l10n.signUpPagePhoneNumberHintTextField,
+                              labelText:
+                                  l10n.signUpPagePhoneNumberLabelTextField,
+                              hintText: l10n.signUpPagePhoneNumberHintTextField,
                               errorText: state.showPhoneNumberError
-                                  ? context
-                                      .l10n.signUpPagePhoneNumberErrorTextField
+                                  ? l10n.signUpPagePhoneNumberErrorTextField
                                   : null,
                               prefixIcon: Icon(Icons.phone),
                               border: OutlineInputBorder(),
@@ -216,7 +183,7 @@ class SignUpPage extends StatelessWidget {
                             ),
                           ),
                         ),
-                        Text(context.l10n.signUpPageVerificationTypeLabel),
+                        Text(l10n.signUpPageVerificationTypeLabel),
                         DropdownButton<VerificationType>(
                           value: state.verificationType,
                           items: VerificationType.values
@@ -253,7 +220,7 @@ class SignUpPage extends StatelessWidget {
                                 );
                               }
                               return Text(
-                                context.l10n.signUpPageSignUpButtonLabel,
+                                l10n.signUpPageSignUpButtonLabel,
                               );
                             },
                           ),
@@ -262,12 +229,10 @@ class SignUpPage extends StatelessWidget {
                           onPressed: () => SignInPageRoute().go(context),
                           child: Text.rich(
                             TextSpan(
-                              text: context
-                                  .l10n.signUpPageAlreadyHaveAccountLabel,
+                              text: l10n.signUpPageAlreadyHaveAccountLabel,
                               children: [
                                 TextSpan(
-                                  text:
-                                      context.l10n.signUpPageSignInButtonLabel,
+                                  text: l10n.signUpPageSignInButtonLabel,
                                   style: TextStyle(fontWeight: FontWeight.bold),
                                 ),
                               ],
@@ -289,6 +254,7 @@ class SignUpPage extends StatelessWidget {
   void _onSignUpButtonClicked(BuildContext context) {
     final signUpFormBloc = context.read<SignUpFormBloc>();
     final state = signUpFormBloc.state;
+    FocusScope.of(context).unfocus();
     if (!state.isFormValid) {
       signUpFormBloc.add(
         SignUpFormEvent.validateFields(),
