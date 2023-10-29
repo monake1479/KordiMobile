@@ -10,6 +10,9 @@ class VerificationCodeFormEvent with _$VerificationCodeFormEvent {
   ) = _UpdateVerificationCode;
   const factory VerificationCodeFormEvent.updateUsername(String username) =
       _UpdateUsername;
+  const factory VerificationCodeFormEvent.updateVerificationType(
+    VerificationType verificationType,
+  ) = _UpdateVerificationType;
   const factory VerificationCodeFormEvent.validateFields() = _ValidateFields;
   const factory VerificationCodeFormEvent.verifyByEmail() = _VerifyByEmail;
   const factory VerificationCodeFormEvent.verifyByPhone() = _VerifyByPhone;
