@@ -33,3 +33,9 @@ groups:
   - path: assets/icons
     class_name: KordiIcons
     types: [ .png, .jpg, .jpeg, .bmp, .svg ]
+  - path: assets/avatars
+    class_name: KordiAvatars
+    types: [ .png, .jpg, .jpeg, .bmp, .svg ]
+  - path: assets/images
+    class_name: KordiImages
+    types: [ .png, .jpg, .jpeg, .bmp, .svg ]

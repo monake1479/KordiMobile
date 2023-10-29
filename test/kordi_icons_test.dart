@@ -5,6 +5,6 @@ import 'package:kordi_mobile/resources/resources.dart';
 
 void main() {
   test('kordi_icons assets test', () {
-    expect(File(KordiIcons.logo).existsSync(), true);
+    expect(File(KordiIcons.logo).existsSync(), isTrue);
   });
 }

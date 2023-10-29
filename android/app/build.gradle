@@ -50,12 +50,26 @@ android {
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
     }
+    flavorDimensions "app"
+
+    productFlavors {
+        prod {
+            dimension "app"
+        }
+        dev {
+            dimension "app"
+            applicationIdSuffix "app.dev"
+        }
+    }
 
     buildTypes {
         release {
             // TODO: Add your own signing config for the release build.
             // Signing with the debug keys for now, so `flutter run --release` works.
             signingConfig signingConfigs.debug
+        }
+        debug {
+            applicationIdSuffix ".debug"
         }
     }
 }
