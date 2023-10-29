@@ -25,6 +25,7 @@
     "drawerCollectionButtonLabel": "Kolekcje",
     "drawerAboutButtonLabel": "O nas",
     "drawerChangeLanguageButtonLabel": "Zmień język",
+    "drawerSignOutButtonLabel": "Wyloguj się",
     "signUpPageUsernameLabelTextField": "Nazwa użytkownika",
     "signUpPageUsernameHintTextField": "Wprowadź nazwę użytkownika",
     "signUpPageUsernameErrorTextField": "Nazwa użytkownika nie może być pusta",
