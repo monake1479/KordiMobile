@@ -20,4 +20,11 @@ extension VerificationCodeStateEx on VerificationCodeState {
           (_) => null,
         ),
       );
+  bool get isSuccess => failureOrSuccessOption.fold(
+        () => false,
+        (either) => either.fold(
+          (_) => false,
+          (_) => true,
+        ),
+      );
 }
