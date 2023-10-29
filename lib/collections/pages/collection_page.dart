@@ -2,24 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 
-import 'package:go_router/go_router.dart';
 import 'package:kordi_mobile/collections/widgets/localization_tile.dart';
-import 'package:kordi_mobile/core/transitions/fade_transition_page.dart';
-
-@immutable
-class CollectionPageRoute extends GoRouteData {
-  CollectionPageRoute();
-
-  @override
-  Page<void> buildPage(
-    BuildContext context,
-    GoRouterState state,
-  ) =>
-      FadeTransitionPage(
-        key: state.pageKey,
-        child: CollectionPage(),
-      );
-}
 
 class CollectionPage extends StatelessWidget {
   const CollectionPage({
