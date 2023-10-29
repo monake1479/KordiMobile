@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -9,7 +7,6 @@ import 'package:kordi_mobile/core/utils/kordi_routes.dart';
 import 'package:kordi_mobile/dependency_injection.dart';
 import 'package:kordi_mobile/l10n/l10n.dart';
 import 'package:kordi_mobile/resources/resources.dart';
-import 'package:kordi_mobile/sign_in/controllers/pages/sign_in_page.dart';
 import 'package:kordi_mobile/sign_up/models/verification_type.dart';
 import 'package:kordi_mobile/verification_code/controllers/verification_code_controllers.dart';
 
@@ -32,11 +29,28 @@ class VerificationCodePage extends StatelessWidget {
           create: (context) => getIt.get<VerificationCodeBloc>(),
         ),
         BlocProvider<VerificationCodeFormBloc>(
-          create: (context) => getIt.get<VerificationCodeFormBloc>(),
+          create: (context) => getIt.get<VerificationCodeFormBloc>()
+            ..add(
+              VerificationCodeFormEvent.updateVerificationType(
+                verificationType,
+              ),
+            ),
         ),
       ],
       child: BlocListener<VerificationCodeBloc, VerificationCodeState>(
         listener: (context, state) {
+          if (state.isSuccess) {
+            KordiDialog.show(
+              context,
+              title: l10n.verificationCodePageSuccessDialogTitle,
+              subtitle: l10n.verificationCodePageSuccessDialogSubtitle,
+              buttonLabel: l10n.verificationCodePageSuccessDialogButtonLabel,
+              onButtonOnPressed: () {
+                SignInPageRoute().go(context);
+              },
+            );
+            return;
+          }
           if (state.exception != null) {
             KordiDialog.showException(
               context,
@@ -66,10 +80,7 @@ class VerificationCodePage extends StatelessWidget {
               ),
               actions: [
                 IconButton(
-                  onPressed: () {
-                    log('Help!');
-                    SignInPageRoute().go(context);
-                  },
+                  onPressed: () {},
                   icon: Icon(Icons.info_outline_rounded),
                 ),
               ],
@@ -128,7 +139,8 @@ class VerificationCodePage extends StatelessWidget {
                                             VerificationType.phoneNumber) {
                                           return Padding(
                                             padding: const EdgeInsets.only(
-                                                bottom: 8),
+                                              bottom: 8,
+                                            ),
                                             child: TextFormField(
                                               decoration: InputDecoration(
                                                 contentPadding:
@@ -216,9 +228,19 @@ class VerificationCodePage extends StatelessWidget {
                                         onPressed: () {
                                           _onVerificationButtonClicked(context);
                                         },
-                                        child: Text(
-                                          context.l10n
-                                              .verificationCodePageButtonLabel,
+                                        child: Builder(
+                                          builder: (context) {
+                                            if (state.isLoading) {
+                                              return Center(
+                                                child:
+                                                    CircularProgressIndicator(),
+                                              );
+                                            }
+                                            return Text(
+                                              context.l10n
+                                                  .verificationCodePageButtonLabel,
+                                            );
+                                          },
                                         ),
                                       ),
                                     ),
@@ -243,7 +265,6 @@ class VerificationCodePage extends StatelessWidget {
   void _onVerificationButtonClicked(BuildContext context) {
     final verificationCodeFormBloc = context.read<VerificationCodeFormBloc>();
     final state = verificationCodeFormBloc.state;
-    log('state.isCodeValid : ${state.isCodeValid}');
     if (!state.isFormValid) {
       verificationCodeFormBloc.add(
         VerificationCodeFormEvent.validateFields(),
