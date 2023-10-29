@@ -59,5 +59,18 @@
     "verificationCodePageResendCodeButtonLabel": "Nie masz kodu? ",
     "verificationCodePageResendCodeButtonLabel2": "Wyślij ponownie",
     "verificationCodePageFlushbarLabel": "Kod wysłany!",
-    "verificationCodePageButtonLabel": "OK"
+    "verificationCodePageButtonLabel": "OK",
+    "verificationCodePageSuccessDialogTitle": "Sukces!",
+    "verificationCodePageSuccessDialogSubtitle": "Udało ci się zweryfikować konto!",
+    "verificationCodePageSuccessDialogButtonLabel": "OK",
+    "signInPageUsernameLabelTextField": "Nazwa użytkownika",
+    "signInPageUsernameHintTextField": "Wprowadź nazwę użytkownika",
+    "signInPageUsernameErrorTextField": "Nazwa użytkownika nie może być pusta",
+    "signInPagePasswordLabelTextField": "Hasło",
+    "signInPagePasswordHintTextField": "Wprowadź hasło",
+    "signInPagePasswordErrorTextField": "Hasło nie może być puste",
+    "signInPageSignInButtonLabel": "Zaloguj się",
+    "signInPageSignUpButtonLabel1": "Nie masz konta? ",
+    "signInPageSignUpButtonLabel2": "Zarejestruj się",
+    "signInPageFlushbarLabel": "Zalogowano!"
 }

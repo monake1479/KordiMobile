@@ -59,5 +59,18 @@
     "verificationCodePageResendCodeButtonLabel": "Don't have the code? ",
     "verificationCodePageResendCodeButtonLabel2": "Resend code",
     "verificationCodePageFlushbarLabel": "Code resent!",
-    "verificationCodePageButtonLabel": "OK"
+    "verificationCodePageButtonLabel": "OK",
+    "verificationCodePageSuccessDialogTitle": "Success!",
+    "verificationCodePageSuccessDialogSubtitle": "You have successfully verified your account!",
+    "verificationCodePageSuccessDialogButtonLabel": "OK",
+    "signInPageUsernameLabelTextField": "Username",
+    "signInPageUsernameHintTextField": "Enter your username",
+    "signInPageUsernameErrorTextField": "Username cannot be empty",
+    "signInPagePasswordLabelTextField": "Password",
+    "signInPagePasswordHintTextField": "Enter your password",
+    "signInPagePasswordErrorTextField": "Password cannot be empty",
+    "signInPageSignInButtonLabel": "Sign in",
+    "signInPageSignUpButtonLabel1": "No account? ",
+    "signInPageSignUpButtonLabel2": "Sign up",
+    "signInPageFlushbarLabel": "Signed in!"
 }
