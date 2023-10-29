@@ -23,14 +23,12 @@ class VerificationCodeService implements VerificationCodeInterface {
       log('[VerificationCodeService] resend() DioException: $e, $s');
       if (e.response?.statusCode == 401) {
         result = left(KordiException.unauthorized());
-      } else if (e.response?.statusCode == 400) {
+      } else {
         final String message =
             ResponseCodeConverter.convert(e.response?.data['error']);
         result = left(
           KordiException.customMessage(message: message),
         );
-      } else {
-        result = left(KordiException.serverError());
       }
     }
     return result;
@@ -44,21 +42,19 @@ class VerificationCodeService implements VerificationCodeInterface {
     final DioClient dioClient = getIt.get<DioClient>();
     late Either<KordiException, Unit> result;
     try {
-      await dioClient.dio.post('/verify?token=$code');
+      await dioClient.dio.get('/verify?token=$code');
       result = right(unit);
     } on DioException catch (e, s) {
       log('[VerificationCodeService] verifyByEmail() DioException: $e, $s');
 
       if (e.response?.statusCode == 401) {
         result = left(KordiException.unauthorized());
-      } else if (e.response?.statusCode == 400) {
+      } else {
         final String message =
             ResponseCodeConverter.convert(e.response?.data['error']);
         result = left(
           KordiException.customMessage(message: message),
         );
-      } else {
-        result = left(KordiException.serverError());
       }
     }
     return result;
@@ -73,21 +69,19 @@ class VerificationCodeService implements VerificationCodeInterface {
     final DioClient dioClient = getIt.get<DioClient>();
     late Either<KordiException, Unit> result;
     try {
-      await dioClient.dio.post('/verify?phone=$phoneNumber&token=$code');
+      await dioClient.dio.get('/verify?phone=$phoneNumber&token=$code');
       result = right(unit);
     } on DioException catch (e, s) {
       log('[VerificationCodeService] verifyByPhone() DioException: $e, $s');
 
       if (e.response?.statusCode == 401) {
         result = left(KordiException.unauthorized());
-      } else if (e.response?.statusCode == 400) {
+      } else {
         final String message =
             ResponseCodeConverter.convert(e.response?.data['error']);
         result = left(
           KordiException.customMessage(message: message),
         );
-      } else {
-        result = left(KordiException.serverError());
       }
     }
     return result;
