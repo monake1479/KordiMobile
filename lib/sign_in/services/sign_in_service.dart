@@ -17,7 +17,13 @@ class SignInService implements SignInInterface {
     late Either<KordiException, String> result;
     final dioClient = getIt.get<DioClient>();
     try {
-      final response = await dioClient.dio.post('/login', data: dto.toJson());
+      final response = await dioClient.dio.post(
+        '/login',
+        data: dto.toJson(),
+        options: Options(
+          headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+        ),
+      );
       result = right(response.data['access_token']);
     } on DioException catch (e, s) {
       log('[SignInService] signIn() exception: $e', stackTrace: s);
