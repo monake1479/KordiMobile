@@ -7,6 +7,7 @@ class VerificationCodeFormState with _$VerificationCodeFormState {
     required String? phoneNumber,
     required String? verificationCode,
     required String? username,
+    required VerificationType verificationType,
   }) = _VerificationCodeFormState;
 
   factory VerificationCodeFormState.initial() => VerificationCodeFormState(
@@ -14,6 +15,7 @@ class VerificationCodeFormState with _$VerificationCodeFormState {
         phoneNumber: null,
         verificationCode: null,
         username: null,
+        verificationType: VerificationType.email,
       );
 }
 
@@ -31,5 +33,11 @@ extension VerificationCodeFormStateX on VerificationCodeFormState {
       verificationCode != null &&
       verificationCode!.isNotEmpty &&
       verificationCode!.length == 6;
-  bool get isFormValid => isPhoneNumberValid && isCodeValid;
+  bool get isFormValid {
+    if (verificationType == VerificationType.email) {
+      return isCodeValid;
+    } else {
+      return isCodeValid && isPhoneNumberValid && isUsernameValid;
+    }
+  }
 }
