@@ -103,6 +103,23 @@ class KordiDrawer extends StatelessWidget {
                       AboutPageRoute().go(context);
                     },
                   ),
+                  Builder(
+                    builder: (context) {
+                      if (state.isAuthorized) {
+                        return ListTile(
+                          title: Text(context.l10n.drawerSignOutButtonLabel),
+                          leading: Icon(Icons.logout),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(16),
+                          ),
+                          onTap: () {
+                            context.read<AuthCubit>().signOut();
+                          },
+                        );
+                      }
+                      return const SizedBox();
+                    },
+                  ),
                   ListTile(
                     title: Text(context.l10n.drawerChangeLanguageButtonLabel),
                     leading: Flag.fromCode(
