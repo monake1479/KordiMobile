@@ -1,7 +1,6 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:kordi_mobile/collections/pages/collection_page.dart';
 import 'package:kordi_mobile/core/utils/kordi_routes.dart';
 import 'package:kordi_mobile/core/widgets/kordi_drawer.dart';
 import 'package:kordi_mobile/resources/resources.dart';
