@@ -10,6 +10,7 @@ import 'package:kordi_mobile/core/services/environment_service.dart';
 import 'package:kordi_mobile/core/utils/kordi_environment.dart';
 import 'package:kordi_mobile/dependency_injection.dart';
 import 'package:kordi_mobile/kordi_app.dart';
+import 'package:kordi_mobile/user/controllers/get_user_cubit.dart';
 import 'package:path_provider/path_provider.dart';
 
 Future<void> bootstrap({
@@ -28,8 +29,15 @@ Future<void> bootstrap({
   );
   getIt.get<EnvironmentService>().environment = env;
   runApp(
-    BlocProvider<AuthCubit>(
-      create: (context) => getIt.get<AuthCubit>()..init(),
+    MultiBlocProvider(
+      providers: [
+        BlocProvider<GetUserCubit>(
+          create: (context) => getIt.get<GetUserCubit>(),
+        ),
+        BlocProvider<AuthCubit>(
+          create: (context) => getIt.get<AuthCubit>()..init(),
+        ),
+      ],
       child: KordiApp(),
     ),
   );
