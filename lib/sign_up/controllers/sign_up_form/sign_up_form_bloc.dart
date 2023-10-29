@@ -2,6 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:kordi_mobile/core/models/kordi_exception.dart';
+import 'package:kordi_mobile/dependency_injection.dart';
 import 'package:kordi_mobile/sign_up/controllers/sign_up/sign_up_bloc.dart';
 import 'package:kordi_mobile/sign_up/models/sign_up_dto.dart';
 import 'package:kordi_mobile/sign_up/models/verification_type.dart';
@@ -10,7 +11,7 @@ part 'sign_up_form_bloc.freezed.dart';
 part 'sign_up_form_event.dart';
 part 'sign_up_form_state.dart';
 
-@injectable
+@LazySingleton()
 class SignUpFormBloc extends Bloc<SignUpFormEvent, SignUpFormState> {
   SignUpFormBloc(this._signUpBloc) : super(SignUpFormState.initial()) {
     on<_UpdateFirstName>(_updateFirstName);
@@ -97,8 +98,6 @@ class SignUpFormBloc extends Bloc<SignUpFormEvent, SignUpFormState> {
     if (!state.isPhoneNumberValid) {
       emit(state.copyWith(phoneNumber: ''));
     }
-
-    ;
   }
 
   void _signUp(
@@ -116,5 +115,11 @@ class SignUpFormBloc extends Bloc<SignUpFormEvent, SignUpFormState> {
     Emitter<SignUpFormState> emit,
   ) {
     emit(SignUpFormState.initial());
+  }
+
+  @override
+  Future<void> close() async {
+    await getIt.resetLazySingleton<SignUpFormBloc>();
+    return super.close();
   }
 }
