@@ -11,7 +11,7 @@ import 'package:kordi_mobile/user/controllers/get_user_cubit.dart';
 part 'auth_state.dart';
 part 'auth_cubit.freezed.dart';
 
-@LazySingleton()
+@lazySingleton
 class AuthCubit extends HydratedCubit<AuthState> {
   AuthCubit(this._service, this._getUserCubit)
       : super(AuthState.unauthorized());

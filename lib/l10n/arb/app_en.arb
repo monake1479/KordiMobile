@@ -26,6 +26,7 @@
     "drawerAboutButtonLabel": "About",
     "drawerChangeLanguageButtonLabel": "Change language",
     "drawerSignOutButtonLabel": "Sign out",
+    "drawerChangePasswordButtonLabel": "Change password",
     "signUpPageUsernameLabelTextField": "Username",
     "signUpPageUsernameHintTextField": "Enter your username",
     "signUpPageUsernameErrorTextField": "Username cannot be empty",
@@ -73,5 +74,15 @@
     "signInPageSignInButtonLabel": "Sign in",
     "signInPageSignUpButtonLabel1": "No account? ",
     "signInPageSignUpButtonLabel2": "Sign up",
-    "signInPageFlushbarLabel": "Signed in!"
+    "signInPageFlushbarLabel": "Signed in!",
+    "changePasswordPageOldPasswordLabelTextField": "Old password",
+    "changePasswordPageOldPasswordHintTextField": "Enter your old password",
+    "changePasswordPageOldPasswordErrorTextField": "Old password cannot be empty",
+    "changePasswordPagePasswordLabelTextField": "Password",
+    "changePasswordPagePasswordHintTextField": "Enter your password",
+    "changePasswordPagePasswordErrorTextField": "Password cannot be empty",
+    "changePasswordPageChangePasswordButtonLabel": "Change password",
+    "changePasswordPageDialogTitleLabel": "Password changed!",
+    "changePasswordPageDialogSubTitleLabel": "Please, sign in again with new password.",
+    "changePasswordPageDialogButtonLabel": "OK"
 }

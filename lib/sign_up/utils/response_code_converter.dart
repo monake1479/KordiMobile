@@ -1,6 +1,8 @@
 class ResponseCodeConverter {
   static String convert(String? errorCode) {
     switch (errorCode) {
+      case 'user.bad.credentials':
+        return 'Provided user credentials are not valid.';
       case 'user.not.found':
         return 'User not found.';
       case 'user.not.verified.email':
@@ -35,6 +37,8 @@ class ResponseCodeConverter {
         return 'Provided phone number is already verified.';
       case 'password.too.short.':
         return 'Provided password is too short.';
+      case 'password.old.password.not.match':
+        return 'Provided old password is not valid.';
 
       default:
         return 'Something went wrong. Please try again later.';

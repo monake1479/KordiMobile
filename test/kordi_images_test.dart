@@ -6,6 +6,7 @@ import 'package:kordi_mobile/resources/resources.dart';
 void main() {
   test('kordi_images assets test', () {
     expect(File(KordiImages.authentication).existsSync(), isTrue);
+    expect(File(KordiImages.changePassword).existsSync(), isTrue);
     expect(File(KordiImages.exception).existsSync(), isTrue);
     expect(File(KordiImages.join).existsSync(), isTrue);
     expect(File(KordiImages.welcoming).existsSync(), isTrue);

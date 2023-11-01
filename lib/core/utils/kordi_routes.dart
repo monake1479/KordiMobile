@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:kordi_mobile/change_password/pages/change_password_page.dart';
 import 'package:kordi_mobile/collections/pages/collection_page.dart';
 import 'package:kordi_mobile/core/pages/about_page.dart';
 import 'package:kordi_mobile/core/pages/kordi_scaffold.dart';
@@ -35,11 +36,6 @@ class KordiScaffoldShellRoute extends ShellRouteData {
 class VerificationCodePageRoute extends GoRouteData {
   VerificationCodePageRoute(this.verificationType);
   final VerificationType verificationType;
-
-  @override
-  Widget build(BuildContext context, GoRouterState state) {
-    return VerificationCodePage(verificationType: verificationType);
-  }
 
   @override
   Page<void> buildPage(
@@ -105,5 +101,24 @@ class SignUpPageRoute extends GoRouteData {
       FadeTransitionPage(
         key: state.pageKey,
         child: SignUpPage(),
+      );
+}
+
+@TypedGoRoute<ChangePasswordPageRoute>(
+  path: '/change-password',
+  name: 'ChangePasswordPageRoute',
+)
+@immutable
+class ChangePasswordPageRoute extends GoRouteData {
+  ChangePasswordPageRoute();
+
+  @override
+  Page<void> buildPage(
+    BuildContext context,
+    GoRouterState state,
+  ) =>
+      FadeTransitionPage(
+        key: state.pageKey,
+        child: KordiScaffold(child: ChangePasswordPage()),
       );
 }

@@ -26,6 +26,7 @@
     "drawerAboutButtonLabel": "O nas",
     "drawerChangeLanguageButtonLabel": "Zmień język",
     "drawerSignOutButtonLabel": "Wyloguj się",
+    "drawerChangePasswordButtonLabel": "Zmień hasło",
     "signUpPageUsernameLabelTextField": "Nazwa użytkownika",
     "signUpPageUsernameHintTextField": "Wprowadź nazwę użytkownika",
     "signUpPageUsernameErrorTextField": "Nazwa użytkownika nie może być pusta",
@@ -73,5 +74,15 @@
     "signInPageSignInButtonLabel": "Zaloguj się",
     "signInPageSignUpButtonLabel1": "Nie masz konta? ",
     "signInPageSignUpButtonLabel2": "Zarejestruj się",
-    "signInPageFlushbarLabel": "Zalogowano!"
+    "signInPageFlushbarLabel": "Zalogowano!",
+    "changePasswordPageOldPasswordLabelTextField": "Aktualne hasło",
+    "changePasswordPageOldPasswordHintTextField": "Wprowadz aktualne hasło",
+    "changePasswordPageOldPasswordErrorTextField": "Aktualne hasło nie może być puste",
+    "changePasswordPagePasswordLabelTextField": "Nowe hasło",
+    "changePasswordPagePasswordHintTextField": "Wprowadź nowe hasło",
+    "changePasswordPagePasswordErrorTextField": "Nowe hasło nie może być puste",
+    "changePasswordPageChangePasswordButtonLabel": "Zmień hasło",
+    "changePasswordPageDialogTitleLabel": "Hasło zmienione!",
+    "changePasswordPageDialogSubTitleLabel": "Przejdź do strony logowania i zaloguj się ponownie swoim nowym hasłem.",
+    "changePasswordPageDialogButtonLabel": "OK"
 }

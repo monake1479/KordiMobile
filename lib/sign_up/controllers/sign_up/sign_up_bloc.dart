@@ -14,7 +14,7 @@ part 'sign_up_bloc.freezed.dart';
 part 'sign_up_state.dart';
 part 'sign_up_event.dart';
 
-@LazySingleton()
+@lazySingleton
 class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
   SignUpBloc(this._service) : super(SignUpState.initial()) {
     on<_Reset>(_reset);

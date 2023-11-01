@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -13,7 +11,7 @@ part 'verification_code_state.dart';
 part 'verification_code_event.dart';
 part 'verification_code_bloc.freezed.dart';
 
-@LazySingleton()
+@lazySingleton
 class VerificationCodeBloc
     extends Bloc<VerificationCodeEvent, VerificationCodeState> {
   VerificationCodeBloc(this._service) : super(VerificationCodeState.initial()) {
