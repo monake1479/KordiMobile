@@ -9,7 +9,7 @@ part 'sign_in_form_event.dart';
 part 'sign_in_form_state.dart';
 part 'sign_in_form_bloc.freezed.dart';
 
-@LazySingleton()
+@lazySingleton
 class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
   SignInFormBloc(this._signInBloc) : super(SignInFormState.initial()) {
     on<_UpdateUsername>(_updateUsername);

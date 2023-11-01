@@ -8,7 +8,7 @@ part 'verification_code_form_event.dart';
 part 'verification_code_form_state.dart';
 part 'verification_code_form_bloc.freezed.dart';
 
-@Injectable()
+@injectable
 class VerificationCodeFormBloc
     extends Bloc<VerificationCodeFormEvent, VerificationCodeFormState> {
   VerificationCodeFormBloc(

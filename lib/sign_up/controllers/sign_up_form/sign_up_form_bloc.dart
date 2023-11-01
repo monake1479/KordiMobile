@@ -11,7 +11,7 @@ part 'sign_up_form_bloc.freezed.dart';
 part 'sign_up_form_event.dart';
 part 'sign_up_form_state.dart';
 
-@LazySingleton()
+@lazySingleton
 class SignUpFormBloc extends Bloc<SignUpFormEvent, SignUpFormState> {
   SignUpFormBloc(this._signUpBloc) : super(SignUpFormState.initial()) {
     on<_UpdateFirstName>(_updateFirstName);
