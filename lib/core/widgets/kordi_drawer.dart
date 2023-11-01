@@ -120,6 +120,25 @@ class KordiDrawer extends StatelessWidget {
                         builder: (context) {
                           if (state.isAuthorized) {
                             return ListTile(
+                              title: Text(
+                                context.l10n.drawerChangePasswordButtonLabel,
+                              ),
+                              leading: Icon(Icons.lock_open),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(16),
+                              ),
+                              onTap: () {
+                                ChangePasswordPageRoute().go(context);
+                              },
+                            );
+                          }
+                          return const SizedBox();
+                        },
+                      ),
+                      Builder(
+                        builder: (context) {
+                          if (state.isAuthorized) {
+                            return ListTile(
                               title:
                                   Text(context.l10n.drawerSignOutButtonLabel),
                               leading: Icon(Icons.logout),
