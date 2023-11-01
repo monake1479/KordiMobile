@@ -27,15 +27,12 @@ class SignInService implements SignInInterface {
       result = right(response.data['access_token']);
     } on DioException catch (e, s) {
       log('[SignInService] signIn() exception: $e', stackTrace: s);
-      if (e.response?.statusCode == 401) {
-        result = left(KordiException.unauthorized());
-      } else {
-        final String message =
-            ResponseCodeConverter.convert(e.response?.data['error']);
-        result = left(
-          KordiException.customMessage(message: message),
-        );
-      }
+
+      final String message =
+          ResponseCodeConverter.convert(e.response?.data['error']);
+      result = left(
+        KordiException.customMessage(message: message),
+      );
     }
     return result;
   }
