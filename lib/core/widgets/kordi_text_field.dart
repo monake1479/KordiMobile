@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 class KordiTextField extends StatefulWidget {
   const KordiTextField({
-    super.key,
     required this.labelText,
     required this.hintText,
     required this.shouldShowErrorText,
@@ -28,6 +27,7 @@ class _KordiTextFieldState extends State<KordiTextField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      obscureText: widget.obscureNeeded ? isObscure : false,
       decoration: InputDecoration(
         contentPadding: const EdgeInsets.all(8),
         labelText: widget.labelText,
