@@ -73,19 +73,15 @@ class SignInPage extends StatelessWidget {
                               ),
                               Padding(
                                 padding: const EdgeInsets.all(8),
-                                child: TextFormField(
-                                  decoration: InputDecoration(
-                                    contentPadding: const EdgeInsets.all(8),
-                                    labelText:
-                                        l10n.signInPageUsernameLabelTextField,
-                                    hintText:
-                                        l10n.signInPageUsernameHintTextField,
-                                    errorText: state.showUsernameError
-                                        ? l10n.signInPageUsernameErrorTextField
-                                        : null,
-                                    prefixIcon: Icon(Icons.person),
-                                    border: OutlineInputBorder(),
-                                  ),
+                                child: KordiTextField(
+                                  labelText:
+                                      l10n.signInPageUsernameLabelTextField,
+                                  hintText:
+                                      l10n.signInPageUsernameHintTextField,
+                                  shouldShowErrorText: state.showUsernameError,
+                                  errorText:
+                                      l10n.signInPageUsernameErrorTextField,
+                                  prefixIcon: Icon(Icons.person),
                                   onChanged: (username) => signInFormBloc.add(
                                     SignInFormEvent.updateUsername(username),
                                   ),
