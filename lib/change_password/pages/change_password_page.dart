@@ -7,6 +7,7 @@ import 'package:kordi_mobile/change_password/controllers/change_password/change_
 import 'package:kordi_mobile/change_password/controllers/change_password_form/change_password_form_bloc.dart';
 import 'package:kordi_mobile/core/utils/kordi_dialog.dart';
 import 'package:kordi_mobile/core/utils/kordi_routes.dart';
+import 'package:kordi_mobile/core/widgets/kordi_text_field.dart';
 import 'package:kordi_mobile/dependency_injection.dart';
 import 'package:kordi_mobile/l10n/l10n.dart';
 import 'package:kordi_mobile/resources/resources.dart';
@@ -75,20 +76,17 @@ class ChangePasswordPage extends StatelessWidget {
                               ),
                               Padding(
                                 padding: const EdgeInsets.all(8),
-                                child: TextFormField(
-                                  decoration: InputDecoration(
-                                    contentPadding: const EdgeInsets.all(8),
-                                    labelText: l10n
-                                        .changePasswordPageOldPasswordLabelTextField,
-                                    hintText: l10n
-                                        .changePasswordPageOldPasswordHintTextField,
-                                    errorText: state.showOldPasswordError
-                                        ? l10n
-                                            .changePasswordPageOldPasswordErrorTextField
-                                        : null,
-                                    prefixIcon: Icon(Icons.lock_clock),
-                                    border: OutlineInputBorder(),
-                                  ),
+                                child: KordiTextField(
+                                  obscureNeeded: true,
+                                  labelText: l10n
+                                      .changePasswordPageOldPasswordLabelTextField,
+                                  hintText: l10n
+                                      .changePasswordPageOldPasswordHintTextField,
+                                  shouldShowErrorText:
+                                      state.showOldPasswordError,
+                                  errorText: l10n
+                                      .changePasswordPageOldPasswordErrorTextField,
+                                  prefixIcon: Icon(Icons.lock_clock),
                                   onChanged: (oldPassword) =>
                                       changePasswordFormBloc.add(
                                     ChangePasswordFormEvent.updateOldPassword(
@@ -99,20 +97,16 @@ class ChangePasswordPage extends StatelessWidget {
                               ),
                               Padding(
                                 padding: const EdgeInsets.all(8),
-                                child: TextFormField(
-                                  decoration: InputDecoration(
-                                    contentPadding: const EdgeInsets.all(8),
-                                    labelText: l10n
-                                        .changePasswordPagePasswordLabelTextField,
-                                    hintText: l10n
-                                        .changePasswordPagePasswordHintTextField,
-                                    errorText: state.showPasswordError
-                                        ? l10n
-                                            .changePasswordPagePasswordErrorTextField
-                                        : null,
-                                    prefixIcon: Icon(Icons.lock),
-                                    border: OutlineInputBorder(),
-                                  ),
+                                child: KordiTextField(
+                                  obscureNeeded: true,
+                                  shouldShowErrorText: state.showPasswordError,
+                                  labelText: l10n
+                                      .changePasswordPagePasswordLabelTextField,
+                                  hintText: l10n
+                                      .changePasswordPagePasswordHintTextField,
+                                  errorText: l10n
+                                      .changePasswordPagePasswordErrorTextField,
+                                  prefixIcon: Icon(Icons.lock),
                                   onChanged: (password) =>
                                       changePasswordFormBloc.add(
                                     ChangePasswordFormEvent.updatePassword(

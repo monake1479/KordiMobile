@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:kordi_mobile/core/utils/kordi_dialog.dart';
 import 'package:kordi_mobile/core/utils/kordi_flushbar.dart';
 import 'package:kordi_mobile/core/utils/kordi_routes.dart';
+import 'package:kordi_mobile/core/widgets/kordi_text_field.dart';
 import 'package:kordi_mobile/dependency_injection.dart';
 import 'package:kordi_mobile/l10n/l10n.dart';
 import 'package:kordi_mobile/resources/resources.dart';
@@ -72,19 +73,15 @@ class SignInPage extends StatelessWidget {
                               ),
                               Padding(
                                 padding: const EdgeInsets.all(8),
-                                child: TextFormField(
-                                  decoration: InputDecoration(
-                                    contentPadding: const EdgeInsets.all(8),
-                                    labelText:
-                                        l10n.signInPageUsernameLabelTextField,
-                                    hintText:
-                                        l10n.signInPageUsernameHintTextField,
-                                    errorText: state.showUsernameError
-                                        ? l10n.signInPageUsernameErrorTextField
-                                        : null,
-                                    prefixIcon: Icon(Icons.person),
-                                    border: OutlineInputBorder(),
-                                  ),
+                                child: KordiTextField(
+                                  labelText:
+                                      l10n.signInPageUsernameLabelTextField,
+                                  hintText:
+                                      l10n.signInPageUsernameHintTextField,
+                                  shouldShowErrorText: state.showUsernameError,
+                                  errorText:
+                                      l10n.signInPageUsernameErrorTextField,
+                                  prefixIcon: Icon(Icons.person),
                                   onChanged: (username) => signInFormBloc.add(
                                     SignInFormEvent.updateUsername(username),
                                   ),
@@ -92,19 +89,16 @@ class SignInPage extends StatelessWidget {
                               ),
                               Padding(
                                 padding: const EdgeInsets.all(8),
-                                child: TextFormField(
-                                  decoration: InputDecoration(
-                                    contentPadding: const EdgeInsets.all(8),
-                                    labelText:
-                                        l10n.signInPagePasswordLabelTextField,
-                                    hintText:
-                                        l10n.signInPagePasswordHintTextField,
-                                    errorText: state.showPasswordError
-                                        ? l10n.signInPagePasswordErrorTextField
-                                        : null,
-                                    prefixIcon: Icon(Icons.lock),
-                                    border: OutlineInputBorder(),
-                                  ),
+                                child: KordiTextField(
+                                  obscureNeeded: true,
+                                  shouldShowErrorText: state.showPasswordError,
+                                  labelText:
+                                      l10n.signInPagePasswordLabelTextField,
+                                  hintText:
+                                      l10n.signInPagePasswordHintTextField,
+                                  errorText:
+                                      l10n.signInPagePasswordErrorTextField,
+                                  prefixIcon: Icon(Icons.lock),
                                   onChanged: (password) => signInFormBloc.add(
                                     SignInFormEvent.updatePassword(password),
                                   ),

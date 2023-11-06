@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:kordi_mobile/core/utils/kordi_dialog.dart';
 import 'package:kordi_mobile/core/utils/kordi_flushbar.dart';
 import 'package:kordi_mobile/core/utils/kordi_routes.dart';
+import 'package:kordi_mobile/core/widgets/kordi_text_field.dart';
 import 'package:kordi_mobile/dependency_injection.dart';
 import 'package:kordi_mobile/l10n/l10n.dart';
 import 'package:kordi_mobile/resources/resources.dart';
@@ -71,17 +72,12 @@ class SignUpPage extends StatelessWidget {
                         ),
                         Padding(
                           padding: const EdgeInsets.all(8),
-                          child: TextFormField(
-                            decoration: InputDecoration(
-                              contentPadding: const EdgeInsets.all(8),
-                              labelText: l10n.signUpPageUsernameLabelTextField,
-                              hintText: l10n.signUpPageUsernameHintTextField,
-                              errorText: state.showUsernameError
-                                  ? l10n.signUpPageUsernameErrorTextField
-                                  : null,
-                              prefixIcon: Icon(Icons.person),
-                              border: OutlineInputBorder(),
-                            ),
+                          child: KordiTextField(
+                            labelText: l10n.signUpPageUsernameLabelTextField,
+                            hintText: l10n.signUpPageUsernameHintTextField,
+                            shouldShowErrorText: state.showUsernameError,
+                            errorText: l10n.signUpPageUsernameErrorTextField,
+                            prefixIcon: Icon(Icons.account_circle),
                             onChanged: (username) => signUpFormBloc.add(
                               SignUpFormEvent.updateUsername(username),
                             ),
@@ -89,17 +85,12 @@ class SignUpPage extends StatelessWidget {
                         ),
                         Padding(
                           padding: const EdgeInsets.all(8),
-                          child: TextFormField(
-                            decoration: InputDecoration(
-                              contentPadding: const EdgeInsets.all(8),
-                              labelText: l10n.signUpPageFirstNameLabelTextField,
-                              hintText: l10n.signUpPageFirstNameHintTextField,
-                              errorText: state.showFirstNameError
-                                  ? l10n.signUpPageFirstNameErrorTextField
-                                  : null,
-                              prefixIcon: Icon(Icons.person),
-                              border: OutlineInputBorder(),
-                            ),
+                          child: KordiTextField(
+                            labelText: l10n.signUpPageFirstNameLabelTextField,
+                            hintText: l10n.signUpPageFirstNameHintTextField,
+                            shouldShowErrorText: state.showFirstNameError,
+                            errorText: l10n.signUpPageFirstNameErrorTextField,
+                            prefixIcon: Icon(Icons.person),
                             keyboardType: TextInputType.name,
                             onChanged: (firstName) => signUpFormBloc.add(
                               SignUpFormEvent.updateFirstName(firstName),
@@ -108,17 +99,12 @@ class SignUpPage extends StatelessWidget {
                         ),
                         Padding(
                           padding: const EdgeInsets.all(8),
-                          child: TextFormField(
-                            decoration: InputDecoration(
-                              contentPadding: const EdgeInsets.all(8),
-                              labelText: l10n.signUpPageLastNameLabelTextField,
-                              hintText: l10n.signUpPageLastNameHintTextField,
-                              errorText: state.showLastNameError
-                                  ? l10n.signUpPageLastNameErrorTextField
-                                  : null,
-                              prefixIcon: Icon(Icons.person),
-                              border: OutlineInputBorder(),
-                            ),
+                          child: KordiTextField(
+                            labelText: l10n.signUpPageLastNameLabelTextField,
+                            hintText: l10n.signUpPageLastNameHintTextField,
+                            shouldShowErrorText: state.showLastNameError,
+                            errorText: l10n.signUpPageLastNameErrorTextField,
+                            prefixIcon: Icon(Icons.person),
                             keyboardType: TextInputType.name,
                             onChanged: (lastName) => signUpFormBloc.add(
                               SignUpFormEvent.updateLastName(lastName),
@@ -127,17 +113,13 @@ class SignUpPage extends StatelessWidget {
                         ),
                         Padding(
                           padding: const EdgeInsets.all(8),
-                          child: TextFormField(
-                            decoration: InputDecoration(
-                              contentPadding: const EdgeInsets.all(8),
-                              labelText: l10n.signUpPagePasswordLabelTextField,
-                              hintText: l10n.signUpPagePasswordHintTextField,
-                              errorText: state.showPasswordError
-                                  ? l10n.signUpPagePasswordErrorTextField
-                                  : null,
-                              prefixIcon: Icon(Icons.lock),
-                              border: OutlineInputBorder(),
-                            ),
+                          child: KordiTextField(
+                            obscureNeeded: true,
+                            shouldShowErrorText: state.showPasswordError,
+                            prefixIcon: Icon(Icons.lock),
+                            labelText: l10n.signUpPagePasswordLabelTextField,
+                            hintText: l10n.signUpPagePasswordHintTextField,
+                            errorText: l10n.signUpPagePasswordErrorTextField,
                             onChanged: (password) => signUpFormBloc.add(
                               SignUpFormEvent.updatePassword(password),
                             ),
@@ -145,17 +127,12 @@ class SignUpPage extends StatelessWidget {
                         ),
                         Padding(
                           padding: const EdgeInsets.all(8),
-                          child: TextFormField(
-                            decoration: InputDecoration(
-                              contentPadding: const EdgeInsets.all(8),
-                              labelText: l10n.signUpPageEmailLabelTextField,
-                              hintText: l10n.signUpPageEmailHintTextField,
-                              errorText: state.showEmailError
-                                  ? l10n.signUpPageEmailErrorTextField
-                                  : null,
-                              prefixIcon: Icon(Icons.email),
-                              border: OutlineInputBorder(),
-                            ),
+                          child: KordiTextField(
+                            labelText: l10n.signUpPageEmailLabelTextField,
+                            hintText: l10n.signUpPageEmailHintTextField,
+                            shouldShowErrorText: state.showEmailError,
+                            errorText: l10n.signUpPageEmailErrorTextField,
+                            prefixIcon: Icon(Icons.email),
                             keyboardType: TextInputType.emailAddress,
                             onChanged: (email) => signUpFormBloc.add(
                               SignUpFormEvent.updateEmail(email),
@@ -164,18 +141,12 @@ class SignUpPage extends StatelessWidget {
                         ),
                         Padding(
                           padding: const EdgeInsets.all(8),
-                          child: TextFormField(
-                            decoration: InputDecoration(
-                              contentPadding: const EdgeInsets.all(8),
-                              labelText:
-                                  l10n.signUpPagePhoneNumberLabelTextField,
-                              hintText: l10n.signUpPagePhoneNumberHintTextField,
-                              errorText: state.showPhoneNumberError
-                                  ? l10n.signUpPagePhoneNumberErrorTextField
-                                  : null,
-                              prefixIcon: Icon(Icons.phone),
-                              border: OutlineInputBorder(),
-                            ),
+                          child: KordiTextField(
+                            labelText: l10n.signUpPagePhoneNumberLabelTextField,
+                            hintText: l10n.signUpPagePhoneNumberHintTextField,
+                            shouldShowErrorText: state.showPhoneNumberError,
+                            errorText: l10n.signUpPagePhoneNumberErrorTextField,
+                            prefixIcon: Icon(Icons.phone),
                             keyboardType: TextInputType.number,
                             maxLength: 9,
                             onChanged: (phoneNumber) => signUpFormBloc.add(

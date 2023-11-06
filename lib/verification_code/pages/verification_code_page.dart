@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:kordi_mobile/core/utils/kordi_dialog.dart';
 import 'package:kordi_mobile/core/utils/kordi_flushbar.dart';
 import 'package:kordi_mobile/core/utils/kordi_routes.dart';
+import 'package:kordi_mobile/core/widgets/kordi_text_field.dart';
 import 'package:kordi_mobile/dependency_injection.dart';
 import 'package:kordi_mobile/l10n/l10n.dart';
 import 'package:kordi_mobile/resources/resources.dart';
@@ -141,21 +142,16 @@ class VerificationCodePage extends StatelessWidget {
                                             padding: const EdgeInsets.only(
                                               bottom: 8,
                                             ),
-                                            child: TextFormField(
-                                              decoration: InputDecoration(
-                                                contentPadding:
-                                                    const EdgeInsets.all(8),
-                                                labelText: l10n
-                                                    .verificationCodePageTextfieldUsernameLabel,
-                                                hintText: l10n
-                                                    .verificationCodePageTextfieldUsernameHint,
-                                                errorText: state
-                                                        .showPhoneNumberError
-                                                    ? l10n
-                                                        .verificationCodePageTextfieldUsernameError
-                                                    : null,
-                                                border: OutlineInputBorder(),
-                                              ),
+                                            child: KordiTextField(
+                                              labelText: l10n
+                                                  .verificationCodePageTextfieldUsernameLabel,
+                                              hintText: l10n
+                                                  .verificationCodePageTextfieldUsernameHint,
+                                              shouldShowErrorText:
+                                                  state.showPhoneNumberError,
+                                              errorText: l10n
+                                                  .verificationCodePageTextfieldUsernameError,
+                                              prefixIcon: Icon(Icons.person),
                                               onChanged: (username) =>
                                                   verificationCodeFormBloc.add(
                                                 VerificationCodeFormEvent
@@ -169,22 +165,17 @@ class VerificationCodePage extends StatelessWidget {
                                         return const SizedBox();
                                       },
                                     ),
-                                    TextFormField(
+                                    KordiTextField(
                                       textAlign: TextAlign.center,
                                       keyboardType: TextInputType.number,
                                       maxLength: 6,
-                                      decoration: InputDecoration(
-                                        contentPadding: const EdgeInsets.all(8),
-                                        labelText: l10n
-                                            .verificationCodePageTextfieldCodeLabel,
-                                        hintText: l10n
-                                            .verificationCodePageTextfieldCodeHint,
-                                        errorText: state.showCodeError
-                                            ? l10n
-                                                .verificationCodePageTextfieldCodeError
-                                            : null,
-                                        border: OutlineInputBorder(),
-                                      ),
+                                      labelText: l10n
+                                          .verificationCodePageTextfieldCodeLabel,
+                                      hintText: l10n
+                                          .verificationCodePageTextfieldCodeHint,
+                                      shouldShowErrorText: state.showCodeError,
+                                      errorText: l10n
+                                          .verificationCodePageTextfieldCodeError,
                                       onChanged: (code) =>
                                           verificationCodeFormBloc.add(
                                         VerificationCodeFormEvent
