@@ -12,3 +12,7 @@ class CollectionAddresses with _$CollectionAddresses {
   factory CollectionAddresses.fromJson(Map<String, dynamic> json) =>
       _$CollectionAddressesFromJson(json);
 }
+
+extension CollectionAddressesX on CollectionAddresses {
+  String get fullAddress => '$city, $street';
+}
