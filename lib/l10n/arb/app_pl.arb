@@ -15,6 +15,7 @@
             }
         }
     },
+    "collectionPageLocations": "Lokalizacje",
     "aboutPageTitle": "Strona o nas",
     "drawerUserGreetings": "Cześć, {username}!",
     "@drawerUserGreetings": {
