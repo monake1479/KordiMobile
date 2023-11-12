@@ -2,6 +2,19 @@
     "@@locale": "en",
     "appName": "Kordi mobile",
     "collectionPageTitle": "Collection page",
+    "collectionPageEmptyState": "No collections found",
+    "collectionPageProgress": "Collection progress:",
+    "collectionPageDaysLeft": "{daysLeft} days left until the end",
+    "@collectionPageDaysLeft": {
+        "description": "Collection page with progress bar and days left until the end of the collection.",
+        "placeholders": {
+            "daysLeft": {
+                "type": "String",
+                "description": "DaysLeft",
+                "example": "27"
+            }
+        }
+    },
     "aboutPageTitle": "About page",
     "drawerUserGreetings": "Hello, {username}!",
     "@drawerUserGreetings": {
