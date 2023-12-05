@@ -9,8 +9,9 @@ class CollectionsFilterEvent with _$CollectionsFilterEvent {
       _UpdateStreet;
   const factory CollectionsFilterEvent.updateItemName(String itemName) =
       _UpdateItemName;
-  const factory CollectionsFilterEvent.updateCategories(String categories) =
-      _UpdateCategories;
+  const factory CollectionsFilterEvent.updateCategories(
+    CollectionItemCategory category,
+  ) = _UpdateCategories;
   const factory CollectionsFilterEvent.updateStatus(CollectionStatus status) =
       _UpdateStatus;
   const factory CollectionsFilterEvent.updatePageNumber(int pageNumber) =
@@ -24,5 +25,7 @@ class CollectionsFilterEvent with _$CollectionsFilterEvent {
   ) = _UpdateSortDirection;
   const factory CollectionsFilterEvent.getFilteredCollections() =
       _GetFilteredCollections;
+  const factory CollectionsFilterEvent.getInitialFilteredCollections() =
+      _GetInitialFilteredCollections;
   const factory CollectionsFilterEvent.getCollections() = _GetCollections;
 }
