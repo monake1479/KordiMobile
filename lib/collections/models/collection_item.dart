@@ -9,6 +9,7 @@ part 'collection_item.g.dart';
 @freezed
 class CollectionItem with _$CollectionItem {
   const factory CollectionItem({
+    required int id,
     required String name,
     @CollectionItemTypeConverter() required CollectionItemType type,
     @CollectionItemCategoryConverter() required CollectionItemCategory category,
