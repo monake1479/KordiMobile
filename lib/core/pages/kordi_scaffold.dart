@@ -1,12 +1,12 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kordi_mobile/collections/controllers/collections_filter/collections_filter_bloc.dart';
 import 'package:kordi_mobile/collections/controllers/get_collections/get_collections_cubit.dart';
 import 'package:kordi_mobile/core/utils/kordi_routes.dart';
 import 'package:kordi_mobile/core/widgets/kordi_drawer.dart';
+import 'package:kordi_mobile/core/widgets/kordi_search_button.dart';
 import 'package:kordi_mobile/dependency_injection.dart';
+import 'package:kordi_mobile/l10n/l10n.dart';
 import 'package:kordi_mobile/resources/resources.dart';
 
 class KordiScaffold extends StatelessWidget {
@@ -59,21 +59,13 @@ class KordiScaffold extends StatelessWidget {
                 ),
               ),
               Text(
-                'KORDI Mobile',
+                context.l10n.kordiScaffoldTitle,
                 style: TextStyle(color: colorScheme.secondary),
               ),
             ],
           ),
           actions: [
-            IconButton(
-              icon: Icon(
-                Icons.search,
-                color: colorScheme.primary,
-              ),
-              onPressed: () {
-                log('Search button pressed');
-              },
-            ),
+            KordiSearchButton(),
           ],
         ),
         drawer: KordiDrawer(),
