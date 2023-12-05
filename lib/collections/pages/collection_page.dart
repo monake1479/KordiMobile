@@ -6,7 +6,6 @@ import 'package:kordi_mobile/collections/controllers/collections_filter/collecti
 import 'package:kordi_mobile/collections/controllers/get_collections/get_collections_cubit.dart';
 import 'package:kordi_mobile/collections/widgets/collection_card.dart';
 import 'package:kordi_mobile/core/utils/kordi_dialog.dart';
-import 'package:kordi_mobile/dependency_injection.dart';
 import 'package:kordi_mobile/l10n/l10n.dart';
 
 class CollectionPage extends StatefulWidget {
@@ -22,7 +21,7 @@ class _CollectionPageState extends State<CollectionPage> {
   late final ScrollController _scrollController;
   @override
   void initState() {
-    _scrollController = ScrollController()..addListener(_onScroll);
+    _scrollController = ScrollController();
     super.initState();
   }
 
@@ -51,32 +50,66 @@ class _CollectionPageState extends State<CollectionPage> {
           builder: (context, state) {
             return ListView.builder(
               controller: _scrollController,
-              itemCount: state.isReachedMax
-                  ? state.collections.length
-                  : state.collections.length + 1,
+              itemCount: state.calculateItemCount(_isBottom),
               shrinkWrap: true,
               itemBuilder: (context, index) {
-                return Builder(
-                  builder: (context) {
-                    if (state.collections.isEmpty) {
-                      return Padding(
-                        padding: const EdgeInsets.all(8),
-                        child: Center(
-                          child: Text(context.l10n.collectionPageEmptyState),
+                if (state.collections.isEmpty) {
+                  return SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.70,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Flexible(
+                            child: Text(
+                              context.l10n.collectionPageEmptyState,
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                          ElevatedButton(
+                            onPressed: () {
+                              context
+                                  .read<CollectionsFilterBloc>()
+                                  .add(CollectionsFilterEvent.getCollections());
+                            },
+                            child: Text(
+                              'Get initial collections',
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                }
+                if (index >= state.collections.length) {
+                  if (state.isLoading) {
+                    return Padding(
+                      padding: const EdgeInsets.all(8),
+                      child: Center(
+                        child: CircularProgressIndicator(),
+                      ),
+                    );
+                  }
+                  if (state.canLoadMore) {
+                    return Padding(
+                      padding: const EdgeInsets.all(8),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          context.read<CollectionsFilterBloc>().add(
+                                CollectionsFilterEvent.getFilteredCollections(),
+                              );
+                        },
+                        child: Text(
+                          context.l10n.collectionPageLoadMoreButtonLabel,
                         ),
-                      );
-                    }
-                    if (index >= state.collections.length) {
-                      return Padding(
-                        padding: const EdgeInsets.all(8),
-                        child: Center(child: CircularProgressIndicator()),
-                      );
-                    } else {
-                      final collection = state.collections[index];
-                      return CollectionCard(collection: collection);
-                    }
-                  },
-                );
+                      ),
+                    );
+                  }
+                }
+
+                final collection = state.collections[index];
+                return CollectionCard(collection: collection);
               },
             );
           },
@@ -85,27 +118,19 @@ class _CollectionPageState extends State<CollectionPage> {
     );
   }
 
-  void _onScroll() {
-    final collectionFilterState = getIt.get<CollectionsFilterBloc>().state;
-    if (_isBottom && !collectionFilterState.isLoading) {
-      getIt
-          .get<CollectionsFilterBloc>()
-          .add(CollectionsFilterEvent.getFilteredCollections());
-    }
-  }
-
   bool get _isBottom {
     if (!_scrollController.hasClients) return false;
-    final maxScroll = _scrollController.position.maxScrollExtent;
-    final currentScroll = _scrollController.offset;
-    return currentScroll >= (maxScroll * 0.9);
+    if (_scrollController.position.hasContentDimensions) {
+      final maxScroll = _scrollController.position.maxScrollExtent;
+      final currentScroll = _scrollController.offset;
+      return currentScroll >= (maxScroll * 0.9);
+    }
+    return false;
   }
 
   @override
   void dispose() {
-    _scrollController
-      ..removeListener(_onScroll)
-      ..dispose();
+    _scrollController.dispose();
     super.dispose();
   }
 }
