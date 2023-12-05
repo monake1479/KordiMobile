@@ -78,8 +78,14 @@ class CollectionCard extends StatelessWidget {
                                   padding: const EdgeInsets.symmetric(
                                     horizontal: 12,
                                   ),
-                                  child: LinearProgressIndicator(),
+                                  child: LinearProgressIndicator(
+                                    borderRadius: BorderRadius.circular(8),
+                                    value: collection.timeProgress,
+                                  ),
                                 ),
+                              ),
+                              Text(
+                                '${collection.timeProgressInPercents.ceil()} %',
                               ),
                               Icon(
                                 Icons.check_circle_outline,
