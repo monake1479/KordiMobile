@@ -4,6 +4,7 @@ import 'dart:developer';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:kordi_mobile/collections/models/collections_models.dart';
+import 'package:kordi_mobile/collections/utils/collection_item_category_converter.dart';
 import 'package:kordi_mobile/collections/utils/collection_status_converter.dart';
 
 part 'collection_filter.freezed.dart';
@@ -16,7 +17,8 @@ class CollectionFilter with _$CollectionFilter {
     required String? city,
     required String? street,
     required String? itemName,
-    required String? categories,
+    @CollectionItemCategoryConverter()
+    required List<CollectionItemCategory>? categories,
     @CollectionStatusConverter() required CollectionStatus? status,
     @JsonKey(name: 'pageNo') required int pageNumber,
     required int pageSize,
@@ -46,7 +48,21 @@ extension CollectionFilterEx on CollectionFilter {
     map.removeWhere((key, value) => value == null);
     log('[CollectionFilter] AFTER REMOVE toPathParameters() map: $map');
     return map.entries
-        .map((e) => '${e.key}=${e.value}')
+        .map((filter) {
+          if (filter.value is List<String>) {
+            final StringBuffer options = StringBuffer();
+            for (int i = 0; i < filter.value.length; i++) {
+              if (i == 0) {
+                options.write(filter.value[i]);
+              } else {
+                options.write(',');
+                options.write(filter.value[i]);
+              }
+            }
+            return '${filter.key}=$options';
+          }
+          return '${filter.key}=${filter.value}';
+        })
         .toList()
         .join('&')
         .replaceAll(' ', '%20');
