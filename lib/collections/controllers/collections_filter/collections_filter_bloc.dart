@@ -30,6 +30,7 @@ class CollectionsFilterBloc
     on<_UpdateSortBy>(_updateSortBy);
     on<_UpdateSortDirection>(_updateSortDirection);
     on<_GetFilteredCollections>(_getFilteredCollections);
+    on<_GetInitialFilteredCollections>(_getInitialFilteredCollections);
   }
   final GetCollectionsCubit _getCollectionsCubit;
 
@@ -84,8 +85,23 @@ class CollectionsFilterBloc
     _UpdateCategories event,
     Emitter<CollectionsFilterState> emit,
   ) {
+    if (state.filter.categories != null &&
+        state.filter.categories!.contains(event.category)) {
+      emit(
+        state.copyWith.filter(
+          categories: List<CollectionItemCategory>.from(
+            state.filter.categories!,
+          )..remove(event.category),
+        ),
+      );
+      return;
+    }
     emit(
-      state.copyWith.filter(categories: event.categories),
+      state.copyWith.filter(
+        categories: List<CollectionItemCategory>.from(
+          state.filter.categories ?? [],
+        )..add(event.category),
+      ),
     );
   }
 
@@ -134,17 +150,52 @@ class CollectionsFilterBloc
     );
   }
 
+  Future<void> _getInitialFilteredCollections(
+    _GetInitialFilteredCollections event,
+    Emitter<CollectionsFilterState> emit,
+  ) async {
+    final initialPageFilter = state.filter.copyWith(pageNumber: 0);
+    emit(
+      state.copyWith(
+        isLoading: true,
+        filter: initialPageFilter,
+      ),
+    );
+    emit(state.copyWith(isLoading: true));
+    final response = await _getCollectionsCubit.getWithFilter(state.filter);
+    if (response == null) {
+      emit(state.copyWith(isLoading: false));
+      return;
+    }
+
+    final CollectionPaging newPaging = CollectionPaging(
+      collections: [...response.collections],
+      totalElements: response.totalElements,
+      totalPages: response.totalPages,
+      pageSize: response.pageSize,
+      pageNumber: response.pageNumber,
+    );
+
+    emit(
+      state.copyWith(
+        isLoading: false,
+        collectionPaging: newPaging,
+      ),
+    );
+  }
+
   Future<void> _getFilteredCollections(
     _GetFilteredCollections event,
     Emitter<CollectionsFilterState> emit,
   ) async {
-    log('[CollectionsFilterBloc] _getFilteredCollections()');
-
-    if (state.collectionPaging.totalPages - 1 == state.filter.pageNumber) {
-      return;
+    if (state.collectionPaging.totalPages - 1 > state.filter.pageNumber) {
+      emit(
+        state.copyWith(
+          filter:
+              state.filter.copyWith(pageNumber: state.filter.pageNumber + 1),
+        ),
+      );
     }
-
-    emit(state.copyWith.filter(pageNumber: state.filter.pageNumber + 1));
 
     emit(state.copyWith(isLoading: true));
     final response = await _getCollectionsCubit.getWithFilter(state.filter);
@@ -154,10 +205,7 @@ class CollectionsFilterBloc
     }
 
     final CollectionPaging newPaging = CollectionPaging(
-      collections: [
-        ...state.collectionPaging.collections,
-        ...response.collections,
-      ],
+      collections: [...state.collections, ...response.collections],
       totalElements: response.totalElements,
       totalPages: response.totalPages,
       pageSize: response.pageSize,
