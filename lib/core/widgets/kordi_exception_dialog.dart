@@ -17,7 +17,7 @@ class KordiExceptionDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AlertDialog(
+    return AlertDialog.adaptive(
       title: Text(context.l10n.exceptionDialogTitle),
       content: Column(
         mainAxisSize: MainAxisSize.min,

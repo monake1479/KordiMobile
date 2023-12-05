@@ -1,26 +1,11 @@
 enum VerificationType {
-  email,
-  phoneNumber,
-}
+  email(value: 'EMAIL', name: 'Email'),
+  phoneNumber(value: 'PHONE', name: 'Phone');
 
-extension VerificationTypeEx on VerificationType {
-  String get value {
-    switch (this) {
-      case VerificationType.email:
-        return 'EMAIL';
-
-      case VerificationType.phoneNumber:
-        return 'PHONE';
-    }
-  }
-
-  String get name {
-    switch (this) {
-      case VerificationType.email:
-        return 'Email';
-
-      case VerificationType.phoneNumber:
-        return 'Phone';
-    }
-  }
+  const VerificationType({
+    required this.name,
+    required this.value,
+  });
+  final String value;
+  final String name;
 }
