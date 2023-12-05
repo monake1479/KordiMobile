@@ -15,6 +15,9 @@ class _LocalizationTileState extends State<LocalizationTile> {
 
   @override
   Widget build(BuildContext context) {
+    if (widget.addresses.isEmpty) {
+      return const SizedBox();
+    }
     return ExpansionTile(
       controller: _controller,
       collapsedShape: const RoundedRectangleBorder(
