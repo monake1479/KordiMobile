@@ -21,6 +21,7 @@ class CollectionsService implements CollectionsInterface {
     late Either<KordiException, CollectionPaging> result;
     final DioClient _dioClient = getIt.get<DioClient>();
     final String pathParameters = dto.toPathParameters;
+
     try {
       final response = await _dioClient.dio.get(
         '/collections?$pathParameters',
@@ -50,7 +51,7 @@ class CollectionsService implements CollectionsInterface {
 
   @override
   Future<Either<KordiException, CollectionPaging>> get() async {
-    log('[CollectionsService] getFilteredCollections()');
+    log('[CollectionsService] get()');
     late Either<KordiException, CollectionPaging> result;
     final DioClient _dioClient = getIt.get<DioClient>();
     try {
