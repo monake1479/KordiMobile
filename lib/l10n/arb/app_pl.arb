@@ -1,8 +1,18 @@
 {
     "@@locale": "pl",
     "appName": "Kordi mobile",
+    "kordiScaffoldTitle": "KORDI Mobile",
+    "filterDialogTitle": "Opcje filtrowania",
+    "filterDialogTitleLabelText": "Nazwa",
+    "filterDialogCityLabelText": "Miasto",
+    "filterDialogStreetLabelText": "Ulica",
+    "filterDialogItemNameLabelText": "Przedmiot",
+    "filterDialogCategoryTitle": "Wybierz kategorię:",
+    "filterDialogCloseButtonLabel": "Zamknij",
+    "filterDialogApplyButtonLabel": "Zatwierdź",
     "collectionPageTitle": "Kolekcje",
-    "collectionPageEmptyState": "Nie ma jeszcze żadnych kolekcji",
+    "collectionPageEmptyState": "Nie ma jeszcze żadnych kolekcji lub podany filtr nie zwrócił żadnych wyników.",
+    "collectionPageEmptyStateButtonLabel": "Pobierz wszystkie kolekcje",
     "collectionPageProgress": "Postęp kolekcji:",
     "collectionPageDaysLeft": "{daysLeft} dni pozostało do końca",
     "@collectionPageDaysLeft": {
@@ -16,6 +26,7 @@
         }
     },
     "collectionPageLocations": "Lokalizacje",
+    "collectionPageLoadMoreButtonLabel": "Pobierz więcej...",
     "aboutPageTitle": "Strona o nas",
     "drawerUserGreetings": "Cześć, {username}!",
     "@drawerUserGreetings": {

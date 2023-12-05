@@ -1,8 +1,18 @@
 {
     "@@locale": "en",
     "appName": "Kordi mobile",
+    "kordiScaffoldTitle": "KORDI Mobile",
+    "filterDialogTitle": "Filter options",
+    "filterDialogTitleLabelText": "Name",
+    "filterDialogCityLabelText": "City",
+    "filterDialogStreetLabelText": "Street",
+    "filterDialogItemNameLabelText": "Item name",
+    "filterDialogCategoryTitle": "Choose category:",
+    "filterDialogCloseButtonLabel": "Close",
+    "filterDialogApplyButtonLabel": "Apply",
     "collectionPageTitle": "Collection page",
-    "collectionPageEmptyState": "No collections found",
+    "collectionPageEmptyState": "No collections found or given filter result are empty.",
+    "collectionPageEmptyStateButtonLabel": "Get initial collections",
     "collectionPageProgress": "Collection progress:",
     "collectionPageDaysLeft": "{daysLeft} days left until the end",
     "@collectionPageDaysLeft": {
@@ -16,6 +26,7 @@
         }
     },
     "collectionPageLocations": "Locations",
+    "collectionPageLoadMoreButtonLabel": "Load more...",
     "aboutPageTitle": "About page",
     "drawerUserGreetings": "Hello, {username}!",
     "@drawerUserGreetings": {
