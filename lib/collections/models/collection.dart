@@ -35,4 +35,29 @@ extension CollectionEx on Collection {
     final int days = difference.inDays;
     return days.toString();
   }
+
+  double get progress {
+    final int donates = this.donates;
+    final int items = this.items.length;
+    final double progress = donates / items;
+    return progress;
+  }
+
+  double get timeProgress {
+    final DateTime now = DateTime.now();
+    final DateTime startTime = this.startTime;
+    final DateTime endTime = this.endTime ?? DateTime.now();
+    final Duration difference = endTime.difference(startTime);
+    final Duration differenceNow = now.difference(startTime);
+    return differenceNow.inDays / difference.inDays;
+  }
+
+  double get timeProgressInPercents {
+    final double progress = this.timeProgress;
+    final double progressInPercents = progress * 100;
+    if (progressInPercents > 100) {
+      return 100;
+    }
+    return progressInPercents;
+  }
 }
