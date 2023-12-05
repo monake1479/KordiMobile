@@ -13,7 +13,7 @@ class CollectionsFilterState with _$CollectionsFilterState {
           collections: [],
           totalElements: 0,
           totalPages: 0,
-          pageSize: 0,
+          pageSize: 10,
           pageNumber: 0,
         ),
         filter: CollectionFilter(
@@ -31,15 +31,22 @@ class CollectionsFilterState with _$CollectionsFilterState {
 }
 
 extension CollectionsFilterStateEx on CollectionsFilterState {
-  int get calculateItemCount {
-    if (collectionPaging.pageSize > collections.length) {
-      return collections.length;
-    } else {
-      return collectionPaging.pageSize;
+  int calculateItemCount(bool isBottom) {
+    if (collections.isEmpty) {
+      return 1;
     }
+    if (isBottom && collections.length < collectionPaging.totalElements) {
+      return collections.length + 1;
+    }
+    return collections.length;
   }
 
   bool get isReachedMax => collectionPaging.totalElements <= collections.length;
+  bool get canLoadMore => collectionPaging.pageNumber != filter.pageNumber - 1;
 
   List<Collection> get collections => collectionPaging.collections;
+
+  bool isItemCategorySelected(CollectionItemCategory itemCategory) {
+    return filter.categories?.contains(itemCategory) ?? false;
+  }
 }
