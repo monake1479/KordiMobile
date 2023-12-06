@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:kordi_mobile/collections/models/collections_models.dart';
+import 'package:kordi_mobile/collections/widgets/collection_item_categories.dart';
+import 'package:kordi_mobile/collections/widgets/collection_progression.dart';
 import 'package:kordi_mobile/collections/widgets/localization_tile.dart';
-import 'package:kordi_mobile/l10n/l10n.dart';
 
 class CollectionCard extends StatelessWidget {
   const CollectionCard({
@@ -47,65 +48,11 @@ class CollectionCard extends StatelessWidget {
             LocalizationTile(
               addresses: collection.addresses,
             ),
-            Builder(
-              builder: (context) {
-                if (collection.endTime == null) {
-                  return const SizedBox();
-                }
-                return Card(
-                  color: theme.colorScheme.primaryContainer,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      vertical: 8,
-                      horizontal: 8,
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        Text(
-                          context.l10n.collectionPageProgress,
-                          style: theme.textTheme.bodySmall,
-                          textAlign: TextAlign.left,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 12,
-                          ),
-                          child: Row(
-                            children: [
-                              Expanded(
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                    horizontal: 12,
-                                  ),
-                                  child: LinearProgressIndicator(
-                                    borderRadius: BorderRadius.circular(8),
-                                    value: collection.timeProgress,
-                                  ),
-                                ),
-                              ),
-                              Text(
-                                '${collection.timeProgressInPercents.ceil()} %',
-                              ),
-                              Icon(
-                                Icons.check_circle_outline,
-                                color: theme.colorScheme.onPrimaryContainer,
-                              ),
-                            ],
-                          ),
-                        ),
-                        Text(
-                          context.l10n.collectionPageDaysLeft(
-                            collection.daysToComplete,
-                          ),
-                          style: theme.textTheme.bodySmall,
-                          textAlign: TextAlign.left,
-                        ),
-                      ],
-                    ),
-                  ),
-                );
-              },
+            CollectionItemsCategories(
+              items: collection.items,
+            ),
+            CollectionProgression(
+              collection: collection,
             ),
           ],
         ),
