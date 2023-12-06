@@ -74,7 +74,7 @@ class _CollectionPageState extends State<CollectionPage> {
                                   .add(CollectionsFilterEvent.getCollections());
                             },
                             child: Text(
-                              'Get initial collections',
+                              context.l10n.collectionPageEmptyStateButtonLabel,
                             ),
                           ),
                         ],
