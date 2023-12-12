@@ -28,4 +28,5 @@ class CollectionsFilterEvent with _$CollectionsFilterEvent {
   const factory CollectionsFilterEvent.getInitialFilteredCollections() =
       _GetInitialFilteredCollections;
   const factory CollectionsFilterEvent.getCollections() = _GetCollections;
+  const factory CollectionsFilterEvent.getById(int id) = _GetById;
 }
