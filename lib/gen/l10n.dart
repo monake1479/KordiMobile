@@ -221,6 +221,26 @@ class S {
     );
   }
 
+  /// `Description`
+  String get collectionDetailsDescriptionLabel {
+    return Intl.message(
+      'Description',
+      name: 'collectionDetailsDescriptionLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Locations where you can donate`
+  String get collectionDetailsLocationsLabel {
+    return Intl.message(
+      'Locations where you can donate',
+      name: 'collectionDetailsLocationsLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `About page`
   String get aboutPageTitle {
     return Intl.message(

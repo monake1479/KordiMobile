@@ -50,6 +50,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Enter your password"),
         "changePasswordPagePasswordLabelTextField":
             MessageLookupByLibrary.simpleMessage("Password"),
+        "collectionDetailsDescriptionLabel":
+            MessageLookupByLibrary.simpleMessage("Description"),
+        "collectionDetailsLocationsLabel": MessageLookupByLibrary.simpleMessage(
+            "Locations where you can donate"),
         "collectionPageDaysLeft": m0,
         "collectionPageEmptyState": MessageLookupByLibrary.simpleMessage(
             "No collections found or given filter result are empty."),

@@ -51,6 +51,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Wprowadź nowe hasło"),
         "changePasswordPagePasswordLabelTextField":
             MessageLookupByLibrary.simpleMessage("Nowe hasło"),
+        "collectionDetailsDescriptionLabel":
+            MessageLookupByLibrary.simpleMessage("Opis"),
+        "collectionDetailsLocationsLabel": MessageLookupByLibrary.simpleMessage(
+            "Lokalizacje do których możesz oddać przedmioty"),
         "collectionPageDaysLeft": m0,
         "collectionPageEmptyState": MessageLookupByLibrary.simpleMessage(
             "Nie ma jeszcze żadnych kolekcji lub podany filtr nie zwrócił żadnych wyników."),
