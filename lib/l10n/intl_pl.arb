@@ -27,6 +27,8 @@
     },
     "collectionPageLocations": "Lokalizacje",
     "collectionPageLoadMoreButtonLabel": "Pobierz więcej...",
+    "collectionDetailsDescriptionLabel": "Opis",
+    "collectionDetailsLocationsLabel": "Lokalizacje do których możesz oddać przedmioty",
     "aboutPageTitle": "Strona o nas",
     "drawerUserGreetings": "Cześć, {username}!",
     "@drawerUserGreetings": {
