@@ -27,6 +27,8 @@
     },
     "collectionPageLocations": "Locations",
     "collectionPageLoadMoreButtonLabel": "Load more...",
+    "collectionDetailsDescriptionLabel": "Description",
+    "collectionDetailsLocationsLabel": "Locations where you can donate",
     "aboutPageTitle": "About page",
     "drawerUserGreetings": "Hello, {username}!",
     "@drawerUserGreetings": {
