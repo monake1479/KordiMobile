@@ -1,10 +1,17 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:kordi_mobile/change_password/pages/change_password_page.dart';
+import 'package:kordi_mobile/collections/controllers/get_collections/get_collections_cubit.dart';
+import 'package:kordi_mobile/collections/pages/collection_details.dart';
 import 'package:kordi_mobile/collections/pages/collection_page.dart';
+import 'package:kordi_mobile/core/models/kordi_exception.dart';
 import 'package:kordi_mobile/core/pages/about_page.dart';
 import 'package:kordi_mobile/core/pages/kordi_scaffold.dart';
 import 'package:kordi_mobile/core/transitions/fade_transition_page.dart';
+import 'package:kordi_mobile/core/utils/kordi_dialog.dart';
+import 'package:kordi_mobile/dependency_injection.dart';
 import 'package:kordi_mobile/sign_in/pages/sign_in_page.dart';
 import 'package:kordi_mobile/sign_up/models/verification_type.dart';
 import 'package:kordi_mobile/sign_up/pages/sign_up_page.dart';
@@ -119,6 +126,44 @@ class ChangePasswordPageRoute extends GoRouteData {
   ) =>
       FadeTransitionPage(
         key: state.pageKey,
-        child: KordiScaffold(child: ChangePasswordPage()),
+        child: KordiScaffold(
+          child: ChangePasswordPage(),
+        ),
+      );
+}
+
+@TypedGoRoute<CollectionDetailsPageRoute>(
+  path: '/collection-details',
+  name: 'CollectionDetailsPageRoute',
+)
+@immutable
+class CollectionDetailsPageRoute extends GoRouteData {
+  CollectionDetailsPageRoute(this.collectionId);
+  final int collectionId;
+
+  @override
+  FutureOr<String?> redirect(BuildContext context, GoRouterState state) {
+    final collectionById =
+        getIt.get<GetCollectionsCubit>().getById(collectionId);
+    if (collectionById == null) {
+      KordiDialog.showException(
+        context,
+        KordiException.customMessage(message: 'Item not found'),
+      );
+      return '/collection';
+    }
+    return super.redirect(context, state);
+  }
+
+  @override
+  Page<void> buildPage(
+    BuildContext context,
+    GoRouterState state,
+  ) =>
+      FadeTransitionPage(
+        key: state.pageKey,
+        child: CollectionDetails(
+          collectionId: collectionId,
+        ),
       );
 }
