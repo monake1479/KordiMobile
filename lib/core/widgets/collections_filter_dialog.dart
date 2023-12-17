@@ -5,7 +5,7 @@ import 'package:kordi_mobile/collections/controllers/collections_filter/collecti
 import 'package:kordi_mobile/collections/models/collections_models.dart';
 import 'package:kordi_mobile/core/widgets/kordi_text_field.dart';
 import 'package:kordi_mobile/dependency_injection.dart';
-import 'package:kordi_mobile/l10n/l10n.dart';
+import 'package:kordi_mobile/gen/l10n.dart';
 
 class CollectionsFilterDialog extends StatefulWidget {
   const CollectionsFilterDialog({super.key});
@@ -18,13 +18,13 @@ class CollectionsFilterDialog extends StatefulWidget {
         surfaceTintColor: Theme.of(context).colorScheme.surface,
         content: CollectionsFilterDialog(),
         title: Text(
-          context.l10n.filterDialogTitle,
+          S.current.filterDialogTitle,
           textAlign: TextAlign.center,
         ),
         actions: [
           TextButton(
             onPressed: () => context.pop(),
-            child: Text(context.l10n.filterDialogCloseButtonLabel),
+            child: Text(S.current.filterDialogCloseButtonLabel),
           ),
           TextButton(
             onPressed: () {
@@ -36,7 +36,7 @@ class CollectionsFilterDialog extends StatefulWidget {
                   .add(CollectionsFilterEvent.getInitialFilteredCollections());
               context.pop();
             },
-            child: Text(context.l10n.filterDialogApplyButtonLabel),
+            child: Text(S.current.filterDialogApplyButtonLabel),
           ),
         ],
       ),
@@ -71,7 +71,7 @@ class _CollectionsFilterDialogState extends State<CollectionsFilterDialog> {
                 padding: const EdgeInsets.only(bottom: 8),
                 child: KordiTextField(
                   initialValue: state.filter.title,
-                  labelText: context.l10n.filterDialogTitleLabelText,
+                  labelText: S.current.filterDialogTitleLabelText,
                   onChanged: (title) {
                     collectionsFilterBloc.add(
                       CollectionsFilterEvent.updateTitle(title),
@@ -83,7 +83,7 @@ class _CollectionsFilterDialogState extends State<CollectionsFilterDialog> {
                 padding: const EdgeInsets.only(bottom: 8),
                 child: KordiTextField(
                   initialValue: state.filter.city,
-                  labelText: context.l10n.filterDialogCityLabelText,
+                  labelText: S.current.filterDialogCityLabelText,
                   onChanged: (city) {
                     collectionsFilterBloc.add(
                       CollectionsFilterEvent.updateCity(city),
@@ -95,7 +95,7 @@ class _CollectionsFilterDialogState extends State<CollectionsFilterDialog> {
                 padding: const EdgeInsets.only(bottom: 8),
                 child: KordiTextField(
                   initialValue: state.filter.street,
-                  labelText: context.l10n.filterDialogStreetLabelText,
+                  labelText: S.current.filterDialogStreetLabelText,
                   onChanged: (street) {
                     collectionsFilterBloc.add(
                       CollectionsFilterEvent.updateStreet(street),
@@ -107,7 +107,7 @@ class _CollectionsFilterDialogState extends State<CollectionsFilterDialog> {
                 padding: const EdgeInsets.only(bottom: 8),
                 child: KordiTextField(
                   initialValue: state.filter.itemName,
-                  labelText: context.l10n.filterDialogItemNameLabelText,
+                  labelText: S.current.filterDialogItemNameLabelText,
                   onChanged: (itemName) {
                     collectionsFilterBloc.add(
                       CollectionsFilterEvent.updateItemName(itemName),
@@ -118,7 +118,7 @@ class _CollectionsFilterDialogState extends State<CollectionsFilterDialog> {
               Padding(
                 padding: const EdgeInsets.only(bottom: 8),
                 child: Text(
-                  context.l10n.filterDialogCategoryTitle,
+                  S.current.filterDialogCategoryTitle,
                   style: theme.textTheme.titleLarge,
                 ),
               ),

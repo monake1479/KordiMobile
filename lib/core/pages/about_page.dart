@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kordi_mobile/l10n/l10n.dart';
+import 'package:kordi_mobile/gen/l10n.dart';
 
 class AboutPage extends StatelessWidget {
   const AboutPage({super.key});
@@ -12,7 +12,7 @@ class AboutPage extends StatelessWidget {
       color: colorScheme.tertiaryContainer,
       child: Center(
         child: Text(
-          context.l10n.aboutPageTitle,
+          S.current.aboutPageTitle,
         ),
       ),
     );

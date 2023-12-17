@@ -7,7 +7,8 @@ import 'package:go_router/go_router.dart';
 import 'package:kordi_mobile/auth/controllers/auth_cubit.dart';
 import 'package:kordi_mobile/core/controllers/localization_bloc.dart';
 import 'package:kordi_mobile/core/utils/kordi_routes.dart';
-import 'package:kordi_mobile/l10n/l10n.dart';
+import 'package:kordi_mobile/gen/l10n.dart';
+
 import 'package:kordi_mobile/user/controllers/get_user_cubit.dart';
 
 class KordiDrawer extends StatelessWidget {
@@ -31,13 +32,13 @@ class KordiDrawer extends StatelessWidget {
                           builder: (context) {
                             if (getUserState.user != null) {
                               return Text(
-                                context.l10n.drawerUserGreetings(
+                                S.current.drawerUserGreetings(
                                   getUserState.user!.username,
                                 ),
                               );
                             } else {
                               return Text(
-                                context.l10n.drawerGreetings,
+                                S.current.drawerGreetings,
                               );
                             }
                           },
@@ -54,7 +55,7 @@ class KordiDrawer extends StatelessWidget {
                         builder: (context) {
                           if (!state.isAuthorized) {
                             return ListTile(
-                              title: Text(context.l10n.drawerSignInButtonLabel),
+                              title: Text(S.current.drawerSignInButtonLabel),
                               leading: Icon(Icons.login),
                               selected: fullPath == SignInPageRoute().location,
                               selectedTileColor: theme.colorScheme.onPrimary,
@@ -74,7 +75,7 @@ class KordiDrawer extends StatelessWidget {
                         builder: (context) {
                           if (!state.isAuthorized) {
                             return ListTile(
-                              title: Text(context.l10n.drawerSignUpButtonLabel),
+                              title: Text(S.current.drawerSignUpButtonLabel),
                               leading: Icon(Icons.edit_document),
                               selected: fullPath == SignUpPageRoute().location,
                               selectedTileColor: theme.colorScheme.onPrimary,
@@ -91,7 +92,7 @@ class KordiDrawer extends StatelessWidget {
                         },
                       ),
                       ListTile(
-                        title: Text(context.l10n.drawerCollectionButtonLabel),
+                        title: Text(S.current.drawerCollectionButtonLabel),
                         leading: Icon(Icons.collections_bookmark_rounded),
                         selected: fullPath == CollectionPageRoute().location,
                         selectedTileColor: theme.colorScheme.onPrimary,
@@ -104,7 +105,7 @@ class KordiDrawer extends StatelessWidget {
                         },
                       ),
                       ListTile(
-                        title: Text(context.l10n.drawerAboutButtonLabel),
+                        title: Text(S.current.drawerAboutButtonLabel),
                         leading: Icon(Icons.info),
                         selected: fullPath == AboutPageRoute().location,
                         selectedTileColor: theme.colorScheme.onPrimary,
@@ -121,7 +122,7 @@ class KordiDrawer extends StatelessWidget {
                           if (state.isAuthorized) {
                             return ListTile(
                               title: Text(
-                                context.l10n.drawerChangePasswordButtonLabel,
+                                S.current.drawerChangePasswordButtonLabel,
                               ),
                               leading: Icon(Icons.lock_open),
                               shape: RoundedRectangleBorder(
@@ -139,8 +140,7 @@ class KordiDrawer extends StatelessWidget {
                         builder: (context) {
                           if (state.isAuthorized) {
                             return ListTile(
-                              title:
-                                  Text(context.l10n.drawerSignOutButtonLabel),
+                              title: Text(S.current.drawerSignOutButtonLabel),
                               leading: Icon(Icons.logout),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(16),
@@ -154,8 +154,7 @@ class KordiDrawer extends StatelessWidget {
                         },
                       ),
                       ListTile(
-                        title:
-                            Text(context.l10n.drawerChangeLanguageButtonLabel),
+                        title: Text(S.current.drawerChangeLanguageButtonLabel),
                         leading: Flag.fromCode(
                           context.read<LocalizationBloc>().currentFlagCode,
                           width: 20,

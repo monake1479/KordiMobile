@@ -6,8 +6,8 @@ import 'package:kordi_mobile/core/utils/kordi_routes.dart';
 import 'package:kordi_mobile/core/widgets/kordi_drawer.dart';
 import 'package:kordi_mobile/core/widgets/kordi_search_button.dart';
 import 'package:kordi_mobile/dependency_injection.dart';
-import 'package:kordi_mobile/l10n/l10n.dart';
-import 'package:kordi_mobile/resources/resources.dart';
+import 'package:kordi_mobile/gen/assets.gen.dart';
+import 'package:kordi_mobile/gen/l10n.dart';
 
 class KordiScaffold extends StatelessWidget {
   const KordiScaffold({super.key, required this.child});
@@ -52,14 +52,13 @@ class KordiScaffold extends StatelessWidget {
                 padding: const EdgeInsets.only(right: 6),
                 child: GestureDetector(
                   onTap: () => CollectionPageRoute().go(context),
-                  child: Image(
-                    image: AssetImage(KordiIcons.logo),
+                  child: Assets.icons.logo.image(
                     width: 38,
                   ),
                 ),
               ),
               Text(
-                context.l10n.kordiScaffoldTitle,
+                S.current.kordiScaffoldTitle,
                 style: TextStyle(color: colorScheme.secondary),
               ),
             ],

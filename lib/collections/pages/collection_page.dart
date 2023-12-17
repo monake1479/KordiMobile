@@ -6,7 +6,7 @@ import 'package:kordi_mobile/collections/controllers/collections_filter/collecti
 import 'package:kordi_mobile/collections/controllers/get_collections/get_collections_cubit.dart';
 import 'package:kordi_mobile/collections/widgets/collection_card.dart';
 import 'package:kordi_mobile/core/utils/kordi_dialog.dart';
-import 'package:kordi_mobile/l10n/l10n.dart';
+import 'package:kordi_mobile/gen/l10n.dart';
 
 class CollectionPage extends StatefulWidget {
   const CollectionPage({
@@ -63,7 +63,7 @@ class _CollectionPageState extends State<CollectionPage> {
                         children: [
                           Flexible(
                             child: Text(
-                              context.l10n.collectionPageEmptyState,
+                              S.current.collectionPageEmptyState,
                               textAlign: TextAlign.center,
                             ),
                           ),
@@ -74,7 +74,7 @@ class _CollectionPageState extends State<CollectionPage> {
                                   .add(CollectionsFilterEvent.getCollections());
                             },
                             child: Text(
-                              context.l10n.collectionPageEmptyStateButtonLabel,
+                              S.current.collectionPageEmptyStateButtonLabel,
                             ),
                           ),
                         ],
@@ -101,7 +101,7 @@ class _CollectionPageState extends State<CollectionPage> {
                               );
                         },
                         child: Text(
-                          context.l10n.collectionPageLoadMoreButtonLabel,
+                          S.current.collectionPageLoadMoreButtonLabel,
                         ),
                       ),
                     );

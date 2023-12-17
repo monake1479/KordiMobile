@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:kordi_mobile/auth/controllers/auth_cubit.dart';
 import 'package:kordi_mobile/core/models/kordi_exception.dart';
-import 'package:kordi_mobile/l10n/l10n.dart';
-import 'package:kordi_mobile/resources/resources.dart';
+import 'package:kordi_mobile/gen/assets.gen.dart';
+import 'package:kordi_mobile/gen/l10n.dart';
 
 class KordiExceptionDialog extends StatelessWidget {
   const KordiExceptionDialog({
@@ -18,12 +17,11 @@ class KordiExceptionDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog.adaptive(
-      title: Text(context.l10n.exceptionDialogTitle),
+      title: Text(S.current.exceptionDialogTitle),
       content: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          SvgPicture.asset(
-            KordiImages.exception,
+          Assets.images.exception.svg(
             width: MediaQuery.of(context).size.width * 0.35,
           ),
           Padding(
@@ -46,7 +44,7 @@ class KordiExceptionDialog extends StatelessWidget {
               }
             }
           },
-          child: Text(context.l10n.exceptionDialogButtonLabel),
+          child: Text(S.current.exceptionDialogButtonLabel),
         ),
       ],
     );

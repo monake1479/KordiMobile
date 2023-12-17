@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kordi_mobile/collections/models/collections_models.dart';
-import 'package:kordi_mobile/l10n/l10n.dart';
+import 'package:kordi_mobile/gen/l10n.dart';
 
 class CollectionProgression extends StatelessWidget {
   const CollectionProgression({
@@ -27,7 +27,7 @@ class CollectionProgression extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Text(
-              context.l10n.collectionPageProgress,
+              S.current.collectionPageProgress,
               style: theme.textTheme.bodySmall,
               textAlign: TextAlign.left,
             ),
@@ -59,7 +59,7 @@ class CollectionProgression extends StatelessWidget {
               ),
             ),
             Text(
-              context.l10n.collectionPageDaysLeft(
+              S.current.collectionPageDaysLeft(
                 collection.daysToComplete,
               ),
               style: theme.textTheme.bodySmall,
