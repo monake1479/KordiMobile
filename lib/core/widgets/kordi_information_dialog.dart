@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:kordi_mobile/resources/resources.dart';
+import 'package:kordi_mobile/gen/assets.gen.dart';
 
 class KordiInformationDialog extends StatelessWidget {
   const KordiInformationDialog({
@@ -23,8 +22,7 @@ class KordiInformationDialog extends StatelessWidget {
       content: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          SvgPicture.asset(
-            KordiImages.exception,
+          Assets.images.exception.svg(
             width: MediaQuery.of(context).size.width * 0.35,
           ),
           Padding(

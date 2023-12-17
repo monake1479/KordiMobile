@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:kordi_mobile/core/utils/kordi_dialog.dart';
 import 'package:kordi_mobile/core/utils/kordi_flushbar.dart';
 import 'package:kordi_mobile/core/utils/kordi_routes.dart';
 import 'package:kordi_mobile/core/widgets/kordi_text_field.dart';
 import 'package:kordi_mobile/dependency_injection.dart';
-import 'package:kordi_mobile/l10n/l10n.dart';
-import 'package:kordi_mobile/resources/resources.dart';
+import 'package:kordi_mobile/gen/assets.gen.dart';
+import 'package:kordi_mobile/gen/l10n.dart';
+
 import 'package:kordi_mobile/sign_up/models/verification_type.dart';
 import 'package:kordi_mobile/verification_code/controllers/verification_code_controllers.dart';
 
@@ -23,7 +23,7 @@ class VerificationCodePage extends StatelessWidget {
     final theme = Theme.of(context);
     final textTheme = theme.textTheme;
     final colorScheme = theme.colorScheme;
-    final l10n = context.l10n;
+
     return MultiBlocProvider(
       providers: [
         BlocProvider<VerificationCodeBloc>(
@@ -43,9 +43,10 @@ class VerificationCodePage extends StatelessWidget {
           if (state.isSuccess) {
             KordiDialog.show(
               context,
-              title: l10n.verificationCodePageSuccessDialogTitle,
-              subtitle: l10n.verificationCodePageSuccessDialogSubtitle,
-              buttonLabel: l10n.verificationCodePageSuccessDialogButtonLabel,
+              title: S.current.verificationCodePageSuccessDialogTitle,
+              subtitle: S.current.verificationCodePageSuccessDialogSubtitle,
+              buttonLabel:
+                  S.current.verificationCodePageSuccessDialogButtonLabel,
               onButtonOnPressed: () {
                 SignInPageRoute().go(context);
               },
@@ -68,8 +69,7 @@ class VerificationCodePage extends StatelessWidget {
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(right: 6),
-                    child: Image(
-                      image: AssetImage(KordiIcons.logo),
+                    child: Assets.icons.logo.image(
                       width: 38,
                     ),
                   ),
@@ -104,15 +104,14 @@ class VerificationCodePage extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              l10n.verificationCodePageTitle,
+                              S.current.verificationCodePageTitle,
                               style: textTheme.headlineLarge,
                             ),
                             Padding(
                               padding: const EdgeInsets.only(bottom: 16),
                               child: Row(
                                 children: [
-                                  SvgPicture.asset(
-                                    KordiImages.authentication,
+                                  Assets.images.authentication.svg(
                                     width: MediaQuery.of(context).size.width *
                                         0.28,
                                   ),
@@ -120,7 +119,8 @@ class VerificationCodePage extends StatelessWidget {
                                     child: Padding(
                                       padding: const EdgeInsets.all(8),
                                       child: Text(
-                                        l10n.verificationCodePageDescription,
+                                        S.current
+                                            .verificationCodePageDescription,
                                       ),
                                     ),
                                   ),
@@ -143,13 +143,13 @@ class VerificationCodePage extends StatelessWidget {
                                               bottom: 8,
                                             ),
                                             child: KordiTextField(
-                                              labelText: l10n
+                                              labelText: S.current
                                                   .verificationCodePageTextfieldUsernameLabel,
-                                              hintText: l10n
+                                              hintText: S.current
                                                   .verificationCodePageTextfieldUsernameHint,
                                               shouldShowErrorText:
                                                   state.showPhoneNumberError,
-                                              errorText: l10n
+                                              errorText: S.current
                                                   .verificationCodePageTextfieldUsernameError,
                                               prefixIcon: Icon(Icons.person),
                                               onChanged: (username) =>
@@ -169,12 +169,12 @@ class VerificationCodePage extends StatelessWidget {
                                       textAlign: TextAlign.center,
                                       keyboardType: TextInputType.number,
                                       maxLength: 6,
-                                      labelText: l10n
+                                      labelText: S.current
                                           .verificationCodePageTextfieldCodeLabel,
-                                      hintText: l10n
+                                      hintText: S.current
                                           .verificationCodePageTextfieldCodeHint,
                                       shouldShowErrorText: state.showCodeError,
-                                      errorText: l10n
+                                      errorText: S.current
                                           .verificationCodePageTextfieldCodeError,
                                       onChanged: (code) =>
                                           verificationCodeFormBloc.add(
@@ -192,14 +192,14 @@ class VerificationCodePage extends StatelessWidget {
                                         },
                                         child: RichText(
                                           text: TextSpan(
-                                            text: l10n
+                                            text: S.current
                                                 .verificationCodePageResendCodeButtonLabel,
                                             style: TextStyle(
                                               color: colorScheme.secondary,
                                             ),
                                             children: [
                                               TextSpan(
-                                                text: l10n
+                                                text: S.current
                                                     .verificationCodePageResendCodeButtonLabel2,
                                                 style: TextStyle(
                                                   color: colorScheme.secondary,
@@ -228,7 +228,7 @@ class VerificationCodePage extends StatelessWidget {
                                               );
                                             }
                                             return Text(
-                                              context.l10n
+                                              S.current
                                                   .verificationCodePageButtonLabel,
                                             );
                                           },
@@ -286,7 +286,7 @@ class VerificationCodePage extends StatelessWidget {
       VerificationCodeFormEvent.resend(),
     );
     KordiFlushbar(
-      message: context.l10n.verificationCodePageFlushbarLabel,
+      message: S.current.verificationCodePageFlushbarLabel,
       maxWidth: 120,
     ).show(context);
   }
