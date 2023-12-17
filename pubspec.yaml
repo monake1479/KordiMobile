@@ -59,9 +59,9 @@ flutter_intl:
   enabled: true
   output_dir: lib/gen
 
-# flutter_gen:
-#   integrations:
-#     flutter_svg: true
+flutter_gen:
+  integrations:
+    flutter_svg: true
 
 
   # fonts:
