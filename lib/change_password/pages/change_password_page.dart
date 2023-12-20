@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:kordi_mobile/auth/controllers/auth_cubit.dart';
 import 'package:kordi_mobile/change_password/controllers/change_password/change_password_bloc.dart';
@@ -9,8 +8,8 @@ import 'package:kordi_mobile/core/utils/kordi_dialog.dart';
 import 'package:kordi_mobile/core/utils/kordi_routes.dart';
 import 'package:kordi_mobile/core/widgets/kordi_text_field.dart';
 import 'package:kordi_mobile/dependency_injection.dart';
-import 'package:kordi_mobile/l10n/l10n.dart';
-import 'package:kordi_mobile/resources/resources.dart';
+import 'package:kordi_mobile/gen/assets.gen.dart';
+import 'package:kordi_mobile/gen/l10n.dart';
 
 class ChangePasswordPage extends StatelessWidget {
   const ChangePasswordPage({super.key});
@@ -19,7 +18,6 @@ class ChangePasswordPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
     final ColorScheme colorScheme = theme.colorScheme;
-    final l10n = context.l10n;
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
       child: MultiBlocProvider(
@@ -32,9 +30,9 @@ class ChangePasswordPage extends StatelessWidget {
             if (state.isSuccess) {
               await KordiDialog.show(
                 context,
-                title: l10n.changePasswordPageDialogTitleLabel,
-                subtitle: l10n.changePasswordPageDialogSubTitleLabel,
-                buttonLabel: l10n.changePasswordPageDialogButtonLabel,
+                title: S.current.changePasswordPageDialogTitleLabel,
+                subtitle: S.current.changePasswordPageDialogSubTitleLabel,
+                buttonLabel: S.current.changePasswordPageDialogButtonLabel,
                 onButtonOnPressed: () {
                   context.read<AuthCubit>().signOut();
                   CollectionPageRoute().go(context);
@@ -70,21 +68,20 @@ class ChangePasswordPage extends StatelessWidget {
                           ),
                           child: Column(
                             children: [
-                              SvgPicture.asset(
-                                KordiImages.changePassword,
+                              Assets.images.changePassword.svg(
                                 width: MediaQuery.of(context).size.width * 0.3,
                               ),
                               Padding(
                                 padding: const EdgeInsets.all(8),
                                 child: KordiTextField(
                                   obscureNeeded: true,
-                                  labelText: l10n
+                                  labelText: S.current
                                       .changePasswordPageOldPasswordLabelTextField,
-                                  hintText: l10n
+                                  hintText: S.current
                                       .changePasswordPageOldPasswordHintTextField,
                                   shouldShowErrorText:
                                       state.showOldPasswordError,
-                                  errorText: l10n
+                                  errorText: S.current
                                       .changePasswordPageOldPasswordErrorTextField,
                                   prefixIcon: Icon(Icons.lock_clock),
                                   onChanged: (oldPassword) =>
@@ -100,11 +97,11 @@ class ChangePasswordPage extends StatelessWidget {
                                 child: KordiTextField(
                                   obscureNeeded: true,
                                   shouldShowErrorText: state.showPasswordError,
-                                  labelText: l10n
+                                  labelText: S.current
                                       .changePasswordPagePasswordLabelTextField,
-                                  hintText: l10n
+                                  hintText: S.current
                                       .changePasswordPagePasswordHintTextField,
-                                  errorText: l10n
+                                  errorText: S.current
                                       .changePasswordPagePasswordErrorTextField,
                                   prefixIcon: Icon(Icons.lock),
                                   onChanged: (password) =>
@@ -136,7 +133,8 @@ class ChangePasswordPage extends StatelessWidget {
                                       );
                                     }
                                     return Text(
-                                      l10n.changePasswordPageChangePasswordButtonLabel,
+                                      S.current
+                                          .changePasswordPageChangePasswordButtonLabel,
                                     );
                                   },
                                 ),

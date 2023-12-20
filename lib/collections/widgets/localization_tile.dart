@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kordi_mobile/collections/models/collections_models.dart';
-import 'package:kordi_mobile/l10n/l10n.dart';
+import 'package:kordi_mobile/gen/l10n.dart';
 
 class LocalizationTile extends StatefulWidget {
   LocalizationTile({super.key, required this.addresses});
@@ -27,7 +27,7 @@ class _LocalizationTileState extends State<LocalizationTile> {
         borderRadius: BorderRadius.all(Radius.circular(8)),
       ),
       title: Text(
-        context.l10n.collectionPageLocations,
+        S.current.collectionPageLocations,
       ),
       leading: Icon(Icons.location_on),
       expandedAlignment: Alignment.centerLeft,

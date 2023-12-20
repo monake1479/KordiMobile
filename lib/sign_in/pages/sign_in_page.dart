@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:kordi_mobile/core/utils/kordi_dialog.dart';
 import 'package:kordi_mobile/core/utils/kordi_flushbar.dart';
 import 'package:kordi_mobile/core/utils/kordi_routes.dart';
 import 'package:kordi_mobile/core/widgets/kordi_text_field.dart';
 import 'package:kordi_mobile/dependency_injection.dart';
-import 'package:kordi_mobile/l10n/l10n.dart';
-import 'package:kordi_mobile/resources/resources.dart';
+import 'package:kordi_mobile/gen/assets.gen.dart';
+import 'package:kordi_mobile/gen/l10n.dart';
+
 import 'package:kordi_mobile/sign_in/controllers/sign_in/sign_in_bloc.dart';
 import 'package:kordi_mobile/sign_in/controllers/sign_in_form/sign_in_form_bloc.dart';
 import 'package:kordi_mobile/user/controllers/get_user_cubit.dart';
@@ -20,7 +20,6 @@ class SignInPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
     final ColorScheme colorScheme = theme.colorScheme;
-    final l10n = context.l10n;
 
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
@@ -34,7 +33,7 @@ class SignInPage extends StatelessWidget {
             if (state.isSuccess) {
               await KordiFlushbar(
                 maxWidth: 130,
-                message: l10n.signInPageFlushbarLabel,
+                message: S.current.signInPageFlushbarLabel,
               ).show(context);
               await context.read<GetUserCubit>().get();
               CollectionPageRoute().go(context);
@@ -67,20 +66,19 @@ class SignInPage extends StatelessWidget {
                           ),
                           child: Column(
                             children: [
-                              SvgPicture.asset(
-                                KordiImages.welcoming,
+                              Assets.images.welcoming.svg(
                                 width: MediaQuery.of(context).size.width * 0.3,
                               ),
                               Padding(
                                 padding: const EdgeInsets.all(8),
                                 child: KordiTextField(
-                                  labelText:
-                                      l10n.signInPageUsernameLabelTextField,
+                                  labelText: S
+                                      .current.signInPageUsernameLabelTextField,
                                   hintText:
-                                      l10n.signInPageUsernameHintTextField,
+                                      S.current.signInPageUsernameHintTextField,
                                   shouldShowErrorText: state.showUsernameError,
-                                  errorText:
-                                      l10n.signInPageUsernameErrorTextField,
+                                  errorText: S
+                                      .current.signInPageUsernameErrorTextField,
                                   prefixIcon: Icon(Icons.person),
                                   onChanged: (username) => signInFormBloc.add(
                                     SignInFormEvent.updateUsername(username),
@@ -92,12 +90,12 @@ class SignInPage extends StatelessWidget {
                                 child: KordiTextField(
                                   obscureNeeded: true,
                                   shouldShowErrorText: state.showPasswordError,
-                                  labelText:
-                                      l10n.signInPagePasswordLabelTextField,
+                                  labelText: S
+                                      .current.signInPagePasswordLabelTextField,
                                   hintText:
-                                      l10n.signInPagePasswordHintTextField,
-                                  errorText:
-                                      l10n.signInPagePasswordErrorTextField,
+                                      S.current.signInPagePasswordHintTextField,
+                                  errorText: S
+                                      .current.signInPagePasswordErrorTextField,
                                   prefixIcon: Icon(Icons.lock),
                                   onChanged: (password) => signInFormBloc.add(
                                     SignInFormEvent.updatePassword(password),
@@ -124,7 +122,7 @@ class SignInPage extends StatelessWidget {
                                       );
                                     }
                                     return Text(
-                                      l10n.signInPageSignInButtonLabel,
+                                      S.current.signInPageSignInButtonLabel,
                                     );
                                   },
                                 ),
@@ -137,11 +135,12 @@ class SignInPage extends StatelessWidget {
                                   },
                                   child: Text.rich(
                                     TextSpan(
-                                      text: l10n.signInPageSignUpButtonLabel1,
+                                      text: S
+                                          .current.signInPageSignUpButtonLabel1,
                                       children: [
                                         TextSpan(
-                                          text:
-                                              l10n.signInPageSignUpButtonLabel2,
+                                          text: S.current
+                                              .signInPageSignUpButtonLabel2,
                                           style: TextStyle(
                                             fontWeight: FontWeight.bold,
                                           ),
