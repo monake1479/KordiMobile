@@ -6,8 +6,8 @@ import 'package:kordi_mobile/collections/widgets/collection_details_locations_ca
 import 'package:kordi_mobile/core/utils/kordi_routes.dart';
 import 'package:kordi_mobile/dependency_injection.dart';
 
-class CollectionDetails extends StatelessWidget {
-  const CollectionDetails({
+class CollectionDetailsPage extends StatelessWidget {
+  const CollectionDetailsPage({
     super.key,
     required this.collectionId,
   });
