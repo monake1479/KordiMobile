@@ -60,36 +60,38 @@ class _KordiTextFieldState extends State<KordiTextField> {
                 : null,
         prefixIcon: widget.prefixIcon,
         border: OutlineInputBorder(),
-        suffixIcon: Builder(
-          builder: (context) {
-            if (widget.suffixIcon != null) {
-              return widget.suffixIcon!;
-            }
-            if (!widget.obscureNeeded) {
-              return const SizedBox();
-            }
-            return IconButton(
-              onPressed: () {
-                setState(() {
-                  isObscure = !isObscure;
-                });
-              },
-              icon: Builder(
+        suffixIcon: widget.suffixIcon == null
+            ? null
+            : Builder(
                 builder: (context) {
-                  if (isObscure) {
-                    return Icon(
-                      Icons.visibility,
-                    );
-                  } else {
-                    return Icon(
-                      Icons.visibility_off,
-                    );
+                  if (widget.suffixIcon != null) {
+                    return widget.suffixIcon!;
                   }
+                  if (!widget.obscureNeeded) {
+                    return const SizedBox();
+                  }
+                  return IconButton(
+                    onPressed: () {
+                      setState(() {
+                        isObscure = !isObscure;
+                      });
+                    },
+                    icon: Builder(
+                      builder: (context) {
+                        if (isObscure) {
+                          return Icon(
+                            Icons.visibility,
+                          );
+                        } else {
+                          return Icon(
+                            Icons.visibility_off,
+                          );
+                        }
+                      },
+                    ),
+                  );
                 },
               ),
-            );
-          },
-        ),
       ),
     );
   }
