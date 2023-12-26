@@ -4,10 +4,12 @@ part of 'get_collections_cubit.dart';
 class GetCollectionsState with _$GetCollectionsState {
   const factory GetCollectionsState({
     required bool isLoading,
+    required List<Collection> initialCollections,
     required Option<Either<KordiException, Unit>> failureOrSuccessOption,
   }) = _GetCollectionsState;
   factory GetCollectionsState.initial() => GetCollectionsState(
         isLoading: false,
+        initialCollections: [],
         failureOrSuccessOption: none(),
       );
 }

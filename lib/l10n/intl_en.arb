@@ -27,6 +27,46 @@
     },
     "collectionPageLocations": "Locations",
     "collectionPageLoadMoreButtonLabel": "Load more...",
+    "collectionDetailsDescriptionLabel": "Description",
+    "collectionDetailsLocationsLabel": "Locations where you can donate",
+    "collectionDetailsAddressesUrlException": "Cannot open address in browser.",
+    "collectionDetailsLocationsEmptyState": "User not provide any locations.",
+    "collectionDetailsItemListTitle": "Items list",
+    "collectionDetailsItemListEmptyState": "Items isn't provided yet.",
+    "collectionDetailsItemTypeLabel": "Type: {type}",
+    "@collectionDetailsItemTypeLabel": {
+        "description": "Item type label",
+        "placeholders": {
+            "type": {
+                "type": "String",
+                "description": "Item type",
+                "example": "Clothes"
+            }
+        }
+    },
+    "collectionDetailsItemCurrentLabel": "Current: {current}",
+    "@collectionDetailsItemCurrentLabel": {
+        "description": "Item current label",
+        "placeholders": {
+            "current": {
+                "type": "String",
+                "description": "Item current",
+                "example": "3"
+            }
+        }
+    },
+    "collectionDetailsItemMaximumLabel": "Maximum: {maximum}",
+    "@collectionDetailsItemMaximumLabel": {
+        "description": "Item maximum label",
+        "placeholders": {
+            "maximum": {
+                "type": "String",
+                "description": "Item maximum",
+                "example": "5"
+            }
+        }
+    },
+    "collectionDetailsItemDonateLabel": "Donate:",
     "aboutPageTitle": "About page",
     "drawerUserGreetings": "Hello, {username}!",
     "@drawerUserGreetings": {
@@ -45,6 +85,18 @@
     },
     "exceptionDialogTitle": "Kordi occurred an error...",
     "exceptionDialogButtonLabel": "OK",
+    "errorPageDescription": "Please, try again later.\nRestart the app and contact with us to report issue.",
+    "collectionNotFoundError": "Collection with id {collectionId} not found.",
+    "@collectionNotFoundError": {
+        "description": "Error message when collection with given id not found.",
+        "placeholders": {
+            "collectionId": {
+                "type": "String",
+                "description": "Collection id",
+                "example": "34"
+            }
+        }
+    },
     "drawerSignInButtonLabel": "Sign in",
     "drawerSignUpButtonLabel": "Sign up",
     "drawerCollectionButtonLabel": "Collection",

@@ -27,6 +27,46 @@
     },
     "collectionPageLocations": "Lokalizacje",
     "collectionPageLoadMoreButtonLabel": "Pobierz więcej...",
+    "collectionDetailsDescriptionLabel": "Opis",
+    "collectionDetailsLocationsLabel": "Lokalizacje do których możesz oddać przedmioty",
+    "collectionDetailsAddressesUrlException": "Nie można otworzyć linku. Spróbuj ponownie później.",
+    "collectionDetailsLocationsEmptyState": "Użytkownik nie dodał jeszcze żadnych lokalizacji.",
+    "collectionDetailsItemListTitle": "Lista przedmiotów",
+    "collectionDetailsItemListEmptyState": "Użytkownik nie dodał jeszcze żadnych przedmiotów.",
+    "collectionDetailsItemTypeLabel": "Typ: {type}",
+    "@collectionDetailsItemTypeLabel": {
+        "description": "Item type label",
+        "placeholders": {
+            "type": {
+                "type": "String",
+                "description": "Item type",
+                "example": "Clothes"
+            }
+        }
+    },
+    "collectionDetailsItemCurrentLabel": "Dostarczone: {current}",
+    "@collectionDetailsItemCurrentLabel": {
+        "description": "Item current label",
+        "placeholders": {
+            "current": {
+                "type": "String",
+                "description": "Item current",
+                "example": "3"
+            }
+        }
+    },
+    "collectionDetailsItemMaximumLabel": "Cel: {maximum}",
+    "@collectionDetailsItemMaximumLabel": {
+        "description": "Item maximum label",
+        "placeholders": {
+            "maximum": {
+                "type": "String",
+                "description": "Item maximum",
+                "example": "5"
+            }
+        }
+    },
+    "collectionDetailsItemDonateLabel": "Przekaż: ",
     "aboutPageTitle": "Strona o nas",
     "drawerUserGreetings": "Cześć, {username}!",
     "@drawerUserGreetings": {
@@ -45,6 +85,18 @@
     },
     "exceptionDialogTitle": "Kordi napotkał problem...",
     "exceptionDialogButtonLabel": "OK",
+    "errorPageDescription": "Spróbuj ponownie później.\nZresetuj aplikacje i skontaktuj się z nami, aby zgłosić błąd.",
+    "collectionNotFoundError": "Zbiórka o id {collectionId} nie znaleziona.",
+    "@collectionNotFoundError": {
+        "description": "Error message when collection with given id not found.",
+        "placeholders": {
+            "collectionId": {
+                "type": "String",
+                "description": "Collection id",
+                "example": "34"
+            }
+        }
+    },
     "drawerSignInButtonLabel": "Logowanie",
     "drawerSignUpButtonLabel": "Rejestracja",
     "drawerCollectionButtonLabel": "Kolekcje",

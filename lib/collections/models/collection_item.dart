@@ -19,3 +19,8 @@ class CollectionItem with _$CollectionItem {
   factory CollectionItem.fromJson(Map<String, dynamic> json) =>
       _$CollectionItemFromJson(json);
 }
+
+extension CollectionItemEx on CollectionItem {
+  String get currentAmountWithUnit => '$currentAmount${type.unitSuffix}';
+  String get maxAmountWithUnit => '$maxAmount${type.unitSuffix}';
+}

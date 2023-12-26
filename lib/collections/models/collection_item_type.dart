@@ -1,12 +1,24 @@
 enum CollectionItemType {
-  weight(name: 'Weight', value: 'WEIGHT'),
-  amount(name: 'Amount', value: 'AMOUNT'),
-  unlimited(name: 'Unlimited', value: 'UNLIMITED');
+  weight(
+    name: 'Weight',
+    value: 'WEIGHT',
+    unitSuffix: 'kg',
+  ),
+  amount(
+    name: 'Amount',
+    value: 'AMOUNT',
+    unitSuffix: 'pcs',
+  ),
+  unlimited(
+    name: 'Unlimited',
+    value: 'UNLIMITED',
+    unitSuffix: '',
+  );
 
   const CollectionItemType({
     required this.name,
     required this.value,
+    required this.unitSuffix,
   });
-  final String name;
-  final String value;
+  final String name, value, unitSuffix;
 }

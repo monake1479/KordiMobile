@@ -20,9 +20,18 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'pl';
 
-  static String m0(daysLeft) => "${daysLeft} dni pozostało do końca";
+  static String m0(current) => "Dostarczone: ${current}";
 
-  static String m1(username) => "Cześć, ${username}!";
+  static String m1(maximum) => "Cel: ${maximum}";
+
+  static String m2(type) => "Typ: ${type}";
+
+  static String m3(collectionId) =>
+      "Zbiórka o id ${collectionId} nie znaleziona.";
+
+  static String m4(daysLeft) => "${daysLeft} dni pozostało do końca";
+
+  static String m5(username) => "Cześć, ${username}!";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -51,7 +60,28 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Wprowadź nowe hasło"),
         "changePasswordPagePasswordLabelTextField":
             MessageLookupByLibrary.simpleMessage("Nowe hasło"),
-        "collectionPageDaysLeft": m0,
+        "collectionDetailsAddressesUrlException":
+            MessageLookupByLibrary.simpleMessage(
+                "Nie można otworzyć linku. Spróbuj ponownie później."),
+        "collectionDetailsDescriptionLabel":
+            MessageLookupByLibrary.simpleMessage("Opis"),
+        "collectionDetailsItemCurrentLabel": m0,
+        "collectionDetailsItemDonateLabel":
+            MessageLookupByLibrary.simpleMessage("Przekaż: "),
+        "collectionDetailsItemListEmptyState":
+            MessageLookupByLibrary.simpleMessage(
+                "Użytkownik nie dodał jeszcze żadnych przedmiotów."),
+        "collectionDetailsItemListTitle":
+            MessageLookupByLibrary.simpleMessage("Lista przedmiotów"),
+        "collectionDetailsItemMaximumLabel": m1,
+        "collectionDetailsItemTypeLabel": m2,
+        "collectionDetailsLocationsEmptyState":
+            MessageLookupByLibrary.simpleMessage(
+                "Użytkownik nie dodał jeszcze żadnych lokalizacji."),
+        "collectionDetailsLocationsLabel": MessageLookupByLibrary.simpleMessage(
+            "Lokalizacje do których możesz oddać przedmioty"),
+        "collectionNotFoundError": m3,
+        "collectionPageDaysLeft": m4,
         "collectionPageEmptyState": MessageLookupByLibrary.simpleMessage(
             "Nie ma jeszcze żadnych kolekcji lub podany filtr nie zwrócił żadnych wyników."),
         "collectionPageEmptyStateButtonLabel":
@@ -78,7 +108,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Wyloguj się"),
         "drawerSignUpButtonLabel":
             MessageLookupByLibrary.simpleMessage("Rejestracja"),
-        "drawerUserGreetings": m1,
+        "drawerUserGreetings": m5,
+        "errorPageDescription": MessageLookupByLibrary.simpleMessage(
+            "Spróbuj ponownie później.\nZresetuj aplikacje i skontaktuj się z nami, aby zgłosić błąd."),
         "exceptionDialogButtonLabel":
             MessageLookupByLibrary.simpleMessage("OK"),
         "exceptionDialogTitle":

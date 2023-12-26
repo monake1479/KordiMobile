@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:kordi_mobile/collections/models/collections_models.dart';
 
 class CollectionItemsCategories extends StatelessWidget {
-  const CollectionItemsCategories({super.key, required this.items});
-  final List<CollectionItem> items;
+  const CollectionItemsCategories({super.key, required this.categoriesNames});
+  final List<String> categoriesNames;
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
     return Wrap(
-      children: items
+      children: categoriesNames
           .map(
-            (item) => Container(
+            (categoryName) => Container(
               padding: const EdgeInsets.all(6),
               margin: const EdgeInsets.symmetric(
                 horizontal: 4,
@@ -23,7 +22,7 @@ class CollectionItemsCategories extends StatelessWidget {
                 color: colorScheme.primary,
               ),
               child: Text(
-                item.category.name.toUpperCase(),
+                categoryName.toUpperCase(),
                 style: theme.textTheme.bodySmall?.copyWith(
                   color: colorScheme.onPrimary,
                 ),

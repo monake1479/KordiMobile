@@ -221,6 +221,106 @@ class S {
     );
   }
 
+  /// `Description`
+  String get collectionDetailsDescriptionLabel {
+    return Intl.message(
+      'Description',
+      name: 'collectionDetailsDescriptionLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Locations where you can donate`
+  String get collectionDetailsLocationsLabel {
+    return Intl.message(
+      'Locations where you can donate',
+      name: 'collectionDetailsLocationsLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cannot open address in browser.`
+  String get collectionDetailsAddressesUrlException {
+    return Intl.message(
+      'Cannot open address in browser.',
+      name: 'collectionDetailsAddressesUrlException',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `User not provide any locations.`
+  String get collectionDetailsLocationsEmptyState {
+    return Intl.message(
+      'User not provide any locations.',
+      name: 'collectionDetailsLocationsEmptyState',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Items list`
+  String get collectionDetailsItemListTitle {
+    return Intl.message(
+      'Items list',
+      name: 'collectionDetailsItemListTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Items isn't provided yet.`
+  String get collectionDetailsItemListEmptyState {
+    return Intl.message(
+      'Items isn\'t provided yet.',
+      name: 'collectionDetailsItemListEmptyState',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Type: {type}`
+  String collectionDetailsItemTypeLabel(String type) {
+    return Intl.message(
+      'Type: $type',
+      name: 'collectionDetailsItemTypeLabel',
+      desc: 'Item type label',
+      args: [type],
+    );
+  }
+
+  /// `Current: {current}`
+  String collectionDetailsItemCurrentLabel(String current) {
+    return Intl.message(
+      'Current: $current',
+      name: 'collectionDetailsItemCurrentLabel',
+      desc: 'Item current label',
+      args: [current],
+    );
+  }
+
+  /// `Maximum: {maximum}`
+  String collectionDetailsItemMaximumLabel(String maximum) {
+    return Intl.message(
+      'Maximum: $maximum',
+      name: 'collectionDetailsItemMaximumLabel',
+      desc: 'Item maximum label',
+      args: [maximum],
+    );
+  }
+
+  /// `Donate:`
+  String get collectionDetailsItemDonateLabel {
+    return Intl.message(
+      'Donate:',
+      name: 'collectionDetailsItemDonateLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `About page`
   String get aboutPageTitle {
     return Intl.message(
@@ -268,6 +368,26 @@ class S {
       name: 'exceptionDialogButtonLabel',
       desc: '',
       args: [],
+    );
+  }
+
+  /// `Please, try again later.\nRestart the app and contact with us to report issue.`
+  String get errorPageDescription {
+    return Intl.message(
+      'Please, try again later.\nRestart the app and contact with us to report issue.',
+      name: 'errorPageDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Collection with id {collectionId} not found.`
+  String collectionNotFoundError(String collectionId) {
+    return Intl.message(
+      'Collection with id $collectionId not found.',
+      name: 'collectionNotFoundError',
+      desc: 'Error message when collection with given id not found.',
+      args: [collectionId],
     );
   }
 
