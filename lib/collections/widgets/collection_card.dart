@@ -3,7 +3,7 @@ import 'package:kordi_mobile/collections/models/collections_models.dart';
 import 'package:kordi_mobile/collections/widgets/collection_item_categories.dart';
 import 'package:kordi_mobile/collections/widgets/collection_progression.dart';
 import 'package:kordi_mobile/collections/widgets/localization_tile.dart';
-import 'package:kordi_mobile/core/utils/kordi_routes.dart';
+import 'package:kordi_mobile/core/navigation/kordi_router.dart';
 
 class CollectionCard extends StatelessWidget {
   const CollectionCard({

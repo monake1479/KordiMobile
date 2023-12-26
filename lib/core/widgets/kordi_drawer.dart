@@ -6,7 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:kordi_mobile/auth/controllers/auth_cubit.dart';
 import 'package:kordi_mobile/core/controllers/localization_bloc.dart';
-import 'package:kordi_mobile/core/utils/kordi_routes.dart';
+import 'package:kordi_mobile/core/navigation/kordi_router.dart';
 import 'package:kordi_mobile/gen/l10n.dart';
 
 import 'package:kordi_mobile/user/controllers/get_user_cubit.dart';
@@ -129,6 +129,7 @@ class KordiDrawer extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(16),
                               ),
                               onTap: () {
+                                Scaffold.of(outerContext).closeDrawer();
                                 ChangePasswordPageRoute().go(context);
                               },
                             );
