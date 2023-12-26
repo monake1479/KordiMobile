@@ -54,7 +54,7 @@ class CollectionCard extends StatelessWidget {
                 addresses: collection.addresses,
               ),
               CollectionItemsCategories(
-                items: collection.items,
+                categoriesNames: collection.categoriesNames,
               ),
               CollectionProgression(
                 collection: collection,
