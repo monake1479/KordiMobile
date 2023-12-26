@@ -60,4 +60,14 @@ extension CollectionEx on Collection {
     }
     return progressInPercents;
   }
+
+  List<String> get categoriesNames {
+    final List<String> categoriesNames = [];
+    for (final item in items) {
+      if (!categoriesNames.contains(item.category.name)) {
+        categoriesNames.add(item.category.name);
+      }
+    }
+    return categoriesNames;
+  }
 }
