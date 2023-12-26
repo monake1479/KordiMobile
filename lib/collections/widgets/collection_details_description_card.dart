@@ -1,8 +1,7 @@
-import 'package:flutter/material.dart';
-import 'package:kordi_mobile/l10n/l10n.dart';
+part of 'package:kordi_mobile/collections/pages/collection_details_page.dart';
 
-class CollectionDetailsDescriptionCard extends StatelessWidget {
-  const CollectionDetailsDescriptionCard({
+class _CollectionDetailsDescriptionCard extends StatelessWidget {
+  const _CollectionDetailsDescriptionCard({
     super.key,
     required this.description,
   });
@@ -16,14 +15,14 @@ class CollectionDetailsDescriptionCard extends StatelessWidget {
       child: Card(
         child: Padding(
           padding: const EdgeInsets.symmetric(
-            vertical: 8,
-            horizontal: 8,
+            vertical: 12,
+            horizontal: 12,
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Text(
-                context.l10n.collectionDetailsDescriptionLabel,
+                S.current.collectionDetailsDescriptionLabel,
                 style: theme.textTheme.bodyLarge,
                 textAlign: TextAlign.justify,
               ),
