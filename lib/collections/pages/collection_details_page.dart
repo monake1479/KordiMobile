@@ -1,10 +1,20 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kordi_mobile/collections/controllers/collection_form_edit/collection_form_bloc.dart';
-import 'package:kordi_mobile/collections/widgets/collection_details_description_card.dart';
-import 'package:kordi_mobile/collections/widgets/collection_details_locations_card.dart';
+import 'package:kordi_mobile/collections/models/collections_models.dart';
+import 'package:kordi_mobile/core/models/kordi_exception.dart';
+import 'package:kordi_mobile/core/utils/kordi_dialog.dart';
 import 'package:kordi_mobile/core/utils/kordi_routes.dart';
 import 'package:kordi_mobile/dependency_injection.dart';
+import 'package:kordi_mobile/gen/l10n.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+part 'package:kordi_mobile/collections/widgets/collection_details_comments.dart';
+part 'package:kordi_mobile/collections/widgets/collection_details_description_card.dart';
+part 'package:kordi_mobile/collections/widgets/collection_details_item_list.dart';
+part 'package:kordi_mobile/collections/widgets/collection_details_locations_card.dart';
 
 class CollectionDetailsPage extends StatelessWidget {
   const CollectionDetailsPage({
@@ -80,12 +90,16 @@ class CollectionDetailsPage extends StatelessWidget {
                     ],
                   ),
                 ),
-                CollectionDetailsDescriptionCard(
+                _CollectionDetailsDescriptionCard(
                   description: state.description,
                 ),
-                CollectionDetailsLocationsTile(
+                _CollectionDetailsLocationsTile(
                   addresses: state.addresses,
                 ),
+                _CollectionDetailsItemList(
+                  items: state.items,
+                ),
+                _CollectionDetailsComments(),
               ],
             ),
           );
