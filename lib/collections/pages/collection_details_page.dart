@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:kordi_mobile/collections/controllers/collection_form_edit/collection_form_bloc.dart';
+import 'package:kordi_mobile/collections/controllers/collection_form/collection_form_bloc.dart';
 import 'package:kordi_mobile/collections/models/collections_models.dart';
 import 'package:kordi_mobile/core/models/kordi_exception.dart';
 import 'package:kordi_mobile/core/utils/kordi_dialog.dart';
