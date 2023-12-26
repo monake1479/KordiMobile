@@ -15,4 +15,9 @@ class CollectionAddresses with _$CollectionAddresses {
 
 extension CollectionAddressesX on CollectionAddresses {
   String get fullAddress => '$city, $street';
+  Uri get googleMapsUrl => Uri(
+        scheme: 'https',
+        host: 'www.google.com',
+        path: 'maps/place/$street,$city',
+      );
 }
