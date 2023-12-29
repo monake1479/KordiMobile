@@ -2,7 +2,7 @@ part of 'package:kordi_mobile/collections/pages/collection_details_page.dart';
 
 class _CollectionDetailsLocationsTile extends StatelessWidget {
   const _CollectionDetailsLocationsTile({super.key, required this.addresses});
-  final List<CollectionAddresses> addresses;
+  final List<CollectionAddress> addresses;
 
   @override
   Widget build(BuildContext context) {
@@ -77,7 +77,7 @@ class _CollectionDetailsLocationsTile extends StatelessWidget {
   }
 
   Future<void> _onLocationButtonOnTap(
-    CollectionAddresses address,
+    CollectionAddress address,
     BuildContext context,
   ) async {
     if (!await canLaunchUrl(address.googleMapsUrl)) {

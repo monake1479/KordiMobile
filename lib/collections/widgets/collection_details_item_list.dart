@@ -2,7 +2,6 @@ part of 'package:kordi_mobile/collections/pages/collection_details_page.dart';
 
 class _CollectionDetailsItemList extends StatelessWidget {
   const _CollectionDetailsItemList({
-    super.key,
     required this.items,
   });
   final List<CollectionItem> items;
@@ -129,9 +128,9 @@ class _CollectionDetailsItemList extends StatelessWidget {
                                     ),
                                   ),
                                   Slider(
-                                    value: item.currentAmount.toDouble(),
+                                    value: item.currentAmount?.toDouble() ?? 0,
                                     max: item.maxAmount.toDouble(),
-                                    min: item.currentAmount.toDouble(),
+                                    min: item.currentAmount?.toDouble() ?? 0,
                                     onChanged: (value) {
                                       log('value: $value');
                                     },

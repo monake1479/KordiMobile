@@ -9,11 +9,11 @@ part 'collection_item.g.dart';
 @freezed
 class CollectionItem with _$CollectionItem {
   const factory CollectionItem({
-    required int id,
+    required int? id,
     required String name,
     @CollectionItemTypeConverter() required CollectionItemType type,
     @CollectionItemCategoryConverter() required CollectionItemCategory category,
-    required int currentAmount,
+    @Default(0) int? currentAmount,
     required int maxAmount,
   }) = _CollectionItem;
   factory CollectionItem.fromJson(Map<String, dynamic> json) =>

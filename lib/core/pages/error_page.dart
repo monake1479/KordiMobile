@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kordi_mobile/core/utils/kordi_routes.dart';
+import 'package:kordi_mobile/core/navigation/kordi_router.dart';
 import 'package:kordi_mobile/gen/assets.gen.dart';
 import 'package:kordi_mobile/gen/l10n.dart';
 

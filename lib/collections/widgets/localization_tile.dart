@@ -4,7 +4,7 @@ import 'package:kordi_mobile/gen/l10n.dart';
 
 class LocalizationTile extends StatefulWidget {
   LocalizationTile({super.key, required this.addresses});
-  final List<CollectionAddresses> addresses;
+  final List<CollectionAddress> addresses;
 
   @override
   State<LocalizationTile> createState() => _LocalizationTileState();
