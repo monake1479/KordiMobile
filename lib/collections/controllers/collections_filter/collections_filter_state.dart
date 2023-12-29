@@ -42,7 +42,8 @@ extension CollectionsFilterStateEx on CollectionsFilterState {
   }
 
   bool get isReachedMax => collectionPaging.totalElements <= collections.length;
-  bool get canLoadMore => collectionPaging.pageNumber != filter.pageNumber - 1;
+  bool get canLoadMore =>
+      collectionPaging.pageNumber != collectionPaging.totalPages - 1;
 
   List<Collection> get collections => collectionPaging.collections;
 
