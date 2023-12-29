@@ -1,7 +1,5 @@
 // ignore_for_file: invalid_annotation_target
 
-import 'dart:developer';
-
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:kordi_mobile/collections/models/collections_models.dart';
 import 'package:kordi_mobile/collections/utils/collection_item_category_converter.dart';
@@ -44,9 +42,7 @@ extension CollectionFilterEx on CollectionFilter {
   String get toPathParameters {
     final Map<String, dynamic> map = toJson();
 
-    log('[CollectionFilter] BEFORE REMOVE toPathParameters() map: $map');
     map.removeWhere((key, value) => value == null);
-    log('[CollectionFilter] AFTER REMOVE toPathParameters() map: $map');
     return map.entries
         .map((filter) {
           if (filter.value is List<String>) {

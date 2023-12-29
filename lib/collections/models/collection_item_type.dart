@@ -22,3 +22,9 @@ enum CollectionItemType {
   });
   final String name, value, unitSuffix;
 }
+
+extension CollectionItemTypeX on CollectionItemType {
+  bool get isWeight => this == CollectionItemType.weight;
+  bool get isAmount => this == CollectionItemType.amount;
+  bool get isUnlimited => this == CollectionItemType.unlimited;
+}

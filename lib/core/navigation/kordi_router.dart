@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:kordi_mobile/change_password/pages/change_password_page.dart';
-import 'package:kordi_mobile/collections/controllers/get_collections/get_collections_cubit.dart';
+import 'package:kordi_mobile/collections/controllers/collections_filter/collections_filter_bloc.dart';
 import 'package:kordi_mobile/collections/pages/collection_details_page.dart';
 import 'package:kordi_mobile/collections/pages/collection_page.dart';
 import 'package:kordi_mobile/collections/pages/create_collection_page.dart';

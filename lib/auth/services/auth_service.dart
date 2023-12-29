@@ -27,6 +27,13 @@ class AuthService implements AuthInterface {
       if (e.response?.statusCode == 401) {
         result = left(KordiException.unauthorized());
       } else {
+        if (e.response == null) {
+          result = left(
+            KordiException.serverError(
+              message: 'Validate token got null, name: ${e.message}',
+            ),
+          );
+        }
         if (e.response?.data is String) {
           result =
               left(KordiException.customMessage(message: e.response!.data));

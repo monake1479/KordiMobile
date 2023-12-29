@@ -12,7 +12,7 @@ class CollectionDetailsPageRoute extends GoRouteData {
   @override
   FutureOr<String?> redirect(BuildContext context, GoRouterState state) async {
     final collectionById =
-        getIt.get<GetCollectionsCubit>().getById(collectionId);
+        getIt.get<CollectionsFilterBloc>().getById(collectionId);
     if (collectionById == null) {
       return ErrorPageRoute(S.current.collectionNotFoundError('$collectionId'))
           .location;
