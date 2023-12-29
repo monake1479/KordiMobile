@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:kordi_mobile/collections/controllers/get_collections/get_collections_cubit.dart';
+import 'package:kordi_mobile/collections/controllers/collections_filter/collections_filter_bloc.dart';
 import 'package:kordi_mobile/collections/models/collection_dto.dart';
 import 'package:kordi_mobile/collections/models/collections_models.dart';
 import 'package:kordi_mobile/collections/utils/collection_status_converter.dart';
@@ -16,7 +16,7 @@ part 'collection_form_bloc.freezed.dart';
 class CollectionFormBloc
     extends Bloc<CollectionFormEvent, CollectionFormState> {
   CollectionFormBloc(
-    this._getCollectionsCubit,
+    this._collectionsFilterBloc,
   ) : super(CollectionFormState.initial()) {
     on<_Reset>(_reset);
     on<_SetInitial>(_setInitialCollection);
@@ -33,7 +33,7 @@ class CollectionFormBloc
     on<_RemoveItem>(_removeItem);
     on<_CheckValidation>(_checkValidation);
   }
-  final GetCollectionsCubit _getCollectionsCubit;
+  final CollectionsFilterBloc _collectionsFilterBloc;
   void _reset(_Reset event, Emitter<CollectionFormState> emit) {
     emit(CollectionFormState.initial());
   }
@@ -42,7 +42,7 @@ class CollectionFormBloc
     _SetInitial event,
     Emitter<CollectionFormState> emit,
   ) {
-    final Collection? collection = _getCollectionsCubit.getById(event.id);
+    final Collection? collection = _collectionsFilterBloc.getById(event.id);
     if (collection == null) {
       return;
     }
