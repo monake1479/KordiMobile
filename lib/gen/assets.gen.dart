@@ -43,6 +43,9 @@ class $AssetsImagesGen {
   SvgGenImage get authentication =>
       const SvgGenImage('assets/images/authentication.svg');
 
+  /// File path: assets/images/camera.svg
+  SvgGenImage get camera => const SvgGenImage('assets/images/camera.svg');
+
   /// File path: assets/images/change_password.svg
   SvgGenImage get changePassword =>
       const SvgGenImage('assets/images/change_password.svg');
@@ -58,7 +61,7 @@ class $AssetsImagesGen {
 
   /// List of all assets
   List<SvgGenImage> get values =>
-      [authentication, changePassword, exception, join, welcoming];
+      [authentication, camera, changePassword, exception, join, welcoming];
 }
 
 class Assets {
