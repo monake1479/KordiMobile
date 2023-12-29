@@ -19,7 +19,7 @@ class Collection with _$Collection {
     required int donates,
     @CollectionStatusConverter() required CollectionStatus status,
     required int userId,
-    required List<CollectionAddresses> addresses,
+    required List<CollectionAddress> addresses,
     required List<CollectionItem> items,
     required List<Comment>? comments,
   }) = _Collection;
