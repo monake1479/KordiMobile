@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:collection/collection.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -161,7 +162,6 @@ class CollectionsFilterBloc
         filter: initialPageFilter,
       ),
     );
-    emit(state.copyWith(isLoading: true));
     final response = await _getCollectionsCubit.getWithFilter(state.filter);
     if (response == null) {
       emit(state.copyWith(isLoading: false));
@@ -238,6 +238,12 @@ class CollectionsFilterBloc
         isLoading: false,
         collectionPaging: response,
       ),
+    );
+  }
+
+  Collection? getById(int id) {
+    return state.collections.firstWhereOrNull(
+      (collection) => collection.id == id,
     );
   }
 
