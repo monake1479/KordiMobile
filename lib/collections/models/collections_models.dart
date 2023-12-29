@@ -1,5 +1,5 @@
 export 'package:kordi_mobile/collections/models/collection.dart';
-export 'package:kordi_mobile/collections/models/collection_addresses.dart';
+export 'package:kordi_mobile/collections/models/collection_address.dart';
 export 'package:kordi_mobile/collections/models/collection_item.dart';
 export 'package:kordi_mobile/collections/models/collection_item_category.dart';
 export 'package:kordi_mobile/collections/models/collection_item_type.dart';
