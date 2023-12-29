@@ -5,8 +5,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kordi_mobile/collections/controllers/collection_form/collection_form_bloc.dart';
 import 'package:kordi_mobile/collections/models/collections_models.dart';
 import 'package:kordi_mobile/core/models/kordi_exception.dart';
+import 'package:kordi_mobile/core/navigation/kordi_router.dart';
 import 'package:kordi_mobile/core/utils/kordi_dialog.dart';
-import 'package:kordi_mobile/core/utils/kordi_routes.dart';
 import 'package:kordi_mobile/dependency_injection.dart';
 import 'package:kordi_mobile/gen/l10n.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -28,10 +28,10 @@ class CollectionDetailsPage extends StatelessWidget {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
 
-    return BlocProvider(
+    return BlocProvider<CollectionFormBloc>(
       create: (context) => getIt.get<CollectionFormBloc>()
         ..add(
-          CollectionFormEvent.setInitialCollection(collectionId),
+          CollectionFormEvent.setInitial(collectionId),
         ),
       child: BlocBuilder<CollectionFormBloc, CollectionFormState>(
         builder: (context, state) {
@@ -67,7 +67,7 @@ class CollectionDetailsPage extends StatelessWidget {
                       fit: BoxFit.fill,
                     ),
                     title: Text(
-                      state.title,
+                      state.name,
                       style: theme.textTheme.bodyMedium?.copyWith(
                         color: Colors.white,
                         shadows: [
