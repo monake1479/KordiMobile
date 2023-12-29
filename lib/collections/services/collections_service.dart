@@ -57,7 +57,7 @@ class CollectionsService implements CollectionsInterface {
     final DioClient _dioClient = getIt.get<DioClient>();
     try {
       final response = await _dioClient.dio.get(
-        '/collections?sortDirection=asc',
+        '/collections?sortDirection=desc',
       );
 
       final CollectionPaging collectionPaging =
