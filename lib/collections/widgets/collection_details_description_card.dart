@@ -2,7 +2,6 @@ part of 'package:kordi_mobile/collections/pages/collection_details_page.dart';
 
 class _CollectionDetailsDescriptionCard extends StatelessWidget {
   const _CollectionDetailsDescriptionCard({
-    super.key,
     required this.description,
   });
   final String description;
