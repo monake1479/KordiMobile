@@ -41,7 +41,17 @@ extension CollectionFormStateX on CollectionFormState {
   bool get isFirstStepValid => name.isNotEmpty && description.isNotEmpty;
   bool get isSecondStepValid => addresses.isNotEmpty;
   bool get isThirdStepValid => items.isNotEmpty;
-  CollectionDto get toDto => CollectionDto(
+  bool get canSaveCollection =>
+      isFirstStepValid && isSecondStepValid && isThirdStepValid;
+  CollectionDto get toCollectionDto => CollectionDto(
+        title: name,
+        description: description,
+        userId: userId,
+        addresses: addresses,
+        items: items,
+      );
+  EditCollectionDto get toEditCollectionDto => EditCollectionDto(
+        id: id,
         title: name,
         description: description,
         userId: userId,
