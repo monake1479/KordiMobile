@@ -4,8 +4,6 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:kordi_mobile/collections/interfaces/collections_interface.dart';
-import 'package:kordi_mobile/collections/models/collection_dto.dart';
-import 'package:kordi_mobile/collections/models/collection_filter.dart';
 import 'package:kordi_mobile/collections/models/collections_models.dart';
 import 'package:kordi_mobile/core/models/kordi_exception.dart';
 import 'package:kordi_mobile/core/utils/dio_client.dart';
@@ -90,6 +88,39 @@ class CollectionsService implements CollectionsInterface {
     try {
       final response = await _dioClient.dio.post(
         '/collections',
+        data: dto.toJson(),
+      );
+
+      result = right(Collection.fromJson(response.data));
+    } on DioException catch (e, s) {
+      log(
+        '[CollectionsService] create()',
+        error: e,
+        stackTrace: s,
+      );
+      if (e.response?.statusCode == 401) {
+        result = left(KordiException.unauthorized());
+      } else {
+        final String message =
+            ResponseCodeConverter.convert(e.response?.data['error']);
+        result = left(
+          KordiException.customMessage(message: message),
+        );
+      }
+    }
+    return result;
+  }
+
+  @override
+  Future<Either<KordiException, Collection>> patch(
+    EditCollectionDto dto,
+  ) async {
+    log('[CollectionsService] create()');
+    late Either<KordiException, Collection> result;
+    final DioClient _dioClient = getIt.get<DioClient>();
+    try {
+      final response = await _dioClient.dio.patch(
+        '/collections/${dto.id}',
         data: dto.toJson(),
       );
 
