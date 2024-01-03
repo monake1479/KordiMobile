@@ -43,7 +43,7 @@ class _CollectionEditNameCard extends StatelessWidget {
                     decoration: InputDecoration(
                       contentPadding: const EdgeInsets.all(8),
                       border: OutlineInputBorder(),
-                      labelText: S.current.collectionEditFormLabelText,
+                      labelText: S.current.collectionEditNameFormLabelText,
                       errorText: state.validationError && state.name.isEmpty
                           ? S.current.fieldRequiredErrorLabel
                           : null,
