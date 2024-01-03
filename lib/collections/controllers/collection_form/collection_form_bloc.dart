@@ -12,7 +12,7 @@ part 'collection_form_state.dart';
 
 part 'collection_form_bloc.freezed.dart';
 
-@Injectable()
+@injectable
 class CollectionFormBloc
     extends Bloc<CollectionFormEvent, CollectionFormState> {
   CollectionFormBloc(
@@ -27,10 +27,12 @@ class CollectionFormBloc
     on<_SetPhoto>(_setPhoto);
     on<_SetAddresses>(_setAddresses);
     on<_AddAddress>(_addAddress);
+    on<_EditAddress>(_editAddress);
     on<_RemoveAddress>(_removeAddress);
     on<_SetItems>(_setItems);
     on<_AddItem>(_addItem);
     on<_RemoveItem>(_removeItem);
+    on<_EditItem>(_editItem);
     on<_CheckValidation>(_checkValidation);
   }
   final CollectionsFilterBloc _collectionsFilterBloc;
@@ -42,12 +44,19 @@ class CollectionFormBloc
     _SetInitial event,
     Emitter<CollectionFormState> emit,
   ) {
+    emit(state.copyWith(isLoading: true));
     final Collection? collection = _collectionsFilterBloc.getById(event.id);
     if (collection == null) {
+      emit(
+        state.copyWith(
+          isLoading: false,
+        ),
+      );
       return;
     }
     emit(
       state.copyWith(
+        isLoading: false,
         id: collection.id,
         name: collection.title,
         description: collection.description,
@@ -143,6 +152,21 @@ class CollectionFormBloc
     );
   }
 
+  void _editAddress(
+    _EditAddress event,
+    Emitter<CollectionFormState> emit,
+  ) {
+    final List<CollectionAddress> tempList =
+        List<CollectionAddress>.from(state.addresses);
+    tempList.remove(event.oldAddress);
+    tempList.add(event.newAddress);
+    emit(
+      state.copyWith(
+        addresses: tempList,
+      ),
+    );
+  }
+
   void _removeAddress(
     _RemoveAddress event,
     Emitter<CollectionFormState> emit,
@@ -194,11 +218,29 @@ class CollectionFormBloc
     );
   }
 
+  void _editItem(
+    _EditItem event,
+    Emitter<CollectionFormState> emit,
+  ) {
+    final List<CollectionItem> tempList =
+        List<CollectionItem>.from(state.items);
+    tempList.remove(event.oldItem);
+    tempList.add(event.newItem);
+    emit(
+      state.copyWith(
+        items: tempList,
+      ),
+    );
+  }
+
   void _checkValidation(
     _CheckValidation event,
     Emitter<CollectionFormState> emit,
   ) {
-    if (state.name.isEmpty || state.description.isEmpty) {
+    if (state.name.isEmpty ||
+        state.description.isEmpty ||
+        state.addresses.isEmpty ||
+        state.items.isEmpty) {
       emit(state.copyWith(validationError: true));
       return;
     }
