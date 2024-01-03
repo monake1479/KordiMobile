@@ -24,7 +24,7 @@ class AuthService implements AuthInterface {
       result = right(unit);
     } on DioException catch (e, s) {
       log('[AuthService] validateToken() DioException: $e, $s');
-      if (e.response?.statusCode == 401) {
+      if (e.response?.statusCode == 401 || e.response?.statusCode == 400) {
         result = left(KordiException.unauthorized());
       } else {
         if (e.response == null) {
