@@ -1,7 +1,7 @@
 part of 'package:kordi_mobile/collections/pages/collection_details_page.dart';
 
 class _CollectionDetailsLocationsTile extends StatelessWidget {
-  const _CollectionDetailsLocationsTile({super.key, required this.addresses});
+  const _CollectionDetailsLocationsTile({required this.addresses});
   final List<CollectionAddress> addresses;
 
   @override
