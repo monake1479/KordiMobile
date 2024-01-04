@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:kordi_mobile/gen/l10n.dart';
 
 part 'kordi_exception.freezed.dart';
 
@@ -15,7 +16,7 @@ class KordiException with _$KordiException {
 extension KordiExceptionEx on KordiException {
   String get message {
     return when(
-      unauthorized: () => 'Unauthorized, please sign in again.',
+      unauthorized: () => S.current.unauthorizedExceptionMessage,
       serverError: (message) => message,
       customMessage: (message) => message,
     );

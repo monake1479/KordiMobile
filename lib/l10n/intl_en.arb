@@ -167,6 +167,8 @@
     },
     "exceptionDialogTitle": "Kordi occurred an error...",
     "exceptionDialogButtonLabel": "OK",
+    "defaultExceptionMessage": "Something went wrong, please try again later.",
+    "unauthorizedExceptionMessage": "You are not authorized to perform this action.",
     "errorPageDescription": "Please, try again later.\nRestart the app and contact with us to report issue.",
     "collectionNotFoundError": "Collection with id {collectionId} not found.",
     "@collectionNotFoundError": {
@@ -243,5 +245,20 @@
     "changePasswordPageChangePasswordButtonLabel": "Change password",
     "changePasswordPageDialogTitleLabel": "Password changed!",
     "changePasswordPageDialogSubTitleLabel": "Please, sign in again with new password.",
-    "changePasswordPageDialogButtonLabel": "OK"
+    "changePasswordPageDialogButtonLabel": "OK",
+    "collectionItemCategoryFoodName": "Food",
+    "collectionItemCategoryClothesName": "Clothes",
+    "collectionItemCategoryAnimalsName": "Animals",
+    "collectionItemCategoryChildrenName": "Children",
+    "collectionItemCategoryElectronicName": "Electronic",
+    "collectionItemCategoryMedicinesName": "Medicines",
+    "collectionItemCategoryOtherName": "Other",
+    "collectionItemTypeWeightName": "Weight",
+    "collectionItemTypeAmountName": "Amount",
+    "collectionItemTypeUnlimitedName": "Unlimited",
+    "collectionStatusInProgressName": "In progress",
+    "collectionStatusCompletedName": "Completed",
+    "collectionStatusArchivedName": "Archived",
+    "verificationTypeEmailName": "Email",
+    "verificationTypePhoneName": "Phone"
 }
