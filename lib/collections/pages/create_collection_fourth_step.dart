@@ -24,12 +24,12 @@ class CreateCollectionFourthStep extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
-                  'Congratulations!',
+                  S.current.createCollectionFourthStepTitle,
                   textAlign: TextAlign.center,
                   style: textTheme.titleLarge,
                 ),
                 Text(
-                  'Step 4 of 4',
+                  S.current.createCollectionFourthStepSubtitle,
                   textAlign: TextAlign.center,
                   style: textTheme.titleMedium!.copyWith(
                     color: theme.primaryColor,
@@ -57,13 +57,13 @@ class CreateCollectionFourthStep extends StatelessWidget {
                     bottom: 8,
                   ),
                   child: Text(
-                    'You have successfully created a collection!',
+                    S.current.createCollectionFourthStepInformation,
                     textAlign: TextAlign.center,
                     style: textTheme.bodyLarge,
                   ),
                 ),
                 Text(
-                  'You can still edit it later.',
+                  S.current.createCollectionFourthStepSecondInformation,
                   textAlign: TextAlign.center,
                   style: textTheme.bodyLarge,
                 ),
@@ -88,10 +88,13 @@ class CreateCollectionFourthStep extends StatelessWidget {
               EdgeInsets.only(bottom: 20),
           child: ElevatedButton(
             onPressed: () {
+              context.read<CollectionsFilterBloc>().add(
+                    CollectionsFilterEvent.getCollections(),
+                  );
               CollectionPageRoute().go(context);
             },
             child: Text(
-              'To collections',
+              S.current.createCollectionFourthStepButtonLabel,
               style: textTheme.bodyLarge!.copyWith(
                 color: colorScheme.primary,
                 fontWeight: FontWeight.bold,

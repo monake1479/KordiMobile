@@ -32,12 +32,12 @@ class CreateCollectionSecondStep extends StatelessWidget {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           Text(
-                            'Collection addresses',
+                            S.current.createCollectionSecondStepTitle,
                             textAlign: TextAlign.center,
                             style: textTheme.titleLarge,
                           ),
                           Text(
-                            'Step 2 of 4',
+                            S.current.createCollectionSecondStepSubtitle,
                             textAlign: TextAlign.center,
                             style: textTheme.titleMedium!.copyWith(
                               color: theme.primaryColor,
@@ -73,8 +73,15 @@ class CreateCollectionSecondStep extends StatelessWidget {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
-                                Text('City', style: textTheme.bodyLarge),
-                                Text('Address', style: textTheme.bodyLarge),
+                                Text(
+                                  S.current.createCollectionSecondStepCityLabel,
+                                  style: textTheme.bodyLarge,
+                                ),
+                                Text(
+                                  S.current
+                                      .createCollectionSecondStepAddressLabel,
+                                  style: textTheme.bodyLarge,
+                                ),
                               ],
                             ),
                           ),
@@ -84,7 +91,8 @@ class CreateCollectionSecondStep extends StatelessWidget {
                                 return ShakeError(
                                   key: _shakeErrorKey,
                                   child: Text(
-                                    'Please provide addresses where donates can be stored',
+                                    S.current
+                                        .createCollectionSecondStepInformation,
                                     textAlign: TextAlign.center,
                                     style: textTheme.bodyLarge,
                                   ),
@@ -124,7 +132,8 @@ class CreateCollectionSecondStep extends StatelessWidget {
                                 await _onAddAddressButtonOnPressed(context);
                               },
                               child: Text(
-                                'Add address',
+                                S.current
+                                    .createCollectionSecondStepAddAddressButtonLabel,
                                 style: textTheme.bodyLarge!.copyWith(
                                   color: colorScheme.primary,
                                   fontWeight: FontWeight.bold,
@@ -154,7 +163,7 @@ class CreateCollectionSecondStep extends StatelessWidget {
                   _shakeErrorKey.currentState?.shake();
                 },
                 child: Text(
-                  'Next step',
+                  S.current.createCollectionSecondStepNextStepButtonLabel,
                   style: textTheme.bodyLarge!.copyWith(
                     color: colorScheme.primary,
                     fontWeight: FontWeight.bold,

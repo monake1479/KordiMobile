@@ -31,12 +31,12 @@ class CreateCollectionThirdStep extends StatelessWidget {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           Text(
-                            'Collection items',
+                            S.current.createCollectionThirdStepTitle,
                             textAlign: TextAlign.center,
                             style: textTheme.titleLarge,
                           ),
                           Text(
-                            'Step 3 of 4',
+                            S.current.createCollectionThirdStepSubtitle,
                             textAlign: TextAlign.center,
                             style: textTheme.titleMedium!.copyWith(
                               color: theme.primaryColor,
@@ -73,19 +73,21 @@ class CreateCollectionThirdStep extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
                                 Text(
-                                  'Name',
+                                  S.current.createCollectionThirdStepNameLabel,
                                   style: textTheme.bodyLarge,
                                 ),
                                 Text(
-                                  'Category',
+                                  S.current
+                                      .createCollectionThirdStepCategoryLabel,
                                   style: textTheme.bodyLarge,
                                 ),
                                 Text(
-                                  'Type',
+                                  S.current.createCollectionThirdStepTypeLabel,
                                   style: textTheme.bodyLarge,
                                 ),
                                 Text(
-                                  'Maximum quantity',
+                                  S.current
+                                      .createCollectionThirdStepMaximumLabel,
                                   style: textTheme.bodyLarge,
                                 ),
                               ],
@@ -97,7 +99,8 @@ class CreateCollectionThirdStep extends StatelessWidget {
                                 return ShakeError(
                                   key: _shakeErrorKey,
                                   child: Text(
-                                    'Please provide items that collection needs',
+                                    S.current
+                                        .createCollectionThirdStepInformation,
                                     textAlign: TextAlign.center,
                                     style: textTheme.bodyLarge,
                                   ),
@@ -136,7 +139,8 @@ class CreateCollectionThirdStep extends StatelessWidget {
                                 await _onAddItemButtonOnPressed(context);
                               },
                               child: Text(
-                                'Add item',
+                                S.current
+                                    .createCollectionThirdStepAddItemButtonLabel,
                                 style: textTheme.bodyLarge!.copyWith(
                                   color: colorScheme.primary,
                                   fontWeight: FontWeight.bold,
@@ -189,7 +193,8 @@ class CreateCollectionThirdStep extends StatelessWidget {
                             return const CircularProgressIndicator();
                           }
                           return Text(
-                            'Next step',
+                            S.current
+                                .createCollectionThirdStepNextStepButtonLabel,
                             style: textTheme.bodyLarge!.copyWith(
                               color: colorScheme.primary,
                               fontWeight: FontWeight.bold,
