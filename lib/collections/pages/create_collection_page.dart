@@ -13,7 +13,6 @@ import 'package:kordi_mobile/collections/widgets/create_collection_address_tile.
 import 'package:kordi_mobile/collections/widgets/create_collection_item_tile.dart';
 import 'package:kordi_mobile/core/navigation/kordi_router.dart';
 import 'package:kordi_mobile/core/utils/kordi_dialog.dart';
-import 'package:kordi_mobile/core/widgets/kordi_text_field.dart';
 import 'package:kordi_mobile/core/widgets/shake_error.dart';
 import 'package:kordi_mobile/dependency_injection.dart';
 import 'package:kordi_mobile/gen/assets.gen.dart';
