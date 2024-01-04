@@ -11,7 +11,7 @@ class KordiDialog {
     required String buttonLabel,
     required void Function() onButtonOnPressed,
   }) async =>
-      showDialog(
+      showAdaptiveDialog(
         context: context,
         barrierDismissible: false,
         useRootNavigator: true,
@@ -28,7 +28,7 @@ class KordiDialog {
     KordiException exception, {
     void Function()? overrideOnPressed,
   }) async =>
-      showDialog(
+      showAdaptiveDialog(
         context: context,
         barrierDismissible: false,
         useRootNavigator: true,

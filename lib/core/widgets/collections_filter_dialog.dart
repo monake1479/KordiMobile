@@ -14,6 +14,7 @@ class CollectionsFilterDialog extends StatefulWidget {
       context: context,
       barrierDismissible: false,
       builder: (context) => AlertDialog.adaptive(
+        contentPadding: const EdgeInsets.all(8),
         surfaceTintColor: Theme.of(context).colorScheme.surface,
         content: CollectionsFilterDialog(),
         title: Text(
@@ -60,119 +61,128 @@ class _CollectionsFilterDialogState extends State<CollectionsFilterDialog> {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
     final collectionsFilterBloc = getIt.get<CollectionsFilterBloc>();
-    return Scaffold(
-      body: BlocBuilder<CollectionsFilterBloc, CollectionsFilterState>(
-        bloc: collectionsFilterBloc,
-        builder: (context, state) {
-          return ListView(
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(bottom: 8),
-                child: TextFormField(
-                  initialValue: state.filter.title,
-                  decoration: InputDecoration(
-                    contentPadding: const EdgeInsets.all(8),
-                    border: OutlineInputBorder(),
-                    labelText: S.current.filterDialogTitleLabelText,
+    return BlocBuilder<CollectionsFilterBloc, CollectionsFilterState>(
+      bloc: collectionsFilterBloc,
+      builder: (context, state) {
+        return Material(
+          color: colorScheme.surface,
+          borderRadius: BorderRadius.circular(8),
+          child: Padding(
+            padding: const EdgeInsets.all(16),
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 8),
+                    child: TextFormField(
+                      initialValue: state.filter.title,
+                      decoration: InputDecoration(
+                        contentPadding: const EdgeInsets.all(8),
+                        border: OutlineInputBorder(),
+                        labelText: S.current.filterDialogTitleLabelText,
+                      ),
+                      onChanged: (title) {
+                        collectionsFilterBloc.add(
+                          CollectionsFilterEvent.updateTitle(title),
+                        );
+                      },
+                    ),
                   ),
-                  onChanged: (title) {
-                    collectionsFilterBloc.add(
-                      CollectionsFilterEvent.updateTitle(title),
-                    );
-                  },
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 8),
-                child: TextFormField(
-                  initialValue: state.filter.city,
-                  decoration: InputDecoration(
-                    contentPadding: const EdgeInsets.all(8),
-                    border: OutlineInputBorder(),
-                    labelText: S.current.filterDialogCityLabelText,
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 8),
+                    child: TextFormField(
+                      initialValue: state.filter.city,
+                      decoration: InputDecoration(
+                        contentPadding: const EdgeInsets.all(8),
+                        border: OutlineInputBorder(),
+                        labelText: S.current.filterDialogCityLabelText,
+                      ),
+                      onChanged: (city) {
+                        collectionsFilterBloc.add(
+                          CollectionsFilterEvent.updateCity(city),
+                        );
+                      },
+                    ),
                   ),
-                  onChanged: (city) {
-                    collectionsFilterBloc.add(
-                      CollectionsFilterEvent.updateCity(city),
-                    );
-                  },
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 8),
-                child: TextFormField(
-                  initialValue: state.filter.street,
-                  decoration: InputDecoration(
-                    contentPadding: const EdgeInsets.all(8),
-                    border: OutlineInputBorder(),
-                    labelText: S.current.filterDialogStreetLabelText,
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 8),
+                    child: TextFormField(
+                      initialValue: state.filter.street,
+                      decoration: InputDecoration(
+                        contentPadding: const EdgeInsets.all(8),
+                        border: OutlineInputBorder(),
+                        labelText: S.current.filterDialogStreetLabelText,
+                      ),
+                      onChanged: (street) {
+                        collectionsFilterBloc.add(
+                          CollectionsFilterEvent.updateStreet(street),
+                        );
+                      },
+                    ),
                   ),
-                  onChanged: (street) {
-                    collectionsFilterBloc.add(
-                      CollectionsFilterEvent.updateStreet(street),
-                    );
-                  },
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 8),
-                child: TextFormField(
-                  initialValue: state.filter.itemName,
-                  decoration: InputDecoration(
-                    contentPadding: const EdgeInsets.all(8),
-                    border: OutlineInputBorder(),
-                    labelText: S.current.filterDialogItemNameLabelText,
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 8),
+                    child: TextFormField(
+                      initialValue: state.filter.itemName,
+                      decoration: InputDecoration(
+                        contentPadding: const EdgeInsets.all(8),
+                        border: OutlineInputBorder(),
+                        labelText: S.current.filterDialogItemNameLabelText,
+                      ),
+                      onChanged: (itemName) {
+                        collectionsFilterBloc.add(
+                          CollectionsFilterEvent.updateItemName(itemName),
+                        );
+                      },
+                    ),
                   ),
-                  onChanged: (itemName) {
-                    collectionsFilterBloc.add(
-                      CollectionsFilterEvent.updateItemName(itemName),
-                    );
-                  },
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 8),
-                child: Text(
-                  S.current.filterDialogCategoryTitle,
-                  style: theme.textTheme.titleLarge,
-                ),
-              ),
-              SizedBox(
-                height: 200,
-                width: 200,
-                child: RawScrollbar(
-                  controller: _scrollController,
-                  thumbColor: colorScheme.primary,
-                  thumbVisibility: true,
-                  child: ListView(
-                    controller: _scrollController,
-                    children: CollectionItemCategory.values
-                        .map(
-                          (itemCategory) => Row(
-                            children: [
-                              Checkbox(
-                                value:
-                                    state.isItemCategorySelected(itemCategory),
-                                onChanged: (value) {
-                                  collectionsFilterBloc.add(
-                                    CollectionsFilterEvent.updateCategories(
-                                      itemCategory,
-                                    ),
-                                  );
-                                },
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 8),
+                    child: Text(
+                      S.current.filterDialogCategoryTitle,
+                      style: theme.textTheme.titleLarge,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 200,
+                    width: 200,
+                    child: RawScrollbar(
+                      controller: _scrollController,
+                      thumbColor: colorScheme.primary,
+                      thumbVisibility: true,
+                      child: ListView(
+                        controller: _scrollController,
+                        padding: EdgeInsets.zero,
+                        children: CollectionItemCategory.values
+                            .map(
+                              (itemCategory) => Row(
+                                children: [
+                                  Checkbox(
+                                    value: state
+                                        .isItemCategorySelected(itemCategory),
+                                    onChanged: (value) {
+                                      collectionsFilterBloc.add(
+                                        CollectionsFilterEvent.updateCategories(
+                                          itemCategory,
+                                        ),
+                                      );
+                                    },
+                                  ),
+                                  Text(itemCategory.name),
+                                ],
                               ),
-                              Text(itemCategory.name),
-                            ],
-                          ),
-                        )
-                        .toList(),
+                            )
+                            .toList(),
+                      ),
+                    ),
                   ),
-                ),
+                ],
               ),
-            ],
-          );
-        },
-      ),
+            ),
+          ),
+        );
+      },
     );
   }
 
