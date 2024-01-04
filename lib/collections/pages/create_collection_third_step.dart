@@ -31,12 +31,12 @@ class CreateCollectionThirdStep extends StatelessWidget {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           Text(
-                            'Collection items',
+                            S.current.createCollectionThirdStepTitle,
                             textAlign: TextAlign.center,
                             style: textTheme.titleLarge,
                           ),
                           Text(
-                            'Step 3 of 4',
+                            S.current.createCollectionThirdStepSubtitle,
                             textAlign: TextAlign.center,
                             style: textTheme.titleMedium!.copyWith(
                               color: theme.primaryColor,
@@ -73,19 +73,21 @@ class CreateCollectionThirdStep extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
                                 Text(
-                                  'Name',
+                                  S.current.createCollectionThirdStepNameLabel,
                                   style: textTheme.bodyLarge,
                                 ),
                                 Text(
-                                  'Category',
+                                  S.current
+                                      .createCollectionThirdStepCategoryLabel,
                                   style: textTheme.bodyLarge,
                                 ),
                                 Text(
-                                  'Type',
+                                  S.current.createCollectionThirdStepTypeLabel,
                                   style: textTheme.bodyLarge,
                                 ),
                                 Text(
-                                  'Maximum quantity',
+                                  S.current
+                                      .createCollectionThirdStepMaximumLabel,
                                   style: textTheme.bodyLarge,
                                 ),
                               ],
@@ -97,7 +99,8 @@ class CreateCollectionThirdStep extends StatelessWidget {
                                 return ShakeError(
                                   key: _shakeErrorKey,
                                   child: Text(
-                                    'Please provide items that collection needs',
+                                    S.current
+                                        .createCollectionThirdStepInformation,
                                     textAlign: TextAlign.center,
                                     style: textTheme.bodyLarge,
                                   ),
@@ -136,7 +139,8 @@ class CreateCollectionThirdStep extends StatelessWidget {
                                 await _onAddItemButtonOnPressed(context);
                               },
                               child: Text(
-                                'Add item',
+                                S.current
+                                    .createCollectionThirdStepAddItemButtonLabel,
                                 style: textTheme.bodyLarge!.copyWith(
                                   color: colorScheme.primary,
                                   fontWeight: FontWeight.bold,
@@ -175,7 +179,8 @@ class CreateCollectionThirdStep extends StatelessWidget {
                     return ElevatedButton(
                       onPressed: () async {
                         if (state.isThirdStepValid) {
-                          await createCollectionCubit.create(state.toDto);
+                          await createCollectionCubit
+                              .create(state.toCollectionDto);
                           if (createCollectionState.exception == null) {
                             CreateCollectionFourthStepRoute().go(context);
                           }
@@ -188,7 +193,8 @@ class CreateCollectionThirdStep extends StatelessWidget {
                             return const CircularProgressIndicator();
                           }
                           return Text(
-                            'Next step',
+                            S.current
+                                .createCollectionThirdStepNextStepButtonLabel,
                             style: textTheme.bodyLarge!.copyWith(
                               color: colorScheme.primary,
                               fontWeight: FontWeight.bold,
@@ -210,151 +216,8 @@ class CreateCollectionThirdStep extends StatelessWidget {
   Future<void> _onAddItemButtonOnPressed(
     BuildContext context,
   ) async {
-    final theme = Theme.of(context);
-    final textTheme = theme.textTheme;
-    final colorScheme = theme.colorScheme;
-    final result = await showDialog<CollectionItem?>(
-      context: context,
-      builder: (context) {
-        return BlocProvider(
-          create: (context) => getIt.get<CollectionItemFormBloc>(),
-          child: BlocBuilder<CollectionItemFormBloc, CollectionItemFormState>(
-            builder: (context, state) {
-              final collectionItemFormBloc =
-                  context.read<CollectionItemFormBloc>();
-              return AlertDialog(
-                title: Text('Add item'),
-                content: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 8),
-                      child: KordiTextField(
-                        labelText: 'Name',
-                        shouldShowErrorText:
-                            state.validationError && state.name.isEmpty,
-                        errorText: state.validationError && state.name.isEmpty
-                            ? 'Field required'
-                            : null,
-                        onChanged: (name) => collectionItemFormBloc.add(
-                          CollectionItemFormEvent.setName(name),
-                        ),
-                      ),
-                    ),
-                    Text('Category'),
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 8),
-                      child: DropdownButton<CollectionItemCategory>(
-                        alignment: Alignment.center,
-                        padding: EdgeInsets.zero,
-                        value: state.category,
-                        elevation: 12,
-                        items: CollectionItemCategory.values
-                            .map(
-                              (category) => DropdownMenuItem(
-                                value: category,
-                                child: Text('${category.name}'),
-                              ),
-                            )
-                            .toList(),
-                        onChanged: (category) {
-                          if (category == null) {
-                            return;
-                          }
-                          collectionItemFormBloc.add(
-                            CollectionItemFormEvent.setCategory(
-                              category,
-                            ),
-                          );
-                        },
-                      ),
-                    ),
-                    Text('Type'),
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 8),
-                      child: Wrap(
-                        children: CollectionItemType.values
-                            .map(
-                              (type) => Padding(
-                                padding: const EdgeInsets.all(2),
-                                child: ActionChip.elevated(
-                                  label: Text(
-                                    type.name,
-                                    style: textTheme.bodyLarge?.copyWith(
-                                      color: state.type == type
-                                          ? colorScheme.onPrimary
-                                          : colorScheme.onSurface,
-                                    ),
-                                  ),
-                                  color: MaterialStateColor.resolveWith(
-                                    (states) => state.type == type
-                                        ? colorScheme.primary
-                                        : colorScheme.surface,
-                                  ),
-                                  onPressed: () {
-                                    collectionItemFormBloc.add(
-                                      CollectionItemFormEvent.setType(type),
-                                    );
-                                  },
-                                ),
-                              ),
-                            )
-                            .toList(),
-                      ),
-                    ),
-                    KordiTextField(
-                      labelText: 'Maximum quantity',
-                      keyboardType: TextInputType.number,
-                      suffixText: state.type.unitSuffix,
-                      onChanged: (maxAmount) {
-                        final int? value = int.tryParse(maxAmount);
-                        if (value != null) {
-                          collectionItemFormBloc.add(
-                            CollectionItemFormEvent.setMaxAmount(value),
-                          );
-                        }
-                      },
-                    ),
-                    Builder(
-                      builder: (context) {
-                        if (state.validationError) {
-                          return Text(
-                            'Please fill all fields',
-                            style: textTheme.bodyLarge?.copyWith(
-                              color: colorScheme.error,
-                            ),
-                          );
-                        }
-                        return const SizedBox.shrink();
-                      },
-                    ),
-                  ],
-                ),
-                actions: [
-                  TextButton(
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                    child: Text('Cancel'),
-                  ),
-                  TextButton(
-                    onPressed: () {
-                      collectionItemFormBloc.add(
-                        CollectionItemFormEvent.checkValidation(),
-                      );
-                      if (state.isFormValid) {
-                        Navigator.of(context).pop(state.toCollectionItem);
-                      }
-                    },
-                    child: Text('Add'),
-                  ),
-                ],
-              );
-            },
-          ),
-        );
-      },
+    final result = await CollectionItemDialog.show(
+      context,
     );
     if (result != null) {
       context.read<CollectionFormBloc>().add(

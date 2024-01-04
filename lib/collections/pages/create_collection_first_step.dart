@@ -47,12 +47,12 @@ class _CreateCollectionFirstStepState extends State<CreateCollectionFirstStep> {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(
-                      'Basic collection information',
+                      S.current.createCollectionFirstStepTitle,
                       textAlign: TextAlign.center,
                       style: textTheme.titleLarge,
                     ),
                     Text(
-                      'Step 1 of 4',
+                      S.current.createCollectionFirstStepSubtitle,
                       textAlign: TextAlign.center,
                       style: textTheme.titleMedium!.copyWith(
                         color: theme.primaryColor,
@@ -60,7 +60,7 @@ class _CreateCollectionFirstStepState extends State<CreateCollectionFirstStep> {
                       ),
                     ),
                     Text(
-                      'Please provide basic information about your collection',
+                      S.current.createCollectionFirstStepInformation,
                       textAlign: TextAlign.center,
                       style: textTheme.bodyLarge,
                     ),
@@ -84,10 +84,11 @@ class _CreateCollectionFirstStepState extends State<CreateCollectionFirstStep> {
                       padding: const EdgeInsets.only(bottom: 8),
                       child: KordiTextField(
                         initialValue: state.name,
-                        errorText: 'Field required',
+                        errorText: S.current.fieldRequiredErrorLabel,
                         shouldShowErrorText:
                             state.validationError && state.name.isEmpty,
-                        labelText: 'Collection name*',
+                        labelText: S
+                            .current.createCollectionFirstStepNameFormTextLabel,
                         keyboardType: TextInputType.multiline,
                         onChanged: (name) {
                           collectionFormBloc
@@ -101,8 +102,9 @@ class _CreateCollectionFirstStepState extends State<CreateCollectionFirstStep> {
                         initialValue: state.description,
                         shouldShowErrorText:
                             state.validationError && state.description.isEmpty,
-                        errorText: 'Field required',
-                        labelText: 'Collection description*',
+                        errorText: S.current.fieldRequiredErrorLabel,
+                        labelText: S.current
+                            .createCollectionFirstStepDescriptionFormTextLabel,
                         maxLength: 500,
                         keyboardType: TextInputType.multiline,
                         onChanged: (description) {
@@ -116,7 +118,8 @@ class _CreateCollectionFirstStepState extends State<CreateCollectionFirstStep> {
                       padding: const EdgeInsets.only(bottom: 8),
                       child: KordiTextField(
                         controller: _endDateController,
-                        labelText: 'Collection end date',
+                        labelText: S.current
+                            .createCollectionFirstStepEndDateFormTextLabel,
                         readOnly: true,
                         suffixIcon: Icon(
                           Icons.calendar_month_rounded,
@@ -148,7 +151,7 @@ class _CreateCollectionFirstStepState extends State<CreateCollectionFirstStep> {
                     Padding(
                       padding: const EdgeInsets.only(bottom: 8),
                       child: Text(
-                        'Collection photo',
+                        S.current.createCollectionFirstStepPhotoLabel,
                         style: textTheme.bodyLarge,
                       ),
                     ),
@@ -174,7 +177,7 @@ class _CreateCollectionFirstStepState extends State<CreateCollectionFirstStep> {
                       ),
                     ),
                     Text(
-                      'Tap image above to add photo',
+                      S.current.createCollectionFirstStepPhotoHintLabel,
                       style: textTheme.bodyMedium,
                     ),
                   ],
@@ -193,7 +196,7 @@ class _CreateCollectionFirstStepState extends State<CreateCollectionFirstStep> {
                       vertical: 6,
                     ),
                     child: Text(
-                      'Please fill all required fields, indicated by *',
+                      S.current.createCollectionFirstStepValidationHint,
                       style: textTheme.bodyLarge!.copyWith(
                         color: colorScheme.error,
                         fontWeight: FontWeight.bold,
@@ -217,7 +220,7 @@ class _CreateCollectionFirstStepState extends State<CreateCollectionFirstStep> {
                   }
                 },
                 child: Text(
-                  'Next step',
+                  S.current.createCollectionFirstStepNextStepButtonLabel,
                   style: textTheme.bodyLarge!.copyWith(
                     color: colorScheme.primary,
                     fontWeight: FontWeight.bold,

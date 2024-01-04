@@ -6,6 +6,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:kordi_mobile/auth/controllers/auth_cubit.dart';
+import 'package:kordi_mobile/collections/controllers/collections_filter/collections_filter_bloc.dart';
+import 'package:kordi_mobile/collections/controllers/get_collections/get_collections_cubit.dart';
 import 'package:kordi_mobile/core/services/environment_service.dart';
 import 'package:kordi_mobile/core/utils/kordi_environment.dart';
 import 'package:kordi_mobile/dependency_injection.dart';
@@ -36,6 +38,13 @@ Future<void> bootstrap({
         ),
         BlocProvider<AuthCubit>(
           create: (context) => getIt.get<AuthCubit>()..init(),
+        ),
+        BlocProvider<GetCollectionsCubit>(
+          create: (context) => getIt.get<GetCollectionsCubit>(),
+        ),
+        BlocProvider<CollectionsFilterBloc>(
+          create: (context) => getIt.get<CollectionsFilterBloc>()
+            ..add(CollectionsFilterEvent.getCollections()),
         ),
       ],
       child: KordiApp(),

@@ -2,6 +2,7 @@
     "@@locale": "pl",
     "appName": "Kordi mobile",
     "kordiScaffoldTitle": "KORDI Mobile",
+    "fieldRequiredErrorLabel": "Pole wymagane",
     "filterDialogTitle": "Opcje filtrowania",
     "filterDialogTitleLabelText": "Nazwa",
     "filterDialogCityLabelText": "Miasto",
@@ -27,6 +28,47 @@
     },
     "collectionPageLocations": "Lokalizacje",
     "collectionPageLoadMoreButtonLabel": "Pobierz więcej...",
+    "createCollectionFirstStepTitle": "Podstawowe informacje o zbiórce",
+    "createCollectionFirstStepSubtitle": "Krok 1 z 4",
+    "createCollectionFirstStepInformation": "Prosimy o podanie podstawowych informacji o Twojej kolekcji",
+    "createCollectionFirstStepNameFormTextLabel": "Nazwa kolekcji*",
+    "createCollectionFirstStepDescriptionFormTextLabel": "Opis kolekcji*",
+    "createCollectionFirstStepEndDateFormTextLabel": "Data zakończenia kolekcji",
+    "createCollectionFirstStepPhotoLabel": "Zdjęcie kolekcji",
+    "createCollectionFirstStepPhotoHintLabel": "Dotknij obrazek powyżej, aby dodać zdjęcie",
+    "createCollectionFirstStepValidationHint": "Proszę wypełnij wszystkie pola oznaczone znakiem *",
+    "createCollectionFirstStepNextStepButtonLabel": "Następny krok",
+    "createCollectionSecondStepTitle": "Adresy kolekcji",
+    "createCollectionSecondStepSubtitle": "Krok 2 z 4",
+    "createCollectionSecondStepCityLabel": "Miasto",
+    "createCollectionSecondStepAddressLabel": "Adres",
+    "createCollectionSecondStepInformation": "Proszę podaj adresy, w których będą znajdować się skrzynki na przedmioty",
+    "createCollectionSecondStepAddAddressButtonLabel": "Dodaj adres",
+    "createCollectionSecondStepNextStepButtonLabel": "Następny krok",
+    "createCollectionThirdStepTitle": "Przedmioty kolekcji",
+    "createCollectionThirdStepSubtitle": "Krok 3 z 4",
+    "createCollectionThirdStepNameLabel": "Nazwa",
+    "createCollectionThirdStepCategoryLabel": "Kategoria",
+    "createCollectionThirdStepTypeLabel": "Typ",
+    "createCollectionThirdStepMaximumLabel": "Cel",
+    "createCollectionThirdStepInformation": "Proszę podaj przedmioty, które będą zbierane w tej kolekcji",
+    "createCollectionThirdStepAddItemButtonLabel": "Dodaj przedmiot",
+    "createCollectionThirdStepNextStepButtonLabel": "Następny krok",
+    "createCollectionFourthStepTitle": "Gratulacje!",
+    "createCollectionFourthStepSubtitle": "Krok 4 z 4",
+    "createCollectionFourthStepInformation": "Udało Ci się stworzyć kolekcję!",
+    "createCollectionFourthStepSecondInformation": "Wciąż możesz edytować swoją kolekcję później",
+    "createCollectionFourthStepButtonLabel": "Do kolekcji",
+    "collectionItemDialogTitle": "Dodaj przedmiot",
+    "collectionItemDialogNameFormLabelText": "Nazwa*",
+    "collectionItemDialogCategoryFormLabelText": "Kategoria*",
+    "collectionItemDialogTypeFormLabelText": "Typ*",
+    "collectionItemDialogMaximumFormLabelText": "Maksimum*",
+    "collectionItemDialogFieldsEmptyErrorLabel": "Wypelnij wszystkie wymagane pola",
+    "collectionItemDialogCancelButtonLabel": "Zamknij",
+    "collectionItemDialogAddButtonLabel": "Dodaj",
+    "collectionEditLocationsTileAddButtonLabel": "Dodaj adres",
+    "collectionEditItemListAddButtonLabel": "Dodaj przedmiot",
     "collectionDetailsDescriptionLabel": "Opis",
     "collectionDetailsLocationsLabel": "Lokalizacje do których możesz oddać przedmioty",
     "collectionDetailsAddressesUrlException": "Nie można otworzyć linku. Spróbuj ponownie później.",
@@ -67,6 +109,46 @@
         }
     },
     "collectionDetailsItemDonateLabel": "Przekaż: ",
+    "collectionEditSaveButtonLabel": "Zapisz",
+    "collectionEditNameLabel": "Nazwa",
+    "collectionEditFormLabelText": "Nazwa kolekcji*",
+    "collectionEditDescriptionLabel": "Opis",
+    "collectionEditDescriptionFormLabelText": "Opis kolekcji*",
+    "collectionEditItemListTitle": "Lista przedmiotów",
+    "collectionEditItemListEmptyState": "Musisz dodać przedmiot potrzebny dla tej kolekcji.",
+    "collectionEditItemTypeLabel": "Typ: {type}",
+    "@collectionEditItemTypeLabel": {
+        "description": "Item type label",
+        "placeholders": {
+            "type": {
+                "type": "String",
+                "description": "Item type",
+                "example": "Clothes"
+            }
+        }
+    },
+    "collectionEditItemCurrentLabel": "Dostarczone: {current}",
+    "@collectionEditItemCurrentLabel": {
+        "description": "Item current label",
+        "placeholders": {
+            "current": {
+                "type": "String",
+                "description": "Item current",
+                "example": "3"
+            }
+        }
+    },
+    "collectionEditItemMaximumLabel": "Cel: {maximum}",
+    "@collectionEditItemMaximumLabel": {
+        "description": "Item maximum label",
+        "placeholders": {
+            "maximum": {
+                "type": "String",
+                "description": "Item maximum",
+                "example": "5"
+            }
+        }
+    },
     "aboutPageTitle": "Strona o nas",
     "drawerUserGreetings": "Cześć, {username}!",
     "@drawerUserGreetings": {

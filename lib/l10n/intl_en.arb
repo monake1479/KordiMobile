@@ -2,6 +2,7 @@
     "@@locale": "en",
     "appName": "Kordi mobile",
     "kordiScaffoldTitle": "KORDI Mobile",
+    "fieldRequiredErrorLabel": "Field required",
     "filterDialogTitle": "Filter options",
     "filterDialogTitleLabelText": "Name",
     "filterDialogCityLabelText": "City",
@@ -27,6 +28,47 @@
     },
     "collectionPageLocations": "Locations",
     "collectionPageLoadMoreButtonLabel": "Load more...",
+    "createCollectionFirstStepTitle": "Basic collection information",
+    "createCollectionFirstStepSubtitle": "Step 1 of 4",
+    "createCollectionFirstStepInformation": "Please provide basic information about your collection",
+    "createCollectionFirstStepNameFormTextLabel": "Collection name*",
+    "createCollectionFirstStepDescriptionFormTextLabel": "Collection description*",
+    "createCollectionFirstStepEndDateFormTextLabel": "Collection end date",
+    "createCollectionFirstStepPhotoLabel": "Collection photo",
+    "createCollectionFirstStepPhotoHintLabel": "Tap image above to add photo",
+    "createCollectionFirstStepValidationHint": "Please fill all required fields, indicated by *",
+    "createCollectionFirstStepNextStepButtonLabel": "Next step",
+    "createCollectionSecondStepTitle": "Collection addresses",
+    "createCollectionSecondStepSubtitle": "Step 2 of 4",
+    "createCollectionSecondStepCityLabel": "City",
+    "createCollectionSecondStepAddressLabel": "Address",
+    "createCollectionSecondStepInformation": "Please provide addresses where donates can be stored",
+    "createCollectionSecondStepAddAddressButtonLabel": "Add address",
+    "createCollectionSecondStepNextStepButtonLabel": "Next step",
+    "createCollectionThirdStepTitle": "Collection items",
+    "createCollectionThirdStepSubtitle": "Step 3 of 4",
+    "createCollectionThirdStepNameLabel": "Name",
+    "createCollectionThirdStepCategoryLabel": "Category",
+    "createCollectionThirdStepTypeLabel": "Type",
+    "createCollectionThirdStepMaximumLabel": "Maximum quantity",
+    "createCollectionThirdStepInformation": "Please provide items that collection needs",
+    "createCollectionThirdStepAddItemButtonLabel": "Add item",
+    "createCollectionThirdStepNextStepButtonLabel": "Next step",
+    "createCollectionFourthStepTitle": "Congratulations!",
+    "createCollectionFourthStepSubtitle": "Step 4 of 4",
+    "createCollectionFourthStepInformation": "You have successfully created collection!",
+    "createCollectionFourthStepSecondInformation": "You can still edit it later.",
+    "createCollectionFourthStepButtonLabel": "To collections",
+    "collectionItemDialogTitle": "Add item",
+    "collectionItemDialogNameFormLabelText": "Name*",
+    "collectionItemDialogCategoryFormLabelText": "Category*",
+    "collectionItemDialogTypeFormLabelText": "Type*",
+    "collectionItemDialogMaximumFormLabelText": "Maximum quantity*",
+    "collectionItemDialogFieldsEmptyErrorLabel": "Please fill all fields",
+    "collectionItemDialogCancelButtonLabel": "Cancel",
+    "collectionItemDialogAddButtonLabel": "Add",
+    "collectionEditLocationsTileAddButtonLabel": "Add address",
+    "collectionEditItemListAddButtonLabel": "Add item",
     "collectionDetailsDescriptionLabel": "Description",
     "collectionDetailsLocationsLabel": "Locations where you can donate",
     "collectionDetailsAddressesUrlException": "Cannot open address in browser.",
@@ -67,6 +109,46 @@
         }
     },
     "collectionDetailsItemDonateLabel": "Donate:",
+    "collectionEditSaveButtonLabel": "Save",
+    "collectionEditNameLabel": "Name",
+    "collectionEditNameFormLabelText": "Collection name*",
+    "collectionEditDescriptionLabel": "Description",
+    "collectionEditDescriptionFormLabelText": "Collection description*",
+    "collectionEditItemListTitle": "Items list",
+    "collectionEditItemListEmptyState": "You need to add donation needs to your collection",
+    "collectionEditItemTypeLabel": "Type: {type}",
+    "@collectionEditItemTypeLabel": {
+        "description": "Item type label",
+        "placeholders": {
+            "type": {
+                "type": "String",
+                "description": "Item type",
+                "example": "Clothes"
+            }
+        }
+    },
+    "collectionEditItemCurrentLabel": "Current: {current}",
+    "@collectionEditItemCurrentLabel": {
+        "description": "Item current label",
+        "placeholders": {
+            "current": {
+                "type": "String",
+                "description": "Item current",
+                "example": "3"
+            }
+        }
+    },
+    "collectionEditItemMaximumLabel": "Maximum: {maximum}",
+    "@collectionEditItemMaximumLabel": {
+        "description": "Item maximum label",
+        "placeholders": {
+            "maximum": {
+                "type": "String",
+                "description": "Item maximum",
+                "example": "5"
+            }
+        }
+    },
     "aboutPageTitle": "About page",
     "drawerUserGreetings": "Hello, {username}!",
     "@drawerUserGreetings": {

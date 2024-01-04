@@ -19,10 +19,18 @@ class CollectionFormEvent with _$CollectionFormEvent {
       _AddAddress;
   const factory CollectionFormEvent.removeAddress(CollectionAddress address) =
       _RemoveAddress;
+  const factory CollectionFormEvent.editAddress(
+    CollectionAddress oldAddress,
+    CollectionAddress newAddress,
+  ) = _EditAddress;
   const factory CollectionFormEvent.setItems(List<CollectionItem> items) =
       _SetItems;
   const factory CollectionFormEvent.addItem(CollectionItem item) = _AddItem;
   const factory CollectionFormEvent.removeItem(CollectionItem item) =
       _RemoveItem;
+  const factory CollectionFormEvent.editItem(
+    CollectionItem oldItem,
+    CollectionItem newItem,
+  ) = _EditItem;
   const factory CollectionFormEvent.checkValidation() = _CheckValidation;
 }

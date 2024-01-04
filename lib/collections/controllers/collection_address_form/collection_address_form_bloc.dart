@@ -12,10 +12,23 @@ part 'collection_address_form_bloc.freezed.dart';
 class CollectionAddressFormBloc
     extends Bloc<CollectionAddressFormEvent, CollectionAddressFormState> {
   CollectionAddressFormBloc() : super(CollectionAddressFormState.initial()) {
+    on<_SetInitial>(_setInitial);
     on<_SetCity>(_setCity);
     on<_SetStreet>(_setStreet);
     on<_CheckValidation>(_checkValidation);
   }
+  void _setInitial(
+    _SetInitial event,
+    Emitter<CollectionAddressFormState> emit,
+  ) {
+    emit(
+      state.copyWith(
+        city: event.address.city,
+        street: event.address.street,
+      ),
+    );
+  }
+
   void _setCity(
     _SetCity event,
     Emitter<CollectionAddressFormState> emit,

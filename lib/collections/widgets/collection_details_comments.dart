@@ -1,7 +1,7 @@
 part of 'package:kordi_mobile/collections/pages/collection_details_page.dart';
 
 class _CollectionDetailsComments extends StatelessWidget {
-  const _CollectionDetailsComments({super.key});
+  const _CollectionDetailsComments();
 
   @override
   Widget build(BuildContext context) {

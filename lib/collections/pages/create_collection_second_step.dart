@@ -32,12 +32,12 @@ class CreateCollectionSecondStep extends StatelessWidget {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           Text(
-                            'Collection addresses',
+                            S.current.createCollectionSecondStepTitle,
                             textAlign: TextAlign.center,
                             style: textTheme.titleLarge,
                           ),
                           Text(
-                            'Step 2 of 4',
+                            S.current.createCollectionSecondStepSubtitle,
                             textAlign: TextAlign.center,
                             style: textTheme.titleMedium!.copyWith(
                               color: theme.primaryColor,
@@ -73,8 +73,15 @@ class CreateCollectionSecondStep extends StatelessWidget {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
-                                Text('City', style: textTheme.bodyLarge),
-                                Text('Address', style: textTheme.bodyLarge),
+                                Text(
+                                  S.current.createCollectionSecondStepCityLabel,
+                                  style: textTheme.bodyLarge,
+                                ),
+                                Text(
+                                  S.current
+                                      .createCollectionSecondStepAddressLabel,
+                                  style: textTheme.bodyLarge,
+                                ),
                               ],
                             ),
                           ),
@@ -84,7 +91,8 @@ class CreateCollectionSecondStep extends StatelessWidget {
                                 return ShakeError(
                                   key: _shakeErrorKey,
                                   child: Text(
-                                    'Please provide addresses where donates can be stored',
+                                    S.current
+                                        .createCollectionSecondStepInformation,
                                     textAlign: TextAlign.center,
                                     style: textTheme.bodyLarge,
                                   ),
@@ -124,7 +132,8 @@ class CreateCollectionSecondStep extends StatelessWidget {
                                 await _onAddAddressButtonOnPressed(context);
                               },
                               child: Text(
-                                'Add address',
+                                S.current
+                                    .createCollectionSecondStepAddAddressButtonLabel,
                                 style: textTheme.bodyLarge!.copyWith(
                                   color: colorScheme.primary,
                                   fontWeight: FontWeight.bold,
@@ -154,7 +163,7 @@ class CreateCollectionSecondStep extends StatelessWidget {
                   _shakeErrorKey.currentState?.shake();
                 },
                 child: Text(
-                  'Next step',
+                  S.current.createCollectionSecondStepNextStepButtonLabel,
                   style: textTheme.bodyLarge!.copyWith(
                     color: colorScheme.primary,
                     fontWeight: FontWeight.bold,
@@ -171,85 +180,7 @@ class CreateCollectionSecondStep extends StatelessWidget {
   Future<void> _onAddAddressButtonOnPressed(
     BuildContext context,
   ) async {
-    final theme = Theme.of(context);
-    final textTheme = theme.textTheme;
-    final colorScheme = theme.colorScheme;
-    final result = await showDialog<CollectionAddress?>(
-      context: context,
-      builder: (context) {
-        return BlocProvider(
-          create: (context) => getIt.get<CollectionAddressFormBloc>(),
-          child: BlocBuilder<CollectionAddressFormBloc,
-              CollectionAddressFormState>(
-            builder: (context, state) {
-              final collectionAddressFormBloc =
-                  context.read<CollectionAddressFormBloc>();
-              return AlertDialog(
-                title: Text('Add address'),
-                content: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 8),
-                      child: KordiTextField(
-                        labelText: 'City',
-                        errorText: state.validationError && state.city.isEmpty
-                            ? 'Field required'
-                            : null,
-                        onChanged: (city) => collectionAddressFormBloc
-                            .add(CollectionAddressFormEvent.setCity(city)),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 8),
-                      child: KordiTextField(
-                        labelText: 'Street',
-                        errorText: state.validationError && state.street.isEmpty
-                            ? 'Field required'
-                            : null,
-                        onChanged: (street) => collectionAddressFormBloc
-                            .add(CollectionAddressFormEvent.setStreet(street)),
-                      ),
-                    ),
-                    Builder(
-                      builder: (context) {
-                        if (state.validationError) {
-                          return Text(
-                            'Please fill all fields',
-                            style: textTheme.bodyLarge?.copyWith(
-                              color: colorScheme.error,
-                            ),
-                          );
-                        }
-                        return const SizedBox.shrink();
-                      },
-                    ),
-                  ],
-                ),
-                actions: [
-                  TextButton(
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                    child: Text('Cancel'),
-                  ),
-                  TextButton(
-                    onPressed: () {
-                      collectionAddressFormBloc
-                          .add(CollectionAddressFormEvent.checkValidation());
-                      if (state.isFormValid) {
-                        Navigator.of(context).pop(state.toCollectionAddress);
-                      }
-                    },
-                    child: Text('Add'),
-                  ),
-                ],
-              );
-            },
-          ),
-        );
-      },
-    );
+    final result = await CollectionAddressDialog.show(context);
     if (result != null) {
       context.read<CollectionFormBloc>().add(
             CollectionFormEvent.addAddress(result),

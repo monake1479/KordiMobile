@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:kordi_mobile/auth/controllers/auth_cubit.dart';
 import 'package:kordi_mobile/collections/controllers/collection_form/collection_form_bloc.dart';
 import 'package:kordi_mobile/collections/models/collections_models.dart';
 import 'package:kordi_mobile/core/models/kordi_exception.dart';
@@ -9,6 +10,7 @@ import 'package:kordi_mobile/core/navigation/kordi_router.dart';
 import 'package:kordi_mobile/core/utils/kordi_dialog.dart';
 import 'package:kordi_mobile/dependency_injection.dart';
 import 'package:kordi_mobile/gen/l10n.dart';
+import 'package:kordi_mobile/user/controllers/get_user_cubit.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 part 'package:kordi_mobile/collections/widgets/collection_details_comments.dart';
@@ -27,6 +29,8 @@ class CollectionDetailsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
+    final authState = context.read<AuthCubit>().state;
+    final userId = context.read<GetUserCubit>().state.user?.id;
 
     return BlocProvider<CollectionFormBloc>(
       create: (context) => getIt.get<CollectionFormBloc>()
@@ -61,6 +65,24 @@ class CollectionDetailsPage extends StatelessWidget {
                       CollectionPageRoute().go(context);
                     },
                   ),
+                  actions: [
+                    Builder(
+                      builder: (context) {
+                        if (!authState.isAuthorized && collectionId != userId) {
+                          return const SizedBox.shrink();
+                        }
+                        return IconButton(
+                          onPressed: () {
+                            CollectionEditPageRoute(collectionId).go(context);
+                          },
+                          icon: Icon(
+                            Icons.edit_square,
+                            color: Colors.white,
+                          ),
+                        );
+                      },
+                    ),
+                  ],
                   flexibleSpace: FlexibleSpaceBar(
                     background: Image.network(
                       'https://picsum.photos/seed/${state.id}/200/300',

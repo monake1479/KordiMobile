@@ -5,7 +5,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:kordi_mobile/collections/controllers/get_collections/get_collections_cubit.dart';
-import 'package:kordi_mobile/collections/models/collection_filter.dart';
 import 'package:kordi_mobile/collections/models/collections_models.dart';
 import 'package:kordi_mobile/dependency_injection.dart';
 

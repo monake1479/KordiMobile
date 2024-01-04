@@ -26,12 +26,18 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m2(type) => "Type: ${type}";
 
-  static String m3(collectionId) =>
+  static String m3(current) => "Current: ${current}";
+
+  static String m4(maximum) => "Maximum: ${maximum}";
+
+  static String m5(type) => "Type: ${type}";
+
+  static String m6(collectionId) =>
       "Collection with id ${collectionId} not found.";
 
-  static String m4(daysLeft) => "${daysLeft} days left until the end";
+  static String m7(daysLeft) => "${daysLeft} days left until the end";
 
-  static String m5(username) => "Hello, ${username}!";
+  static String m8(username) => "Hello, ${username}!";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -78,8 +84,45 @@ class MessageLookup extends MessageLookupByLibrary {
                 "User not provide any locations."),
         "collectionDetailsLocationsLabel": MessageLookupByLibrary.simpleMessage(
             "Locations where you can donate"),
-        "collectionNotFoundError": m3,
-        "collectionPageDaysLeft": m4,
+        "collectionEditDescriptionFormLabelText":
+            MessageLookupByLibrary.simpleMessage("Collection description*"),
+        "collectionEditDescriptionLabel":
+            MessageLookupByLibrary.simpleMessage("Description"),
+        "collectionEditItemCurrentLabel": m3,
+        "collectionEditItemListAddButtonLabel":
+            MessageLookupByLibrary.simpleMessage("Add item"),
+        "collectionEditItemListEmptyState":
+            MessageLookupByLibrary.simpleMessage(
+                "You need to add donation needs to your collection"),
+        "collectionEditItemListTitle":
+            MessageLookupByLibrary.simpleMessage("Items list"),
+        "collectionEditItemMaximumLabel": m4,
+        "collectionEditItemTypeLabel": m5,
+        "collectionEditLocationsTileAddButtonLabel":
+            MessageLookupByLibrary.simpleMessage("Add address"),
+        "collectionEditNameFormLabelText":
+            MessageLookupByLibrary.simpleMessage("Collection name*"),
+        "collectionEditNameLabel": MessageLookupByLibrary.simpleMessage("Name"),
+        "collectionEditSaveButtonLabel":
+            MessageLookupByLibrary.simpleMessage("Save"),
+        "collectionItemDialogAddButtonLabel":
+            MessageLookupByLibrary.simpleMessage("Add"),
+        "collectionItemDialogCancelButtonLabel":
+            MessageLookupByLibrary.simpleMessage("Cancel"),
+        "collectionItemDialogCategoryFormLabelText":
+            MessageLookupByLibrary.simpleMessage("Category*"),
+        "collectionItemDialogFieldsEmptyErrorLabel":
+            MessageLookupByLibrary.simpleMessage("Please fill all fields"),
+        "collectionItemDialogMaximumFormLabelText":
+            MessageLookupByLibrary.simpleMessage("Maximum quantity*"),
+        "collectionItemDialogNameFormLabelText":
+            MessageLookupByLibrary.simpleMessage("Name*"),
+        "collectionItemDialogTitle":
+            MessageLookupByLibrary.simpleMessage("Add item"),
+        "collectionItemDialogTypeFormLabelText":
+            MessageLookupByLibrary.simpleMessage("Type*"),
+        "collectionNotFoundError": m6,
+        "collectionPageDaysLeft": m7,
         "collectionPageEmptyState": MessageLookupByLibrary.simpleMessage(
             "No collections found or given filter result are empty."),
         "collectionPageEmptyStateButtonLabel":
@@ -92,6 +135,75 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Collection progress:"),
         "collectionPageTitle":
             MessageLookupByLibrary.simpleMessage("Collection page"),
+        "createCollectionFirstStepDescriptionFormTextLabel":
+            MessageLookupByLibrary.simpleMessage("Collection description*"),
+        "createCollectionFirstStepEndDateFormTextLabel":
+            MessageLookupByLibrary.simpleMessage("Collection end date"),
+        "createCollectionFirstStepInformation":
+            MessageLookupByLibrary.simpleMessage(
+                "Please provide basic information about your collection"),
+        "createCollectionFirstStepNameFormTextLabel":
+            MessageLookupByLibrary.simpleMessage("Collection name*"),
+        "createCollectionFirstStepNextStepButtonLabel":
+            MessageLookupByLibrary.simpleMessage("Next step"),
+        "createCollectionFirstStepPhotoHintLabel":
+            MessageLookupByLibrary.simpleMessage(
+                "Tap image above to add photo"),
+        "createCollectionFirstStepPhotoLabel":
+            MessageLookupByLibrary.simpleMessage("Collection photo"),
+        "createCollectionFirstStepSubtitle":
+            MessageLookupByLibrary.simpleMessage("Step 1 of 4"),
+        "createCollectionFirstStepTitle": MessageLookupByLibrary.simpleMessage(
+            "Basic collection information"),
+        "createCollectionFirstStepValidationHint":
+            MessageLookupByLibrary.simpleMessage(
+                "Please fill all required fields, indicated by *"),
+        "createCollectionFourthStepButtonLabel":
+            MessageLookupByLibrary.simpleMessage("To collections"),
+        "createCollectionFourthStepInformation":
+            MessageLookupByLibrary.simpleMessage(
+                "You have successfully created collection!"),
+        "createCollectionFourthStepSecondInformation":
+            MessageLookupByLibrary.simpleMessage(
+                "You can still edit it later."),
+        "createCollectionFourthStepSubtitle":
+            MessageLookupByLibrary.simpleMessage("Step 4 of 4"),
+        "createCollectionFourthStepTitle":
+            MessageLookupByLibrary.simpleMessage("Congratulations!"),
+        "createCollectionSecondStepAddAddressButtonLabel":
+            MessageLookupByLibrary.simpleMessage("Add address"),
+        "createCollectionSecondStepAddressLabel":
+            MessageLookupByLibrary.simpleMessage("Address"),
+        "createCollectionSecondStepCityLabel":
+            MessageLookupByLibrary.simpleMessage("City"),
+        "createCollectionSecondStepInformation":
+            MessageLookupByLibrary.simpleMessage(
+                "Please provide addresses where donates can be stored"),
+        "createCollectionSecondStepNextStepButtonLabel":
+            MessageLookupByLibrary.simpleMessage("Next step"),
+        "createCollectionSecondStepSubtitle":
+            MessageLookupByLibrary.simpleMessage("Step 2 of 4"),
+        "createCollectionSecondStepTitle":
+            MessageLookupByLibrary.simpleMessage("Collection addresses"),
+        "createCollectionThirdStepAddItemButtonLabel":
+            MessageLookupByLibrary.simpleMessage("Add item"),
+        "createCollectionThirdStepCategoryLabel":
+            MessageLookupByLibrary.simpleMessage("Category"),
+        "createCollectionThirdStepInformation":
+            MessageLookupByLibrary.simpleMessage(
+                "Please provide items that collection needs"),
+        "createCollectionThirdStepMaximumLabel":
+            MessageLookupByLibrary.simpleMessage("Maximum quantity"),
+        "createCollectionThirdStepNameLabel":
+            MessageLookupByLibrary.simpleMessage("Name"),
+        "createCollectionThirdStepNextStepButtonLabel":
+            MessageLookupByLibrary.simpleMessage("Next step"),
+        "createCollectionThirdStepSubtitle":
+            MessageLookupByLibrary.simpleMessage("Step 3 of 4"),
+        "createCollectionThirdStepTitle":
+            MessageLookupByLibrary.simpleMessage("Collection items"),
+        "createCollectionThirdStepTypeLabel":
+            MessageLookupByLibrary.simpleMessage("Type"),
         "drawerAboutButtonLabel": MessageLookupByLibrary.simpleMessage("About"),
         "drawerChangeLanguageButtonLabel":
             MessageLookupByLibrary.simpleMessage("Change language"),
@@ -106,13 +218,15 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Sign out"),
         "drawerSignUpButtonLabel":
             MessageLookupByLibrary.simpleMessage("Sign up"),
-        "drawerUserGreetings": m5,
+        "drawerUserGreetings": m8,
         "errorPageDescription": MessageLookupByLibrary.simpleMessage(
             "Please, try again later.\nRestart the app and contact with us to report issue."),
         "exceptionDialogButtonLabel":
             MessageLookupByLibrary.simpleMessage("OK"),
         "exceptionDialogTitle":
             MessageLookupByLibrary.simpleMessage("Kordi occurred an error..."),
+        "fieldRequiredErrorLabel":
+            MessageLookupByLibrary.simpleMessage("Field required"),
         "filterDialogApplyButtonLabel":
             MessageLookupByLibrary.simpleMessage("Apply"),
         "filterDialogCategoryTitle":
