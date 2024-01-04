@@ -131,10 +131,6 @@ class _CreateCollectionFirstStepState extends State<CreateCollectionFirstStep> {
                         decoration: InputDecoration(
                           contentPadding: const EdgeInsets.all(8),
                           border: OutlineInputBorder(),
-                          errorText:
-                              (state.validationError && state.endTime == null)
-                                  ? S.current.fieldRequiredErrorLabel
-                                  : null,
                           labelText: S.current
                               .createCollectionFirstStepEndDateFormTextLabel,
                           suffixIcon: Icon(
