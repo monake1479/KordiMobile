@@ -20,7 +20,7 @@ class CollectionAddressDialog extends StatefulWidget {
     bool isEdit = false,
     CollectionAddress? address,
   }) async {
-    return showDialog<CollectionAddress?>(
+    return showAdaptiveDialog<CollectionAddress?>(
       context: context,
       builder: (context) => CollectionAddressDialog(
         isEdit: isEdit,
@@ -70,63 +70,67 @@ class _CollectionAddressDialogState extends State<CollectionAddressDialog> {
           final collectionAddressFormBloc =
               context.read<CollectionAddressFormBloc>();
 
-          return AlertDialog(
+          return AlertDialog.adaptive(
             title: Text(
               widget.isEdit
                   ? S.current.collectionAddressDialogEditTitle
                   : S.current.collectionAddressDialogAddTitle,
             ),
-            content: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 8),
-                  child: TextFormField(
-                    controller: _cityController,
-                    decoration: InputDecoration(
-                      contentPadding: const EdgeInsets.all(8),
-                      border: OutlineInputBorder(),
-                      labelText:
-                          S.current.collectionAddressDialogCityFormLabelText,
-                      errorText: state.validationError && state.city.isEmpty
-                          ? S.current.fieldRequiredErrorLabel
-                          : null,
+            content: Material(
+              color: Colors.transparent,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 8),
+                    child: TextFormField(
+                      controller: _cityController,
+                      decoration: InputDecoration(
+                        contentPadding: const EdgeInsets.all(8),
+                        border: OutlineInputBorder(),
+                        labelText:
+                            S.current.collectionAddressDialogCityFormLabelText,
+                        errorText: state.validationError && state.city.isEmpty
+                            ? S.current.fieldRequiredErrorLabel
+                            : null,
+                      ),
+                      onChanged: (city) => collectionAddressFormBloc
+                          .add(CollectionAddressFormEvent.setCity(city)),
                     ),
-                    onChanged: (city) => collectionAddressFormBloc
-                        .add(CollectionAddressFormEvent.setCity(city)),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 8),
-                  child: TextFormField(
-                    controller: _streetController,
-                    decoration: InputDecoration(
-                      contentPadding: const EdgeInsets.all(8),
-                      border: OutlineInputBorder(),
-                      labelText:
-                          S.current.collectionAddressDialogStreetFormLabelText,
-                      errorText: state.validationError && state.street.isEmpty
-                          ? S.current.fieldRequiredErrorLabel
-                          : null,
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 8),
+                    child: TextFormField(
+                      controller: _streetController,
+                      decoration: InputDecoration(
+                        contentPadding: const EdgeInsets.all(8),
+                        border: OutlineInputBorder(),
+                        labelText: S
+                            .current.collectionAddressDialogStreetFormLabelText,
+                        errorText: state.validationError && state.street.isEmpty
+                            ? S.current.fieldRequiredErrorLabel
+                            : null,
+                      ),
+                      onChanged: (street) => collectionAddressFormBloc
+                          .add(CollectionAddressFormEvent.setStreet(street)),
                     ),
-                    onChanged: (street) => collectionAddressFormBloc
-                        .add(CollectionAddressFormEvent.setStreet(street)),
                   ),
-                ),
-                Builder(
-                  builder: (context) {
-                    if (state.validationError) {
-                      return Text(
-                        S.current.collectionAddressDialogFieldsEmptyErrorLabel,
-                        style: textTheme.bodyLarge?.copyWith(
-                          color: colorScheme.error,
-                        ),
-                      );
-                    }
-                    return const SizedBox.shrink();
-                  },
-                ),
-              ],
+                  Builder(
+                    builder: (context) {
+                      if (state.validationError) {
+                        return Text(
+                          S.current
+                              .collectionAddressDialogFieldsEmptyErrorLabel,
+                          style: textTheme.bodyLarge?.copyWith(
+                            color: colorScheme.error,
+                          ),
+                        );
+                      }
+                      return const SizedBox.shrink();
+                    },
+                  ),
+                ],
+              ),
             ),
             actions: [
               TextButton(
