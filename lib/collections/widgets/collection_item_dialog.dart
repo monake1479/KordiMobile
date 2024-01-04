@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kordi_mobile/collections/controllers/collection_item_form/collection_item_form_bloc.dart';
 import 'package:kordi_mobile/collections/models/collections_models.dart';
-import 'package:kordi_mobile/core/widgets/kordi_text_field.dart';
 import 'package:kordi_mobile/dependency_injection.dart';
 import 'package:kordi_mobile/gen/l10n.dart';
 
@@ -60,21 +59,28 @@ class _CollectionItemDialogState extends State<CollectionItemDialog> {
         builder: (context, state) {
           final collectionItemFormBloc = context.read<CollectionItemFormBloc>();
           return AlertDialog(
-            title: Text('Add item'),
+            title: Text(
+              widget.isEdit
+                  ? S.current.collectionItemDialogEditTitle
+                  : S.current.collectionItemDialogAddTitle,
+            ),
             content: Column(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Padding(
                   padding: const EdgeInsets.only(bottom: 8),
-                  child: KordiTextField(
+                  child: TextFormField(
                     controller: _nameController,
-                    labelText: S.current.collectionItemDialogNameFormLabelText,
-                    shouldShowErrorText:
-                        state.validationError && state.name.isEmpty,
-                    errorText: state.validationError && state.name.isEmpty
-                        ? S.current.fieldRequiredErrorLabel
-                        : null,
+                    decoration: InputDecoration(
+                      contentPadding: const EdgeInsets.all(8),
+                      border: OutlineInputBorder(),
+                      labelText:
+                          S.current.collectionItemDialogNameFormLabelText,
+                      errorText: state.validationError && state.name.isEmpty
+                          ? S.current.fieldRequiredErrorLabel
+                          : null,
+                    ),
                     onChanged: (name) => collectionItemFormBloc.add(
                       CollectionItemFormEvent.setName(name),
                     ),
@@ -146,12 +152,16 @@ class _CollectionItemDialogState extends State<CollectionItemDialog> {
                     if (state.type.isUnlimited) {
                       return const SizedBox.shrink();
                     }
-                    return KordiTextField(
+                    return TextFormField(
                       controller: _maximumController,
-                      labelText:
-                          S.current.collectionItemDialogMaximumFormLabelText,
+                      decoration: InputDecoration(
+                        contentPadding: const EdgeInsets.all(8),
+                        border: OutlineInputBorder(),
+                        labelText:
+                            S.current.collectionItemDialogMaximumFormLabelText,
+                        suffixText: state.type.unitSuffix,
+                      ),
                       keyboardType: TextInputType.number,
-                      suffixText: state.type.unitSuffix,
                       onChanged: (maxAmount) {
                         final int? value = int.tryParse(maxAmount);
                         if (value != null) {

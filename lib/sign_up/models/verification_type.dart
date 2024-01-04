@@ -1,15 +1,13 @@
 import 'package:kordi_mobile/gen/l10n.dart';
 
 enum VerificationType {
-  email(value: 'EMAIL', name: 'Email'),
-  phoneNumber(value: 'PHONE', name: 'Phone');
+  email(value: 'EMAIL'),
+  phoneNumber(value: 'PHONE');
 
   const VerificationType({
-    required this.name,
     required this.value,
   });
   final String value;
-  final String name;
 }
 
 extension VerificationTypeEx on VerificationType {

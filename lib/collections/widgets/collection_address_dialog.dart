@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kordi_mobile/collections/controllers/collection_address_form/collection_address_form_bloc.dart';
 import 'package:kordi_mobile/collections/models/collections_models.dart';
-import 'package:kordi_mobile/core/widgets/kordi_text_field.dart';
 import 'package:kordi_mobile/dependency_injection.dart';
+import 'package:kordi_mobile/gen/l10n.dart';
 
 class CollectionAddressDialog extends StatefulWidget {
   const CollectionAddressDialog({
@@ -71,30 +71,44 @@ class _CollectionAddressDialogState extends State<CollectionAddressDialog> {
               context.read<CollectionAddressFormBloc>();
 
           return AlertDialog(
-            title: Text(widget.isEdit ? 'Add address' : 'Edit address'),
+            title: Text(
+              widget.isEdit
+                  ? S.current.collectionAddressDialogEditTitle
+                  : S.current.collectionAddressDialogAddTitle,
+            ),
             content: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
                 Padding(
                   padding: const EdgeInsets.only(bottom: 8),
-                  child: KordiTextField(
+                  child: TextFormField(
                     controller: _cityController,
-                    labelText: 'City',
-                    errorText: state.validationError && state.city.isEmpty
-                        ? 'Field required'
-                        : null,
+                    decoration: InputDecoration(
+                      contentPadding: const EdgeInsets.all(8),
+                      border: OutlineInputBorder(),
+                      labelText:
+                          S.current.collectionAddressDialogCityFormLabelText,
+                      errorText: state.validationError && state.city.isEmpty
+                          ? S.current.fieldRequiredErrorLabel
+                          : null,
+                    ),
                     onChanged: (city) => collectionAddressFormBloc
                         .add(CollectionAddressFormEvent.setCity(city)),
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(bottom: 8),
-                  child: KordiTextField(
+                  child: TextFormField(
                     controller: _streetController,
-                    labelText: 'Street',
-                    errorText: state.validationError && state.street.isEmpty
-                        ? 'Field required'
-                        : null,
+                    decoration: InputDecoration(
+                      contentPadding: const EdgeInsets.all(8),
+                      border: OutlineInputBorder(),
+                      labelText:
+                          S.current.collectionAddressDialogStreetFormLabelText,
+                      errorText: state.validationError && state.street.isEmpty
+                          ? S.current.fieldRequiredErrorLabel
+                          : null,
+                    ),
                     onChanged: (street) => collectionAddressFormBloc
                         .add(CollectionAddressFormEvent.setStreet(street)),
                   ),
@@ -103,7 +117,7 @@ class _CollectionAddressDialogState extends State<CollectionAddressDialog> {
                   builder: (context) {
                     if (state.validationError) {
                       return Text(
-                        'Please fill all fields',
+                        S.current.collectionAddressDialogFieldsEmptyErrorLabel,
                         style: textTheme.bodyLarge?.copyWith(
                           color: colorScheme.error,
                         ),
@@ -119,7 +133,7 @@ class _CollectionAddressDialogState extends State<CollectionAddressDialog> {
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
-                child: Text('Cancel'),
+                child: Text(S.current.collectionAddressDialogCancelButtonLabel),
               ),
               TextButton(
                 onPressed: () {
@@ -129,7 +143,7 @@ class _CollectionAddressDialogState extends State<CollectionAddressDialog> {
                     Navigator.of(context).pop(state.toCollectionAddress);
                   }
                 },
-                child: Text('Add'),
+                child: Text(S.current.collectionAddressDialogAddButtonLabel),
               ),
             ],
           );

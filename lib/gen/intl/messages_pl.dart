@@ -66,6 +66,21 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Wprowadź nowe hasło"),
         "changePasswordPagePasswordLabelTextField":
             MessageLookupByLibrary.simpleMessage("Nowe hasło"),
+        "collectionAddressDialogAddButtonLabel":
+            MessageLookupByLibrary.simpleMessage("Dodaj"),
+        "collectionAddressDialogAddTitle":
+            MessageLookupByLibrary.simpleMessage("Dodaj adres"),
+        "collectionAddressDialogCancelButtonLabel":
+            MessageLookupByLibrary.simpleMessage("Zamknij"),
+        "collectionAddressDialogCityFormLabelText":
+            MessageLookupByLibrary.simpleMessage("Miasto*"),
+        "collectionAddressDialogEditTitle":
+            MessageLookupByLibrary.simpleMessage("Edytuj adres"),
+        "collectionAddressDialogFieldsEmptyErrorLabel":
+            MessageLookupByLibrary.simpleMessage(
+                "Wypelnij wszystkie wymagane pola"),
+        "collectionAddressDialogStreetFormLabelText":
+            MessageLookupByLibrary.simpleMessage("Ulica*"),
         "collectionDetailsAddressesUrlException":
             MessageLookupByLibrary.simpleMessage(
                 "Nie można otworzyć linku. Spróbuj ponownie później."),
@@ -102,6 +117,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "collectionEditItemTypeLabel": m5,
         "collectionEditLocationsTileAddButtonLabel":
             MessageLookupByLibrary.simpleMessage("Dodaj adres"),
+        "collectionEditNameFormLabelText":
+            MessageLookupByLibrary.simpleMessage("Nazwa kolekcji*"),
         "collectionEditNameLabel":
             MessageLookupByLibrary.simpleMessage("Nazwa"),
         "collectionEditSaveButtonLabel":
@@ -122,10 +139,14 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Inne"),
         "collectionItemDialogAddButtonLabel":
             MessageLookupByLibrary.simpleMessage("Dodaj"),
+        "collectionItemDialogAddTitle":
+            MessageLookupByLibrary.simpleMessage("Dodaj przedmiot"),
         "collectionItemDialogCancelButtonLabel":
             MessageLookupByLibrary.simpleMessage("Zamknij"),
         "collectionItemDialogCategoryFormLabelText":
             MessageLookupByLibrary.simpleMessage("Kategoria*"),
+        "collectionItemDialogEditTitle":
+            MessageLookupByLibrary.simpleMessage("Edytuj przedmiot"),
         "collectionItemDialogFieldsEmptyErrorLabel":
             MessageLookupByLibrary.simpleMessage(
                 "Wypelnij wszystkie wymagane pola"),
@@ -133,12 +154,14 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Maksimum*"),
         "collectionItemDialogNameFormLabelText":
             MessageLookupByLibrary.simpleMessage("Nazwa*"),
-        "collectionItemDialogTitle":
-            MessageLookupByLibrary.simpleMessage("Dodaj przedmiot"),
         "collectionItemDialogTypeFormLabelText":
             MessageLookupByLibrary.simpleMessage("Typ*"),
         "collectionItemTypeAmountName":
             MessageLookupByLibrary.simpleMessage("Ilość"),
+        "collectionItemTypeUnitSuffixKg":
+            MessageLookupByLibrary.simpleMessage("kg"),
+        "collectionItemTypeUnitSuffixPieces":
+            MessageLookupByLibrary.simpleMessage("szt"),
         "collectionItemTypeUnlimitedName":
             MessageLookupByLibrary.simpleMessage("Bez limitu"),
         "collectionItemTypeWeightName":

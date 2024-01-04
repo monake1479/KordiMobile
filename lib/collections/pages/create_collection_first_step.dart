@@ -82,13 +82,18 @@ class _CreateCollectionFirstStepState extends State<CreateCollectionFirstStep> {
                   children: [
                     Padding(
                       padding: const EdgeInsets.only(bottom: 8),
-                      child: KordiTextField(
+                      child: TextFormField(
                         initialValue: state.name,
-                        errorText: S.current.fieldRequiredErrorLabel,
-                        shouldShowErrorText:
-                            state.validationError && state.name.isEmpty,
-                        labelText: S
-                            .current.createCollectionFirstStepNameFormTextLabel,
+                        decoration: InputDecoration(
+                          contentPadding: const EdgeInsets.all(8),
+                          border: OutlineInputBorder(),
+                          errorText:
+                              (state.validationError && state.name.isEmpty)
+                                  ? S.current.fieldRequiredErrorLabel
+                                  : null,
+                          labelText: S.current
+                              .createCollectionFirstStepNameFormTextLabel,
+                        ),
                         keyboardType: TextInputType.multiline,
                         onChanged: (name) {
                           collectionFormBloc
@@ -98,13 +103,18 @@ class _CreateCollectionFirstStepState extends State<CreateCollectionFirstStep> {
                     ),
                     Padding(
                       padding: const EdgeInsets.only(bottom: 8),
-                      child: KordiTextField(
+                      child: TextFormField(
                         initialValue: state.description,
-                        shouldShowErrorText:
-                            state.validationError && state.description.isEmpty,
-                        errorText: S.current.fieldRequiredErrorLabel,
-                        labelText: S.current
-                            .createCollectionFirstStepDescriptionFormTextLabel,
+                        decoration: InputDecoration(
+                          contentPadding: const EdgeInsets.all(8),
+                          border: OutlineInputBorder(),
+                          errorText: (state.validationError &&
+                                  state.description.isEmpty)
+                              ? S.current.fieldRequiredErrorLabel
+                              : null,
+                          labelText: S.current
+                              .createCollectionFirstStepDescriptionFormTextLabel,
+                        ),
                         maxLength: 500,
                         keyboardType: TextInputType.multiline,
                         onChanged: (description) {
@@ -116,15 +126,23 @@ class _CreateCollectionFirstStepState extends State<CreateCollectionFirstStep> {
                     ),
                     Padding(
                       padding: const EdgeInsets.only(bottom: 8),
-                      child: KordiTextField(
+                      child: TextFormField(
                         controller: _endDateController,
-                        labelText: S.current
-                            .createCollectionFirstStepEndDateFormTextLabel,
-                        readOnly: true,
-                        suffixIcon: Icon(
-                          Icons.calendar_month_rounded,
-                          color: colorScheme.primary,
+                        decoration: InputDecoration(
+                          contentPadding: const EdgeInsets.all(8),
+                          border: OutlineInputBorder(),
+                          errorText:
+                              (state.validationError && state.endTime == null)
+                                  ? S.current.fieldRequiredErrorLabel
+                                  : null,
+                          labelText: S.current
+                              .createCollectionFirstStepEndDateFormTextLabel,
+                          suffixIcon: Icon(
+                            Icons.calendar_month_rounded,
+                            color: colorScheme.primary,
+                          ),
                         ),
+                        readOnly: true,
                         onTap: () async {
                           await _onCollectionEndDateFormOnTap(
                             context,

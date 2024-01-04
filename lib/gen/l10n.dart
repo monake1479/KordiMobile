@@ -542,10 +542,20 @@ class S {
   }
 
   /// `Add item`
-  String get collectionItemDialogTitle {
+  String get collectionItemDialogAddTitle {
     return Intl.message(
       'Add item',
-      name: 'collectionItemDialogTitle',
+      name: 'collectionItemDialogAddTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit item`
+  String get collectionItemDialogEditTitle {
+    return Intl.message(
+      'Edit item',
+      name: 'collectionItemDialogEditTitle',
       desc: '',
       args: [],
     );
@@ -616,6 +626,76 @@ class S {
     return Intl.message(
       'Add',
       name: 'collectionItemDialogAddButtonLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit address`
+  String get collectionAddressDialogEditTitle {
+    return Intl.message(
+      'Edit address',
+      name: 'collectionAddressDialogEditTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add address`
+  String get collectionAddressDialogAddTitle {
+    return Intl.message(
+      'Add address',
+      name: 'collectionAddressDialogAddTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `City*`
+  String get collectionAddressDialogCityFormLabelText {
+    return Intl.message(
+      'City*',
+      name: 'collectionAddressDialogCityFormLabelText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Street*`
+  String get collectionAddressDialogStreetFormLabelText {
+    return Intl.message(
+      'Street*',
+      name: 'collectionAddressDialogStreetFormLabelText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please fill all fields`
+  String get collectionAddressDialogFieldsEmptyErrorLabel {
+    return Intl.message(
+      'Please fill all fields',
+      name: 'collectionAddressDialogFieldsEmptyErrorLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cancel`
+  String get collectionAddressDialogCancelButtonLabel {
+    return Intl.message(
+      'Cancel',
+      name: 'collectionAddressDialogCancelButtonLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add`
+  String get collectionAddressDialogAddButtonLabel {
+    return Intl.message(
+      'Add',
+      name: 'collectionAddressDialogAddButtonLabel',
       desc: '',
       args: [],
     );
@@ -1676,6 +1756,26 @@ class S {
     return Intl.message(
       'Unlimited',
       name: 'collectionItemTypeUnlimitedName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `kg`
+  String get collectionItemTypeUnitSuffixKg {
+    return Intl.message(
+      'kg',
+      name: 'collectionItemTypeUnitSuffixKg',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `pcs`
+  String get collectionItemTypeUnitSuffixPieces {
+    return Intl.message(
+      'pcs',
+      name: 'collectionItemTypeUnitSuffixPieces',
       desc: '',
       args: [],
     );

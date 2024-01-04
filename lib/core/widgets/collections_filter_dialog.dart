@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:kordi_mobile/collections/controllers/collections_filter/collections_filter_bloc.dart';
 import 'package:kordi_mobile/collections/models/collections_models.dart';
-import 'package:kordi_mobile/core/widgets/kordi_text_field.dart';
 import 'package:kordi_mobile/dependency_injection.dart';
 import 'package:kordi_mobile/gen/l10n.dart';
 
@@ -69,9 +68,13 @@ class _CollectionsFilterDialogState extends State<CollectionsFilterDialog> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(bottom: 8),
-                child: KordiTextField(
+                child: TextFormField(
                   initialValue: state.filter.title,
-                  labelText: S.current.filterDialogTitleLabelText,
+                  decoration: InputDecoration(
+                    contentPadding: const EdgeInsets.all(8),
+                    border: OutlineInputBorder(),
+                    labelText: S.current.filterDialogTitleLabelText,
+                  ),
                   onChanged: (title) {
                     collectionsFilterBloc.add(
                       CollectionsFilterEvent.updateTitle(title),
@@ -81,9 +84,13 @@ class _CollectionsFilterDialogState extends State<CollectionsFilterDialog> {
               ),
               Padding(
                 padding: const EdgeInsets.only(bottom: 8),
-                child: KordiTextField(
+                child: TextFormField(
                   initialValue: state.filter.city,
-                  labelText: S.current.filterDialogCityLabelText,
+                  decoration: InputDecoration(
+                    contentPadding: const EdgeInsets.all(8),
+                    border: OutlineInputBorder(),
+                    labelText: S.current.filterDialogCityLabelText,
+                  ),
                   onChanged: (city) {
                     collectionsFilterBloc.add(
                       CollectionsFilterEvent.updateCity(city),
@@ -93,9 +100,13 @@ class _CollectionsFilterDialogState extends State<CollectionsFilterDialog> {
               ),
               Padding(
                 padding: const EdgeInsets.only(bottom: 8),
-                child: KordiTextField(
+                child: TextFormField(
                   initialValue: state.filter.street,
-                  labelText: S.current.filterDialogStreetLabelText,
+                  decoration: InputDecoration(
+                    contentPadding: const EdgeInsets.all(8),
+                    border: OutlineInputBorder(),
+                    labelText: S.current.filterDialogStreetLabelText,
+                  ),
                   onChanged: (street) {
                     collectionsFilterBloc.add(
                       CollectionsFilterEvent.updateStreet(street),
@@ -105,9 +116,13 @@ class _CollectionsFilterDialogState extends State<CollectionsFilterDialog> {
               ),
               Padding(
                 padding: const EdgeInsets.only(bottom: 8),
-                child: KordiTextField(
+                child: TextFormField(
                   initialValue: state.filter.itemName,
-                  labelText: S.current.filterDialogItemNameLabelText,
+                  decoration: InputDecoration(
+                    contentPadding: const EdgeInsets.all(8),
+                    border: OutlineInputBorder(),
+                    labelText: S.current.filterDialogItemNameLabelText,
+                  ),
                   onChanged: (itemName) {
                     collectionsFilterBloc.add(
                       CollectionsFilterEvent.updateItemName(itemName),

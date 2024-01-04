@@ -3,13 +3,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kordi_mobile/core/navigation/kordi_router.dart';
 import 'package:kordi_mobile/core/utils/kordi_dialog.dart';
 import 'package:kordi_mobile/core/utils/kordi_flushbar.dart';
-import 'package:kordi_mobile/core/widgets/kordi_text_field.dart';
 import 'package:kordi_mobile/dependency_injection.dart';
 import 'package:kordi_mobile/gen/assets.gen.dart';
 import 'package:kordi_mobile/gen/l10n.dart';
 
 import 'package:kordi_mobile/sign_up/models/verification_type.dart';
 import 'package:kordi_mobile/verification_code/controllers/verification_code_controllers.dart';
+
+part 'package:kordi_mobile/verification_code/widgets/verification_code_page_form.dart';
 
 class VerificationCodePage extends StatelessWidget {
   const VerificationCodePage({
@@ -127,118 +128,7 @@ class VerificationCodePage extends StatelessWidget {
                                 ],
                               ),
                             ),
-                            BlocBuilder<VerificationCodeFormBloc,
-                                VerificationCodeFormState>(
-                              builder: (context, state) {
-                                final verificationCodeFormBloc =
-                                    context.read<VerificationCodeFormBloc>();
-                                return Column(
-                                  children: [
-                                    Builder(
-                                      builder: (context) {
-                                        if (verificationType ==
-                                            VerificationType.phoneNumber) {
-                                          return Padding(
-                                            padding: const EdgeInsets.only(
-                                              bottom: 8,
-                                            ),
-                                            child: KordiTextField(
-                                              labelText: S.current
-                                                  .verificationCodePageTextfieldUsernameLabel,
-                                              hintText: S.current
-                                                  .verificationCodePageTextfieldUsernameHint,
-                                              shouldShowErrorText:
-                                                  state.showPhoneNumberError,
-                                              errorText: S.current
-                                                  .verificationCodePageTextfieldUsernameError,
-                                              prefixIcon: Icon(Icons.person),
-                                              onChanged: (username) =>
-                                                  verificationCodeFormBloc.add(
-                                                VerificationCodeFormEvent
-                                                    .updateUsername(
-                                                  username,
-                                                ),
-                                              ),
-                                            ),
-                                          );
-                                        }
-                                        return const SizedBox();
-                                      },
-                                    ),
-                                    KordiTextField(
-                                      textAlign: TextAlign.center,
-                                      keyboardType: TextInputType.number,
-                                      maxLength: 6,
-                                      labelText: S.current
-                                          .verificationCodePageTextfieldCodeLabel,
-                                      hintText: S.current
-                                          .verificationCodePageTextfieldCodeHint,
-                                      shouldShowErrorText: state.showCodeError,
-                                      errorText: S.current
-                                          .verificationCodePageTextfieldCodeError,
-                                      onChanged: (code) =>
-                                          verificationCodeFormBloc.add(
-                                        VerificationCodeFormEvent
-                                            .updateVerificationCode(
-                                          code,
-                                        ),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(top: 8),
-                                      child: TextButton(
-                                        onPressed: () {
-                                          _onResendButtonClicked(context);
-                                        },
-                                        child: RichText(
-                                          text: TextSpan(
-                                            text: S.current
-                                                .verificationCodePageResendCodeButtonLabel,
-                                            style: TextStyle(
-                                              color: colorScheme.secondary,
-                                            ),
-                                            children: [
-                                              TextSpan(
-                                                text: S.current
-                                                    .verificationCodePageResendCodeButtonLabel2,
-                                                style: TextStyle(
-                                                  color: colorScheme.secondary,
-                                                  fontWeight: FontWeight.bold,
-                                                  decoration:
-                                                      TextDecoration.underline,
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(top: 8),
-                                      child: ElevatedButton(
-                                        onPressed: () {
-                                          _onVerificationButtonClicked(context);
-                                        },
-                                        child: Builder(
-                                          builder: (context) {
-                                            if (state.isLoading) {
-                                              return Center(
-                                                child:
-                                                    CircularProgressIndicator(),
-                                              );
-                                            }
-                                            return Text(
-                                              S.current
-                                                  .verificationCodePageButtonLabel,
-                                            );
-                                          },
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                );
-                              },
-                            ),
+                            _VerificationCodePageForm(verificationType),
                           ],
                         ),
                       ),
@@ -251,43 +141,5 @@ class VerificationCodePage extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  void _onVerificationButtonClicked(BuildContext context) {
-    final verificationCodeFormBloc = context.read<VerificationCodeFormBloc>();
-    final state = verificationCodeFormBloc.state;
-    if (!state.isFormValid) {
-      verificationCodeFormBloc.add(
-        VerificationCodeFormEvent.validateFields(),
-      );
-      return;
-    }
-    if (verificationType == VerificationType.email) {
-      verificationCodeFormBloc.add(
-        VerificationCodeFormEvent.verifyByEmail(),
-      );
-    } else {
-      verificationCodeFormBloc.add(
-        VerificationCodeFormEvent.verifyByPhone(),
-      );
-    }
-  }
-
-  void _onResendButtonClicked(BuildContext context) {
-    final verificationCodeFormBloc = context.read<VerificationCodeFormBloc>();
-    final state = verificationCodeFormBloc.state;
-    if (!state.isPhoneNumberValid) {
-      verificationCodeFormBloc.add(
-        VerificationCodeFormEvent.updateUsername(''),
-      );
-      return;
-    }
-    verificationCodeFormBloc.add(
-      VerificationCodeFormEvent.resend(),
-    );
-    KordiFlushbar(
-      message: S.current.verificationCodePageFlushbarLabel,
-      maxWidth: 120,
-    ).show(context);
   }
 }
