@@ -167,6 +167,8 @@
     },
     "exceptionDialogTitle": "Kordi napotkał problem...",
     "exceptionDialogButtonLabel": "OK",
+    "defaultExceptionMessage": "Coś poszło nie tak, spróbuj ponownie później.",
+    "unauthorizedExceptionMessage": "Nie jesteś zalogowany. Zaloguj się i spróbuj ponownie.",
     "errorPageDescription": "Spróbuj ponownie później.\nZresetuj aplikacje i skontaktuj się z nami, aby zgłosić błąd.",
     "collectionNotFoundError": "Zbiórka o id {collectionId} nie znaleziona.",
     "@collectionNotFoundError": {
@@ -243,5 +245,20 @@
     "changePasswordPageChangePasswordButtonLabel": "Zmień hasło",
     "changePasswordPageDialogTitleLabel": "Hasło zmienione!",
     "changePasswordPageDialogSubTitleLabel": "Przejdź do strony logowania i zaloguj się ponownie swoim nowym hasłem.",
-    "changePasswordPageDialogButtonLabel": "OK"
+    "changePasswordPageDialogButtonLabel": "OK",
+    "collectionItemCategoryFoodName": "Jedzenie",
+    "collectionItemCategoryClothesName": "Ubrania",
+    "collectionItemCategoryAnimalsName": "Zwierzęta",
+    "collectionItemCategoryChildrenName": "Dzieci",
+    "collectionItemCategoryElectronicName": "Elektronika",
+    "collectionItemCategoryMedicinesName": "Leki",
+    "collectionItemCategoryOtherName": "Inne",
+    "collectionItemTypeWeightName": "Waga",
+    "collectionItemTypeAmountName": "Ilość",
+    "collectionItemTypeUnlimitedName": "Bez limitu",
+    "collectionStatusInProgressName": "Trwa",
+    "collectionStatusCompletedName": "Skończonca",
+    "collectionStatusArchivedName": "Archiwizowana",
+    "verificationTypeEmailName": "Email",
+    "verificationTypePhoneName": "Telefon"
 }

@@ -891,6 +891,26 @@ class S {
     );
   }
 
+  /// `Something went wrong, please try again later.`
+  String get defaultExceptionMessage {
+    return Intl.message(
+      'Something went wrong, please try again later.',
+      name: 'defaultExceptionMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You are not authorized to perform this action.`
+  String get unauthorizedExceptionMessage {
+    return Intl.message(
+      'You are not authorized to perform this action.',
+      name: 'unauthorizedExceptionMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Please, try again later.\nRestart the app and contact with us to report issue.`
   String get errorPageDescription {
     return Intl.message(
@@ -1556,6 +1576,156 @@ class S {
     return Intl.message(
       'OK',
       name: 'changePasswordPageDialogButtonLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Food`
+  String get collectionItemCategoryFoodName {
+    return Intl.message(
+      'Food',
+      name: 'collectionItemCategoryFoodName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Clothes`
+  String get collectionItemCategoryClothesName {
+    return Intl.message(
+      'Clothes',
+      name: 'collectionItemCategoryClothesName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Animals`
+  String get collectionItemCategoryAnimalsName {
+    return Intl.message(
+      'Animals',
+      name: 'collectionItemCategoryAnimalsName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Children`
+  String get collectionItemCategoryChildrenName {
+    return Intl.message(
+      'Children',
+      name: 'collectionItemCategoryChildrenName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Electronic`
+  String get collectionItemCategoryElectronicName {
+    return Intl.message(
+      'Electronic',
+      name: 'collectionItemCategoryElectronicName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Medicines`
+  String get collectionItemCategoryMedicinesName {
+    return Intl.message(
+      'Medicines',
+      name: 'collectionItemCategoryMedicinesName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Other`
+  String get collectionItemCategoryOtherName {
+    return Intl.message(
+      'Other',
+      name: 'collectionItemCategoryOtherName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Weight`
+  String get collectionItemTypeWeightName {
+    return Intl.message(
+      'Weight',
+      name: 'collectionItemTypeWeightName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Amount`
+  String get collectionItemTypeAmountName {
+    return Intl.message(
+      'Amount',
+      name: 'collectionItemTypeAmountName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Unlimited`
+  String get collectionItemTypeUnlimitedName {
+    return Intl.message(
+      'Unlimited',
+      name: 'collectionItemTypeUnlimitedName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `In progress`
+  String get collectionStatusInProgressName {
+    return Intl.message(
+      'In progress',
+      name: 'collectionStatusInProgressName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Completed`
+  String get collectionStatusCompletedName {
+    return Intl.message(
+      'Completed',
+      name: 'collectionStatusCompletedName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Archived`
+  String get collectionStatusArchivedName {
+    return Intl.message(
+      'Archived',
+      name: 'collectionStatusArchivedName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Email`
+  String get verificationTypeEmailName {
+    return Intl.message(
+      'Email',
+      name: 'verificationTypeEmailName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Phone`
+  String get verificationTypePhoneName {
+    return Intl.message(
+      'Phone',
+      name: 'verificationTypePhoneName',
       desc: '',
       args: [],
     );

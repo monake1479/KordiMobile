@@ -106,6 +106,20 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Nazwa"),
         "collectionEditSaveButtonLabel":
             MessageLookupByLibrary.simpleMessage("Zapisz"),
+        "collectionItemCategoryAnimalsName":
+            MessageLookupByLibrary.simpleMessage("Zwierzęta"),
+        "collectionItemCategoryChildrenName":
+            MessageLookupByLibrary.simpleMessage("Dzieci"),
+        "collectionItemCategoryClothesName":
+            MessageLookupByLibrary.simpleMessage("Ubrania"),
+        "collectionItemCategoryElectronicName":
+            MessageLookupByLibrary.simpleMessage("Elektronika"),
+        "collectionItemCategoryFoodName":
+            MessageLookupByLibrary.simpleMessage("Jedzenie"),
+        "collectionItemCategoryMedicinesName":
+            MessageLookupByLibrary.simpleMessage("Leki"),
+        "collectionItemCategoryOtherName":
+            MessageLookupByLibrary.simpleMessage("Inne"),
         "collectionItemDialogAddButtonLabel":
             MessageLookupByLibrary.simpleMessage("Dodaj"),
         "collectionItemDialogCancelButtonLabel":
@@ -123,6 +137,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Dodaj przedmiot"),
         "collectionItemDialogTypeFormLabelText":
             MessageLookupByLibrary.simpleMessage("Typ*"),
+        "collectionItemTypeAmountName":
+            MessageLookupByLibrary.simpleMessage("Ilość"),
+        "collectionItemTypeUnlimitedName":
+            MessageLookupByLibrary.simpleMessage("Bez limitu"),
+        "collectionItemTypeWeightName":
+            MessageLookupByLibrary.simpleMessage("Waga"),
         "collectionNotFoundError": m6,
         "collectionPageDaysLeft": m7,
         "collectionPageEmptyState": MessageLookupByLibrary.simpleMessage(
@@ -136,6 +156,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "collectionPageProgress":
             MessageLookupByLibrary.simpleMessage("Postęp kolekcji:"),
         "collectionPageTitle": MessageLookupByLibrary.simpleMessage("Kolekcje"),
+        "collectionStatusArchivedName":
+            MessageLookupByLibrary.simpleMessage("Archiwizowana"),
+        "collectionStatusCompletedName":
+            MessageLookupByLibrary.simpleMessage("Skończonca"),
+        "collectionStatusInProgressName":
+            MessageLookupByLibrary.simpleMessage("Trwa"),
         "createCollectionFirstStepDescriptionFormTextLabel":
             MessageLookupByLibrary.simpleMessage("Opis kolekcji*"),
         "createCollectionFirstStepEndDateFormTextLabel":
@@ -205,6 +231,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Przedmioty kolekcji"),
         "createCollectionThirdStepTypeLabel":
             MessageLookupByLibrary.simpleMessage("Typ"),
+        "defaultExceptionMessage": MessageLookupByLibrary.simpleMessage(
+            "Coś poszło nie tak, spróbuj ponownie później."),
         "drawerAboutButtonLabel": MessageLookupByLibrary.simpleMessage("O nas"),
         "drawerChangeLanguageButtonLabel":
             MessageLookupByLibrary.simpleMessage("Zmień język"),
@@ -316,6 +344,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Nazwa użytkownika"),
         "signUpPageVerificationTypeLabel":
             MessageLookupByLibrary.simpleMessage("Wybierz sposób weryfikacji"),
+        "unauthorizedExceptionMessage": MessageLookupByLibrary.simpleMessage(
+            "Nie jesteś zalogowany. Zaloguj się i spróbuj ponownie."),
         "verificationCodePageButtonLabel":
             MessageLookupByLibrary.simpleMessage("OK"),
         "verificationCodePageDescription": MessageLookupByLibrary.simpleMessage(
@@ -347,6 +377,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "verificationCodePageTextfieldUsernameLabel":
             MessageLookupByLibrary.simpleMessage("Wprowadź nazwa użytkownika"),
         "verificationCodePageTitle":
-            MessageLookupByLibrary.simpleMessage("Ostatni krok!")
+            MessageLookupByLibrary.simpleMessage("Ostatni krok!"),
+        "verificationTypeEmailName":
+            MessageLookupByLibrary.simpleMessage("Email"),
+        "verificationTypePhoneName":
+            MessageLookupByLibrary.simpleMessage("Telefon")
       };
 }
