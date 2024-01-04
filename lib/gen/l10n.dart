@@ -70,6 +70,16 @@ class S {
     );
   }
 
+  /// `Field required`
+  String get fieldRequiredErrorLabel {
+    return Intl.message(
+      'Field required',
+      name: 'fieldRequiredErrorLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Filter options`
   String get filterDialogTitle {
     return Intl.message(
@@ -221,6 +231,416 @@ class S {
     );
   }
 
+  /// `Basic collection information`
+  String get createCollectionFirstStepTitle {
+    return Intl.message(
+      'Basic collection information',
+      name: 'createCollectionFirstStepTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Step 1 of 4`
+  String get createCollectionFirstStepSubtitle {
+    return Intl.message(
+      'Step 1 of 4',
+      name: 'createCollectionFirstStepSubtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please provide basic information about your collection`
+  String get createCollectionFirstStepInformation {
+    return Intl.message(
+      'Please provide basic information about your collection',
+      name: 'createCollectionFirstStepInformation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Collection name*`
+  String get createCollectionFirstStepNameFormTextLabel {
+    return Intl.message(
+      'Collection name*',
+      name: 'createCollectionFirstStepNameFormTextLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Collection description*`
+  String get createCollectionFirstStepDescriptionFormTextLabel {
+    return Intl.message(
+      'Collection description*',
+      name: 'createCollectionFirstStepDescriptionFormTextLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Collection end date`
+  String get createCollectionFirstStepEndDateFormTextLabel {
+    return Intl.message(
+      'Collection end date',
+      name: 'createCollectionFirstStepEndDateFormTextLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Collection photo`
+  String get createCollectionFirstStepPhotoLabel {
+    return Intl.message(
+      'Collection photo',
+      name: 'createCollectionFirstStepPhotoLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Tap image above to add photo`
+  String get createCollectionFirstStepPhotoHintLabel {
+    return Intl.message(
+      'Tap image above to add photo',
+      name: 'createCollectionFirstStepPhotoHintLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please fill all required fields, indicated by *`
+  String get createCollectionFirstStepValidationHint {
+    return Intl.message(
+      'Please fill all required fields, indicated by *',
+      name: 'createCollectionFirstStepValidationHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Next step`
+  String get createCollectionFirstStepNextStepButtonLabel {
+    return Intl.message(
+      'Next step',
+      name: 'createCollectionFirstStepNextStepButtonLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Collection addresses`
+  String get createCollectionSecondStepTitle {
+    return Intl.message(
+      'Collection addresses',
+      name: 'createCollectionSecondStepTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Step 2 of 4`
+  String get createCollectionSecondStepSubtitle {
+    return Intl.message(
+      'Step 2 of 4',
+      name: 'createCollectionSecondStepSubtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `City`
+  String get createCollectionSecondStepCityLabel {
+    return Intl.message(
+      'City',
+      name: 'createCollectionSecondStepCityLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Address`
+  String get createCollectionSecondStepAddressLabel {
+    return Intl.message(
+      'Address',
+      name: 'createCollectionSecondStepAddressLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please provide addresses where donates can be stored`
+  String get createCollectionSecondStepInformation {
+    return Intl.message(
+      'Please provide addresses where donates can be stored',
+      name: 'createCollectionSecondStepInformation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add address`
+  String get createCollectionSecondStepAddAddressButtonLabel {
+    return Intl.message(
+      'Add address',
+      name: 'createCollectionSecondStepAddAddressButtonLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Next step`
+  String get createCollectionSecondStepNextStepButtonLabel {
+    return Intl.message(
+      'Next step',
+      name: 'createCollectionSecondStepNextStepButtonLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Collection items`
+  String get createCollectionThirdStepTitle {
+    return Intl.message(
+      'Collection items',
+      name: 'createCollectionThirdStepTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Step 3 of 4`
+  String get createCollectionThirdStepSubtitle {
+    return Intl.message(
+      'Step 3 of 4',
+      name: 'createCollectionThirdStepSubtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Name`
+  String get createCollectionThirdStepNameLabel {
+    return Intl.message(
+      'Name',
+      name: 'createCollectionThirdStepNameLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Category`
+  String get createCollectionThirdStepCategoryLabel {
+    return Intl.message(
+      'Category',
+      name: 'createCollectionThirdStepCategoryLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Type`
+  String get createCollectionThirdStepTypeLabel {
+    return Intl.message(
+      'Type',
+      name: 'createCollectionThirdStepTypeLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Maximum quantity`
+  String get createCollectionThirdStepMaximumLabel {
+    return Intl.message(
+      'Maximum quantity',
+      name: 'createCollectionThirdStepMaximumLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please provide items that collection needs`
+  String get createCollectionThirdStepInformation {
+    return Intl.message(
+      'Please provide items that collection needs',
+      name: 'createCollectionThirdStepInformation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add item`
+  String get createCollectionThirdStepAddItemButtonLabel {
+    return Intl.message(
+      'Add item',
+      name: 'createCollectionThirdStepAddItemButtonLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Next step`
+  String get createCollectionThirdStepNextStepButtonLabel {
+    return Intl.message(
+      'Next step',
+      name: 'createCollectionThirdStepNextStepButtonLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Congratulations!`
+  String get createCollectionFourthStepTitle {
+    return Intl.message(
+      'Congratulations!',
+      name: 'createCollectionFourthStepTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Step 4 of 4`
+  String get createCollectionFourthStepSubtitle {
+    return Intl.message(
+      'Step 4 of 4',
+      name: 'createCollectionFourthStepSubtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You have successfully created collection!`
+  String get createCollectionFourthStepInformation {
+    return Intl.message(
+      'You have successfully created collection!',
+      name: 'createCollectionFourthStepInformation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You can still edit it later.`
+  String get createCollectionFourthStepSecondInformation {
+    return Intl.message(
+      'You can still edit it later.',
+      name: 'createCollectionFourthStepSecondInformation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `To collections`
+  String get createCollectionFourthStepButtonLabel {
+    return Intl.message(
+      'To collections',
+      name: 'createCollectionFourthStepButtonLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add item`
+  String get collectionItemDialogTitle {
+    return Intl.message(
+      'Add item',
+      name: 'collectionItemDialogTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Name*`
+  String get collectionItemDialogNameFormLabelText {
+    return Intl.message(
+      'Name*',
+      name: 'collectionItemDialogNameFormLabelText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Category*`
+  String get collectionItemDialogCategoryFormLabelText {
+    return Intl.message(
+      'Category*',
+      name: 'collectionItemDialogCategoryFormLabelText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Type*`
+  String get collectionItemDialogTypeFormLabelText {
+    return Intl.message(
+      'Type*',
+      name: 'collectionItemDialogTypeFormLabelText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Maximum quantity*`
+  String get collectionItemDialogMaximumFormLabelText {
+    return Intl.message(
+      'Maximum quantity*',
+      name: 'collectionItemDialogMaximumFormLabelText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please fill all fields`
+  String get collectionItemDialogFieldsEmptyErrorLabel {
+    return Intl.message(
+      'Please fill all fields',
+      name: 'collectionItemDialogFieldsEmptyErrorLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cancel`
+  String get collectionItemDialogCancelButtonLabel {
+    return Intl.message(
+      'Cancel',
+      name: 'collectionItemDialogCancelButtonLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add`
+  String get collectionItemDialogAddButtonLabel {
+    return Intl.message(
+      'Add',
+      name: 'collectionItemDialogAddButtonLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add address`
+  String get collectionEditLocationsTileAddButtonLabel {
+    return Intl.message(
+      'Add address',
+      name: 'collectionEditLocationsTileAddButtonLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add item`
+  String get collectionEditItemListAddButtonLabel {
+    return Intl.message(
+      'Add item',
+      name: 'collectionEditItemListAddButtonLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Description`
   String get collectionDetailsDescriptionLabel {
     return Intl.message(
@@ -318,6 +738,106 @@ class S {
       name: 'collectionDetailsItemDonateLabel',
       desc: '',
       args: [],
+    );
+  }
+
+  /// `Save`
+  String get collectionEditSaveButtonLabel {
+    return Intl.message(
+      'Save',
+      name: 'collectionEditSaveButtonLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Name`
+  String get collectionEditNameLabel {
+    return Intl.message(
+      'Name',
+      name: 'collectionEditNameLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Collection name*`
+  String get collectionEditNameFormLabelText {
+    return Intl.message(
+      'Collection name*',
+      name: 'collectionEditNameFormLabelText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Description`
+  String get collectionEditDescriptionLabel {
+    return Intl.message(
+      'Description',
+      name: 'collectionEditDescriptionLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Collection description*`
+  String get collectionEditDescriptionFormLabelText {
+    return Intl.message(
+      'Collection description*',
+      name: 'collectionEditDescriptionFormLabelText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Items list`
+  String get collectionEditItemListTitle {
+    return Intl.message(
+      'Items list',
+      name: 'collectionEditItemListTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You need to add donation needs to your collection`
+  String get collectionEditItemListEmptyState {
+    return Intl.message(
+      'You need to add donation needs to your collection',
+      name: 'collectionEditItemListEmptyState',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Type: {type}`
+  String collectionEditItemTypeLabel(String type) {
+    return Intl.message(
+      'Type: $type',
+      name: 'collectionEditItemTypeLabel',
+      desc: 'Item type label',
+      args: [type],
+    );
+  }
+
+  /// `Current: {current}`
+  String collectionEditItemCurrentLabel(String current) {
+    return Intl.message(
+      'Current: $current',
+      name: 'collectionEditItemCurrentLabel',
+      desc: 'Item current label',
+      args: [current],
+    );
+  }
+
+  /// `Maximum: {maximum}`
+  String collectionEditItemMaximumLabel(String maximum) {
+    return Intl.message(
+      'Maximum: $maximum',
+      name: 'collectionEditItemMaximumLabel',
+      desc: 'Item maximum label',
+      args: [maximum],
     );
   }
 

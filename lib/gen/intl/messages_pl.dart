@@ -26,12 +26,18 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m2(type) => "Typ: ${type}";
 
-  static String m3(collectionId) =>
+  static String m3(current) => "Dostarczone: ${current}";
+
+  static String m4(maximum) => "Cel: ${maximum}";
+
+  static String m5(type) => "Typ: ${type}";
+
+  static String m6(collectionId) =>
       "Zbiórka o id ${collectionId} nie znaleziona.";
 
-  static String m4(daysLeft) => "${daysLeft} dni pozostało do końca";
+  static String m7(daysLeft) => "${daysLeft} dni pozostało do końca";
 
-  static String m5(username) => "Cześć, ${username}!";
+  static String m8(username) => "Cześć, ${username}!";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -80,8 +86,45 @@ class MessageLookup extends MessageLookupByLibrary {
                 "Użytkownik nie dodał jeszcze żadnych lokalizacji."),
         "collectionDetailsLocationsLabel": MessageLookupByLibrary.simpleMessage(
             "Lokalizacje do których możesz oddać przedmioty"),
-        "collectionNotFoundError": m3,
-        "collectionPageDaysLeft": m4,
+        "collectionEditDescriptionFormLabelText":
+            MessageLookupByLibrary.simpleMessage("Opis kolekcji*"),
+        "collectionEditDescriptionLabel":
+            MessageLookupByLibrary.simpleMessage("Opis"),
+        "collectionEditItemCurrentLabel": m3,
+        "collectionEditItemListAddButtonLabel":
+            MessageLookupByLibrary.simpleMessage("Dodaj przedmiot"),
+        "collectionEditItemListEmptyState":
+            MessageLookupByLibrary.simpleMessage(
+                "Musisz dodać przedmiot potrzebny dla tej kolekcji."),
+        "collectionEditItemListTitle":
+            MessageLookupByLibrary.simpleMessage("Lista przedmiotów"),
+        "collectionEditItemMaximumLabel": m4,
+        "collectionEditItemTypeLabel": m5,
+        "collectionEditLocationsTileAddButtonLabel":
+            MessageLookupByLibrary.simpleMessage("Dodaj adres"),
+        "collectionEditNameLabel":
+            MessageLookupByLibrary.simpleMessage("Nazwa"),
+        "collectionEditSaveButtonLabel":
+            MessageLookupByLibrary.simpleMessage("Zapisz"),
+        "collectionItemDialogAddButtonLabel":
+            MessageLookupByLibrary.simpleMessage("Dodaj"),
+        "collectionItemDialogCancelButtonLabel":
+            MessageLookupByLibrary.simpleMessage("Zamknij"),
+        "collectionItemDialogCategoryFormLabelText":
+            MessageLookupByLibrary.simpleMessage("Kategoria*"),
+        "collectionItemDialogFieldsEmptyErrorLabel":
+            MessageLookupByLibrary.simpleMessage(
+                "Wypelnij wszystkie wymagane pola"),
+        "collectionItemDialogMaximumFormLabelText":
+            MessageLookupByLibrary.simpleMessage("Maksimum*"),
+        "collectionItemDialogNameFormLabelText":
+            MessageLookupByLibrary.simpleMessage("Nazwa*"),
+        "collectionItemDialogTitle":
+            MessageLookupByLibrary.simpleMessage("Dodaj przedmiot"),
+        "collectionItemDialogTypeFormLabelText":
+            MessageLookupByLibrary.simpleMessage("Typ*"),
+        "collectionNotFoundError": m6,
+        "collectionPageDaysLeft": m7,
         "collectionPageEmptyState": MessageLookupByLibrary.simpleMessage(
             "Nie ma jeszcze żadnych kolekcji lub podany filtr nie zwrócił żadnych wyników."),
         "collectionPageEmptyStateButtonLabel":
@@ -93,6 +136,75 @@ class MessageLookup extends MessageLookupByLibrary {
         "collectionPageProgress":
             MessageLookupByLibrary.simpleMessage("Postęp kolekcji:"),
         "collectionPageTitle": MessageLookupByLibrary.simpleMessage("Kolekcje"),
+        "createCollectionFirstStepDescriptionFormTextLabel":
+            MessageLookupByLibrary.simpleMessage("Opis kolekcji*"),
+        "createCollectionFirstStepEndDateFormTextLabel":
+            MessageLookupByLibrary.simpleMessage("Data zakończenia kolekcji"),
+        "createCollectionFirstStepInformation":
+            MessageLookupByLibrary.simpleMessage(
+                "Prosimy o podanie podstawowych informacji o Twojej kolekcji"),
+        "createCollectionFirstStepNameFormTextLabel":
+            MessageLookupByLibrary.simpleMessage("Nazwa kolekcji*"),
+        "createCollectionFirstStepNextStepButtonLabel":
+            MessageLookupByLibrary.simpleMessage("Następny krok"),
+        "createCollectionFirstStepPhotoHintLabel":
+            MessageLookupByLibrary.simpleMessage(
+                "Dotknij obrazek powyżej, aby dodać zdjęcie"),
+        "createCollectionFirstStepPhotoLabel":
+            MessageLookupByLibrary.simpleMessage("Zdjęcie kolekcji"),
+        "createCollectionFirstStepSubtitle":
+            MessageLookupByLibrary.simpleMessage("Krok 1 z 4"),
+        "createCollectionFirstStepTitle": MessageLookupByLibrary.simpleMessage(
+            "Podstawowe informacje o zbiórce"),
+        "createCollectionFirstStepValidationHint":
+            MessageLookupByLibrary.simpleMessage(
+                "Proszę wypełnij wszystkie pola oznaczone znakiem *"),
+        "createCollectionFourthStepButtonLabel":
+            MessageLookupByLibrary.simpleMessage("Do kolekcji"),
+        "createCollectionFourthStepInformation":
+            MessageLookupByLibrary.simpleMessage(
+                "Udało Ci się stworzyć kolekcję!"),
+        "createCollectionFourthStepSecondInformation":
+            MessageLookupByLibrary.simpleMessage(
+                "Wciąż możesz edytować swoją kolekcję później"),
+        "createCollectionFourthStepSubtitle":
+            MessageLookupByLibrary.simpleMessage("Krok 4 z 4"),
+        "createCollectionFourthStepTitle":
+            MessageLookupByLibrary.simpleMessage("Gratulacje!"),
+        "createCollectionSecondStepAddAddressButtonLabel":
+            MessageLookupByLibrary.simpleMessage("Dodaj adres"),
+        "createCollectionSecondStepAddressLabel":
+            MessageLookupByLibrary.simpleMessage("Adres"),
+        "createCollectionSecondStepCityLabel":
+            MessageLookupByLibrary.simpleMessage("Miasto"),
+        "createCollectionSecondStepInformation":
+            MessageLookupByLibrary.simpleMessage(
+                "Proszę podaj adresy, w których będą znajdować się skrzynki na przedmioty"),
+        "createCollectionSecondStepNextStepButtonLabel":
+            MessageLookupByLibrary.simpleMessage("Następny krok"),
+        "createCollectionSecondStepSubtitle":
+            MessageLookupByLibrary.simpleMessage("Krok 2 z 4"),
+        "createCollectionSecondStepTitle":
+            MessageLookupByLibrary.simpleMessage("Adresy kolekcji"),
+        "createCollectionThirdStepAddItemButtonLabel":
+            MessageLookupByLibrary.simpleMessage("Dodaj przedmiot"),
+        "createCollectionThirdStepCategoryLabel":
+            MessageLookupByLibrary.simpleMessage("Kategoria"),
+        "createCollectionThirdStepInformation":
+            MessageLookupByLibrary.simpleMessage(
+                "Proszę podaj przedmioty, które będą zbierane w tej kolekcji"),
+        "createCollectionThirdStepMaximumLabel":
+            MessageLookupByLibrary.simpleMessage("Cel"),
+        "createCollectionThirdStepNameLabel":
+            MessageLookupByLibrary.simpleMessage("Nazwa"),
+        "createCollectionThirdStepNextStepButtonLabel":
+            MessageLookupByLibrary.simpleMessage("Następny krok"),
+        "createCollectionThirdStepSubtitle":
+            MessageLookupByLibrary.simpleMessage("Krok 3 z 4"),
+        "createCollectionThirdStepTitle":
+            MessageLookupByLibrary.simpleMessage("Przedmioty kolekcji"),
+        "createCollectionThirdStepTypeLabel":
+            MessageLookupByLibrary.simpleMessage("Typ"),
         "drawerAboutButtonLabel": MessageLookupByLibrary.simpleMessage("O nas"),
         "drawerChangeLanguageButtonLabel":
             MessageLookupByLibrary.simpleMessage("Zmień język"),
@@ -108,13 +220,15 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Wyloguj się"),
         "drawerSignUpButtonLabel":
             MessageLookupByLibrary.simpleMessage("Rejestracja"),
-        "drawerUserGreetings": m5,
+        "drawerUserGreetings": m8,
         "errorPageDescription": MessageLookupByLibrary.simpleMessage(
             "Spróbuj ponownie później.\nZresetuj aplikacje i skontaktuj się z nami, aby zgłosić błąd."),
         "exceptionDialogButtonLabel":
             MessageLookupByLibrary.simpleMessage("OK"),
         "exceptionDialogTitle":
             MessageLookupByLibrary.simpleMessage("Kordi napotkał problem..."),
+        "fieldRequiredErrorLabel":
+            MessageLookupByLibrary.simpleMessage("Pole wymagane"),
         "filterDialogApplyButtonLabel":
             MessageLookupByLibrary.simpleMessage("Zatwierdź"),
         "filterDialogCategoryTitle":
