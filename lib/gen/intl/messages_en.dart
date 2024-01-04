@@ -65,6 +65,20 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Enter your password"),
         "changePasswordPagePasswordLabelTextField":
             MessageLookupByLibrary.simpleMessage("Password"),
+        "collectionAddressDialogAddButtonLabel":
+            MessageLookupByLibrary.simpleMessage("Add"),
+        "collectionAddressDialogAddTitle":
+            MessageLookupByLibrary.simpleMessage("Add address"),
+        "collectionAddressDialogCancelButtonLabel":
+            MessageLookupByLibrary.simpleMessage("Cancel"),
+        "collectionAddressDialogCityFormLabelText":
+            MessageLookupByLibrary.simpleMessage("City*"),
+        "collectionAddressDialogEditTitle":
+            MessageLookupByLibrary.simpleMessage("Edit address"),
+        "collectionAddressDialogFieldsEmptyErrorLabel":
+            MessageLookupByLibrary.simpleMessage("Please fill all fields"),
+        "collectionAddressDialogStreetFormLabelText":
+            MessageLookupByLibrary.simpleMessage("Street*"),
         "collectionDetailsAddressesUrlException":
             MessageLookupByLibrary.simpleMessage(
                 "Cannot open address in browser."),
@@ -121,22 +135,28 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Other"),
         "collectionItemDialogAddButtonLabel":
             MessageLookupByLibrary.simpleMessage("Add"),
+        "collectionItemDialogAddTitle":
+            MessageLookupByLibrary.simpleMessage("Add item"),
         "collectionItemDialogCancelButtonLabel":
             MessageLookupByLibrary.simpleMessage("Cancel"),
         "collectionItemDialogCategoryFormLabelText":
             MessageLookupByLibrary.simpleMessage("Category*"),
+        "collectionItemDialogEditTitle":
+            MessageLookupByLibrary.simpleMessage("Edit item"),
         "collectionItemDialogFieldsEmptyErrorLabel":
             MessageLookupByLibrary.simpleMessage("Please fill all fields"),
         "collectionItemDialogMaximumFormLabelText":
             MessageLookupByLibrary.simpleMessage("Maximum quantity*"),
         "collectionItemDialogNameFormLabelText":
             MessageLookupByLibrary.simpleMessage("Name*"),
-        "collectionItemDialogTitle":
-            MessageLookupByLibrary.simpleMessage("Add item"),
         "collectionItemDialogTypeFormLabelText":
             MessageLookupByLibrary.simpleMessage("Type*"),
         "collectionItemTypeAmountName":
             MessageLookupByLibrary.simpleMessage("Amount"),
+        "collectionItemTypeUnitSuffixKg":
+            MessageLookupByLibrary.simpleMessage("kg"),
+        "collectionItemTypeUnitSuffixPieces":
+            MessageLookupByLibrary.simpleMessage("pcs"),
         "collectionItemTypeUnlimitedName":
             MessageLookupByLibrary.simpleMessage("Unlimited"),
         "collectionItemTypeWeightName":
