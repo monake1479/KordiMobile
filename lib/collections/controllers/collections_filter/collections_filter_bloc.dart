@@ -31,6 +31,7 @@ class CollectionsFilterBloc
     on<_UpdateSortDirection>(_updateSortDirection);
     on<_GetFilteredCollections>(_getFilteredCollections);
     on<_GetInitialFilteredCollections>(_getInitialFilteredCollections);
+    on<_GetById>(_getById);
   }
   final GetCollectionsCubit _getCollectionsCubit;
 
@@ -236,6 +237,39 @@ class CollectionsFilterBloc
       state.copyWith(
         isLoading: false,
         collectionPaging: response,
+      ),
+    );
+  }
+
+  Future<void> _getById(
+    _GetById event,
+    Emitter<CollectionsFilterState> emit,
+  ) async {
+    emit(state.copyWith(isLoading: true));
+    final response = await _getCollectionsCubit.getById(event.id);
+    if (response == null) {
+      emit(state.copyWith(isLoading: false));
+      return;
+    }
+    List<Collection> tempList = List<Collection>.from(state.collections);
+    final int index = tempList.indexWhere(
+      (element) => element.id == event.id,
+    );
+    tempList.removeWhere(
+      (element) => element.id == event.id,
+    );
+    tempList.insert(index, response);
+    final CollectionPaging newPaging = CollectionPaging(
+      collections: tempList,
+      totalElements: state.collectionPaging.totalElements,
+      totalPages: state.collectionPaging.totalPages,
+      pageSize: state.collectionPaging.pageSize,
+      pageNumber: state.collectionPaging.pageNumber,
+    );
+    emit(
+      state.copyWith(
+        isLoading: false,
+        collectionPaging: newPaging,
       ),
     );
   }
