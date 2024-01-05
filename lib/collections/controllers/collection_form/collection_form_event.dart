@@ -32,5 +32,8 @@ class CollectionFormEvent with _$CollectionFormEvent {
     CollectionItem oldItem,
     CollectionItem newItem,
   ) = _EditItem;
+  const factory CollectionFormEvent.donateItem(
+    DonationDto donation,
+  ) = _DonateItem;
   const factory CollectionFormEvent.checkValidation() = _CheckValidation;
 }

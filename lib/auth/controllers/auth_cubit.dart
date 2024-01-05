@@ -56,6 +56,7 @@ class AuthCubit extends HydratedCubit<AuthState> {
   }
 
   void signOut() {
+    log('[AuthCubit] signOut()');
     emit(AuthState.unauthorized());
     _getUserCubit.reset();
   }

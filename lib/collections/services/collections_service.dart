@@ -81,6 +81,37 @@ class CollectionsService implements CollectionsInterface {
   }
 
   @override
+  Future<Either<KordiException, Collection>> getById(int id) async {
+    log('[CollectionsService] getById( $id )');
+    late Either<KordiException, Collection> result;
+    final DioClient _dioClient = getIt.get<DioClient>();
+    try {
+      final response = await _dioClient.dio.get(
+        '/collections/$id',
+      );
+
+      final Collection collection = Collection.fromJson(response.data);
+      result = right(collection);
+    } on DioException catch (e, s) {
+      log(
+        '[CollectionsService] getById()',
+        error: e,
+        stackTrace: s,
+      );
+      if (e.response?.statusCode == 401) {
+        result = left(KordiException.unauthorized());
+      } else {
+        final String message =
+            ResponseCodeConverter.convert(e.response?.data['error']);
+        result = left(
+          KordiException.customMessage(message: message),
+        );
+      }
+    }
+    return result;
+  }
+
+  @override
   Future<Either<KordiException, Collection>> create(CollectionDto dto) async {
     log('[CollectionsService] create()');
     late Either<KordiException, Collection> result;

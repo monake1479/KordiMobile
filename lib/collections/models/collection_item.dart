@@ -23,4 +23,5 @@ class CollectionItem with _$CollectionItem {
 extension CollectionItemEx on CollectionItem {
   String get currentAmountWithUnit => '${currentAmount ?? 0}${type.unitSuffix}';
   String get maxAmountWithUnit => '$maxAmount${type.unitSuffix}';
+  bool get isFinished => currentAmount == maxAmount;
 }

@@ -3,14 +3,17 @@ part of 'package:kordi_mobile/collections/pages/collection_details_page.dart';
 class _CollectionDetailsItemList extends StatelessWidget {
   const _CollectionDetailsItemList({
     required this.items,
+    required this.collectionId,
   });
   final List<CollectionItem> items;
+  final int collectionId;
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final textTheme = theme.textTheme;
     final colorScheme = theme.colorScheme;
+    final authState = context.watch<AuthCubit>().state;
     return SliverToBoxAdapter(
       child: Card(
         child: Padding(
@@ -36,6 +39,24 @@ class _CollectionDetailsItemList extends StatelessWidget {
                     textAlign: TextAlign.justify,
                   ),
                 ],
+              ),
+              Builder(
+                builder: (context) {
+                  if (!authState.isAuthorized) {
+                    return Padding(
+                      padding: const EdgeInsets.only(bottom: 8),
+                      child: Text(
+                        S.current.collectionDetailsItemListUnauthorizedState,
+                        style: theme.textTheme.bodyLarge!.copyWith(
+                          decoration: TextDecoration.underline,
+                          color: colorScheme.tertiary,
+                        ),
+                        textAlign: TextAlign.justify,
+                      ),
+                    );
+                  }
+                  return const SizedBox.shrink();
+                },
               ),
               Builder(
                 builder: (context) {
@@ -120,20 +141,9 @@ class _CollectionDetailsItemList extends StatelessWidget {
                                       ),
                                     ),
                                   ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(bottom: 8),
-                                    child: Text(
-                                      S.current
-                                          .collectionDetailsItemDonateLabel,
-                                    ),
-                                  ),
-                                  Slider(
-                                    value: item.currentAmount?.toDouble() ?? 0,
-                                    max: item.maxAmount.toDouble(),
-                                    min: item.currentAmount?.toDouble() ?? 0,
-                                    onChanged: (value) {
-                                      log('value: $value');
-                                    },
+                                  _DonationSlider(
+                                    item: item,
+                                    collectionId: collectionId,
                                   ),
                                 ],
                               ),

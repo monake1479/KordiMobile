@@ -1,14 +1,15 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kordi_mobile/auth/controllers/auth_cubit.dart';
 import 'package:kordi_mobile/collections/controllers/collection_form/collection_form_bloc.dart';
+import 'package:kordi_mobile/collections/controllers/collections_filter/collections_filter_bloc.dart';
 import 'package:kordi_mobile/collections/models/collections_models.dart';
 import 'package:kordi_mobile/core/models/kordi_exception.dart';
 import 'package:kordi_mobile/core/navigation/kordi_router.dart';
 import 'package:kordi_mobile/core/utils/kordi_dialog.dart';
 import 'package:kordi_mobile/dependency_injection.dart';
+import 'package:kordi_mobile/donation/controllers/donation/donation_cubit.dart';
+import 'package:kordi_mobile/donation/controllers/donation_form/donation_form_bloc.dart';
 import 'package:kordi_mobile/gen/l10n.dart';
 import 'package:kordi_mobile/user/controllers/get_user_cubit.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -17,6 +18,7 @@ part 'package:kordi_mobile/collections/widgets/collection_details_comments.dart'
 part 'package:kordi_mobile/collections/widgets/collection_details_description_card.dart';
 part 'package:kordi_mobile/collections/widgets/collection_details_item_list.dart';
 part 'package:kordi_mobile/collections/widgets/collection_details_locations_card.dart';
+part 'package:kordi_mobile/donation/widgets/donation_slider.dart';
 
 class CollectionDetailsPage extends StatelessWidget {
   const CollectionDetailsPage({
@@ -120,6 +122,7 @@ class CollectionDetailsPage extends StatelessWidget {
                 ),
                 _CollectionDetailsItemList(
                   items: state.items,
+                  collectionId: state.id,
                 ),
                 _CollectionDetailsComments(),
               ],
