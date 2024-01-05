@@ -75,4 +75,32 @@ class GetCollectionsCubit extends Cubit<GetCollectionsState> {
     );
     return response.getRightOrThrow();
   }
+
+  Future<Collection?> getById(int id) async {
+    log('[GetCollectionsCubit] getById()');
+    emit(
+      state.copyWith(
+        isLoading: true,
+        failureOrSuccessOption: none(),
+      ),
+    );
+    final response = await _service.getById(id);
+    if (response.isLeft()) {
+      emit(
+        state.copyWith(
+          isLoading: false,
+          failureOrSuccessOption: some(left(response.getLeftOrThrow())),
+        ),
+      );
+      return null;
+    }
+
+    emit(
+      state.copyWith(
+        isLoading: false,
+        failureOrSuccessOption: some(right(unit)),
+      ),
+    );
+    return response.getRightOrThrow();
+  }
 }
