@@ -2,10 +2,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:kordi_mobile/collections/controllers/collections_filter/collections_filter_bloc.dart';
-import 'package:kordi_mobile/collections/models/collection_dto.dart';
 import 'package:kordi_mobile/collections/models/collections_models.dart';
 import 'package:kordi_mobile/collections/utils/collection_status_converter.dart';
 import 'package:kordi_mobile/core/utils/date_time_converter.dart';
+import 'package:kordi_mobile/donation/models/donation_dto.dart';
 
 part 'collection_form_event.dart';
 part 'collection_form_state.dart';
@@ -33,6 +33,7 @@ class CollectionFormBloc
     on<_AddItem>(_addItem);
     on<_RemoveItem>(_removeItem);
     on<_EditItem>(_editItem);
+    on<_DonateItem>(_donateItem);
     on<_CheckValidation>(_checkValidation);
   }
   final CollectionsFilterBloc _collectionsFilterBloc;
@@ -226,6 +227,33 @@ class CollectionFormBloc
         List<CollectionItem>.from(state.items);
     tempList.remove(event.oldItem);
     tempList.add(event.newItem);
+    emit(
+      state.copyWith(
+        items: tempList,
+      ),
+    );
+  }
+
+  void _donateItem(
+    _DonateItem event,
+    Emitter<CollectionFormState> emit,
+  ) {
+    final List<CollectionItem> tempList =
+        List<CollectionItem>.from(state.items);
+    final int index = tempList
+        .indexWhere((element) => element.id == event.donation.collectionItemId);
+    CollectionItem item = tempList.firstWhere(
+      (element) => element.id == event.donation.collectionItemId,
+    );
+
+    item = item.copyWith(
+      currentAmount: event.donation.amount,
+    );
+    tempList.removeWhere(
+      (element) => element.id == event.donation.collectionItemId,
+    );
+    tempList.insert(index, item);
+
     emit(
       state.copyWith(
         items: tempList,
