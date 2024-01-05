@@ -39,9 +39,8 @@ class KordiExceptionDialog extends StatelessWidget {
             } else {
               if (exception is Unauthorized) {
                 context.read<AuthCubit>().signOut();
-              } else {
-                Navigator.of(context).pop();
               }
+              Navigator.of(context).pop();
             }
           },
           child: Text(S.current.exceptionDialogButtonLabel),
