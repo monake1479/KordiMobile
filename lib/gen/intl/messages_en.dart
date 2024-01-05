@@ -84,13 +84,20 @@ class MessageLookup extends MessageLookupByLibrary {
                 "Cannot open address in browser."),
         "collectionDetailsDescriptionLabel":
             MessageLookupByLibrary.simpleMessage("Description"),
+        "collectionDetailsItemCompletedLabel":
+            MessageLookupByLibrary.simpleMessage("Completed!"),
         "collectionDetailsItemCurrentLabel": m0,
+        "collectionDetailsItemDonateButtonLabel":
+            MessageLookupByLibrary.simpleMessage("Donate"),
         "collectionDetailsItemDonateLabel":
-            MessageLookupByLibrary.simpleMessage("Donate:"),
+            MessageLookupByLibrary.simpleMessage("Donate: "),
         "collectionDetailsItemListEmptyState":
             MessageLookupByLibrary.simpleMessage("Items isn\'t provided yet."),
         "collectionDetailsItemListTitle":
             MessageLookupByLibrary.simpleMessage("Items list"),
+        "collectionDetailsItemListUnauthorizedState":
+            MessageLookupByLibrary.simpleMessage(
+                "You need to be signed in to donate items."),
         "collectionDetailsItemMaximumLabel": m1,
         "collectionDetailsItemTypeLabel": m2,
         "collectionDetailsLocationsEmptyState":

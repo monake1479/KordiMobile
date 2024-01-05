@@ -81,6 +81,7 @@
     "collectionDetailsLocationsLabel": "Locations where you can donate",
     "collectionDetailsAddressesUrlException": "Cannot open address in browser.",
     "collectionDetailsLocationsEmptyState": "User not provide any locations.",
+    "collectionDetailsItemListUnauthorizedState": "You need to be signed in to donate items.",
     "collectionDetailsItemListTitle": "Items list",
     "collectionDetailsItemListEmptyState": "Items isn't provided yet.",
     "collectionDetailsItemTypeLabel": "Type: {type}",
@@ -116,7 +117,9 @@
             }
         }
     },
-    "collectionDetailsItemDonateLabel": "Donate:",
+    "collectionDetailsItemDonateLabel": "Donate: ",
+    "collectionDetailsItemDonateButtonLabel": "Donate",
+    "collectionDetailsItemCompletedLabel": "Completed!",
     "collectionEditSaveButtonLabel": "Save",
     "collectionEditNameLabel": "Name",
     "collectionEditNameFormLabelText": "Collection name*",

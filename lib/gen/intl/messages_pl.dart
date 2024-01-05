@@ -86,7 +86,11 @@ class MessageLookup extends MessageLookupByLibrary {
                 "Nie można otworzyć linku. Spróbuj ponownie później."),
         "collectionDetailsDescriptionLabel":
             MessageLookupByLibrary.simpleMessage("Opis"),
+        "collectionDetailsItemCompletedLabel":
+            MessageLookupByLibrary.simpleMessage("Zakończono!"),
         "collectionDetailsItemCurrentLabel": m0,
+        "collectionDetailsItemDonateButtonLabel":
+            MessageLookupByLibrary.simpleMessage("Przekaż"),
         "collectionDetailsItemDonateLabel":
             MessageLookupByLibrary.simpleMessage("Przekaż: "),
         "collectionDetailsItemListEmptyState":
@@ -94,6 +98,9 @@ class MessageLookup extends MessageLookupByLibrary {
                 "Użytkownik nie dodał jeszcze żadnych przedmiotów."),
         "collectionDetailsItemListTitle":
             MessageLookupByLibrary.simpleMessage("Lista przedmiotów"),
+        "collectionDetailsItemListUnauthorizedState":
+            MessageLookupByLibrary.simpleMessage(
+                "Musisz być zalogowany, aby przekazać przedmioty."),
         "collectionDetailsItemMaximumLabel": m1,
         "collectionDetailsItemTypeLabel": m2,
         "collectionDetailsLocationsEmptyState":
@@ -188,7 +195,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "createCollectionFirstStepDescriptionFormTextLabel":
             MessageLookupByLibrary.simpleMessage("Opis kolekcji*"),
         "createCollectionFirstStepEndDateFormTextLabel":
-            MessageLookupByLibrary.simpleMessage("Data zakończenia kolekcji"),
+            MessageLookupByLibrary.simpleMessage("Data zakończenia kolekcji*"),
         "createCollectionFirstStepInformation":
             MessageLookupByLibrary.simpleMessage(
                 "Prosimy o podanie podstawowych informacji o Twojej kolekcji"),

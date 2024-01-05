@@ -81,6 +81,7 @@
     "collectionDetailsLocationsLabel": "Lokalizacje do których możesz oddać przedmioty",
     "collectionDetailsAddressesUrlException": "Nie można otworzyć linku. Spróbuj ponownie później.",
     "collectionDetailsLocationsEmptyState": "Użytkownik nie dodał jeszcze żadnych lokalizacji.",
+    "collectionDetailsItemListUnauthorizedState": "Musisz być zalogowany, aby przekazać przedmioty.",
     "collectionDetailsItemListTitle": "Lista przedmiotów",
     "collectionDetailsItemListEmptyState": "Użytkownik nie dodał jeszcze żadnych przedmiotów.",
     "collectionDetailsItemTypeLabel": "Typ: {type}",
@@ -117,6 +118,8 @@
         }
     },
     "collectionDetailsItemDonateLabel": "Przekaż: ",
+    "collectionDetailsItemDonateButtonLabel": "Przekaż",
+    "collectionDetailsItemCompletedLabel": "Zakończono!",
     "collectionEditSaveButtonLabel": "Zapisz",
     "collectionEditNameLabel": "Nazwa",
     "collectionEditNameFormLabelText": "Nazwa kolekcji*",

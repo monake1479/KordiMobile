@@ -761,6 +761,16 @@ class S {
     );
   }
 
+  /// `You need to be signed in to donate items.`
+  String get collectionDetailsItemListUnauthorizedState {
+    return Intl.message(
+      'You need to be signed in to donate items.',
+      name: 'collectionDetailsItemListUnauthorizedState',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Items list`
   String get collectionDetailsItemListTitle {
     return Intl.message(
@@ -811,11 +821,31 @@ class S {
     );
   }
 
-  /// `Donate:`
+  /// `Donate: `
   String get collectionDetailsItemDonateLabel {
     return Intl.message(
-      'Donate:',
+      'Donate: ',
       name: 'collectionDetailsItemDonateLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Donate`
+  String get collectionDetailsItemDonateButtonLabel {
+    return Intl.message(
+      'Donate',
+      name: 'collectionDetailsItemDonateButtonLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Completed!`
+  String get collectionDetailsItemCompletedLabel {
+    return Intl.message(
+      'Completed!',
+      name: 'collectionDetailsItemCompletedLabel',
       desc: '',
       args: [],
     );
