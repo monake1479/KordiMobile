@@ -8,6 +8,7 @@ abstract class CollectionsInterface {
     CollectionFilter dto,
   );
   Future<Either<KordiException, CollectionPaging>> get();
+  Future<Either<KordiException, Collection>> getById(int id);
   Future<Either<KordiException, Collection>> create(CollectionDto dto);
   Future<Either<KordiException, Collection>> patch(EditCollectionDto dto);
 }
