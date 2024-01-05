@@ -28,6 +28,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   intl: ^0.18.1
+  intl_utils: ^2.8.7
   flag: ^7.0.0
   dartz: ^0.10.1
   flutter_native_splash: ^2.3.9
