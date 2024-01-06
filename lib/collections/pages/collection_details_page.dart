@@ -1,31 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:kordi_mobile/auth/controllers/auth_cubit.dart';
-import 'package:kordi_mobile/collections/controllers/collection_form/collection_form_bloc.dart';
+import 'package:kordi_mobile/collection_addresses/controllers/manage_collection_address/manage_collection_address_cubit.dart';
+import 'package:kordi_mobile/collection_items/controllers/donation_form/donation_form_bloc.dart';
+import 'package:kordi_mobile/collection_items/controllers/manage_collection_items/manage_collection_items_cubit.dart';
+import 'package:kordi_mobile/collection_items/models/collection_items_models.dart';
 import 'package:kordi_mobile/collections/controllers/collections_filter/collections_filter_bloc.dart';
+import 'package:kordi_mobile/collections/controllers/edit_collection_form/edit_collection_form_bloc.dart';
 import 'package:kordi_mobile/collections/models/collections_models.dart';
 import 'package:kordi_mobile/core/models/kordi_exception.dart';
 import 'package:kordi_mobile/core/navigation/kordi_router.dart';
 import 'package:kordi_mobile/core/utils/kordi_dialog.dart';
 import 'package:kordi_mobile/dependency_injection.dart';
-import 'package:kordi_mobile/donation/controllers/donation/donation_cubit.dart';
-import 'package:kordi_mobile/donation/controllers/donation_form/donation_form_bloc.dart';
 import 'package:kordi_mobile/gen/l10n.dart';
 import 'package:kordi_mobile/user/controllers/get_user_cubit.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+part 'package:kordi_mobile/collection_items/widgets/donation_slider.dart';
 part 'package:kordi_mobile/collections/widgets/collection_details_comments.dart';
 part 'package:kordi_mobile/collections/widgets/collection_details_description_card.dart';
 part 'package:kordi_mobile/collections/widgets/collection_details_item_list.dart';
 part 'package:kordi_mobile/collections/widgets/collection_details_locations_card.dart';
-part 'package:kordi_mobile/donation/widgets/donation_slider.dart';
 
 class CollectionDetailsPage extends StatelessWidget {
   const CollectionDetailsPage({
     super.key,
-    required this.collectionId,
   });
-  final int collectionId;
 
   @override
   Widget build(BuildContext context) {
@@ -33,13 +34,37 @@ class CollectionDetailsPage extends StatelessWidget {
     final colorScheme = theme.colorScheme;
     final authState = context.read<AuthCubit>().state;
     final userId = context.read<GetUserCubit>().state.user?.id;
-
-    return BlocProvider<CollectionFormBloc>(
-      create: (context) => getIt.get<CollectionFormBloc>()
-        ..add(
-          CollectionFormEvent.setInitial(collectionId),
+    final collectionIdString =
+        GoRouterState.of(context).pathParameters['collectionId'];
+    if (collectionIdString == null) {
+      KordiDialog.showException(
+        context,
+        KordiException.customMessage(
+          message: 'Something went wrong with navigation.',
         ),
-      child: BlocBuilder<CollectionFormBloc, CollectionFormState>(
+      );
+      CollectionPageRoute().go(context);
+    }
+    final collectionId = int.parse(collectionIdString!);
+
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => getIt.get<EditCollectionFormBloc>()
+            ..add(
+              EditCollectionFormEvent.setInitial(collectionId),
+            ),
+        ),
+        BlocProvider<ManageCollectionAddressCubit>(
+          create: (context) => getIt.get<ManageCollectionAddressCubit>()
+            ..setAddresses(collectionId),
+        ),
+        BlocProvider<ManageCollectionItemsCubit>(
+          create: (context) =>
+              getIt.get<ManageCollectionItemsCubit>()..setItems(collectionId),
+        ),
+      ],
+      child: BlocBuilder<EditCollectionFormBloc, EditCollectionFormState>(
         builder: (context, state) {
           return Scaffold(
             body: CustomScrollView(
@@ -117,13 +142,8 @@ class CollectionDetailsPage extends StatelessWidget {
                 _CollectionDetailsDescriptionCard(
                   description: state.description,
                 ),
-                _CollectionDetailsLocationsTile(
-                  addresses: state.addresses,
-                ),
-                _CollectionDetailsItemList(
-                  items: state.items,
-                  collectionId: state.id,
-                ),
+                _CollectionDetailsLocationsTile(),
+                _CollectionDetailsItemList(),
                 _CollectionDetailsComments(),
               ],
             ),

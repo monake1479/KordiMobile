@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:kordi_mobile/collection_items/models/collection_items_models.dart';
 import 'package:kordi_mobile/collections/controllers/collections_filter/collections_filter_bloc.dart';
-import 'package:kordi_mobile/collections/models/collections_models.dart';
 import 'package:kordi_mobile/dependency_injection.dart';
 import 'package:kordi_mobile/gen/l10n.dart';
 

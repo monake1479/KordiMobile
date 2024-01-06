@@ -11,8 +11,6 @@ class EditCollectionDto with _$EditCollectionDto {
     required String title,
     required String description,
     required int userId,
-    required List<CollectionAddress> addresses,
-    required List<CollectionItem> items,
   }) = _EditCollectionDto;
   factory EditCollectionDto.fromJson(Map<String, dynamic> json) =>
       _$EditCollectionDtoFromJson(json);

@@ -7,10 +7,17 @@ class _CollectionEditLocationsTile extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
-    final collectionFormBloc = context.read<CollectionFormBloc>();
 
-    return BlocBuilder<CollectionFormBloc, CollectionFormState>(
-      bloc: collectionFormBloc,
+    return BlocConsumer<ManageCollectionAddressCubit,
+        ManageCollectionAddressState>(
+      listener: (context, state) async {
+        if (state.exception != null) {
+          await KordiDialog.showException(
+            context,
+            state.exception!,
+          );
+        }
+      },
       builder: (context, state) {
         return SliverToBoxAdapter(
           child: Card(
@@ -69,23 +76,12 @@ class _CollectionEditLocationsTile extends StatelessWidget {
                                   ),
                                   Spacer(),
                                   IconButton(
-                                    onPressed: () async {
-                                      await _onEditAddressButtonOnPressed(
-                                        context,
-                                        address,
-                                      );
-                                    },
-                                    icon: Icon(
-                                      Icons.edit,
-                                    ),
-                                  ),
-                                  IconButton(
                                     onPressed: () {
-                                      collectionFormBloc.add(
-                                        CollectionFormEvent.removeAddress(
-                                          address,
-                                        ),
-                                      );
+                                      context
+                                          .read<ManageCollectionAddressCubit>()
+                                          .removeAddress(
+                                            address,
+                                          );
                                     },
                                     icon: Icon(
                                       Icons.delete,
@@ -126,24 +122,8 @@ class _CollectionEditLocationsTile extends StatelessWidget {
   ) async {
     final result = await CollectionAddressDialog.show(context);
     if (result != null) {
-      context.read<CollectionFormBloc>().add(
-            CollectionFormEvent.addAddress(result),
-          );
-    }
-  }
-
-  Future<void> _onEditAddressButtonOnPressed(
-    BuildContext context,
-    CollectionAddress address,
-  ) async {
-    final result = await CollectionAddressDialog.show(
-      context,
-      isEdit: true,
-      address: address,
-    );
-    if (result != null) {
-      context.read<CollectionFormBloc>().add(
-            CollectionFormEvent.editAddress(address, result),
+      context.read<ManageCollectionAddressCubit>().addAddress(
+            result,
           );
     }
   }

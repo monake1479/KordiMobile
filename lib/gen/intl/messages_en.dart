@@ -148,6 +148,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Cancel"),
         "collectionItemDialogCategoryFormLabelText":
             MessageLookupByLibrary.simpleMessage("Category*"),
+        "collectionItemDialogCurrentFormLabelText":
+            MessageLookupByLibrary.simpleMessage("Current quantity"),
+        "collectionItemDialogEditButtonLabel":
+            MessageLookupByLibrary.simpleMessage("Edit"),
         "collectionItemDialogEditTitle":
             MessageLookupByLibrary.simpleMessage("Edit item"),
         "collectionItemDialogFieldsEmptyErrorLabel":

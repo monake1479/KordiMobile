@@ -6,9 +6,9 @@ class _CollectionEditDescriptionCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final collectionFormBloc = context.read<CollectionFormBloc>();
-    return BlocBuilder<CollectionFormBloc, CollectionFormState>(
-      bloc: collectionFormBloc,
+    final editCollectionFormBloc = context.read<EditCollectionFormBloc>();
+    return BlocBuilder<EditCollectionFormBloc, EditCollectionFormState>(
+      bloc: editCollectionFormBloc,
       builder: (context, state) {
         if (state.isLoading || state.description.isEmpty) {
           return SliverToBoxAdapter(
@@ -51,8 +51,8 @@ class _CollectionEditDescriptionCard extends StatelessWidget {
                     maxLength: 500,
                     textAlign: TextAlign.justify,
                     onChanged: (description) {
-                      context.read<CollectionFormBloc>().add(
-                            CollectionFormEvent.setDescription(description),
+                      context.read<EditCollectionFormBloc>().add(
+                            EditCollectionFormEvent.setDescription(description),
                           );
                     },
                   ),

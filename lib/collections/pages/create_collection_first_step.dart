@@ -12,7 +12,7 @@ class _CreateCollectionFirstStepState extends State<CreateCollectionFirstStep> {
   late TextEditingController _endDateController;
   @override
   void initState() {
-    final endDate = context.read<CollectionFormBloc>().state.endTime;
+    final endDate = context.read<CreateCollectionFormBloc>().state.endTime;
     if (endDate != null) {
       _endDateController =
           TextEditingController(text: DateFormat('dd.MM.yyyy').format(endDate));
@@ -27,9 +27,9 @@ class _CreateCollectionFirstStepState extends State<CreateCollectionFirstStep> {
     final theme = Theme.of(context);
     final textTheme = theme.textTheme;
     final colorScheme = theme.colorScheme;
-    final collectionFormBloc = context.read<CollectionFormBloc>();
+    final createCollectionFormBloc = context.read<CreateCollectionFormBloc>();
 
-    return BlocBuilder<CollectionFormBloc, CollectionFormState>(
+    return BlocBuilder<CreateCollectionFormBloc, CreateEditCollectionFormState>(
       builder: (context, state) {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -96,8 +96,8 @@ class _CreateCollectionFirstStepState extends State<CreateCollectionFirstStep> {
                         ),
                         keyboardType: TextInputType.multiline,
                         onChanged: (name) {
-                          collectionFormBloc
-                              .add(CollectionFormEvent.setName(name));
+                          createCollectionFormBloc
+                              .add(CreateCollectionFormEvent.setName(name));
                         },
                       ),
                     ),
@@ -118,8 +118,10 @@ class _CreateCollectionFirstStepState extends State<CreateCollectionFirstStep> {
                         maxLength: 500,
                         keyboardType: TextInputType.multiline,
                         onChanged: (description) {
-                          collectionFormBloc.add(
-                            CollectionFormEvent.setDescription(description),
+                          createCollectionFormBloc.add(
+                            CreateCollectionFormEvent.setDescription(
+                              description,
+                            ),
                           );
                         },
                       ),
@@ -228,7 +230,8 @@ class _CreateCollectionFirstStepState extends State<CreateCollectionFirstStep> {
                   EdgeInsets.only(bottom: 20),
               child: ElevatedButton(
                 onPressed: () {
-                  collectionFormBloc.add(CollectionFormEvent.checkValidation());
+                  createCollectionFormBloc
+                      .add(CreateCollectionFormEvent.checkValidation());
                   if (state.isFirstStepValid) {
                     CreateCollectionSecondStepRoute().go(context);
                   }
@@ -262,8 +265,8 @@ class _CreateCollectionFirstStepState extends State<CreateCollectionFirstStep> {
     if (endDate != null) {
       _endDateController.text = DateFormat('dd.MM.yyyy').format(endDate);
       context
-          .read<CollectionFormBloc>()
-          .add(CollectionFormEvent.setEndDate(endDate));
+          .read<CreateCollectionFormBloc>()
+          .add(CreateCollectionFormEvent.setEndDate(endDate));
     }
   }
 }

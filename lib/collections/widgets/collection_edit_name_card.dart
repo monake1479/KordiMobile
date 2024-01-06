@@ -7,9 +7,9 @@ class _CollectionEditNameCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final textTheme = theme.textTheme;
-    final collectionFormBloc = context.read<CollectionFormBloc>();
+    final editCollectionFormBloc = context.read<EditCollectionFormBloc>();
 
-    return BlocBuilder<CollectionFormBloc, CollectionFormState>(
+    return BlocBuilder<EditCollectionFormBloc, EditCollectionFormState>(
       builder: (context, state) {
         if (state.isLoading || state.name.isEmpty) {
           return SliverToBoxAdapter(
@@ -49,7 +49,8 @@ class _CollectionEditNameCard extends StatelessWidget {
                           : null,
                     ),
                     onChanged: (name) {
-                      collectionFormBloc.add(CollectionFormEvent.setName(name));
+                      editCollectionFormBloc
+                          .add(EditCollectionFormEvent.setName(name));
                     },
                   ),
                 ],

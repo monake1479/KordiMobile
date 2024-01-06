@@ -601,6 +601,16 @@ class S {
     );
   }
 
+  /// `Current quantity`
+  String get collectionItemDialogCurrentFormLabelText {
+    return Intl.message(
+      'Current quantity',
+      name: 'collectionItemDialogCurrentFormLabelText',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Please fill all fields`
   String get collectionItemDialogFieldsEmptyErrorLabel {
     return Intl.message(
@@ -626,6 +636,16 @@ class S {
     return Intl.message(
       'Add',
       name: 'collectionItemDialogAddButtonLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit`
+  String get collectionItemDialogEditButtonLabel {
+    return Intl.message(
+      'Edit',
+      name: 'collectionItemDialogEditButtonLabel',
       desc: '',
       args: [],
     );

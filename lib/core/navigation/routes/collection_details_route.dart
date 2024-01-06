@@ -27,8 +27,6 @@ class CollectionDetailsPageRoute extends GoRouteData {
   ) =>
       FadeTransitionPage(
         key: state.pageKey,
-        child: CollectionDetailsPage(
-          collectionId: collectionId,
-        ),
+        child: CollectionDetailsPage(),
       );
 }
