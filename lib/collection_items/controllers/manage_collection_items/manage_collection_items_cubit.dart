@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:injectable/injectable.dart';
@@ -22,7 +23,7 @@ class ManageCollectionItemsCubit extends Cubit<ManageCollectionItemsState> {
 
   bool get itemsChanged {
     final List<CollectionItem> items = List<CollectionItem>.from(state.items);
-    return items != _initialItems;
+    return !listEquals(items, _initialItems);
   }
 
   void reset() {

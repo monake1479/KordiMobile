@@ -2,7 +2,8 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:kordi_mobile/addresses/widgets/collection_address_dialog.dart';
+import 'package:kordi_mobile/collection_addresses/controllers/manage_collection_address/manage_collection_address_cubit.dart';
+import 'package:kordi_mobile/collection_addresses/widgets/collection_address_dialog.dart';
 import 'package:kordi_mobile/collection_items/controllers/manage_collection_items/manage_collection_items_cubit.dart';
 import 'package:kordi_mobile/collection_items/models/collection_items_models.dart';
 import 'package:kordi_mobile/collection_items/widgets/collection_item_dialog.dart';
@@ -47,6 +48,10 @@ class CollectionEditPage extends StatelessWidget {
           BlocProvider<ManageCollectionItemsCubit>(
             create: (context) =>
                 getIt.get<ManageCollectionItemsCubit>()..setItems(collectionId),
+          ),
+          BlocProvider<ManageCollectionAddressCubit>(
+            create: (context) => getIt.get<ManageCollectionAddressCubit>()
+              ..setAddresses(collectionId),
           ),
           BlocProvider(
             create: (context) => getIt.get<EditCollectionFormBloc>()
@@ -185,6 +190,8 @@ class CollectionEditPage extends StatelessWidget {
     final editCollectionCubit = context.read<EditCollectionCubit>();
     final manageCollectionItemsCubit =
         context.read<ManageCollectionItemsCubit>();
+    final manageCollectionAddressCubit =
+        context.read<ManageCollectionAddressCubit>();
     editCollectionFormBloc.add(
       EditCollectionFormEvent.checkValidation(),
     );
@@ -195,6 +202,10 @@ class CollectionEditPage extends StatelessWidget {
     await editCollectionCubit.edit(editCollectionFormState.toEditCollectionDto);
     if (manageCollectionItemsCubit.itemsChanged) {
       await manageCollectionItemsCubit.save(collectionId);
+    }
+
+    if (manageCollectionAddressCubit.addressesChanged) {
+      await manageCollectionAddressCubit.save(collectionId);
     }
     if (editCollectionCubit.state.exception == null) {
       context

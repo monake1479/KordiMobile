@@ -3,8 +3,8 @@ import 'dart:developer';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
-import 'package:kordi_mobile/addresses/interfaces/addresses_interface.dart';
-import 'package:kordi_mobile/addresses/models/collection_address.dart';
+import 'package:kordi_mobile/collection_addresses/interfaces/addresses_interface.dart';
+import 'package:kordi_mobile/collection_addresses/models/collection_address.dart';
 import 'package:kordi_mobile/core/models/kordi_exception.dart';
 import 'package:kordi_mobile/core/utils/dio_client.dart';
 import 'package:kordi_mobile/dependency_injection.dart';
@@ -13,25 +13,23 @@ import 'package:kordi_mobile/sign_up/utils/response_code_converter.dart';
 @Singleton(as: AddressesInterface)
 class AddressesService implements AddressesInterface {
   @override
-  Future<Either<KordiException, CollectionAddress>> addAddressToCollection({
+  Future<Either<KordiException, Unit>> create({
     required int collectionId,
     required CollectionAddress address,
   }) async {
-    log('[AddressesService] addAddressToCollection()');
-    late Either<KordiException, CollectionAddress> result;
+    log('[AddressesService] create()');
+    late Either<KordiException, Unit> result;
     final DioClient _dioClient = getIt.get<DioClient>();
     try {
-      final response = await _dioClient.dio.post(
+      await _dioClient.dio.post(
         '/collections/$collectionId/addresses',
         data: address.toJson(),
       );
 
-      final CollectionAddress collectionAddress =
-          CollectionAddress.fromJson(response.data);
-      result = right(collectionAddress);
+      result = right(unit);
     } on DioException catch (e, s) {
       log(
-        '[AddressesService] addAddressToCollection()',
+        '[AddressesService] create()',
         error: e,
         stackTrace: s,
       );
@@ -49,22 +47,22 @@ class AddressesService implements AddressesInterface {
   }
 
   @override
-  Future<Either<KordiException, Unit>> deleteAddressFromCollection({
+  Future<Either<KordiException, Unit>> delete({
     required int collectionId,
     required int addressId,
   }) async {
-    log('[AddressesService] addAddressToCollection()');
+    log('[AddressesService] delete()');
     late Either<KordiException, Unit> result;
     final DioClient _dioClient = getIt.get<DioClient>();
     try {
-      await _dioClient.dio.post(
+      await _dioClient.dio.delete(
         '/collections/$collectionId/addresses/$addressId',
       );
 
       result = right(unit);
     } on DioException catch (e, s) {
       log(
-        '[AddressesService] deleteAddressFromCollection()',
+        '[AddressesService] delete()',
         error: e,
         stackTrace: s,
       );

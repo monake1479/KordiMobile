@@ -3,7 +3,7 @@ part of 'collection_address_form_bloc.dart';
 @freezed
 class CollectionAddressFormState with _$CollectionAddressFormState {
   const factory CollectionAddressFormState({
-    int? id,
+    required int? id,
     required String city,
     required String street,
     required bool validationError,

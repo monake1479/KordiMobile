@@ -1,15 +1,17 @@
-part of 'package:kordi_mobile/addresses/controllers/manage_collection_address/manage_collection_address_cubit.dart';
+part of 'package:kordi_mobile/collection_addresses/controllers/manage_collection_address/manage_collection_address_cubit.dart';
 
 @freezed
 class ManageCollectionAddressState with _$ManageCollectionAddressState {
   const factory ManageCollectionAddressState({
     required bool isLoading,
     required Option<Either<KordiException, Unit>> failureOrSuccessOption,
+    required List<CollectionAddress> addresses,
   }) = _ManageCollectionAddressState;
   factory ManageCollectionAddressState.initial() =>
       ManageCollectionAddressState(
         isLoading: false,
         failureOrSuccessOption: none(),
+        addresses: [],
       );
 }
 

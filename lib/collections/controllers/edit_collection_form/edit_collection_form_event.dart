@@ -11,10 +11,5 @@ class EditCollectionFormEvent with _$EditCollectionFormEvent {
   const factory EditCollectionFormEvent.setDescription(String description) =
       _SetDescription;
   const factory EditCollectionFormEvent.setPhoto(String photo) = _SetPhoto;
-  const factory EditCollectionFormEvent.addAddress(CollectionAddress address) =
-      _AddAddress;
-  const factory EditCollectionFormEvent.removeAddress(
-    CollectionAddress address,
-  ) = _RemoveAddress;
   const factory EditCollectionFormEvent.checkValidation() = _CheckValidation;
 }

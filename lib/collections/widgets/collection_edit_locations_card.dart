@@ -7,10 +7,17 @@ class _CollectionEditLocationsTile extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
-    final editCollectionFormBloc = context.read<EditCollectionFormBloc>();
 
-    return BlocBuilder<EditCollectionFormBloc, EditCollectionFormState>(
-      bloc: editCollectionFormBloc,
+    return BlocConsumer<ManageCollectionAddressCubit,
+        ManageCollectionAddressState>(
+      listener: (context, state) async {
+        if (state.exception != null) {
+          await KordiDialog.showException(
+            context,
+            state.exception!,
+          );
+        }
+      },
       builder: (context, state) {
         return SliverToBoxAdapter(
           child: Card(
@@ -70,11 +77,11 @@ class _CollectionEditLocationsTile extends StatelessWidget {
                                   Spacer(),
                                   IconButton(
                                     onPressed: () {
-                                      editCollectionFormBloc.add(
-                                        EditCollectionFormEvent.removeAddress(
-                                          address,
-                                        ),
-                                      );
+                                      context
+                                          .read<ManageCollectionAddressCubit>()
+                                          .removeAddress(
+                                            address,
+                                          );
                                     },
                                     icon: Icon(
                                       Icons.delete,
@@ -115,8 +122,8 @@ class _CollectionEditLocationsTile extends StatelessWidget {
   ) async {
     final result = await CollectionAddressDialog.show(context);
     if (result != null) {
-      context.read<EditCollectionFormBloc>().add(
-            EditCollectionFormEvent.addAddress(result),
+      context.read<ManageCollectionAddressCubit>().addAddress(
+            result,
           );
     }
   }

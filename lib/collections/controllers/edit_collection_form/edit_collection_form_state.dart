@@ -14,7 +14,6 @@ class EditCollectionFormState with _$EditCollectionFormState {
     required int donates,
     @CollectionStatusConverter() required CollectionStatus status,
     required int userId,
-    required List<CollectionAddress> addresses,
     required List<Comment>? comments,
     required bool validationError,
   }) = _EditCollectionFormState;
@@ -29,21 +28,18 @@ class EditCollectionFormState with _$EditCollectionFormState {
         donates: 0,
         status: CollectionStatus.inProgress,
         userId: 0,
-        addresses: [],
         comments: [],
         validationError: false,
       );
 }
 
 extension EditCollectionFormStateX on EditCollectionFormState {
-  bool get canEditCollection =>
-      name.isNotEmpty && description.isNotEmpty && addresses.isNotEmpty;
+  bool get canEditCollection => name.isNotEmpty && description.isNotEmpty;
 
   EditCollectionDto get toEditCollectionDto => EditCollectionDto(
         id: id,
         title: name,
         description: description,
         userId: userId,
-        addresses: addresses,
       );
 }

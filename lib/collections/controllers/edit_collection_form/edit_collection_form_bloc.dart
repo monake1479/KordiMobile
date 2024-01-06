@@ -23,8 +23,6 @@ class EditCollectionFormBloc
     on<_SetName>(_setName);
     on<_SetDescription>(_setDescription);
     on<_SetPhoto>(_setPhoto);
-    on<_AddAddress>(_addAddress);
-    on<_RemoveAddress>(_removeAddress);
     on<_CheckValidation>(_checkValidation);
   }
   final CollectionsFilterBloc _collectionsFilterBloc;
@@ -58,7 +56,6 @@ class EditCollectionFormBloc
         // image: collection.image,
         status: collection.status,
         userId: collection.userId,
-        addresses: collection.addresses,
         comments: collection.comments,
       ),
     );
@@ -108,33 +105,6 @@ class EditCollectionFormBloc
     );
   }
 
-  void _addAddress(
-    _AddAddress event,
-    Emitter<EditCollectionFormState> emit,
-  ) {
-    final List<CollectionAddress> tempList = List.from(state.addresses);
-    tempList.add(event.address);
-    emit(
-      state.copyWith(
-        addresses: tempList,
-      ),
-    );
-  }
-
-  void _removeAddress(
-    _RemoveAddress event,
-    Emitter<EditCollectionFormState> emit,
-  ) {
-    final List<CollectionAddress> tempList = List.from(state.addresses);
-    tempList.remove(event.address);
-
-    emit(
-      state.copyWith(
-        addresses: tempList,
-      ),
-    );
-  }
-
   // void _donateItem(
   //   _DonateItem event,
   //   Emitter<EditCollectionFormState> emit,
@@ -166,9 +136,7 @@ class EditCollectionFormBloc
     _CheckValidation event,
     Emitter<EditCollectionFormState> emit,
   ) {
-    if (state.name.isEmpty ||
-        state.description.isEmpty ||
-        state.addresses.isEmpty) {
+    if (state.name.isEmpty || state.description.isEmpty) {
       emit(state.copyWith(validationError: true));
       return;
     }

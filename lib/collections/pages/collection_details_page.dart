@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:kordi_mobile/auth/controllers/auth_cubit.dart';
+import 'package:kordi_mobile/collection_addresses/controllers/manage_collection_address/manage_collection_address_cubit.dart';
 import 'package:kordi_mobile/collection_items/controllers/donation_form/donation_form_bloc.dart';
 import 'package:kordi_mobile/collection_items/controllers/manage_collection_items/manage_collection_items_cubit.dart';
 import 'package:kordi_mobile/collection_items/models/collection_items_models.dart';
@@ -53,6 +54,10 @@ class CollectionDetailsPage extends StatelessWidget {
             ..add(
               EditCollectionFormEvent.setInitial(collectionId),
             ),
+        ),
+        BlocProvider<ManageCollectionAddressCubit>(
+          create: (context) => getIt.get<ManageCollectionAddressCubit>()
+            ..setAddresses(collectionId),
         ),
         BlocProvider<ManageCollectionItemsCubit>(
           create: (context) =>
@@ -137,9 +142,7 @@ class CollectionDetailsPage extends StatelessWidget {
                 _CollectionDetailsDescriptionCard(
                   description: state.description,
                 ),
-                _CollectionDetailsLocationsTile(
-                  addresses: state.addresses,
-                ),
+                _CollectionDetailsLocationsTile(),
                 _CollectionDetailsItemList(),
                 _CollectionDetailsComments(),
               ],

@@ -1,4 +1,4 @@
-export 'package:kordi_mobile/addresses/models/collection_address.dart';
+export 'package:kordi_mobile/collection_addresses/models/collection_address.dart';
 export 'package:kordi_mobile/collections/models/collection.dart';
 export 'package:kordi_mobile/collections/models/collection_dto.dart';
 export 'package:kordi_mobile/collections/models/collection_filter.dart';

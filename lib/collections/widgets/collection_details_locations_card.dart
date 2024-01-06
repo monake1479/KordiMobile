@@ -1,8 +1,7 @@
 part of 'package:kordi_mobile/collections/pages/collection_details_page.dart';
 
 class _CollectionDetailsLocationsTile extends StatelessWidget {
-  const _CollectionDetailsLocationsTile({required this.addresses});
-  final List<CollectionAddress> addresses;
+  const _CollectionDetailsLocationsTile();
 
   @override
   Widget build(BuildContext context) {
@@ -35,13 +34,14 @@ class _CollectionDetailsLocationsTile extends StatelessWidget {
                   ),
                 ],
               ),
-              Builder(
-                builder: (context) {
-                  if (addresses.isEmpty) {
+              BlocBuilder<ManageCollectionAddressCubit,
+                  ManageCollectionAddressState>(
+                builder: (context, state) {
+                  if (state.addresses.isEmpty) {
                     return Text(S.current.collectionDetailsLocationsEmptyState);
                   }
                   return Column(
-                    children: addresses
+                    children: state.addresses
                         .map(
                           (address) => Row(
                             children: [

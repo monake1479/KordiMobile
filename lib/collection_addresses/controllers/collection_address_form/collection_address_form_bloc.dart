@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:kordi_mobile/collections/models/collections_models.dart';
+import 'package:kordi_mobile/collection_addresses/models/collection_address.dart';
 
 part 'collection_address_form_event.dart';
 part 'collection_address_form_state.dart';
