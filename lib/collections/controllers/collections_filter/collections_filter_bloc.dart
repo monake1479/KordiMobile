@@ -4,6 +4,7 @@ import 'package:collection/collection.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
+import 'package:kordi_mobile/collection_items/models/collection_items_models.dart';
 import 'package:kordi_mobile/collections/controllers/get_collections/get_collections_cubit.dart';
 import 'package:kordi_mobile/collections/models/collections_models.dart';
 import 'package:kordi_mobile/dependency_injection.dart';
@@ -32,6 +33,7 @@ class CollectionsFilterBloc
     on<_GetFilteredCollections>(_getFilteredCollections);
     on<_GetInitialFilteredCollections>(_getInitialFilteredCollections);
     on<_GetById>(_getById);
+    on<_UpdateCollectionItem>(_updateCollectionItem);
   }
   final GetCollectionsCubit _getCollectionsCubit;
 
@@ -251,7 +253,7 @@ class CollectionsFilterBloc
       emit(state.copyWith(isLoading: false));
       return;
     }
-    List<Collection> tempList = List<Collection>.from(state.collections);
+    final List<Collection> tempList = List<Collection>.from(state.collections);
     final int index = tempList.indexWhere(
       (element) => element.id == event.id,
     );
@@ -278,6 +280,38 @@ class CollectionsFilterBloc
     return state.collections.firstWhereOrNull(
       (collection) => collection.id == id,
     );
+  }
+
+  void _updateCollectionItem(
+    _UpdateCollectionItem event,
+    Emitter<CollectionsFilterState> emit,
+  ) {
+    Collection? collection = state.collections
+        .firstWhereOrNull((element) => element.id == event.collectionId);
+    if (collection == null) {
+      return;
+    }
+    final int indexOfItemToReplace =
+        collection.items.indexWhere((element) => element.id == event.item.id);
+    final int collectionIndex = state.collections
+        .indexWhere((element) => element.id == event.collectionId);
+    final List<CollectionItem> tempItems =
+        List<CollectionItem>.from(collection.items);
+    tempItems.removeAt(indexOfItemToReplace);
+    tempItems.insert(indexOfItemToReplace, event.item);
+    collection = collection.copyWith(items: tempItems);
+    final List<Collection> tempCollections =
+        List<Collection>.from(state.collections);
+    tempCollections.removeAt(collectionIndex);
+    tempCollections.insert(collectionIndex, collection);
+    final CollectionPaging newCollectionPaging = CollectionPaging(
+      collections: tempCollections,
+      totalElements: state.collectionPaging.totalElements,
+      totalPages: state.collectionPaging.totalPages,
+      pageSize: state.collectionPaging.pageSize,
+      pageNumber: state.collectionPaging.pageNumber,
+    );
+    emit(state.copyWith(collectionPaging: newCollectionPaging));
   }
 
   @override

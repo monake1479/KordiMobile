@@ -39,6 +39,8 @@ class ResponseCodeConverter {
         return 'Provided password is too short.';
       case 'password.old.password.not.match':
         return 'Provided old password is not valid.';
+      case 'collection.item.current.bigger.than.max':
+        return 'You cannot donate more than maximum amount.';
 
       default:
         return 'Something went wrong. Please try again later.';

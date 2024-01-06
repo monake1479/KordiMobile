@@ -10,7 +10,7 @@ class CreateCollectionSecondStep extends StatelessWidget {
     final colorScheme = theme.colorScheme;
     final GlobalKey<ShakeErrorState> _shakeErrorKey =
         GlobalKey<ShakeErrorState>();
-    return BlocBuilder<CollectionFormBloc, CollectionFormState>(
+    return BlocBuilder<CreateCollectionFormBloc, CreateEditCollectionFormState>(
       builder: (context, state) {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -182,8 +182,8 @@ class CreateCollectionSecondStep extends StatelessWidget {
   ) async {
     final result = await CollectionAddressDialog.show(context);
     if (result != null) {
-      context.read<CollectionFormBloc>().add(
-            CollectionFormEvent.addAddress(result),
+      context.read<CreateCollectionFormBloc>().add(
+            CreateCollectionFormEvent.addAddress(result),
           );
     }
   }

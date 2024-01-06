@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:kordi_mobile/collections/controllers/collection_form/collection_form_bloc.dart';
-import 'package:kordi_mobile/collections/models/collections_models.dart';
+import 'package:kordi_mobile/collection_items/models/collection_items_models.dart';
+import 'package:kordi_mobile/collections/controllers/create_collection_form/create_collection_form_bloc.dart';
 
 class CreateCollectionItemTile extends StatelessWidget {
   const CreateCollectionItemTile({super.key, required this.item});
@@ -60,8 +60,8 @@ class CreateCollectionItemTile extends StatelessWidget {
         IconButton(
           onPressed: () {
             context
-                .read<CollectionFormBloc>()
-                .add(CollectionFormEvent.removeItem(item));
+                .read<CreateCollectionFormBloc>()
+                .add(CreateCollectionFormEvent.removeItem(item));
           },
           icon: Icon(
             Icons.delete,

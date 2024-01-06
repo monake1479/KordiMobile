@@ -7,10 +7,10 @@ class _CollectionEditLocationsTile extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
-    final collectionFormBloc = context.read<CollectionFormBloc>();
+    final editCollectionFormBloc = context.read<EditCollectionFormBloc>();
 
-    return BlocBuilder<CollectionFormBloc, CollectionFormState>(
-      bloc: collectionFormBloc,
+    return BlocBuilder<EditCollectionFormBloc, EditCollectionFormState>(
+      bloc: editCollectionFormBloc,
       builder: (context, state) {
         return SliverToBoxAdapter(
           child: Card(
@@ -69,20 +69,9 @@ class _CollectionEditLocationsTile extends StatelessWidget {
                                   ),
                                   Spacer(),
                                   IconButton(
-                                    onPressed: () async {
-                                      await _onEditAddressButtonOnPressed(
-                                        context,
-                                        address,
-                                      );
-                                    },
-                                    icon: Icon(
-                                      Icons.edit,
-                                    ),
-                                  ),
-                                  IconButton(
                                     onPressed: () {
-                                      collectionFormBloc.add(
-                                        CollectionFormEvent.removeAddress(
+                                      editCollectionFormBloc.add(
+                                        EditCollectionFormEvent.removeAddress(
                                           address,
                                         ),
                                       );
@@ -126,24 +115,8 @@ class _CollectionEditLocationsTile extends StatelessWidget {
   ) async {
     final result = await CollectionAddressDialog.show(context);
     if (result != null) {
-      context.read<CollectionFormBloc>().add(
-            CollectionFormEvent.addAddress(result),
-          );
-    }
-  }
-
-  Future<void> _onEditAddressButtonOnPressed(
-    BuildContext context,
-    CollectionAddress address,
-  ) async {
-    final result = await CollectionAddressDialog.show(
-      context,
-      isEdit: true,
-      address: address,
-    );
-    if (result != null) {
-      context.read<CollectionFormBloc>().add(
-            CollectionFormEvent.editAddress(address, result),
+      context.read<EditCollectionFormBloc>().add(
+            EditCollectionFormEvent.addAddress(result),
           );
     }
   }

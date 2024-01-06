@@ -1,12 +1,7 @@
 part of 'package:kordi_mobile/collections/pages/collection_details_page.dart';
 
 class _CollectionDetailsItemList extends StatelessWidget {
-  const _CollectionDetailsItemList({
-    required this.items,
-    required this.collectionId,
-  });
-  final List<CollectionItem> items;
-  final int collectionId;
+  const _CollectionDetailsItemList();
 
   @override
   Widget build(BuildContext context) {
@@ -58,14 +53,16 @@ class _CollectionDetailsItemList extends StatelessWidget {
                   return const SizedBox.shrink();
                 },
               ),
-              Builder(
-                builder: (context) {
-                  if (items.isEmpty) {
-                    return Text(S.current.collectionDetailsItemListEmptyState);
+              BlocBuilder<ManageCollectionItemsCubit,
+                  ManageCollectionItemsState>(
+                builder: (context, state) {
+                  if (state.items.isEmpty) {
+                    return Text(
+                      S.current.collectionDetailsItemListEmptyState,
+                    );
                   }
-
                   return Column(
-                    children: items
+                    children: state.items
                         .map(
                           (item) => Card(
                             color: colorScheme.onPrimary,
@@ -143,7 +140,6 @@ class _CollectionDetailsItemList extends StatelessWidget {
                                   ),
                                   _DonationSlider(
                                     item: item,
-                                    collectionId: collectionId,
                                   ),
                                 ],
                               ),

@@ -9,7 +9,7 @@ class CreateCollectionThirdStep extends StatelessWidget {
     final textTheme = theme.textTheme;
     final colorScheme = theme.colorScheme;
     final _shakeErrorKey = GlobalKey<ShakeErrorState>();
-    return BlocBuilder<CollectionFormBloc, CollectionFormState>(
+    return BlocBuilder<CreateCollectionFormBloc, CreateEditCollectionFormState>(
       builder: (context, state) {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -220,8 +220,8 @@ class CreateCollectionThirdStep extends StatelessWidget {
       context,
     );
     if (result != null) {
-      context.read<CollectionFormBloc>().add(
-            CollectionFormEvent.addItem(result),
+      context.read<CreateCollectionFormBloc>().add(
+            CreateCollectionFormEvent.addItem(result),
           );
     }
   }

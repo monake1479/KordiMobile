@@ -152,6 +152,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Zamknij"),
         "collectionItemDialogCategoryFormLabelText":
             MessageLookupByLibrary.simpleMessage("Kategoria*"),
+        "collectionItemDialogCurrentFormLabelText":
+            MessageLookupByLibrary.simpleMessage("Aktualna ilość"),
+        "collectionItemDialogEditButtonLabel":
+            MessageLookupByLibrary.simpleMessage("Edytuj"),
         "collectionItemDialogEditTitle":
             MessageLookupByLibrary.simpleMessage("Edytuj przedmiot"),
         "collectionItemDialogFieldsEmptyErrorLabel":
@@ -195,7 +199,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "createCollectionFirstStepDescriptionFormTextLabel":
             MessageLookupByLibrary.simpleMessage("Opis kolekcji*"),
         "createCollectionFirstStepEndDateFormTextLabel":
-            MessageLookupByLibrary.simpleMessage("Data zakończenia kolekcji*"),
+            MessageLookupByLibrary.simpleMessage("Data zakończenia kolekcji"),
         "createCollectionFirstStepInformation":
             MessageLookupByLibrary.simpleMessage(
                 "Prosimy o podanie podstawowych informacji o Twojej kolekcji"),

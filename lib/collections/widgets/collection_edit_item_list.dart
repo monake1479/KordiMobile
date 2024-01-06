@@ -8,8 +8,15 @@ class _CollectionEditItemList extends StatelessWidget {
     final theme = Theme.of(context);
     final textTheme = theme.textTheme;
     final colorScheme = theme.colorScheme;
-    final collectionFormBloc = context.read<CollectionFormBloc>();
-    return BlocBuilder<CollectionFormBloc, CollectionFormState>(
+    return BlocConsumer<ManageCollectionItemsCubit, ManageCollectionItemsState>(
+      listener: (context, state) async {
+        if (state.exception != null) {
+          await KordiDialog.showException(
+            context,
+            state.exception!,
+          );
+        }
+      },
       builder: (context, state) {
         return SliverToBoxAdapter(
           child: Card(
@@ -70,26 +77,13 @@ class _CollectionEditItemList extends StatelessWidget {
                                           Spacer(),
                                           IconButton(
                                             onPressed: () async {
+                                              log('item.id: ${item.id}');
                                               await _onAddOrEditItemButtonOnPressed(
                                                 context,
-                                                isEdit: true,
                                                 item: item,
                                               );
                                             },
                                             icon: Icon(Icons.edit),
-                                          ),
-                                          IconButton(
-                                            onPressed: () {
-                                              collectionFormBloc.add(
-                                                CollectionFormEvent.removeItem(
-                                                  item,
-                                                ),
-                                              );
-                                            },
-                                            icon: Icon(
-                                              Icons.delete,
-                                              color: colorScheme.error,
-                                            ),
                                           ),
                                         ],
                                       ),
@@ -193,24 +187,23 @@ class _CollectionEditItemList extends StatelessWidget {
 
   Future<void> _onAddOrEditItemButtonOnPressed(
     BuildContext context, {
-    bool isEdit = false,
     CollectionItem? item,
   }) async {
     final result = await CollectionItemDialog.show(
       context,
-      isEdit: isEdit,
       item: item,
     );
 
     if (result != null) {
-      if (isEdit) {
-        context.read<CollectionFormBloc>().add(
-              CollectionFormEvent.editItem(item!, result),
+      if (item != null) {
+        context.read<ManageCollectionItemsCubit>().editItem(
+              result,
             );
+
         return;
       }
-      context.read<CollectionFormBloc>().add(
-            CollectionFormEvent.addItem(result),
+      context.read<ManageCollectionItemsCubit>().addItem(
+            result,
           );
     }
   }

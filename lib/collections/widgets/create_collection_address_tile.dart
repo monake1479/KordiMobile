@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:kordi_mobile/collections/controllers/collection_form/collection_form_bloc.dart';
+import 'package:kordi_mobile/collections/controllers/create_collection_form/create_collection_form_bloc.dart';
 import 'package:kordi_mobile/collections/models/collections_models.dart';
 
 class CreateCollectionAddressTile extends StatelessWidget {
@@ -48,8 +48,8 @@ class CreateCollectionAddressTile extends StatelessWidget {
         ),
         IconButton(
           onPressed: () {
-            context.read<CollectionFormBloc>().add(
-                  CollectionFormEvent.removeAddress(address),
+            context.read<CreateCollectionFormBloc>().add(
+                  CreateCollectionFormEvent.removeAddress(address),
                 );
           },
           icon: Icon(

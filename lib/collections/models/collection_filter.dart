@@ -1,8 +1,9 @@
 // ignore_for_file: invalid_annotation_target
 
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:kordi_mobile/collection_items/models/collection_items_models.dart';
+import 'package:kordi_mobile/collection_items/utils/collection_item_utils.dart';
 import 'package:kordi_mobile/collections/models/collections_models.dart';
-import 'package:kordi_mobile/collections/utils/collection_item_category_converter.dart';
 import 'package:kordi_mobile/collections/utils/collection_status_converter.dart';
 
 part 'collection_filter.freezed.dart';
