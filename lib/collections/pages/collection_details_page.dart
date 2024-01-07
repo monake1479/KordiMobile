@@ -36,6 +36,7 @@ class CollectionDetailsPage extends StatelessWidget {
     final userId = context.read<GetUserCubit>().state.user?.id;
     final collectionIdString =
         GoRouterState.of(context).pathParameters['collectionId'];
+
     if (collectionIdString == null) {
       KordiDialog.showException(
         context,
@@ -54,10 +55,6 @@ class CollectionDetailsPage extends StatelessWidget {
             ..add(
               EditCollectionFormEvent.setInitial(collectionId),
             ),
-        ),
-        BlocProvider<ManageCollectionAddressCubit>(
-          create: (context) => getIt.get<ManageCollectionAddressCubit>()
-            ..setAddresses(collectionId),
         ),
       ],
       child: BlocBuilder<EditCollectionFormBloc, EditCollectionFormState>(
