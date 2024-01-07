@@ -14,7 +14,6 @@ class EditCollectionFormState with _$EditCollectionFormState {
     required int donates,
     @CollectionStatusConverter() required CollectionStatus status,
     required int userId,
-    required List<Comment>? comments,
     required bool validationError,
   }) = _EditCollectionFormState;
   factory EditCollectionFormState.initial() => EditCollectionFormState(
@@ -28,7 +27,6 @@ class EditCollectionFormState with _$EditCollectionFormState {
         donates: 0,
         status: CollectionStatus.inProgress,
         userId: 0,
-        comments: [],
         validationError: false,
       );
 }

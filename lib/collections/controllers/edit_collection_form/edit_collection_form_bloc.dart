@@ -56,7 +56,6 @@ class EditCollectionFormBloc
         // image: collection.image,
         status: collection.status,
         userId: collection.userId,
-        comments: collection.comments,
       ),
     );
   }
