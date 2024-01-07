@@ -6,6 +6,7 @@ import 'package:injectable/injectable.dart';
 import 'package:kordi_mobile/collection_items/interfaces/collection_items_interface.dart';
 import 'package:kordi_mobile/collection_items/models/collection_items_models.dart';
 import 'package:kordi_mobile/collections/controllers/collections_filter/collections_filter_bloc.dart';
+import 'package:kordi_mobile/collections/models/collections_models.dart';
 import 'package:kordi_mobile/core/models/kordi_exception.dart';
 import 'package:kordi_mobile/core/utils/either_extension.dart';
 
@@ -31,8 +32,10 @@ class ManageCollectionItemsCubit extends Cubit<ManageCollectionItemsState> {
   }
 
   void setItems(int collectionId) {
+    final Collection? collectionById =
+        _collectionsFilterBloc.getById(collectionId);
     final List<CollectionItem> items =
-        _collectionsFilterBloc.getById(collectionId)?.items ?? [];
+        List<CollectionItem>.from(collectionById?.items ?? []);
     _initialItems.addAll(items);
     emit(
       state.copyWith(
@@ -168,6 +171,32 @@ class ManageCollectionItemsCubit extends Cubit<ManageCollectionItemsState> {
       state.copyWith(
         isLoading: false,
         failureOrSuccessOption: some(right(unit)),
+      ),
+    );
+  }
+
+  void updateDonation(
+    DonationDto dto,
+  ) {
+    final List<CollectionItem> tempList =
+        List<CollectionItem>.from(state.items);
+    final int index =
+        tempList.indexWhere((element) => element.id == dto.collectionItemId);
+    CollectionItem item = tempList.firstWhere(
+      (element) => element.id == dto.collectionItemId,
+    );
+
+    item = item.copyWith(
+      currentAmount: dto.amount + item.currentAmount!,
+    );
+    tempList.removeWhere(
+      (element) => element.id == dto.collectionItemId,
+    );
+    tempList.insert(index, item);
+
+    emit(
+      state.copyWith(
+        items: tempList,
       ),
     );
   }
