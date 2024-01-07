@@ -7,6 +7,9 @@ class _CollectionDetailsLocationsTile extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
+    final collectionIdString =
+        GoRouterState.of(context).pathParameters['collectionId'];
+    final collectionId = int.parse(collectionIdString!);
 
     return SliverToBoxAdapter(
       child: Card(
@@ -34,40 +37,45 @@ class _CollectionDetailsLocationsTile extends StatelessWidget {
                   ),
                 ],
               ),
-              BlocBuilder<ManageCollectionAddressCubit,
-                  ManageCollectionAddressState>(
-                builder: (context, state) {
-                  if (state.addresses.isEmpty) {
-                    return Text(S.current.collectionDetailsLocationsEmptyState);
-                  }
-                  return Column(
-                    children: state.addresses
-                        .map(
-                          (address) => Row(
-                            children: [
-                              Text('• '),
-                              Text(
-                                address.fullAddress,
-                                textAlign: TextAlign.left,
-                              ),
-                              IconButton(
-                                onPressed: () async {
-                                  await _onLocationButtonOnTap(
-                                    address,
-                                    context,
-                                  );
-                                },
-                                icon: Icon(
-                                  Icons.map_rounded,
-                                  color: colorScheme.primary,
+              BlocProvider<ManageCollectionAddressCubit>(
+                create: (context) => getIt.get<ManageCollectionAddressCubit>()
+                  ..setAddresses(collectionId),
+                child: BlocBuilder<ManageCollectionAddressCubit,
+                    ManageCollectionAddressState>(
+                  builder: (context, state) {
+                    if (state.addresses.isEmpty) {
+                      return Text(
+                          S.current.collectionDetailsLocationsEmptyState);
+                    }
+                    return Column(
+                      children: state.addresses
+                          .map(
+                            (address) => Row(
+                              children: [
+                                Text('• '),
+                                Text(
+                                  address.fullAddress,
+                                  textAlign: TextAlign.left,
                                 ),
-                              ),
-                            ],
-                          ),
-                        )
-                        .toList(),
-                  );
-                },
+                                IconButton(
+                                  onPressed: () async {
+                                    await _onLocationButtonOnTap(
+                                      address,
+                                      context,
+                                    );
+                                  },
+                                  icon: Icon(
+                                    Icons.map_rounded,
+                                    color: colorScheme.primary,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          )
+                          .toList(),
+                    );
+                  },
+                ),
               ),
             ],
           ),
