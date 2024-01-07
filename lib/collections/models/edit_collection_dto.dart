@@ -1,5 +1,4 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:kordi_mobile/collections/models/collections_models.dart';
 
 part 'edit_collection_dto.freezed.dart';
 part 'edit_collection_dto.g.dart';
