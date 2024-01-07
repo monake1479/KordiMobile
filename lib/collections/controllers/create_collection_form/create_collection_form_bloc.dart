@@ -13,8 +13,8 @@ part 'create_collection_form_bloc.freezed.dart';
 
 @injectable
 class CreateCollectionFormBloc
-    extends Bloc<CreateCollectionFormEvent, CreateEditCollectionFormState> {
-  CreateCollectionFormBloc() : super(CreateEditCollectionFormState.initial()) {
+    extends Bloc<CreateCollectionFormEvent, CreateCollectionFormState> {
+  CreateCollectionFormBloc() : super(CreateCollectionFormState.initial()) {
     on<_Reset>(_reset);
     on<_SetName>(_setName);
     on<_SetDescription>(_setDescription);
@@ -26,13 +26,13 @@ class CreateCollectionFormBloc
     on<_RemoveItem>(_removeItem);
     on<_CheckValidation>(_checkValidation);
   }
-  void _reset(_Reset event, Emitter<CreateEditCollectionFormState> emit) {
-    emit(CreateEditCollectionFormState.initial());
+  void _reset(_Reset event, Emitter<CreateCollectionFormState> emit) {
+    emit(CreateCollectionFormState.initial());
   }
 
   void _setName(
     _SetName event,
-    Emitter<CreateEditCollectionFormState> emit,
+    Emitter<CreateCollectionFormState> emit,
   ) {
     emit(
       state.copyWith(
@@ -43,7 +43,7 @@ class CreateCollectionFormBloc
 
   void _setDescription(
     _SetDescription event,
-    Emitter<CreateEditCollectionFormState> emit,
+    Emitter<CreateCollectionFormState> emit,
   ) {
     emit(
       state.copyWith(
@@ -54,7 +54,7 @@ class CreateCollectionFormBloc
 
   void _setEndDate(
     _SetEndDate event,
-    Emitter<CreateEditCollectionFormState> emit,
+    Emitter<CreateCollectionFormState> emit,
   ) {
     emit(
       state.copyWith(
@@ -65,7 +65,7 @@ class CreateCollectionFormBloc
 
   void _setPhoto(
     _SetPhoto event,
-    Emitter<CreateEditCollectionFormState> emit,
+    Emitter<CreateCollectionFormState> emit,
   ) {
     emit(
       state.copyWith(
@@ -76,7 +76,7 @@ class CreateCollectionFormBloc
 
   void _addAddress(
     _AddAddress event,
-    Emitter<CreateEditCollectionFormState> emit,
+    Emitter<CreateCollectionFormState> emit,
   ) {
     final List<CollectionAddress> tempList = List.from(state.addresses);
     tempList.add(event.address);
@@ -89,7 +89,7 @@ class CreateCollectionFormBloc
 
   void _removeAddress(
     _RemoveAddress event,
-    Emitter<CreateEditCollectionFormState> emit,
+    Emitter<CreateCollectionFormState> emit,
   ) {
     final List<CollectionAddress> tempList = List.from(state.addresses);
     tempList.remove(event.address);
@@ -103,7 +103,7 @@ class CreateCollectionFormBloc
 
   void _addItem(
     _AddItem event,
-    Emitter<CreateEditCollectionFormState> emit,
+    Emitter<CreateCollectionFormState> emit,
   ) {
     final List<CollectionItem> tempList = List.from(state.items);
     tempList.add(event.item);
@@ -116,7 +116,7 @@ class CreateCollectionFormBloc
 
   void _removeItem(
     _RemoveItem event,
-    Emitter<CreateEditCollectionFormState> emit,
+    Emitter<CreateCollectionFormState> emit,
   ) {
     final List<CollectionItem> tempList = List.from(state.items);
     tempList.remove(event.item);
@@ -129,7 +129,7 @@ class CreateCollectionFormBloc
 
   void _checkValidation(
     _CheckValidation event,
-    Emitter<CreateEditCollectionFormState> emit,
+    Emitter<CreateCollectionFormState> emit,
   ) {
     if (state.name.isEmpty ||
         state.description.isEmpty ||

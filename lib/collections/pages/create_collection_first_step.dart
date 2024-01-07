@@ -29,7 +29,7 @@ class _CreateCollectionFirstStepState extends State<CreateCollectionFirstStep> {
     final colorScheme = theme.colorScheme;
     final createCollectionFormBloc = context.read<CreateCollectionFormBloc>();
 
-    return BlocBuilder<CreateCollectionFormBloc, CreateEditCollectionFormState>(
+    return BlocBuilder<CreateCollectionFormBloc, CreateCollectionFormState>(
       builder: (context, state) {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,

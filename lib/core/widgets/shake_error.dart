@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_int_literals
+
 import 'package:flutter/material.dart';
 
 class ShakeError extends StatefulWidget {
@@ -34,6 +36,9 @@ class ShakeErrorState extends State<ShakeError>
 
   @override
   Widget build(BuildContext context) {
+    if (_animationController.status == AnimationStatus.dismissed) {
+      return widget.child;
+    }
     return Transform.translate(
       offset: Offset(_doubleAnim.value, 0),
       child: widget.child,
