@@ -1031,11 +1031,101 @@ class S {
     );
   }
 
-  /// `About page`
+  /// `About us`
   String get aboutPageTitle {
     return Intl.message(
-      'About page',
+      'About us',
       name: 'aboutPageTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The project was created for the purpose of an engineering thesis. The aim of the project was to develop a fully functional mobile application, based on the Flutter framework for Android and iOS devices.`
+  String get aboutPageGenesisDescription {
+    return Intl.message(
+      'The project was created for the purpose of an engineering thesis. The aim of the project was to develop a fully functional mobile application, based on the Flutter framework for Android and iOS devices.',
+      name: 'aboutPageGenesisDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The application utilizes a server part developed by Eng. Grzegorz Kucharski as part of his own engineering project. The code is available on the GitHub platform `
+  String get aboutPageExplanationDescriptionPartOne {
+    return Intl.message(
+      'The application utilizes a server part developed by Eng. Grzegorz Kucharski as part of his own engineering project. The code is available on the GitHub platform ',
+      name: 'aboutPageExplanationDescriptionPartOne',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// ` The system allows users to register with two-step verification, log in, and change their password. Neither the server nor the presentation part includes changing user avatars, therefore, in the application, one can encounter default user avatars. Unregistered users have the ability to view all collections, but they cannot create a collection, edit collections, add comments, or donate to a given collection. Registered users can create collections, add comments, edit their own collections, donate to collections, and write and delete their own comments. `
+  String get aboutPageExplanationDescriptionPartTwo {
+    return Intl.message(
+      ' The system allows users to register with two-step verification, log in, and change their password. Neither the server nor the presentation part includes changing user avatars, therefore, in the application, one can encounter default user avatars. Unregistered users have the ability to view all collections, but they cannot create a collection, edit collections, add comments, or donate to a given collection. Registered users can create collections, add comments, edit their own collections, donate to collections, and write and delete their own comments. ',
+      name: 'aboutPageExplanationDescriptionPartTwo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The project assumes material support for people affected by a crisis. In the Kordi service, users can create a collection for a specific purpose they describe. They clearly state what items they need and in what quantity. The application administrators do not verify in any way whether the declared donations have reached the needy. Everything happens among users. Kordi is merely a tool that facilitates the creation of such collections, and since there is no financial funding in the application, it cannot be considered fraudulent.`
+  String get aboutPageProjectDescription {
+    return Intl.message(
+      'The project assumes material support for people affected by a crisis. In the Kordi service, users can create a collection for a specific purpose they describe. They clearly state what items they need and in what quantity. The application administrators do not verify in any way whether the declared donations have reached the needy. Everything happens among users. Kordi is merely a tool that facilitates the creation of such collections, and since there is no financial funding in the application, it cannot be considered fraudulent.',
+      name: 'aboutPageProjectDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Mobile application author: Daniel Obłąk.`
+  String get aboutPageAuthor {
+    return Intl.message(
+      'Mobile application author: Daniel Obłąk.',
+      name: 'aboutPageAuthor',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Icons and images used in the application come from the following source:`
+  String get aboutPageIconsAndImages {
+    return Intl.message(
+      'Icons and images used in the application come from the following source:',
+      name: 'aboutPageIconsAndImages',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `GitHub: `
+  String get aboutPageGithub {
+    return Intl.message(
+      'GitHub: ',
+      name: 'aboutPageGithub',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Linkedin: `
+  String get aboutPageLinkedin {
+    return Intl.message(
+      'Linkedin: ',
+      name: 'aboutPageLinkedin',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `© 2024 Daniel Obłąk`
+  String get aboutPageCopyRight {
+    return Intl.message(
+      '© 2024 Daniel Obłąk',
+      name: 'aboutPageCopyRight',
       desc: '',
       args: [],
     );

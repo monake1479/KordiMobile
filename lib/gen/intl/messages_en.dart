@@ -41,7 +41,25 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "aboutPageTitle": MessageLookupByLibrary.simpleMessage("About page"),
+        "aboutPageAuthor": MessageLookupByLibrary.simpleMessage(
+            "Mobile application author: Daniel Obłąk."),
+        "aboutPageCopyRight":
+            MessageLookupByLibrary.simpleMessage("© 2024 Daniel Obłąk"),
+        "aboutPageExplanationDescriptionPartOne":
+            MessageLookupByLibrary.simpleMessage(
+                "The application utilizes a server part developed by Eng. Grzegorz Kucharski as part of his own engineering project. The code is available on the GitHub platform "),
+        "aboutPageExplanationDescriptionPartTwo":
+            MessageLookupByLibrary.simpleMessage(
+                " The system allows users to register with two-step verification, log in, and change their password. Neither the server nor the presentation part includes changing user avatars, therefore, in the application, one can encounter default user avatars. Unregistered users have the ability to view all collections, but they cannot create a collection, edit collections, add comments, or donate to a given collection. Registered users can create collections, add comments, edit their own collections, donate to collections, and write and delete their own comments. "),
+        "aboutPageGenesisDescription": MessageLookupByLibrary.simpleMessage(
+            "The project was created for the purpose of an engineering thesis. The aim of the project was to develop a fully functional mobile application, based on the Flutter framework for Android and iOS devices."),
+        "aboutPageGithub": MessageLookupByLibrary.simpleMessage("GitHub: "),
+        "aboutPageIconsAndImages": MessageLookupByLibrary.simpleMessage(
+            "Icons and images used in the application come from the following source:"),
+        "aboutPageLinkedin": MessageLookupByLibrary.simpleMessage("Linkedin: "),
+        "aboutPageProjectDescription": MessageLookupByLibrary.simpleMessage(
+            "The project assumes material support for people affected by a crisis. In the Kordi service, users can create a collection for a specific purpose they describe. They clearly state what items they need and in what quantity. The application administrators do not verify in any way whether the declared donations have reached the needy. Everything happens among users. Kordi is merely a tool that facilitates the creation of such collections, and since there is no financial funding in the application, it cannot be considered fraudulent."),
+        "aboutPageTitle": MessageLookupByLibrary.simpleMessage("About us"),
         "appName": MessageLookupByLibrary.simpleMessage("Kordi mobile"),
         "changePasswordPageChangePasswordButtonLabel":
             MessageLookupByLibrary.simpleMessage("Change password"),

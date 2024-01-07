@@ -41,7 +41,25 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "aboutPageTitle": MessageLookupByLibrary.simpleMessage("Strona o nas"),
+        "aboutPageAuthor": MessageLookupByLibrary.simpleMessage(
+            "Autor aplikacji mobilnej: Daniel Obłąk."),
+        "aboutPageCopyRight":
+            MessageLookupByLibrary.simpleMessage("© 2024 Daniel Obłąk"),
+        "aboutPageExplanationDescriptionPartOne":
+            MessageLookupByLibrary.simpleMessage(
+                "Aplikacja wykorzystuje część serwerową wykonaną przez inż. Grzegorza Kucharskiego w ramach własnego projektu inżynieryjnego. Kod jest udostępniony na platformie GitHub "),
+        "aboutPageExplanationDescriptionPartTwo":
+            MessageLookupByLibrary.simpleMessage(
+                " System w ramach obsługi użytkownika pozwala zarejestrować się z dwustopniową weryfikacją, zalogować się oraz zmienić hasło. Część serwerowa oraz prezentacyjna nie przewiduje zmian awatarów użytkownika, dlatego w aplikacji można spotkać domyślne awatary użytkowników. Niezalogowani użytkownicy mają możliwość przeglądania wszystkich zbiórek, lecz nie mogą oni sami stworzyć zbiórki, edytować zbiórek, dodawać komentarzy ani przekazywać darów na rzecz danej zbiórki. Zalogowani użytkownicy mogą tworzyć zbiórki, dodawać komentarze, edytować własne zbiórki, przekazywać dary do zbiórek oraz pisać komentarze i usuwać własne."),
+        "aboutPageGenesisDescription": MessageLookupByLibrary.simpleMessage(
+            "Projekt jest wykonany na potrzebę pracy inżynierskiej. Założeniem projektu było wykonanie w pełni funkcjonalnej aplikacji mobilnej, opartej na frameworku Flutter na telefony z systemem Android oraz iOS."),
+        "aboutPageGithub": MessageLookupByLibrary.simpleMessage("GitHub: "),
+        "aboutPageIconsAndImages": MessageLookupByLibrary.simpleMessage(
+            "Wykorzystane ikony oraz obrazki pochodzą z serwisu:"),
+        "aboutPageLinkedin": MessageLookupByLibrary.simpleMessage("Linkedin: "),
+        "aboutPageProjectDescription": MessageLookupByLibrary.simpleMessage(
+            "Projekt zakłada wsparcie rzeczowe dla osób dotkniętych kryzysem. W serwisie Kordi będą mogli założyć zbiórkę w ramach jakiegoś celu który zostanie przez nich opisany. Jasno określają jakich przedmiotów potrzebują i w jakiej ilości. Administratorzy aplikacji nie weryfikują w żaden sposób, czy zadeklarowane dary dotarły do osób potrzebujących. Wszystko dzieje się w ramach użytkowników. Kordi jest jedynie narzędziem który umożliwia tworzenie takich zbiórek, ze względu na to, że w aplikacji nie ma mowy o żadnym finansowaniu pieniężnym nie można mówić tutaj o oszustwach."),
+        "aboutPageTitle": MessageLookupByLibrary.simpleMessage("O nas"),
         "appName": MessageLookupByLibrary.simpleMessage("Kordi mobile"),
         "changePasswordPageChangePasswordButtonLabel":
             MessageLookupByLibrary.simpleMessage("Zmień hasło"),
