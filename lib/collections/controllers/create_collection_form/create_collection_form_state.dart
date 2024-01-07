@@ -1,8 +1,8 @@
 part of 'package:kordi_mobile/collections/controllers/create_collection_form/create_collection_form_bloc.dart';
 
 @freezed
-class CreateEditCollectionFormState with _$CreateEditCollectionFormState {
-  const factory CreateEditCollectionFormState({
+class CreateCollectionFormState with _$CreateCollectionFormState {
+  const factory CreateCollectionFormState({
     required bool isLoading,
     required int id,
     required String name,
@@ -16,11 +16,9 @@ class CreateEditCollectionFormState with _$CreateEditCollectionFormState {
     required int userId,
     required List<CollectionAddress> addresses,
     required List<CollectionItem> items,
-    required List<Comment>? comments,
     required bool validationError,
-  }) = _CreateEditCollectionFormState;
-  factory CreateEditCollectionFormState.initial() =>
-      CreateEditCollectionFormState(
+  }) = _CreateCollectionFormState;
+  factory CreateCollectionFormState.initial() => CreateCollectionFormState(
         isLoading: false,
         id: 0,
         name: '',
@@ -33,12 +31,11 @@ class CreateEditCollectionFormState with _$CreateEditCollectionFormState {
         userId: 0,
         addresses: [],
         items: [],
-        comments: [],
         validationError: false,
       );
 }
 
-extension CreateEditCollectionFormStateEx on CreateEditCollectionFormState {
+extension CreateCollectionFormStateEx on CreateCollectionFormState {
   bool get isFirstStepValid => name.isNotEmpty && description.isNotEmpty;
   bool get isSecondStepValid => addresses.isNotEmpty;
   bool get isThirdStepValid => items.isNotEmpty;
