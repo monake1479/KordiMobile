@@ -105,33 +105,6 @@ class EditCollectionFormBloc
     );
   }
 
-  // void _donateItem(
-  //   _DonateItem event,
-  //   Emitter<EditCollectionFormState> emit,
-  // ) {
-  //   final List<CollectionItem> tempList =
-  //       List<CollectionItem>.from(state.items);
-  //   final int index = tempList
-  //       .indexWhere((element) => element.id == event.donation.collectionItemId);
-  //   CollectionItem item = tempList.firstWhere(
-  //     (element) => element.id == event.donation.collectionItemId,
-  //   );
-
-  //   item = item.copyWith(
-  //     currentAmount: event.donation.amount,
-  //   );
-  //   tempList.removeWhere(
-  //     (element) => element.id == event.donation.collectionItemId,
-  //   );
-  //   tempList.insert(index, item);
-
-  //   emit(
-  //     state.copyWith(
-  //       items: tempList,
-  //     ),
-  //   );
-  // }
-
   void _checkValidation(
     _CheckValidation event,
     Emitter<EditCollectionFormState> emit,
