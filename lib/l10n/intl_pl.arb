@@ -168,7 +168,16 @@
             }
         }
     },
-    "aboutPageTitle": "Strona o nas",
+    "aboutPageTitle": "O nas",
+    "aboutPageGenesisDescription": "Projekt jest wykonany na potrzebę pracy inżynierskiej. Założeniem projektu było wykonanie w pełni funkcjonalnej aplikacji mobilnej, opartej na frameworku Flutter na telefony z systemem Android oraz iOS.",
+    "aboutPageExplanationDescriptionPartOne": "Aplikacja wykorzystuje część serwerową wykonaną przez inż. Grzegorza Kucharskiego w ramach własnego projektu inżynieryjnego. Kod jest udostępniony na platformie GitHub ",
+    "aboutPageExplanationDescriptionPartTwo": " System w ramach obsługi użytkownika pozwala zarejestrować się z dwustopniową weryfikacją, zalogować się oraz zmienić hasło. Część serwerowa oraz prezentacyjna nie przewiduje zmian awatarów użytkownika, dlatego w aplikacji można spotkać domyślne awatary użytkowników. Niezalogowani użytkownicy mają możliwość przeglądania wszystkich zbiórek, lecz nie mogą oni sami stworzyć zbiórki, edytować zbiórek, dodawać komentarzy ani przekazywać darów na rzecz danej zbiórki. Zalogowani użytkownicy mogą tworzyć zbiórki, dodawać komentarze, edytować własne zbiórki, przekazywać dary do zbiórek oraz pisać komentarze i usuwać własne.",
+    "aboutPageProjectDescription": "Projekt zakłada wsparcie rzeczowe dla osób dotkniętych kryzysem. W serwisie Kordi będą mogli założyć zbiórkę w ramach jakiegoś celu który zostanie przez nich opisany. Jasno określają jakich przedmiotów potrzebują i w jakiej ilości. Administratorzy aplikacji nie weryfikują w żaden sposób, czy zadeklarowane dary dotarły do osób potrzebujących. Wszystko dzieje się w ramach użytkowników. Kordi jest jedynie narzędziem który umożliwia tworzenie takich zbiórek, ze względu na to, że w aplikacji nie ma mowy o żadnym finansowaniu pieniężnym nie można mówić tutaj o oszustwach.",
+    "aboutPageAuthor": "Autor aplikacji mobilnej: Daniel Obłąk.",
+    "aboutPageIconsAndImages": "Wykorzystane ikony oraz obrazki pochodzą z serwisu:",
+    "aboutPageGithub": "GitHub: ",
+    "aboutPageLinkedin": "Linkedin: ",
+    "aboutPageCopyRight": "© 2024 Daniel Obłąk",
     "drawerUserGreetings": "Cześć, {username}!",
     "@drawerUserGreetings": {
         "description": "Welcome message on the main drawer with username.",

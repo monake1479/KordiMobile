@@ -29,11 +29,19 @@ class $AssetsAvatarsGen {
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
+  /// File path: assets/icons/github_logo.svg
+  SvgGenImage get githubLogo =>
+      const SvgGenImage('assets/icons/github_logo.svg');
+
+  /// File path: assets/icons/linkedin_logo.png
+  AssetGenImage get linkedinLogo =>
+      const AssetGenImage('assets/icons/linkedin_logo.png');
+
   /// File path: assets/icons/logo.png
   AssetGenImage get logo => const AssetGenImage('assets/icons/logo.png');
 
   /// List of all assets
-  List<AssetGenImage> get values => [logo];
+  List<dynamic> get values => [githubLogo, linkedinLogo, logo];
 }
 
 class $AssetsImagesGen {
