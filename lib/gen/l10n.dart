@@ -871,6 +871,66 @@ class S {
     );
   }
 
+  /// `Comments`
+  String get collectionDetailsCommentListTitle {
+    return Intl.message(
+      'Comments',
+      name: 'collectionDetailsCommentListTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No comments yet.`
+  String get collectionDetailsCommentListEmptyState {
+    return Intl.message(
+      'No comments yet.',
+      name: 'collectionDetailsCommentListEmptyState',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add comment`
+  String get collectionDetailsCommentListAddButtonLabel {
+    return Intl.message(
+      'Add comment',
+      name: 'collectionDetailsCommentListAddButtonLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Comment`
+  String get collectionDetailsCommentListFormHintText {
+    return Intl.message(
+      'Comment',
+      name: 'collectionDetailsCommentListFormHintText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Comment cannot be empty`
+  String get collectionDetailsCommentListFormErrorText {
+    return Intl.message(
+      'Comment cannot be empty',
+      name: 'collectionDetailsCommentListFormErrorText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You need to be signed in to add comment.`
+  String get collectionDetailsCommentListUnauthorizedState {
+    return Intl.message(
+      'You need to be signed in to add comment.',
+      name: 'collectionDetailsCommentListUnauthorizedState',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Save`
   String get collectionEditSaveButtonLabel {
     return Intl.message(

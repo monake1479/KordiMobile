@@ -84,6 +84,21 @@ class MessageLookup extends MessageLookupByLibrary {
         "collectionDetailsAddressesUrlException":
             MessageLookupByLibrary.simpleMessage(
                 "Nie można otworzyć linku. Spróbuj ponownie później."),
+        "collectionDetailsCommentListAddButtonLabel":
+            MessageLookupByLibrary.simpleMessage("Dodaj komentarz"),
+        "collectionDetailsCommentListEmptyState":
+            MessageLookupByLibrary.simpleMessage(
+                "Nikt jeszcze nie skomentował tej kolekcji."),
+        "collectionDetailsCommentListFormErrorText":
+            MessageLookupByLibrary.simpleMessage(
+                "Komentarz nie może być pusty"),
+        "collectionDetailsCommentListFormHintText":
+            MessageLookupByLibrary.simpleMessage("Komentarz"),
+        "collectionDetailsCommentListTitle":
+            MessageLookupByLibrary.simpleMessage("Komentarze"),
+        "collectionDetailsCommentListUnauthorizedState":
+            MessageLookupByLibrary.simpleMessage(
+                "Musisz być zalogowany, aby skomentować kolekcję."),
         "collectionDetailsDescriptionLabel":
             MessageLookupByLibrary.simpleMessage("Opis"),
         "collectionDetailsItemCompletedLabel":

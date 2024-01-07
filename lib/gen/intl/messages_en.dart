@@ -82,6 +82,19 @@ class MessageLookup extends MessageLookupByLibrary {
         "collectionDetailsAddressesUrlException":
             MessageLookupByLibrary.simpleMessage(
                 "Cannot open address in browser."),
+        "collectionDetailsCommentListAddButtonLabel":
+            MessageLookupByLibrary.simpleMessage("Add comment"),
+        "collectionDetailsCommentListEmptyState":
+            MessageLookupByLibrary.simpleMessage("No comments yet."),
+        "collectionDetailsCommentListFormErrorText":
+            MessageLookupByLibrary.simpleMessage("Comment cannot be empty"),
+        "collectionDetailsCommentListFormHintText":
+            MessageLookupByLibrary.simpleMessage("Comment"),
+        "collectionDetailsCommentListTitle":
+            MessageLookupByLibrary.simpleMessage("Comments"),
+        "collectionDetailsCommentListUnauthorizedState":
+            MessageLookupByLibrary.simpleMessage(
+                "You need to be signed in to add comment."),
         "collectionDetailsDescriptionLabel":
             MessageLookupByLibrary.simpleMessage("Description"),
         "collectionDetailsItemCompletedLabel":
