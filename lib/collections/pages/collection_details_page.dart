@@ -59,10 +59,6 @@ class CollectionDetailsPage extends StatelessWidget {
           create: (context) => getIt.get<ManageCollectionAddressCubit>()
             ..setAddresses(collectionId),
         ),
-        BlocProvider<ManageCollectionItemsCubit>(
-          create: (context) =>
-              getIt.get<ManageCollectionItemsCubit>()..setItems(collectionId),
-        ),
       ],
       child: BlocBuilder<EditCollectionFormBloc, EditCollectionFormState>(
         builder: (context, state) {
