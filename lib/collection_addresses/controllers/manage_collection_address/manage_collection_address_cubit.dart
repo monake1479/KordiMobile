@@ -4,8 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:kordi_mobile/collection_addresses/interfaces/addresses_interface.dart';
-import 'package:kordi_mobile/collection_addresses/models/collection_address.dart';
 import 'package:kordi_mobile/collections/controllers/collections_filter/collections_filter_bloc.dart';
+import 'package:kordi_mobile/collections/models/collections_models.dart';
 import 'package:kordi_mobile/core/models/kordi_exception.dart';
 import 'package:kordi_mobile/core/utils/either_extension.dart';
 
@@ -32,8 +32,10 @@ class ManageCollectionAddressCubit extends Cubit<ManageCollectionAddressState> {
   }
 
   void setAddresses(int collectionId) {
+    final Collection? collectionById =
+        _collectionsFilterBloc.getById(collectionId);
     final List<CollectionAddress> addresses =
-        _collectionsFilterBloc.getById(collectionId)?.addresses ?? [];
+        List<CollectionAddress>.from(collectionById?.addresses ?? []);
     _initialAddresses.addAll(addresses);
     emit(
       state.copyWith(

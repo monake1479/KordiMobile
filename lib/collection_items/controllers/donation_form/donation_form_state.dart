@@ -15,6 +15,23 @@ class DonationFormState with _$DonationFormState {
 }
 
 extension DonationFormStateEx on DonationFormState {
+  int fixedAmount(int currentAmount) {
+    if (this.amount == currentAmount) {
+      return 0;
+    }
+    if (currentAmount > 0 && this.amount == 0) {
+      return 0;
+    }
+    if (currentAmount > this.amount) {
+      return currentAmount;
+    }
+    if (currentAmount > 0 && this.amount > currentAmount) {
+      return this.amount - currentAmount;
+    }
+
+    return this.amount;
+  }
+
   DonationDto toDto(int currentAmount) {
     int checkedAmount = this.amount;
     if (currentAmount > 0 && checkedAmount > currentAmount) {
@@ -30,6 +47,9 @@ extension DonationFormStateEx on DonationFormState {
     int currentAmount,
   ) {
     if (this.amount == currentAmount) {
+      return '0';
+    }
+    if (currentAmount > 0 && this.amount == 0) {
       return '0';
     }
     if (currentAmount > this.amount) {

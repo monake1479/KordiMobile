@@ -18,9 +18,6 @@ class _DonationSlider extends StatelessWidget {
 
     return MultiBlocProvider(
       providers: [
-        BlocProvider<ManageCollectionItemsCubit>(
-          create: (context) => getIt.get<ManageCollectionItemsCubit>(),
-        ),
         BlocProvider<DonationFormBloc>(
           create: (context) => getIt.get<DonationFormBloc>()
             ..add(
@@ -43,7 +40,8 @@ class _DonationSlider extends StatelessWidget {
         },
         child: BlocBuilder<DonationFormBloc, DonationFormState>(
           builder: (context, state) {
-            final donationCubit = context.read<ManageCollectionItemsCubit>();
+            final manageCollectionItemsCubit =
+                context.read<ManageCollectionItemsCubit>();
             final donationFormBloc = context.read<DonationFormBloc>();
             if (item.isFinished) {
               return Text(
@@ -78,9 +76,14 @@ class _DonationSlider extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(bottom: 8),
                   child: Slider(
-                    value: state.amount.toDouble(),
+                    value: item.currentAmount != null &&
+                            (item.currentAmount! > state.amount)
+                        ? item.currentAmount?.toDouble() ?? 0
+                        : state.amount.toDouble(),
                     max: item.maxAmount.toDouble(),
-                    label: '${state.amount}',
+                    label: state.amountString(
+                      item.currentAmount!,
+                    ),
                     divisions: item.maxAmount,
                     onChanged: (amount) {
                       donationFormBloc.add(
@@ -94,13 +97,14 @@ class _DonationSlider extends StatelessWidget {
                 ),
                 Builder(
                   builder: (context) {
-                    if (state.amount == 0) {
+                    if (state.amount == 0 ||
+                        state.fixedAmount(item.currentAmount!) == 0) {
                       return const SizedBox.shrink();
                     }
 
                     return ElevatedButton(
                       onPressed: () async {
-                        await donationCubit.donate(
+                        await manageCollectionItemsCubit.donate(
                           state.toDto(item.currentAmount!),
                           collectionId,
                         );
@@ -109,11 +113,8 @@ class _DonationSlider extends StatelessWidget {
                                 collectionId,
                               ),
                             );
-                        // context.read<EditCollectionFormBloc>().add(
-                        //       EditCollectionFormEvent.donateItem(
-                        //         state.toDto(item.currentAmount! + state.amount),
-                        //       ),
-                        //     );
+                        manageCollectionItemsCubit
+                            .updateDonation(state.toDto(item.currentAmount!));
                       },
                       child: Text(
                         S.current.collectionDetailsItemDonateButtonLabel,
