@@ -22,7 +22,6 @@ class Collection with _$Collection {
     required int userId,
     required List<CollectionAddress> addresses,
     required List<CollectionItem> items,
-    required List<Comment>? comments,
   }) = _Collection;
   factory Collection.fromJson(Map<String, dynamic> json) =>
       _$CollectionFromJson(json);
