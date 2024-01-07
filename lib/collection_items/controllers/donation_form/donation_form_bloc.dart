@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -21,7 +19,7 @@ class DonationFormBloc extends Bloc<DonationFormEvent, DonationFormState> {
   ) {
     emit(
       state.copyWith(
-        amount: event.collectionItem.currentAmount ?? 0,
+        amount: 0,
         collectionId: event.collectionId,
         collectionItemId: event.collectionItem.id!,
       ),
@@ -29,16 +27,10 @@ class DonationFormBloc extends Bloc<DonationFormEvent, DonationFormState> {
   }
 
   void _setAmount(_SetAmount event, Emitter<DonationFormState> emit) {
-    log('[DonationFormBloc] _setAmount( amount:${event.amount}, itemCurrentAmount:${event.itemCurrentAmount})');
-
     if (event.itemCurrentAmount > event.amount) {
       emit(state.copyWith(amount: event.itemCurrentAmount));
       return;
     }
-    // if (event.itemCurrentAmount > 0 && event.amount > event.itemCurrentAmount) {
-    //   emit(state.copyWith(amount: event.amount - event.itemCurrentAmount));
-    //   return;
-    // }
 
     emit(state.copyWith(amount: event.amount));
   }
