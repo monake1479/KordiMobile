@@ -45,10 +45,6 @@ class CollectionEditPage extends StatelessWidget {
       },
       child: MultiBlocProvider(
         providers: [
-          BlocProvider<ManageCollectionItemsCubit>(
-            create: (context) =>
-                getIt.get<ManageCollectionItemsCubit>()..setItems(collectionId),
-          ),
           BlocProvider<ManageCollectionAddressCubit>(
             create: (context) => getIt.get<ManageCollectionAddressCubit>()
               ..setAddresses(collectionId),
@@ -58,6 +54,10 @@ class CollectionEditPage extends StatelessWidget {
               ..add(
                 EditCollectionFormEvent.setInitial(collectionId),
               ),
+          ),
+          BlocProvider<ManageCollectionItemsCubit>(
+            create: (context) =>
+                getIt.get<ManageCollectionItemsCubit>()..setItems(collectionId),
           ),
         ],
         child: BlocBuilder<EditCollectionFormBloc, EditCollectionFormState>(
