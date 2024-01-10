@@ -1,7 +1,7 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:kordi_mobile/collection_addresses/models/collection_address.dart';
 import 'package:kordi_mobile/collection_items/models/collection_items_models.dart';
 import 'package:kordi_mobile/collections/models/collections_models.dart';
 import 'package:kordi_mobile/collections/utils/collection_status_converter.dart';
@@ -19,7 +19,7 @@ class CreateCollectionFormBloc
     on<_SetName>(_setName);
     on<_SetDescription>(_setDescription);
     on<_SetEndDate>(_setEndDate);
-    on<_SetPhoto>(_setPhoto);
+    on<_SetImage>(_setImage);
     on<_AddAddress>(_addAddress);
     on<_RemoveAddress>(_removeAddress);
     on<_AddItem>(_addItem);
@@ -63,14 +63,14 @@ class CreateCollectionFormBloc
     );
   }
 
-  void _setPhoto(
-    _SetPhoto event,
+  void _setImage(
+    _SetImage event,
     Emitter<CreateCollectionFormState> emit,
   ) {
     emit(
       state.copyWith(
-          // image: event.photo,
-          ),
+        image: event.image,
+      ),
     );
   }
 

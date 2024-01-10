@@ -10,7 +10,7 @@ class CreateCollectionFormState with _$CreateCollectionFormState {
     @DateTimeConverter() required DateTime startTime,
     @DateTimeConverter() required DateTime? endTime,
     @DateTimeConverter() required DateTime? completedTime,
-    // required Uint8List image,
+    required Uint8List? image,
     required int donates,
     @CollectionStatusConverter() required CollectionStatus status,
     required int userId,
@@ -26,6 +26,7 @@ class CreateCollectionFormState with _$CreateCollectionFormState {
         startTime: DateTime.now(),
         endTime: null,
         completedTime: null,
+        image: null,
         donates: 0,
         status: CollectionStatus.inProgress,
         userId: 0,
@@ -47,5 +48,6 @@ extension CreateCollectionFormStateEx on CreateCollectionFormState {
         userId: userId,
         addresses: addresses,
         items: items,
+        image: image,
       );
 }
