@@ -1,7 +1,9 @@
+import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:kordi_mobile/collection_items/models/collection_items_models.dart';
 import 'package:kordi_mobile/collections/models/collections_models.dart';
 import 'package:kordi_mobile/collections/utils/collection_status_converter.dart';
+import 'package:kordi_mobile/core/utils/base_to_string_converter.dart';
 import 'package:kordi_mobile/core/utils/date_time_converter.dart';
 
 part 'collection.freezed.dart';
@@ -16,7 +18,7 @@ class Collection with _$Collection {
     @DateTimeConverter() required DateTime startTime,
     @DateTimeConverter() required DateTime? endTime,
     @DateTimeConverter() required DateTime? completedTime,
-    // required Uint8List image,
+    @BaseToStringConverter() required Uint8List? image,
     required int donates,
     @CollectionStatusConverter() required CollectionStatus status,
     required int userId,
