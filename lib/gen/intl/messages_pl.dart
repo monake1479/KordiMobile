@@ -240,6 +240,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Nazwa kolekcji*"),
         "createCollectionFirstStepNextStepButtonLabel":
             MessageLookupByLibrary.simpleMessage("Następny krok"),
+        "createCollectionFirstStepPhotoDeleteButtonLabel":
+            MessageLookupByLibrary.simpleMessage("Usuń zdjęcie"),
         "createCollectionFirstStepPhotoHintLabel":
             MessageLookupByLibrary.simpleMessage(
                 "Dotknij obrazek powyżej, aby dodać zdjęcie"),
@@ -340,8 +342,30 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Opcje filtrowania"),
         "filterDialogTitleLabelText":
             MessageLookupByLibrary.simpleMessage("Nazwa"),
+        "imagePickerCanceledByUserException":
+            MessageLookupByLibrary.simpleMessage(
+                "Wybieranie zdjęcia anulowane przez użytkownika."),
+        "imagePickerFileTooBigException":
+            MessageLookupByLibrary.simpleMessage("Zdjęcie jest za duże."),
+        "imagePickerInsufficientPermissionException":
+            MessageLookupByLibrary.simpleMessage(
+                "Niewystarczające uprawnienia, aby uzyskać zdjęcie."),
+        "imagePickerUnexpectedException": MessageLookupByLibrary.simpleMessage(
+            "Niespodziewany błąd podczas wybierania zdjęcia."),
+        "imageTooBigDialogButtonLabel":
+            MessageLookupByLibrary.simpleMessage("OK"),
+        "imageTooBigDialogSubtitle":
+            MessageLookupByLibrary.simpleMessage("Wybierz mniejsze zdjęcie."),
+        "imageTooBigDialogTitle":
+            MessageLookupByLibrary.simpleMessage("Zdjęcie jest za duże"),
         "kordiScaffoldTitle":
             MessageLookupByLibrary.simpleMessage("KORDI Mobile"),
+        "pickImageBottomSheetCameraTile":
+            MessageLookupByLibrary.simpleMessage("Zrób zdjęcie"),
+        "pickImageBottomSheetDocumentsTile":
+            MessageLookupByLibrary.simpleMessage("Zdjęcie z dokumentów"),
+        "pickImageBottomSheetGalleryTile":
+            MessageLookupByLibrary.simpleMessage("Zdjęcie z galerii"),
         "signInPageFlushbarLabel":
             MessageLookupByLibrary.simpleMessage("Zalogowano!"),
         "signInPagePasswordErrorTextField":

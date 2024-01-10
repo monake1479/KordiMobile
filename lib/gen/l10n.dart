@@ -231,6 +231,106 @@ class S {
     );
   }
 
+  /// `Image picking canceled by user.`
+  String get imagePickerCanceledByUserException {
+    return Intl.message(
+      'Image picking canceled by user.',
+      name: 'imagePickerCanceledByUserException',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Image file is too big.`
+  String get imagePickerFileTooBigException {
+    return Intl.message(
+      'Image file is too big.',
+      name: 'imagePickerFileTooBigException',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Insufficient permission to access image.`
+  String get imagePickerInsufficientPermissionException {
+    return Intl.message(
+      'Insufficient permission to access image.',
+      name: 'imagePickerInsufficientPermissionException',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Unexpected error occurred during image picking.`
+  String get imagePickerUnexpectedException {
+    return Intl.message(
+      'Unexpected error occurred during image picking.',
+      name: 'imagePickerUnexpectedException',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Image too big`
+  String get imageTooBigDialogTitle {
+    return Intl.message(
+      'Image too big',
+      name: 'imageTooBigDialogTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please, choose smaller image.`
+  String get imageTooBigDialogSubtitle {
+    return Intl.message(
+      'Please, choose smaller image.',
+      name: 'imageTooBigDialogSubtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `OK`
+  String get imageTooBigDialogButtonLabel {
+    return Intl.message(
+      'OK',
+      name: 'imageTooBigDialogButtonLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Pick image from gallery`
+  String get pickImageBottomSheetGalleryTile {
+    return Intl.message(
+      'Pick image from gallery',
+      name: 'pickImageBottomSheetGalleryTile',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Make a picture`
+  String get pickImageBottomSheetCameraTile {
+    return Intl.message(
+      'Make a picture',
+      name: 'pickImageBottomSheetCameraTile',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Pick image from documents`
+  String get pickImageBottomSheetDocumentsTile {
+    return Intl.message(
+      'Pick image from documents',
+      name: 'pickImageBottomSheetDocumentsTile',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Basic collection information`
   String get createCollectionFirstStepTitle {
     return Intl.message(
@@ -306,6 +406,16 @@ class S {
     return Intl.message(
       'Tap image above to add photo',
       name: 'createCollectionFirstStepPhotoHintLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete photo`
+  String get createCollectionFirstStepPhotoDeleteButtonLabel {
+    return Intl.message(
+      'Delete photo',
+      name: 'createCollectionFirstStepPhotoDeleteButtonLabel',
       desc: '',
       args: [],
     );
