@@ -13,9 +13,11 @@ import 'package:kordi_mobile/collections/controllers/edit_collection_form/edit_c
 import 'package:kordi_mobile/collections/models/collections_models.dart';
 import 'package:kordi_mobile/core/models/kordi_exception.dart';
 import 'package:kordi_mobile/core/navigation/kordi_router.dart';
+import 'package:kordi_mobile/core/utils/color_extension.dart';
 import 'package:kordi_mobile/core/utils/kordi_dialog.dart';
 import 'package:kordi_mobile/core/widgets/shake_error.dart';
 import 'package:kordi_mobile/dependency_injection.dart';
+import 'package:kordi_mobile/gen/assets.gen.dart';
 import 'package:kordi_mobile/gen/l10n.dart';
 import 'package:kordi_mobile/user/controllers/get_user_cubit.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -108,14 +110,33 @@ class CollectionDetailsPage extends StatelessWidget {
                     ),
                   ],
                   flexibleSpace: FlexibleSpaceBar(
-                    background: Image.network(
-                      'https://picsum.photos/seed/${state.id}/200/300',
-                      fit: BoxFit.fill,
+                    background: SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.32,
+                      height: MediaQuery.of(context).size.height * 0.32,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(8),
+                        child: Builder(
+                          builder: (context) {
+                            if (state.image == null) {
+                              return Assets.images.camera.svg();
+                            }
+                            return Image.memory(
+                              state.image!,
+                              fit: BoxFit.fill,
+                            );
+                          },
+                        ),
+                      ),
                     ),
+                    centerTitle: true,
+                    titlePadding: EdgeInsets.zero,
                     title: Text(
                       state.name,
+                      textAlign: TextAlign.center,
                       style: theme.textTheme.bodyMedium?.copyWith(
-                        color: Colors.white,
+                        color: (state.image != null)
+                            ? colorScheme.onPrimary
+                            : colorScheme.onPrimary.textColorBasedOnLuminance,
                         shadows: [
                           Shadow(
                             blurRadius: 5,
