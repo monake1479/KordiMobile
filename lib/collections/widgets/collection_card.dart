@@ -4,6 +4,7 @@ import 'package:kordi_mobile/collections/widgets/collection_item_categories.dart
 import 'package:kordi_mobile/collections/widgets/collection_progression.dart';
 import 'package:kordi_mobile/collections/widgets/localization_tile.dart';
 import 'package:kordi_mobile/core/navigation/kordi_router.dart';
+import 'package:kordi_mobile/gen/assets.gen.dart';
 
 class CollectionCard extends StatelessWidget {
   const CollectionCard({
@@ -28,14 +29,25 @@ class CollectionCard extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(8),
-                child: Image.network(
-                  'https://picsum.photos/seed/${collection.id}/200/300',
-                  fit: BoxFit.fill,
-                  width: MediaQuery.of(context).size.width * 0.32,
-                  height: MediaQuery.of(context).size.height * 0.32,
-                ),
+              Builder(
+                builder: (context) {
+                  if (collection.image == null) {
+                    return Assets.images.camera.svg(
+                      fit: BoxFit.fill,
+                      width: MediaQuery.of(context).size.width * 0.32,
+                      height: MediaQuery.of(context).size.height * 0.32,
+                    );
+                  }
+                  return ClipRRect(
+                    borderRadius: BorderRadius.circular(8),
+                    child: Image.memory(
+                      collection.image!,
+                      fit: BoxFit.fill,
+                      width: MediaQuery.of(context).size.width * 0.32,
+                      height: MediaQuery.of(context).size.height * 0.32,
+                    ),
+                  );
+                },
               ),
               Text(
                 collection.title,
