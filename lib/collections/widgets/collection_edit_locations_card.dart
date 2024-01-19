@@ -38,10 +38,12 @@ class _CollectionEditLocationsTile extends StatelessWidget {
                           color: colorScheme.primary,
                         ),
                       ),
-                      Text(
-                        S.current.collectionDetailsLocationsLabel,
-                        style: theme.textTheme.bodyLarge,
-                        textAlign: TextAlign.justify,
+                      Flexible(
+                        child: Text(
+                          S.current.collectionDetailsLocationsLabel,
+                          style: theme.textTheme.bodyLarge,
+                          textAlign: TextAlign.justify,
+                        ),
                       ),
                     ],
                   ),
