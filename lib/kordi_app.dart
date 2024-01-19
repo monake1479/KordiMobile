@@ -9,7 +9,6 @@ import 'package:kordi_mobile/core/utils/custom_scroll_behavior.dart';
 import 'package:kordi_mobile/core/utils/kordi_dialog.dart';
 import 'package:kordi_mobile/dependency_injection.dart';
 import 'package:kordi_mobile/gen/l10n.dart';
-import 'package:kordi_mobile/theme/color_schemes.dart';
 import 'package:kordi_mobile/user/controllers/get_user_cubit.dart';
 
 class KordiApp extends StatelessWidget {
@@ -48,13 +47,18 @@ class KordiApp extends StatelessWidget {
               },
               theme: ThemeData(
                 useMaterial3: true,
-                colorScheme: lightColorScheme,
-                textTheme: GoogleFonts.barlowTextTheme(),
+                colorScheme: ColorScheme.fromSeed(
+                  seedColor: Color(0xFF6750A4),
+                ),
+                fontFamily: GoogleFonts.barlow().fontFamily,
               ),
               darkTheme: ThemeData(
                 useMaterial3: true,
-                colorScheme: darkColorScheme,
-                textTheme: GoogleFonts.barlowTextTheme(),
+                colorScheme: ColorScheme.fromSeed(
+                  seedColor: Color(0xFF6750A4),
+                  brightness: Brightness.dark,
+                ),
+                fontFamily: GoogleFonts.barlow().fontFamily,
               ),
               title: 'Kordi Mobile',
               debugShowCheckedModeBanner: false,
