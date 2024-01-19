@@ -1,4 +1,4 @@
-import 'dart:developer';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -13,10 +13,14 @@ import 'package:kordi_mobile/collections/widgets/create_collection_address_tile.
 import 'package:kordi_mobile/collections/widgets/create_collection_item_tile.dart';
 import 'package:kordi_mobile/core/navigation/kordi_router.dart';
 import 'package:kordi_mobile/core/utils/kordi_dialog.dart';
+import 'package:kordi_mobile/core/utils/kordi_flushbar.dart';
 import 'package:kordi_mobile/core/widgets/shake_error.dart';
 import 'package:kordi_mobile/dependency_injection.dart';
 import 'package:kordi_mobile/gen/assets.gen.dart';
 import 'package:kordi_mobile/gen/l10n.dart';
+import 'package:kordi_mobile/image_picker/controllers/image_picker_cubit.dart';
+import 'package:kordi_mobile/image_picker/models/kordi_image_picker_exception.dart';
+import 'package:kordi_mobile/image_picker/widgets/pick_image_bottom_sheet.dart';
 
 part 'package:kordi_mobile/collections/pages/create_collection_first_step.dart';
 part 'package:kordi_mobile/collections/pages/create_collection_fourth_step.dart';

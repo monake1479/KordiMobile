@@ -8,7 +8,7 @@ class CreateCollectionFormEvent with _$CreateCollectionFormEvent {
       _SetDescription;
   const factory CreateCollectionFormEvent.setEndDate(DateTime endDate) =
       _SetEndDate;
-  const factory CreateCollectionFormEvent.setPhoto(String photo) = _SetPhoto;
+  const factory CreateCollectionFormEvent.setImage(Uint8List image) = _SetImage;
   const factory CreateCollectionFormEvent.addAddress(
     CollectionAddress address,
   ) = _AddAddress;

@@ -234,6 +234,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Collection name*"),
         "createCollectionFirstStepNextStepButtonLabel":
             MessageLookupByLibrary.simpleMessage("Next step"),
+        "createCollectionFirstStepPhotoDeleteButtonLabel":
+            MessageLookupByLibrary.simpleMessage("Delete photo"),
         "createCollectionFirstStepPhotoHintLabel":
             MessageLookupByLibrary.simpleMessage(
                 "Tap image above to add photo"),
@@ -333,8 +335,30 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Filter options"),
         "filterDialogTitleLabelText":
             MessageLookupByLibrary.simpleMessage("Name"),
+        "imagePickerCanceledByUserException":
+            MessageLookupByLibrary.simpleMessage(
+                "Image picking canceled by user."),
+        "imagePickerFileTooBigException":
+            MessageLookupByLibrary.simpleMessage("Image file is too big."),
+        "imagePickerInsufficientPermissionException":
+            MessageLookupByLibrary.simpleMessage(
+                "Insufficient permission to access image."),
+        "imagePickerUnexpectedException": MessageLookupByLibrary.simpleMessage(
+            "Unexpected error occurred during image picking."),
+        "imageTooBigDialogButtonLabel":
+            MessageLookupByLibrary.simpleMessage("OK"),
+        "imageTooBigDialogSubtitle": MessageLookupByLibrary.simpleMessage(
+            "Please, choose smaller image."),
+        "imageTooBigDialogTitle":
+            MessageLookupByLibrary.simpleMessage("Image too big"),
         "kordiScaffoldTitle":
             MessageLookupByLibrary.simpleMessage("KORDI Mobile"),
+        "pickImageBottomSheetCameraTile":
+            MessageLookupByLibrary.simpleMessage("Make a picture"),
+        "pickImageBottomSheetDocumentsTile":
+            MessageLookupByLibrary.simpleMessage("Pick image from documents"),
+        "pickImageBottomSheetGalleryTile":
+            MessageLookupByLibrary.simpleMessage("Pick image from gallery"),
         "signInPageFlushbarLabel":
             MessageLookupByLibrary.simpleMessage("Signed in!"),
         "signInPagePasswordErrorTextField":

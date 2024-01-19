@@ -173,23 +173,104 @@ class _CreateCollectionFirstStepState extends State<CreateCollectionFirstStep> {
                     ),
                     Padding(
                       padding: const EdgeInsets.only(bottom: 8),
-                      child: InkWell(
-                        onTap: () {
-                          log('TODO: Add photo');
+                      child: BlocConsumer<ImagePickerCubit, ImagePickerState>(
+                        listener: (context, state) async {
+                          if (state.exception != null) {
+                            await KordiFlushbar(
+                              message: state.exception!.message,
+                              maxWidth: 220,
+                            ).show(context);
+                          }
                         },
-                        child: Container(
-                          padding: const EdgeInsets.all(12),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(8),
+                        builder: (context, state) {
+                          return InkWell(
+                            onTap: () async {
+                              final image =
+                                  await PickImageBottomSheet.showImagesPicker(
+                                context,
+                              );
+                              if (image != null) {
+                                createCollectionFormBloc.add(
+                                  CreateCollectionFormEvent.setImage(
+                                    await image.readAsBytes(),
+                                  ),
+                                );
+                              }
+                            },
+                            child: Column(
+                              children: [
+                                Container(
+                                  padding: const EdgeInsets.all(12),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(8),
+                                    ),
+                                    border: Border.all(
+                                      color: colorScheme.secondary,
+                                    ),
+                                  ),
+                                  child: Column(
+                                    children: [
+                                      Builder(
+                                        builder: (context) {
+                                          if (state.isLoading) {
+                                            return SizedBox(
+                                              width: 150,
+                                              height: 150,
+                                              child: const Center(
+                                                child:
+                                                    CircularProgressIndicator(),
+                                              ),
+                                            );
+                                          }
+                                          if (state.image != null) {
+                                            return Image.file(
+                                              File(state.image!.path),
+                                              fit: BoxFit.fill,
+                                              width: 150,
+                                              height: 150,
+                                            );
+                                          }
+                                          return Assets.images.camera.svg(
+                                            width: 150,
+                                            height: 150,
+                                          );
+                                        },
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Builder(
+                                  builder: (context) {
+                                    if (state.image == null) {
+                                      return const SizedBox.shrink();
+                                    }
+                                    return Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                        vertical: 4,
+                                      ),
+                                      child: ElevatedButton(
+                                        onPressed: () {
+                                          context
+                                              .read<ImagePickerCubit>()
+                                              .deleteImage();
+                                        },
+                                        child: Text(
+                                          S.current
+                                              .createCollectionFirstStepPhotoDeleteButtonLabel,
+                                          style: textTheme.bodyMedium!.copyWith(
+                                            color: colorScheme.error,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                ),
+                              ],
                             ),
-                            border: Border.all(color: colorScheme.secondary),
-                          ),
-                          child: Assets.images.camera.svg(
-                            width: 100,
-                            height: 100,
-                          ),
-                        ),
+                          );
+                        },
                       ),
                     ),
                     Text(

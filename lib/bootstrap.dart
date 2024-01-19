@@ -11,6 +11,7 @@ import 'package:kordi_mobile/collections/controllers/get_collections/get_collect
 import 'package:kordi_mobile/core/services/environment_service.dart';
 import 'package:kordi_mobile/core/utils/kordi_environment.dart';
 import 'package:kordi_mobile/dependency_injection.dart';
+import 'package:kordi_mobile/image_picker/controllers/image_picker_cubit.dart';
 import 'package:kordi_mobile/kordi_app.dart';
 import 'package:kordi_mobile/user/controllers/get_user_cubit.dart';
 import 'package:path_provider/path_provider.dart';
@@ -45,6 +46,9 @@ Future<void> bootstrap({
         BlocProvider<CollectionsFilterBloc>(
           create: (context) => getIt.get<CollectionsFilterBloc>()
             ..add(CollectionsFilterEvent.getCollections()),
+        ),
+        BlocProvider<ImagePickerCubit>(
+          create: (context) => getIt.get<ImagePickerCubit>(),
         ),
       ],
       child: KordiApp(),

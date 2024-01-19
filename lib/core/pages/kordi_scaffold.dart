@@ -7,6 +7,7 @@ import 'package:kordi_mobile/core/widgets/kordi_drawer.dart';
 import 'package:kordi_mobile/core/widgets/kordi_search_button.dart';
 import 'package:kordi_mobile/gen/assets.gen.dart';
 import 'package:kordi_mobile/gen/l10n.dart';
+import 'package:kordi_mobile/image_picker/controllers/image_picker_cubit.dart';
 
 class KordiScaffold extends StatelessWidget {
   const KordiScaffold({super.key, required this.child});
@@ -70,6 +71,7 @@ class KordiScaffold extends StatelessWidget {
             return FloatingActionButton(
               child: Icon(Icons.add),
               onPressed: () {
+                context.read<ImagePickerCubit>().deleteImage();
                 CreateCollectionFirstStepRoute().go(
                   context,
                 );
