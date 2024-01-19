@@ -72,4 +72,11 @@ extension CollectionEx on Collection {
     }
     return categoriesNames;
   }
+
+  String get shorterDescription {
+    if (description.length > 240) {
+      return description.substring(0, 240) + '...';
+    }
+    return description;
+  }
 }
