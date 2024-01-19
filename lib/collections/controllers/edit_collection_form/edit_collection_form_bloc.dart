@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -22,7 +23,6 @@ class EditCollectionFormBloc
     on<_SetUserId>(_setUserId);
     on<_SetName>(_setName);
     on<_SetDescription>(_setDescription);
-    on<_SetPhoto>(_setPhoto);
     on<_CheckValidation>(_checkValidation);
   }
   final CollectionsFilterBloc _collectionsFilterBloc;
@@ -53,7 +53,7 @@ class EditCollectionFormBloc
         startTime: collection.startTime,
         endTime: collection.endTime,
         completedTime: collection.completedTime,
-        // image: collection.image,
+        image: collection.image,
         status: collection.status,
         userId: collection.userId,
       ),
@@ -90,17 +90,6 @@ class EditCollectionFormBloc
       state.copyWith(
         description: event.description,
       ),
-    );
-  }
-
-  void _setPhoto(
-    _SetPhoto event,
-    Emitter<EditCollectionFormState> emit,
-  ) {
-    emit(
-      state.copyWith(
-          // image: event.photo,
-          ),
     );
   }
 
