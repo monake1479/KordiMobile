@@ -30,10 +30,12 @@ class _CollectionDetailsLocationsTile extends StatelessWidget {
                       color: colorScheme.primary,
                     ),
                   ),
-                  Text(
-                    S.current.collectionDetailsLocationsLabel,
-                    style: theme.textTheme.bodyLarge,
-                    textAlign: TextAlign.justify,
+                  Flexible(
+                    child: Text(
+                      S.current.collectionDetailsLocationsLabel,
+                      style: theme.textTheme.bodyLarge,
+                      textAlign: TextAlign.justify,
+                    ),
                   ),
                 ],
               ),
@@ -45,7 +47,8 @@ class _CollectionDetailsLocationsTile extends StatelessWidget {
                   builder: (context, state) {
                     if (state.addresses.isEmpty) {
                       return Text(
-                          S.current.collectionDetailsLocationsEmptyState);
+                        S.current.collectionDetailsLocationsEmptyState,
+                      );
                     }
                     return Column(
                       children: state.addresses
