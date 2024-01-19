@@ -38,6 +38,8 @@ class _CollectionEditDescriptionCard extends StatelessWidget {
                   ),
                   TextFormField(
                     initialValue: state.description,
+                    minLines: 3,
+                    maxLines: 10,
                     decoration: InputDecoration(
                       contentPadding: const EdgeInsets.all(8),
                       border: OutlineInputBorder(),
@@ -48,7 +50,7 @@ class _CollectionEditDescriptionCard extends StatelessWidget {
                       labelText:
                           S.current.collectionEditDescriptionFormLabelText,
                     ),
-                    maxLength: 500,
+                    maxLength: 1000,
                     textAlign: TextAlign.justify,
                     onChanged: (description) {
                       context.read<EditCollectionFormBloc>().add(
