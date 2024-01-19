@@ -57,7 +57,7 @@ class CollectionCard extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8),
                 child: Text(
-                  collection.description,
+                  collection.shorterDescription,
                   style: theme.textTheme.bodyLarge,
                   textAlign: TextAlign.justify,
                 ),
