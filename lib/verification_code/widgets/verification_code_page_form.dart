@@ -153,6 +153,7 @@ class _VerificationCodePageForm extends StatelessWidget {
     KordiFlushbar(
       message: S.current.verificationCodePageFlushbarLabel,
       maxWidth: 120,
+      backgroundColor: Theme.of(context).colorScheme.onPrimary,
     ).show(context);
   }
 }

@@ -38,6 +38,7 @@ class SignUpPage extends StatelessWidget {
               await KordiFlushbar(
                 maxWidth: 130,
                 message: S.current.signUpPageFlushbarLabel,
+                backgroundColor: colorScheme.onPrimary,
               ).show(context);
               final verificationType =
                   context.read<SignUpFormBloc>().state.verificationType;
