@@ -80,12 +80,6 @@ class VerificationCodePage extends StatelessWidget {
                   ),
                 ],
               ),
-              actions: [
-                IconButton(
-                  onPressed: () {},
-                  icon: Icon(Icons.info_outline_rounded),
-                ),
-              ],
             ),
             body: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
