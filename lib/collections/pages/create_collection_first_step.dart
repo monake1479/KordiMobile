@@ -31,8 +31,7 @@ class _CreateCollectionFirstStepState extends State<CreateCollectionFirstStep> {
 
     return BlocBuilder<CreateCollectionFormBloc, CreateCollectionFormState>(
       builder: (context, state) {
-        return Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
+        return ListView(
           children: [
             Card(
               margin: const EdgeInsets.symmetric(
@@ -55,7 +54,7 @@ class _CreateCollectionFirstStepState extends State<CreateCollectionFirstStep> {
                       S.current.createCollectionFirstStepSubtitle,
                       textAlign: TextAlign.center,
                       style: textTheme.titleMedium!.copyWith(
-                        color: theme.primaryColor,
+                        color: colorScheme.primary,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -105,6 +104,8 @@ class _CreateCollectionFirstStepState extends State<CreateCollectionFirstStep> {
                       padding: const EdgeInsets.only(bottom: 8),
                       child: TextFormField(
                         initialValue: state.description,
+                        minLines: 3,
+                        maxLines: 10,
                         decoration: InputDecoration(
                           contentPadding: const EdgeInsets.all(8),
                           border: OutlineInputBorder(),
@@ -115,7 +116,7 @@ class _CreateCollectionFirstStepState extends State<CreateCollectionFirstStep> {
                           labelText: S.current
                               .createCollectionFirstStepDescriptionFormTextLabel,
                         ),
-                        maxLength: 500,
+                        maxLength: 1000,
                         keyboardType: TextInputType.multiline,
                         onChanged: (description) {
                           createCollectionFormBloc.add(
@@ -179,6 +180,7 @@ class _CreateCollectionFirstStepState extends State<CreateCollectionFirstStep> {
                             await KordiFlushbar(
                               message: state.exception!.message,
                               maxWidth: 220,
+                              backgroundColor: colorScheme.onPrimary,
                             ).show(context);
                           }
                         },
