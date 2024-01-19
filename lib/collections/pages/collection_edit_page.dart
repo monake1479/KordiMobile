@@ -17,6 +17,7 @@ import 'package:kordi_mobile/core/navigation/kordi_router.dart';
 import 'package:kordi_mobile/core/utils/kordi_dialog.dart';
 import 'package:kordi_mobile/core/widgets/shake_error.dart';
 import 'package:kordi_mobile/dependency_injection.dart';
+import 'package:kordi_mobile/gen/assets.gen.dart';
 import 'package:kordi_mobile/gen/l10n.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -62,7 +63,8 @@ class CollectionEditPage extends StatelessWidget {
         ],
         child: BlocBuilder<EditCollectionFormBloc, EditCollectionFormState>(
           builder: (context, state) {
-            final collectionFormBloc = context.read<EditCollectionFormBloc>();
+            final editCollectionFormBloc =
+                context.read<EditCollectionFormBloc>();
             if (state.isLoading) {
               return Scaffold(
                 body: Center(
@@ -116,7 +118,7 @@ class CollectionEditPage extends StatelessWidget {
                                 onPressed: () async {
                                   await _onAddItemButtonOnPressed(
                                     context,
-                                    collectionFormBloc,
+                                    editCollectionFormBloc,
                                     state,
                                     _shakeErrorKey,
                                   );
@@ -134,38 +136,44 @@ class CollectionEditPage extends StatelessWidget {
                         ),
                       ),
                     ],
-                    flexibleSpace: InkWell(
-                      onTap: () {
-                        log('Change image state.name: ${state.name}');
-                      },
-                      child: FlexibleSpaceBar(
-                        background: Image.network(
-                          'https://picsum.photos/seed/${state.id}/200/300',
-                          fit: BoxFit.fill,
-                        ),
-                        title: Text(
-                          state.name,
-                          style: theme.textTheme.bodyMedium?.copyWith(
-                            color: Colors.white,
-                            shadows: [
-                              Shadow(
-                                blurRadius: 5,
-                                color: colorScheme.primary,
-                                offset: Offset(2, 2),
-                              ),
-                              Shadow(
-                                blurRadius: 5,
-                                offset: Offset(3, 2),
-                              ),
-                            ],
-                          ),
-                        ),
-                        stretchModes: [
-                          StretchMode.zoomBackground,
-                          StretchMode.blurBackground,
-                          StretchMode.fadeTitle,
-                        ],
+                    flexibleSpace: FlexibleSpaceBar(
+                      background: Builder(
+                        builder: (context) {
+                          if (state.image == null) {
+                            return Assets.images.camera.svg(
+                              fit: BoxFit.fill,
+                            );
+                          }
+                          return Image.memory(
+                            state.image!,
+                            fit: BoxFit.fill,
+                            width: MediaQuery.of(context).size.width * 0.32,
+                            height: MediaQuery.of(context).size.height * 0.32,
+                          );
+                        },
                       ),
+                      title: Text(
+                        state.name,
+                        style: theme.textTheme.bodyMedium?.copyWith(
+                          color: Colors.white,
+                          shadows: [
+                            Shadow(
+                              blurRadius: 5,
+                              color: colorScheme.primary,
+                              offset: Offset(2, 2),
+                            ),
+                            Shadow(
+                              blurRadius: 5,
+                              offset: Offset(3, 2),
+                            ),
+                          ],
+                        ),
+                      ),
+                      stretchModes: [
+                        StretchMode.zoomBackground,
+                        StretchMode.blurBackground,
+                        StretchMode.fadeTitle,
+                      ],
                     ),
                   ),
                   _CollectionEditNameCard(),
