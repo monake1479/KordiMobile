@@ -39,7 +39,7 @@ class CreateCollectionThirdStep extends StatelessWidget {
                             S.current.createCollectionThirdStepSubtitle,
                             textAlign: TextAlign.center,
                             style: textTheme.titleMedium!.copyWith(
-                              color: theme.primaryColor,
+                              color: colorScheme.primary,
                               fontWeight: FontWeight.bold,
                             ),
                           ),

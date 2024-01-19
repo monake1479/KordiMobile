@@ -32,7 +32,7 @@ class CreateCollectionFourthStep extends StatelessWidget {
                   S.current.createCollectionFourthStepSubtitle,
                   textAlign: TextAlign.center,
                   style: textTheme.titleMedium!.copyWith(
-                    color: theme.primaryColor,
+                    color: colorScheme.primary,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
