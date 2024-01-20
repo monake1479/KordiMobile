@@ -45,6 +45,7 @@ extension CreateCollectionFormStateEx on CreateCollectionFormState {
   CollectionDto get toCollectionDto => CollectionDto(
         title: name,
         description: description,
+        endTime: endTime,
         userId: userId,
         addresses: addresses,
         items: items,
