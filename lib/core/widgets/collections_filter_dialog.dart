@@ -156,21 +156,29 @@ class _CollectionsFilterDialogState extends State<CollectionsFilterDialog> {
                         padding: EdgeInsets.zero,
                         children: CollectionItemCategory.values
                             .map(
-                              (itemCategory) => Row(
-                                children: [
-                                  Checkbox(
-                                    value: state
-                                        .isItemCategorySelected(itemCategory),
-                                    onChanged: (value) {
-                                      collectionsFilterBloc.add(
-                                        CollectionsFilterEvent.updateCategories(
-                                          itemCategory,
-                                        ),
-                                      );
-                                    },
+                              (itemCategory) => GestureDetector(
+                                onTap: () => collectionsFilterBloc.add(
+                                  CollectionsFilterEvent.updateCategories(
+                                    itemCategory,
                                   ),
-                                  Text(itemCategory.name),
-                                ],
+                                ),
+                                child: Row(
+                                  children: [
+                                    Checkbox(
+                                      value: state
+                                          .isItemCategorySelected(itemCategory),
+                                      onChanged: (value) {
+                                        collectionsFilterBloc.add(
+                                          CollectionsFilterEvent
+                                              .updateCategories(
+                                            itemCategory,
+                                          ),
+                                        );
+                                      },
+                                    ),
+                                    Text(itemCategory.name),
+                                  ],
+                                ),
                               ),
                             )
                             .toList(),

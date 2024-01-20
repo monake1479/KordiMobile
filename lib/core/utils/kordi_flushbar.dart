@@ -6,6 +6,7 @@ class KordiFlushbar extends Flushbar {
   KordiFlushbar({
     required this.message,
     required this.maxWidth,
+    required this.backgroundColor,
     super.key,
   }) : super(
           messageText: Text(
@@ -16,7 +17,7 @@ class KordiFlushbar extends Flushbar {
           dismissDirection: FlushbarDismissDirection.VERTICAL,
           flushbarPosition: FlushbarPosition.TOP,
           isDismissible: true,
-          backgroundColor: Colors.white,
+          backgroundColor: backgroundColor,
           positionOffset: 25,
           borderRadius: BorderRadius.circular(12),
           maxWidth: maxWidth,
@@ -38,4 +39,6 @@ class KordiFlushbar extends Flushbar {
   final String message;
   @override
   final double maxWidth;
+  @override
+  final Color backgroundColor;
 }

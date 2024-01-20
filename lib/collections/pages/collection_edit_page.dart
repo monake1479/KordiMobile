@@ -79,20 +79,30 @@ class CollectionEditPage extends StatelessWidget {
                     expandedHeight: MediaQuery.of(context).size.height * 0.14,
                     stretch: true,
                     leading: IconButton(
-                      icon: Icon(
-                        Icons.arrow_back_ios,
-                        color: Colors.white,
-                        shadows: [
-                          Shadow(
-                            blurRadius: 5,
-                            color: colorScheme.primary,
-                            offset: Offset(2, 2),
+                      icon: Container(
+                        padding: EdgeInsets.all(8),
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: colorScheme.primary,
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 4),
+                          child: Icon(
+                            Icons.arrow_back_ios,
+                            color: colorScheme.onPrimary,
+                            shadows: [
+                              Shadow(
+                                blurRadius: 5,
+                                color: colorScheme.primary,
+                                offset: Offset(2, 2),
+                              ),
+                              Shadow(
+                                blurRadius: 5,
+                                offset: Offset(3, 2),
+                              ),
+                            ],
                           ),
-                          Shadow(
-                            blurRadius: 5,
-                            offset: Offset(3, 2),
-                          ),
-                        ],
+                        ),
                       ),
                       onPressed: () {
                         CollectionDetailsPageRoute(collectionId).go(context);
@@ -140,9 +150,7 @@ class CollectionEditPage extends StatelessWidget {
                       background: Builder(
                         builder: (context) {
                           if (state.image == null) {
-                            return Assets.images.camera.svg(
-                              fit: BoxFit.fill,
-                            );
+                            return Assets.images.camera.svg();
                           }
                           return Image.memory(
                             state.image!,

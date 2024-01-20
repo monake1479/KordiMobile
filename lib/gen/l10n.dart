@@ -981,6 +981,16 @@ class S {
     );
   }
 
+  /// `Add comment`
+  String get collectionDetailsCommentDialogTitle {
+    return Intl.message(
+      'Add comment',
+      name: 'collectionDetailsCommentDialogTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Comments`
   String get collectionDetailsCommentListTitle {
     return Intl.message(
@@ -1301,6 +1311,46 @@ class S {
     );
   }
 
+  /// `Your session has expired. Please, sign in again.`
+  String get authTokenExceptionMessage {
+    return Intl.message(
+      'Your session has expired. Please, sign in again.',
+      name: 'authTokenExceptionMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Server error occurred. Please, try again later.`
+  String get serverExceptionMessage {
+    return Intl.message(
+      'Server error occurred. Please, try again later.',
+      name: 'serverExceptionMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Navigation error occurred. Please, try again later.`
+  String get navigationExceptionMessage {
+    return Intl.message(
+      'Navigation error occurred. Please, try again later.',
+      name: 'navigationExceptionMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Something went wrong with getting user information. Please, try again later.`
+  String get userInformationExceptionMessage {
+    return Intl.message(
+      'Something went wrong with getting user information. Please, try again later.',
+      name: 'userInformationExceptionMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Please, try again later.\nRestart the app and contact with us to report issue.`
   String get errorPageDescription {
     return Intl.message(
@@ -1318,6 +1368,186 @@ class S {
       name: 'collectionNotFoundError',
       desc: 'Error message when collection with given id not found.',
       args: [collectionId],
+    );
+  }
+
+  /// `Provided user credentials are not valid.`
+  String get responseUserBadCredentials {
+    return Intl.message(
+      'Provided user credentials are not valid.',
+      name: 'responseUserBadCredentials',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `User with given username not found.`
+  String get responseUserNotFound {
+    return Intl.message(
+      'User with given username not found.',
+      name: 'responseUserNotFound',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `User with given email is not verified.`
+  String get responseUserNotVerifiedEmail {
+    return Intl.message(
+      'User with given email is not verified.',
+      name: 'responseUserNotVerifiedEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `User with given phone number is not verified.`
+  String get responseUserNotVerifiedPhone {
+    return Intl.message(
+      'User with given phone number is not verified.',
+      name: 'responseUserNotVerifiedPhone',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `User was already verified, please sign in.`
+  String get responseUserAlreadyVerified {
+    return Intl.message(
+      'User was already verified, please sign in.',
+      name: 'responseUserAlreadyVerified',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Provided username is already taken.`
+  String get responseUserUsernameExists {
+    return Intl.message(
+      'Provided username is already taken.',
+      name: 'responseUserUsernameExists',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Provided email address is already taken.`
+  String get responseUserEmailExists {
+    return Intl.message(
+      'Provided email address is already taken.',
+      name: 'responseUserEmailExists',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Provided phone number is already taken.`
+  String get responseUserPhoneExists {
+    return Intl.message(
+      'Provided phone number is already taken.',
+      name: 'responseUserPhoneExists',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Provided email address is not valid.`
+  String get responseEmailNotValid {
+    return Intl.message(
+      'Provided email address is not valid.',
+      name: 'responseEmailNotValid',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `User is not collection owner.`
+  String get responseUserNotCollectionOwner {
+    return Intl.message(
+      'User is not collection owner.',
+      name: 'responseUserNotCollectionOwner',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `User not found with given token.`
+  String get responseUserNotFoundWithGivenToken {
+    return Intl.message(
+      'User not found with given token.',
+      name: 'responseUserNotFoundWithGivenToken',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Provided password is too short.`
+  String get responsePasswordTooShort {
+    return Intl.message(
+      'Provided password is too short.',
+      name: 'responsePasswordTooShort',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Provided email address is already taken.`
+  String get responseEmailAlreadyExists {
+    return Intl.message(
+      'Provided email address is already taken.',
+      name: 'responseEmailAlreadyExists',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Provided phone number is already taken.`
+  String get responsePhoneAlreadyExists {
+    return Intl.message(
+      'Provided phone number is already taken.',
+      name: 'responsePhoneAlreadyExists',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Provided email address is already confirmed.`
+  String get responseEmailAlreadyConfirmed {
+    return Intl.message(
+      'Provided email address is already confirmed.',
+      name: 'responseEmailAlreadyConfirmed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Provided phone number is already confirmed.`
+  String get responsePhoneAlreadyConfirmed {
+    return Intl.message(
+      'Provided phone number is already confirmed.',
+      name: 'responsePhoneAlreadyConfirmed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Provided old password is not valid.`
+  String get responsePasswordOldPasswordNotMatch {
+    return Intl.message(
+      'Provided old password is not valid.',
+      name: 'responsePasswordOldPasswordNotMatch',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You cannot donate more than maximum amount.`
+  String get responseCollectionItemCurrentBiggerThanMaximum {
+    return Intl.message(
+      'You cannot donate more than maximum amount.',
+      name: 'responseCollectionItemCurrentBiggerThanMaximum',
+      desc: '',
+      args: [],
     );
   }
 

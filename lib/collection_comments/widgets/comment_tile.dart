@@ -6,6 +6,7 @@ import 'package:kordi_mobile/collection_comments/models/comment.dart';
 import 'package:kordi_mobile/core/models/kordi_exception.dart';
 import 'package:kordi_mobile/core/navigation/kordi_router.dart';
 import 'package:kordi_mobile/core/utils/kordi_dialog.dart';
+import 'package:kordi_mobile/gen/l10n.dart';
 import 'package:kordi_mobile/user/controllers/get_user_cubit.dart';
 
 class CommentTile extends StatelessWidget {
@@ -25,7 +26,7 @@ class CommentTile extends StatelessWidget {
       KordiDialog.showException(
         context,
         KordiException.customMessage(
-          message: 'Something went wrong with navigation.',
+          message: S.current.navigationExceptionMessage,
         ),
       );
       CollectionPageRoute().go(context);

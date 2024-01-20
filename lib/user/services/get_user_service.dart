@@ -5,8 +5,8 @@ import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:kordi_mobile/core/models/kordi_exception.dart';
 import 'package:kordi_mobile/core/utils/dio_client.dart';
+import 'package:kordi_mobile/core/utils/response_code_converter.dart';
 import 'package:kordi_mobile/dependency_injection.dart';
-import 'package:kordi_mobile/sign_up/utils/response_code_converter.dart';
 import 'package:kordi_mobile/user/interfaces/get_user_interface.dart';
 import 'package:kordi_mobile/user/models/user.dart';
 

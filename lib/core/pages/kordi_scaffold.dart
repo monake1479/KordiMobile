@@ -63,10 +63,9 @@ class KordiScaffold extends StatelessWidget {
         ],
       ),
       drawer: KordiDrawer(),
-      floatingActionButton: Builder(
-        builder: (context) {
-          final authState = context.read<AuthCubit>().state;
-          if (authState is Authorized &&
+      floatingActionButton: BlocBuilder<AuthCubit, AuthState>(
+        builder: (context, state) {
+          if (state is Authorized &&
               GoRouterState.of(context).fullPath == '/collection') {
             return FloatingActionButton(
               child: Icon(Icons.add),

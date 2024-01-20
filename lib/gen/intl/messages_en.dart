@@ -61,6 +61,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "The project assumes material support for people affected by a crisis. In the Kordi service, users can create a collection for a specific purpose they describe. They clearly state what items they need and in what quantity. The application administrators do not verify in any way whether the declared donations have reached the needy. Everything happens among users. Kordi is merely a tool that facilitates the creation of such collections, and since there is no financial funding in the application, it cannot be considered fraudulent."),
         "aboutPageTitle": MessageLookupByLibrary.simpleMessage("About us"),
         "appName": MessageLookupByLibrary.simpleMessage("Kordi mobile"),
+        "authTokenExceptionMessage": MessageLookupByLibrary.simpleMessage(
+            "Your session has expired. Please, sign in again."),
         "changePasswordPageChangePasswordButtonLabel":
             MessageLookupByLibrary.simpleMessage("Change password"),
         "changePasswordPageDialogButtonLabel":
@@ -100,6 +102,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "collectionDetailsAddressesUrlException":
             MessageLookupByLibrary.simpleMessage(
                 "Cannot open address in browser."),
+        "collectionDetailsCommentDialogTitle":
+            MessageLookupByLibrary.simpleMessage("Add comment"),
         "collectionDetailsCommentListAddButtonLabel":
             MessageLookupByLibrary.simpleMessage("Add comment"),
         "collectionDetailsCommentListEmptyState":
@@ -353,12 +357,55 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Image too big"),
         "kordiScaffoldTitle":
             MessageLookupByLibrary.simpleMessage("KORDI Mobile"),
+        "navigationExceptionMessage": MessageLookupByLibrary.simpleMessage(
+            "Navigation error occurred. Please, try again later."),
         "pickImageBottomSheetCameraTile":
             MessageLookupByLibrary.simpleMessage("Make a picture"),
         "pickImageBottomSheetDocumentsTile":
             MessageLookupByLibrary.simpleMessage("Pick image from documents"),
         "pickImageBottomSheetGalleryTile":
             MessageLookupByLibrary.simpleMessage("Pick image from gallery"),
+        "responseCollectionItemCurrentBiggerThanMaximum":
+            MessageLookupByLibrary.simpleMessage(
+                "You cannot donate more than maximum amount."),
+        "responseEmailAlreadyConfirmed": MessageLookupByLibrary.simpleMessage(
+            "Provided email address is already confirmed."),
+        "responseEmailAlreadyExists": MessageLookupByLibrary.simpleMessage(
+            "Provided email address is already taken."),
+        "responseEmailNotValid": MessageLookupByLibrary.simpleMessage(
+            "Provided email address is not valid."),
+        "responsePasswordOldPasswordNotMatch":
+            MessageLookupByLibrary.simpleMessage(
+                "Provided old password is not valid."),
+        "responsePasswordTooShort": MessageLookupByLibrary.simpleMessage(
+            "Provided password is too short."),
+        "responsePhoneAlreadyConfirmed": MessageLookupByLibrary.simpleMessage(
+            "Provided phone number is already confirmed."),
+        "responsePhoneAlreadyExists": MessageLookupByLibrary.simpleMessage(
+            "Provided phone number is already taken."),
+        "responseUserAlreadyVerified": MessageLookupByLibrary.simpleMessage(
+            "User was already verified, please sign in."),
+        "responseUserBadCredentials": MessageLookupByLibrary.simpleMessage(
+            "Provided user credentials are not valid."),
+        "responseUserEmailExists": MessageLookupByLibrary.simpleMessage(
+            "Provided email address is already taken."),
+        "responseUserNotCollectionOwner": MessageLookupByLibrary.simpleMessage(
+            "User is not collection owner."),
+        "responseUserNotFound": MessageLookupByLibrary.simpleMessage(
+            "User with given username not found."),
+        "responseUserNotFoundWithGivenToken":
+            MessageLookupByLibrary.simpleMessage(
+                "User not found with given token."),
+        "responseUserNotVerifiedEmail": MessageLookupByLibrary.simpleMessage(
+            "User with given email is not verified."),
+        "responseUserNotVerifiedPhone": MessageLookupByLibrary.simpleMessage(
+            "User with given phone number is not verified."),
+        "responseUserPhoneExists": MessageLookupByLibrary.simpleMessage(
+            "Provided phone number is already taken."),
+        "responseUserUsernameExists": MessageLookupByLibrary.simpleMessage(
+            "Provided username is already taken."),
+        "serverExceptionMessage": MessageLookupByLibrary.simpleMessage(
+            "Server error occurred. Please, try again later."),
         "signInPageFlushbarLabel":
             MessageLookupByLibrary.simpleMessage("Signed in!"),
         "signInPagePasswordErrorTextField":
@@ -428,6 +475,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Pick verification type"),
         "unauthorizedExceptionMessage": MessageLookupByLibrary.simpleMessage(
             "You are not authorized to perform this action."),
+        "userInformationExceptionMessage": MessageLookupByLibrary.simpleMessage(
+            "Something went wrong with getting user information. Please, try again later."),
         "verificationCodePageButtonLabel":
             MessageLookupByLibrary.simpleMessage("OK"),
         "verificationCodePageDescription": MessageLookupByLibrary.simpleMessage(

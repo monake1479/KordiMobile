@@ -8,8 +8,8 @@ import 'package:kordi_mobile/collection_comments/models/comment.dart';
 import 'package:kordi_mobile/collection_comments/models/comment_dto.dart';
 import 'package:kordi_mobile/core/models/kordi_exception.dart';
 import 'package:kordi_mobile/core/utils/dio_client.dart';
+import 'package:kordi_mobile/core/utils/response_code_converter.dart';
 import 'package:kordi_mobile/dependency_injection.dart';
-import 'package:kordi_mobile/sign_up/utils/response_code_converter.dart';
 
 @Singleton(as: CommentsInterface)
 class CommentsService implements CommentsInterface {

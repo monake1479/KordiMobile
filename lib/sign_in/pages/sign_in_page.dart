@@ -32,6 +32,7 @@ class SignInPage extends StatelessWidget {
               await KordiFlushbar(
                 maxWidth: 130,
                 message: S.current.signInPageFlushbarLabel,
+                backgroundColor: Theme.of(context).colorScheme.onPrimary,
               ).show(context);
               await context.read<GetUserCubit>().get();
               CollectionPageRoute().go(context);

@@ -40,7 +40,7 @@ class CreateCollectionSecondStep extends StatelessWidget {
                             S.current.createCollectionSecondStepSubtitle,
                             textAlign: TextAlign.center,
                             style: textTheme.titleMedium!.copyWith(
-                              color: theme.primaryColor,
+                              color: colorScheme.primary,
                               fontWeight: FontWeight.bold,
                             ),
                           ),

@@ -8,7 +8,6 @@ class _CollectionDetailsItemList extends StatelessWidget {
     final theme = Theme.of(context);
     final textTheme = theme.textTheme;
     final colorScheme = theme.colorScheme;
-    final authState = context.watch<AuthCubit>().state;
     final collectionIdString =
         GoRouterState.of(context).pathParameters['collectionId'];
     final collectionId = int.parse(collectionIdString!);
@@ -38,8 +37,8 @@ class _CollectionDetailsItemList extends StatelessWidget {
                   ),
                 ],
               ),
-              Builder(
-                builder: (context) {
+              BlocBuilder<AuthCubit, AuthState>(
+                builder: (context, authState) {
                   if (!authState.isAuthorized) {
                     return Padding(
                       padding: const EdgeInsets.only(bottom: 8),

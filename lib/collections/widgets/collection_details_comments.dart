@@ -28,14 +28,12 @@ class _CollectionDetailsCommentsState
       KordiDialog.showException(
         context,
         KordiException.customMessage(
-          message: 'Something went wrong with navigation.',
+          message: S.current.navigationExceptionMessage,
         ),
       );
       CollectionPageRoute().go(context);
     }
     final collectionId = int.parse(collectionIdString!);
-    final _slideCommentFormKey = GlobalKey<_SlideCommentFormState>();
-    final authState = context.read<AuthCubit>().state;
 
     return SliverToBoxAdapter(
       child: BlocProvider(
@@ -48,125 +46,158 @@ class _CollectionDetailsCommentsState
               vertical: 12,
               horizontal: 12,
             ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+            child: BlocBuilder<AuthCubit, AuthState>(
+              builder: (context, authState) {
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.only(right: 8),
-                      child: Icon(
-                        Icons.comment,
-                        color: colorScheme.primary,
-                      ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(right: 8),
+                          child: Icon(
+                            Icons.comment,
+                            color: colorScheme.primary,
+                          ),
+                        ),
+                        Text(
+                          S.current.collectionDetailsCommentListTitle,
+                          style: textTheme.bodyLarge,
+                          textAlign: TextAlign.justify,
+                        ),
+                        Spacer(),
+                        Builder(
+                          builder: (context) {
+                            if (authState.isAuthorized) {
+                              return TextButton(
+                                onPressed: () async {
+                                  await _onAddCommentButtonOnPressed(
+                                    context,
+                                    collectionId,
+                                  );
+                                },
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Icon(
+                                      Icons.add,
+                                      color: colorScheme.primary,
+                                    ),
+                                    Text(
+                                      S.current
+                                          .collectionDetailsCommentListAddButtonLabel,
+                                    ),
+                                  ],
+                                ),
+                              );
+                            }
+
+                            return const SizedBox.shrink();
+                          },
+                        ),
+                      ],
                     ),
-                    Text(
-                      S.current.collectionDetailsCommentListTitle,
-                      style: textTheme.bodyLarge,
-                      textAlign: TextAlign.justify,
-                    ),
-                    Spacer(),
                     Builder(
                       builder: (context) {
                         if (authState.isAuthorized) {
-                          return TextButton(
-                            onPressed: () {
-                              _slideCommentFormKey.currentState?.slide();
-                            },
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Icon(
-                                  Icons.add,
-                                  color: colorScheme.primary,
-                                ),
-                                Text(
-                                  S.current
-                                      .collectionDetailsCommentListAddButtonLabel,
-                                ),
-                              ],
+                          return const SizedBox.shrink();
+                        }
+                        return Padding(
+                          padding: const EdgeInsets.only(bottom: 8),
+                          child: Text(
+                            S.current
+                                .collectionDetailsCommentListUnauthorizedState,
+                            style: theme.textTheme.bodyLarge!.copyWith(
+                              decoration: TextDecoration.underline,
+                              color: colorScheme.tertiary,
+                            ),
+                            textAlign: TextAlign.justify,
+                          ),
+                        );
+                      },
+                    ),
+                    BlocConsumer<ManageCollectionCommentsCubit,
+                        ManageCollectionCommentsState>(
+                      listener: (context, state) async {
+                        if (state.exception != null) {
+                          await KordiDialog.showException(
+                            context,
+                            state.exception!,
+                          );
+                        }
+                      },
+                      builder: (context, state) {
+                        if (state.comments.isEmpty) {
+                          return Padding(
+                            padding: const EdgeInsets.only(top: 8),
+                            child: Text(
+                              S.current.collectionDetailsCommentListEmptyState,
+                              style: textTheme.bodyLarge,
+                              textAlign: TextAlign.center,
                             ),
                           );
                         }
-
-                        return const SizedBox.shrink();
+                        return SizedBox(
+                          height: 400,
+                          child: RawScrollbar(
+                            controller: _scrollController,
+                            thumbColor: colorScheme.primary,
+                            padding: EdgeInsets.zero,
+                            mainAxisMargin: 6,
+                            radius: Radius.circular(8),
+                            thumbVisibility: true,
+                            child: ListView.builder(
+                              controller: _scrollController,
+                              padding: EdgeInsets.zero,
+                              itemCount: state.comments.length,
+                              itemBuilder: (context, index) {
+                                final comment = state.comments[index];
+                                return CommentTile(
+                                  comment: comment,
+                                );
+                              },
+                            ),
+                          ),
+                        );
                       },
                     ),
                   ],
-                ),
-                Builder(
-                  builder: (context) {
-                    if (authState.isAuthorized) {
-                      return const SizedBox.shrink();
-                    }
-                    return Padding(
-                      padding: const EdgeInsets.only(bottom: 8),
-                      child: Text(
-                        S.current.collectionDetailsCommentListUnauthorizedState,
-                        style: theme.textTheme.bodyLarge!.copyWith(
-                          decoration: TextDecoration.underline,
-                          color: colorScheme.tertiary,
-                        ),
-                        textAlign: TextAlign.justify,
-                      ),
-                    );
-                  },
-                ),
-                _SlideCommentForm(
-                  key: _slideCommentFormKey,
-                ),
-                BlocConsumer<ManageCollectionCommentsCubit,
-                    ManageCollectionCommentsState>(
-                  listener: (context, state) async {
-                    if (state.exception != null) {
-                      await KordiDialog.showException(
-                        context,
-                        state.exception!,
-                      );
-                    }
-                  },
-                  builder: (context, state) {
-                    if (state.comments.isEmpty) {
-                      return Padding(
-                        padding: const EdgeInsets.only(top: 8),
-                        child: Text(
-                          S.current.collectionDetailsCommentListEmptyState,
-                          style: textTheme.bodyLarge,
-                          textAlign: TextAlign.center,
-                        ),
-                      );
-                    }
-                    return SizedBox(
-                      height: 400,
-                      child: RawScrollbar(
-                        controller: _scrollController,
-                        thumbColor: colorScheme.primary,
-                        padding: EdgeInsets.zero,
-                        mainAxisMargin: 6,
-                        radius: Radius.circular(8),
-                        thumbVisibility: true,
-                        child: ListView.builder(
-                          controller: _scrollController,
-                          padding: EdgeInsets.zero,
-                          itemCount: state.comments.length,
-                          itemBuilder: (context, index) {
-                            final comment = state.comments[index];
-                            return CommentTile(
-                              comment: comment,
-                            );
-                          },
-                        ),
-                      ),
-                    );
-                  },
-                ),
-              ],
+                );
+              },
             ),
           ),
         ),
       ),
     );
+  }
+
+  Future<void> _onAddCommentButtonOnPressed(
+    BuildContext context,
+    int collectionId,
+  ) async {
+    final comment = await CommentFormDialog.show(
+      context,
+      collectionId,
+    );
+    if (comment == null) {
+      return;
+    }
+    final user = context.read<GetUserCubit>().state.user;
+    if (user == null) {
+      await KordiDialog.showException(
+        context,
+        KordiException.customMessage(
+          message: S.current.userInformationExceptionMessage,
+        ),
+      );
+      CollectionPageRoute().go(context);
+      return;
+    }
+    await context.read<ManageCollectionCommentsCubit>().create(
+          comment,
+          user,
+        );
   }
 
   @override

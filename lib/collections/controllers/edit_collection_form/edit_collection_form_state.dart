@@ -40,6 +40,5 @@ extension EditCollectionFormStateX on EditCollectionFormState {
         title: name,
         description: description,
         userId: userId,
-        image: image,
       );
 }

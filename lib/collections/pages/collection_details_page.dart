@@ -11,6 +11,7 @@ import 'package:kordi_mobile/collection_items/models/collection_items_models.dar
 import 'package:kordi_mobile/collections/controllers/collections_filter/collections_filter_bloc.dart';
 import 'package:kordi_mobile/collections/controllers/edit_collection_form/edit_collection_form_bloc.dart';
 import 'package:kordi_mobile/collections/models/collections_models.dart';
+import 'package:kordi_mobile/collections/widgets/comment_form_dialog.dart';
 import 'package:kordi_mobile/core/models/kordi_exception.dart';
 import 'package:kordi_mobile/core/navigation/kordi_router.dart';
 import 'package:kordi_mobile/core/utils/color_extension.dart';
@@ -38,7 +39,6 @@ class CollectionDetailsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
-    final authState = context.read<AuthCubit>().state;
     final userId = context.read<GetUserCubit>().state.user?.id;
     final collectionIdString =
         GoRouterState.of(context).pathParameters['collectionId'];
@@ -47,7 +47,7 @@ class CollectionDetailsPage extends StatelessWidget {
       KordiDialog.showException(
         context,
         KordiException.customMessage(
-          message: 'Something went wrong with navigation.',
+          message: S.current.navigationExceptionMessage,
         ),
       );
       CollectionPageRoute().go(context);
@@ -72,28 +72,38 @@ class CollectionDetailsPage extends StatelessWidget {
                   expandedHeight: MediaQuery.of(context).size.height * 0.14,
                   stretch: true,
                   leading: IconButton(
-                    icon: Icon(
-                      Icons.arrow_back_ios,
-                      color: Colors.white,
-                      shadows: [
-                        Shadow(
-                          blurRadius: 5,
-                          color: colorScheme.primary,
-                          offset: Offset(2, 2),
+                    icon: Container(
+                      padding: EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: colorScheme.primary,
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 4),
+                        child: Icon(
+                          Icons.arrow_back_ios,
+                          color: colorScheme.onPrimary,
+                          shadows: [
+                            Shadow(
+                              blurRadius: 5,
+                              color: colorScheme.primary,
+                              offset: Offset(2, 2),
+                            ),
+                            Shadow(
+                              blurRadius: 5,
+                              offset: Offset(3, 2),
+                            ),
+                          ],
                         ),
-                        Shadow(
-                          blurRadius: 5,
-                          offset: Offset(3, 2),
-                        ),
-                      ],
+                      ),
                     ),
                     onPressed: () {
                       CollectionPageRoute().go(context);
                     },
                   ),
                   actions: [
-                    Builder(
-                      builder: (context) {
+                    BlocBuilder<AuthCubit, AuthState>(
+                      builder: (context, authState) {
                         if (!authState.isAuthorized && collectionId != userId) {
                           return const SizedBox.shrink();
                         }
@@ -101,31 +111,34 @@ class CollectionDetailsPage extends StatelessWidget {
                           onPressed: () {
                             CollectionEditPageRoute(collectionId).go(context);
                           },
-                          icon: Icon(
-                            Icons.edit_square,
-                            color: Colors.white,
+                          icon: Container(
+                            padding: EdgeInsets.all(8),
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: colorScheme.primary,
+                            ),
+                            child: Icon(
+                              Icons.edit_square,
+                              color: colorScheme.onPrimary,
+                            ),
                           ),
                         );
                       },
                     ),
                   ],
                   flexibleSpace: FlexibleSpaceBar(
-                    background: SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.32,
-                      height: MediaQuery.of(context).size.height * 0.32,
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(8),
-                        child: Builder(
-                          builder: (context) {
-                            if (state.image == null) {
-                              return Assets.images.camera.svg();
-                            }
-                            return Image.memory(
-                              state.image!,
-                              fit: BoxFit.fill,
-                            );
-                          },
-                        ),
+                    background: ClipRRect(
+                      borderRadius: BorderRadius.circular(8),
+                      child: Builder(
+                        builder: (context) {
+                          if (state.image == null) {
+                            return Assets.images.camera.svg();
+                          }
+                          return Image.memory(
+                            state.image!,
+                            fit: BoxFit.fill,
+                          );
+                        },
                       ),
                     ),
                     centerTitle: true,

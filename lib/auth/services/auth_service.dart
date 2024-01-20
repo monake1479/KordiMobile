@@ -6,8 +6,9 @@ import 'package:injectable/injectable.dart';
 import 'package:kordi_mobile/auth/interfaces/auth_interface.dart';
 import 'package:kordi_mobile/core/models/kordi_exception.dart';
 import 'package:kordi_mobile/core/utils/dio_client.dart';
+import 'package:kordi_mobile/core/utils/response_code_converter.dart';
 import 'package:kordi_mobile/dependency_injection.dart';
-import 'package:kordi_mobile/sign_up/utils/response_code_converter.dart';
+import 'package:kordi_mobile/gen/l10n.dart';
 
 @Singleton(as: AuthInterface)
 class AuthService implements AuthInterface {
@@ -29,8 +30,8 @@ class AuthService implements AuthInterface {
       } else {
         if (e.response == null) {
           result = left(
-            KordiException.serverError(
-              message: 'Validate token got null, name: ${e.message}',
+            KordiException.customMessage(
+              message: S.current.authTokenExceptionMessage,
             ),
           );
         }
