@@ -33,6 +33,7 @@ class ChangePasswordPage extends StatelessWidget {
                 buttonLabel: S.current.changePasswordPageDialogButtonLabel,
                 onButtonOnPressed: () {
                   context.read<AuthCubit>().signOut();
+                  context.pop();
                   CollectionPageRoute().go(context);
                 },
               );
