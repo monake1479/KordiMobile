@@ -7,8 +7,8 @@ import 'package:kordi_mobile/collections/interfaces/collections_interface.dart';
 import 'package:kordi_mobile/collections/models/collections_models.dart';
 import 'package:kordi_mobile/core/models/kordi_exception.dart';
 import 'package:kordi_mobile/core/utils/dio_client.dart';
+import 'package:kordi_mobile/core/utils/response_code_converter.dart';
 import 'package:kordi_mobile/dependency_injection.dart';
-import 'package:kordi_mobile/sign_up/utils/response_code_converter.dart';
 
 @Singleton(as: CollectionsInterface)
 class CollectionsService implements CollectionsInterface {

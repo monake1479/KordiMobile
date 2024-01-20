@@ -7,8 +7,8 @@ import 'package:kordi_mobile/collection_addresses/interfaces/addresses_interface
 import 'package:kordi_mobile/collection_addresses/models/collection_address.dart';
 import 'package:kordi_mobile/core/models/kordi_exception.dart';
 import 'package:kordi_mobile/core/utils/dio_client.dart';
+import 'package:kordi_mobile/core/utils/response_code_converter.dart';
 import 'package:kordi_mobile/dependency_injection.dart';
-import 'package:kordi_mobile/sign_up/utils/response_code_converter.dart';
 
 @Singleton(as: AddressesInterface)
 class AddressesService implements AddressesInterface {
