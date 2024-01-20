@@ -28,13 +28,12 @@ class _CollectionDetailsCommentsState
       KordiDialog.showException(
         context,
         KordiException.customMessage(
-          message: 'Something went wrong with navigation.',
+          message: S.current.navigationExceptionMessage,
         ),
       );
       CollectionPageRoute().go(context);
     }
     final collectionId = int.parse(collectionIdString!);
-    final _slideCommentFormKey = GlobalKey<_SlideCommentFormState>();
 
     return SliverToBoxAdapter(
       child: BlocProvider(
@@ -72,8 +71,11 @@ class _CollectionDetailsCommentsState
                           builder: (context) {
                             if (authState.isAuthorized) {
                               return TextButton(
-                                onPressed: () {
-                                  _slideCommentFormKey.currentState?.slide();
+                                onPressed: () async {
+                                  await _onAddCommentButtonOnPressed(
+                                    context,
+                                    collectionId,
+                                  );
                                 },
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
@@ -114,9 +116,6 @@ class _CollectionDetailsCommentsState
                           ),
                         );
                       },
-                    ),
-                    _SlideCommentForm(
-                      key: _slideCommentFormKey,
                     ),
                     BlocConsumer<ManageCollectionCommentsCubit,
                         ManageCollectionCommentsState>(
@@ -171,6 +170,34 @@ class _CollectionDetailsCommentsState
         ),
       ),
     );
+  }
+
+  Future<void> _onAddCommentButtonOnPressed(
+    BuildContext context,
+    int collectionId,
+  ) async {
+    final comment = await CommentFormDialog.show(
+      context,
+      collectionId,
+    );
+    if (comment == null) {
+      return;
+    }
+    final user = context.read<GetUserCubit>().state.user;
+    if (user == null) {
+      await KordiDialog.showException(
+        context,
+        KordiException.customMessage(
+          message: S.current.userInformationExceptionMessage,
+        ),
+      );
+      CollectionPageRoute().go(context);
+      return;
+    }
+    await context.read<ManageCollectionCommentsCubit>().create(
+          comment,
+          user,
+        );
   }
 
   @override

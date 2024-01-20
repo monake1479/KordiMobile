@@ -1,7 +1,7 @@
 part of 'package:kordi_mobile/collections/pages/collection_details_page.dart';
 
 class _SlideCommentForm extends StatefulWidget {
-  const _SlideCommentForm({super.key});
+  const _SlideCommentForm();
 
   @override
   State<_SlideCommentForm> createState() => _SlideCommentFormState();
@@ -104,7 +104,7 @@ class _SlideCommentFormState extends State<_SlideCommentForm>
       await KordiDialog.showException(
         context,
         KordiException.customMessage(
-          message: 'Something went wrong with getting user information.',
+          message: S.current.userInformationExceptionMessage,
         ),
       );
       CollectionPageRoute().go(context);
