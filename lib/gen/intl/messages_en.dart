@@ -83,6 +83,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Password cannot be empty"),
         "changePasswordPagePasswordHintTextField":
             MessageLookupByLibrary.simpleMessage("Enter your password"),
+        "changePasswordPagePasswordIsDifferent":
+            MessageLookupByLibrary.simpleMessage(
+                "New password cannot be the same as old password."),
         "changePasswordPagePasswordLabelTextField":
             MessageLookupByLibrary.simpleMessage("Password"),
         "collectionAddressDialogAddButtonLabel":

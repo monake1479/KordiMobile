@@ -311,6 +311,7 @@
     "changePasswordPageDialogTitleLabel": "Password changed!",
     "changePasswordPageDialogSubTitleLabel": "Please, sign in again with new password.",
     "changePasswordPageDialogButtonLabel": "OK",
+    "changePasswordPagePasswordIsDifferent": "New password cannot be the same as old password.",
     "collectionItemCategoryFoodName": "Food",
     "collectionItemCategoryClothesName": "Clothes",
     "collectionItemCategoryAnimalsName": "Animals",

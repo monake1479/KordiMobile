@@ -2231,6 +2231,16 @@ class S {
     );
   }
 
+  /// `New password cannot be the same as old password.`
+  String get changePasswordPagePasswordIsDifferent {
+    return Intl.message(
+      'New password cannot be the same as old password.',
+      name: 'changePasswordPagePasswordIsDifferent',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Food`
   String get collectionItemCategoryFoodName {
     return Intl.message(

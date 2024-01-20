@@ -311,6 +311,7 @@
     "changePasswordPageDialogTitleLabel": "Hasło zmienione!",
     "changePasswordPageDialogSubTitleLabel": "Przejdź do strony logowania i zaloguj się ponownie swoim nowym hasłem.",
     "changePasswordPageDialogButtonLabel": "OK",
+    "changePasswordPagePasswordIsDifferent": "Nowe hasło nie może być takie samo jak poprzednie.",
     "collectionItemCategoryFoodName": "Jedzenie",
     "collectionItemCategoryClothesName": "Ubrania",
     "collectionItemCategoryAnimalsName": "Zwierzęta",
