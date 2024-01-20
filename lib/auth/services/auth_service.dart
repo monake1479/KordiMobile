@@ -24,7 +24,12 @@ class AuthService implements AuthInterface {
       await dioClient.dio.post('/validate?username=$username&token=$token');
       result = right(unit);
     } on DioException catch (e, s) {
-      log('[AuthService] validateToken() DioException: $e, $s');
+      log(
+        '[AuthService] validateToken()',
+        error: e.response?.data,
+        stackTrace: s,
+        name: 'AuthService',
+      );
       if (e.response?.statusCode == 401 || e.response?.statusCode == 400) {
         result = left(KordiException.unauthorized());
       } else {

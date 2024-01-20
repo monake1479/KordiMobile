@@ -28,6 +28,7 @@ part 'package:kordi_mobile/collections/widgets/collection_details_comments.dart'
 part 'package:kordi_mobile/collections/widgets/collection_details_description_card.dart';
 part 'package:kordi_mobile/collections/widgets/collection_details_item_list.dart';
 part 'package:kordi_mobile/collections/widgets/collection_details_locations_card.dart';
+part 'package:kordi_mobile/collections/widgets/collection_details_date_card.dart';
 part 'package:kordi_mobile/collections/widgets/slide_comment_form.dart';
 
 class CollectionDetailsPage extends StatelessWidget {
@@ -170,9 +171,8 @@ class CollectionDetailsPage extends StatelessWidget {
                     ],
                   ),
                 ),
-                _CollectionDetailsDescriptionCard(
-                  description: state.description,
-                ),
+                _CollectionDetailsDateCard(),
+                _CollectionDetailsDescriptionCard(),
                 _CollectionDetailsLocationsTile(),
                 _CollectionDetailsItemList(),
                 _CollectionDetailsComments(),

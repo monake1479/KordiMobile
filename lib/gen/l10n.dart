@@ -851,6 +851,16 @@ class S {
     );
   }
 
+  /// `Collection will end at:`
+  String get collectionDetailsEndTimeLabel {
+    return Intl.message(
+      'Collection will end at:',
+      name: 'collectionDetailsEndTimeLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Description`
   String get collectionDetailsDescriptionLabel {
     return Intl.message(
@@ -886,6 +896,16 @@ class S {
     return Intl.message(
       'User not provide any locations.',
       name: 'collectionDetailsLocationsEmptyState',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `City, street`
+  String get collectionDetailsLocationsHint {
+    return Intl.message(
+      'City, street',
+      name: 'collectionDetailsLocationsHint',
       desc: '',
       args: [],
     );
@@ -1056,6 +1076,16 @@ class S {
     return Intl.message(
       'Save',
       name: 'collectionEditSaveButtonLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `End date`
+  String get collectionEditEndTimeLabel {
+    return Intl.message(
+      'End date',
+      name: 'collectionEditEndTimeLabel',
       desc: '',
       args: [],
     );

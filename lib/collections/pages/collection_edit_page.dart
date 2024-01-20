@@ -1,7 +1,6 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 import 'package:kordi_mobile/collection_addresses/controllers/manage_collection_address/manage_collection_address_cubit.dart';
 import 'package:kordi_mobile/collection_addresses/widgets/collection_address_dialog.dart';
 import 'package:kordi_mobile/collection_items/controllers/manage_collection_items/manage_collection_items_cubit.dart';
@@ -25,6 +24,7 @@ part 'package:kordi_mobile/collections/widgets/collection_edit_description_card.
 part 'package:kordi_mobile/collections/widgets/collection_edit_item_list.dart';
 part 'package:kordi_mobile/collections/widgets/collection_edit_locations_card.dart';
 part 'package:kordi_mobile/collections/widgets/collection_edit_name_card.dart';
+part 'package:kordi_mobile/collections/widgets/collection_edit_date_card.dart';
 
 class CollectionEditPage extends StatelessWidget {
   const CollectionEditPage({
@@ -46,15 +46,15 @@ class CollectionEditPage extends StatelessWidget {
       },
       child: MultiBlocProvider(
         providers: [
-          BlocProvider<ManageCollectionAddressCubit>(
-            create: (context) => getIt.get<ManageCollectionAddressCubit>()
-              ..setAddresses(collectionId),
-          ),
           BlocProvider(
             create: (context) => getIt.get<EditCollectionFormBloc>()
               ..add(
                 EditCollectionFormEvent.setInitial(collectionId),
               ),
+          ),
+          BlocProvider<ManageCollectionAddressCubit>(
+            create: (context) => getIt.get<ManageCollectionAddressCubit>()
+              ..setAddresses(collectionId),
           ),
           BlocProvider<ManageCollectionItemsCubit>(
             create: (context) =>
@@ -184,6 +184,7 @@ class CollectionEditPage extends StatelessWidget {
                       ],
                     ),
                   ),
+                  _CollectionEditDateCard(),
                   _CollectionEditNameCard(),
                   _CollectionEditDescriptionCard(),
                   _CollectionEditLocationsTile(),

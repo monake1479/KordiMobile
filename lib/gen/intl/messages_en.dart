@@ -119,6 +119,8 @@ class MessageLookup extends MessageLookupByLibrary {
                 "You need to be signed in to add comment."),
         "collectionDetailsDescriptionLabel":
             MessageLookupByLibrary.simpleMessage("Description"),
+        "collectionDetailsEndTimeLabel":
+            MessageLookupByLibrary.simpleMessage("Collection will end at:"),
         "collectionDetailsItemCompletedLabel":
             MessageLookupByLibrary.simpleMessage("Completed!"),
         "collectionDetailsItemCurrentLabel": m0,
@@ -138,12 +140,16 @@ class MessageLookup extends MessageLookupByLibrary {
         "collectionDetailsLocationsEmptyState":
             MessageLookupByLibrary.simpleMessage(
                 "User not provide any locations."),
+        "collectionDetailsLocationsHint":
+            MessageLookupByLibrary.simpleMessage("City, street"),
         "collectionDetailsLocationsLabel": MessageLookupByLibrary.simpleMessage(
             "Locations where you can donate"),
         "collectionEditDescriptionFormLabelText":
             MessageLookupByLibrary.simpleMessage("Collection description*"),
         "collectionEditDescriptionLabel":
             MessageLookupByLibrary.simpleMessage("Description"),
+        "collectionEditEndTimeLabel":
+            MessageLookupByLibrary.simpleMessage("End date"),
         "collectionEditItemCurrentLabel": m3,
         "collectionEditItemListAddButtonLabel":
             MessageLookupByLibrary.simpleMessage("Add item"),

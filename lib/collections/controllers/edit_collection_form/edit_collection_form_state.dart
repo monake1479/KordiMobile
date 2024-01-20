@@ -34,11 +34,17 @@ class EditCollectionFormState with _$EditCollectionFormState {
 
 extension EditCollectionFormStateX on EditCollectionFormState {
   bool get canEditCollection => name.isNotEmpty && description.isNotEmpty;
+  String get formattedEndTime {
+    if (endTime == null) return '';
+    final DateFormat formatter = DateFormat('dd.MM.yyyy');
+    return formatter.format(endTime!);
+  }
 
   EditCollectionDto get toEditCollectionDto => EditCollectionDto(
         id: id,
         title: name,
         description: description,
+        endTime: endTime,
         userId: userId,
       );
 }

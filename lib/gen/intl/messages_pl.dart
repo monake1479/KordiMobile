@@ -123,6 +123,8 @@ class MessageLookup extends MessageLookupByLibrary {
                 "Musisz być zalogowany, aby skomentować kolekcję."),
         "collectionDetailsDescriptionLabel":
             MessageLookupByLibrary.simpleMessage("Opis"),
+        "collectionDetailsEndTimeLabel":
+            MessageLookupByLibrary.simpleMessage("Zbiórka kończy się:"),
         "collectionDetailsItemCompletedLabel":
             MessageLookupByLibrary.simpleMessage("Zakończono!"),
         "collectionDetailsItemCurrentLabel": m0,
@@ -143,12 +145,16 @@ class MessageLookup extends MessageLookupByLibrary {
         "collectionDetailsLocationsEmptyState":
             MessageLookupByLibrary.simpleMessage(
                 "Użytkownik nie dodał jeszcze żadnych lokalizacji."),
+        "collectionDetailsLocationsHint":
+            MessageLookupByLibrary.simpleMessage("Miasto, ulica"),
         "collectionDetailsLocationsLabel": MessageLookupByLibrary.simpleMessage(
             "Lokalizacje do których możesz oddać przedmioty"),
         "collectionEditDescriptionFormLabelText":
             MessageLookupByLibrary.simpleMessage("Opis kolekcji*"),
         "collectionEditDescriptionLabel":
             MessageLookupByLibrary.simpleMessage("Opis"),
+        "collectionEditEndTimeLabel":
+            MessageLookupByLibrary.simpleMessage("Data zakończenia"),
         "collectionEditItemCurrentLabel": m3,
         "collectionEditItemListAddButtonLabel":
             MessageLookupByLibrary.simpleMessage("Dodaj przedmiot"),

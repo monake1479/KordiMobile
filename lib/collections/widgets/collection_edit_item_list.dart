@@ -64,20 +64,22 @@ class _CollectionEditItemList extends StatelessWidget {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
                                         children: [
-                                          Padding(
-                                            padding: const EdgeInsets.only(
-                                              bottom: 8,
-                                            ),
-                                            child: Text(
-                                              item.name,
-                                              style: textTheme.titleMedium,
+                                          Flexible(
+                                            child: Padding(
+                                              padding: const EdgeInsets.only(
+                                                bottom: 8,
+                                              ),
+                                              child: Text(
+                                                item.name,
+                                                style: textTheme.titleMedium,
+                                              ),
                                             ),
                                           ),
-                                          Spacer(),
                                           IconButton(
                                             onPressed: () async {
-                                              log('item.id: ${item.id}');
                                               await _onAddOrEditItemButtonOnPressed(
                                                 context,
                                                 item: item,
