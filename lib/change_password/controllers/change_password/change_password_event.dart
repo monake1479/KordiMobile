@@ -4,4 +4,5 @@ part of 'change_password_bloc.dart';
 class ChangePasswordEvent with _$ChangePasswordEvent {
   const factory ChangePasswordEvent.changePassword(ChangePasswordDto dto) =
       _ChangePassword;
+  const factory ChangePasswordEvent.reset() = _Reset;
 }

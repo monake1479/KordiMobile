@@ -17,6 +17,7 @@ class ChangePasswordBloc
     extends Bloc<ChangePasswordEvent, ChangePasswordState> {
   ChangePasswordBloc(this._service) : super(ChangePasswordState.initial()) {
     on<_ChangePassword>(_changePassword);
+    on<_Reset>(_reset);
   }
   final ChangePasswordInterface _service;
   Future<void> _changePassword(
@@ -40,6 +41,13 @@ class ChangePasswordBloc
         failureOrSuccessOption: some(right(response.getRightOrThrow())),
       ),
     );
+  }
+
+  Future<void> _reset(
+    _Reset event,
+    Emitter<ChangePasswordState> emit,
+  ) async {
+    emit(ChangePasswordState.initial());
   }
 
   @override
