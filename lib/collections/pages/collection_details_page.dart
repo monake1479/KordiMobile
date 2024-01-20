@@ -11,6 +11,7 @@ import 'package:kordi_mobile/collection_items/models/collection_items_models.dar
 import 'package:kordi_mobile/collections/controllers/collections_filter/collections_filter_bloc.dart';
 import 'package:kordi_mobile/collections/controllers/edit_collection_form/edit_collection_form_bloc.dart';
 import 'package:kordi_mobile/collections/models/collections_models.dart';
+import 'package:kordi_mobile/collections/widgets/comment_form_dialog.dart';
 import 'package:kordi_mobile/core/models/kordi_exception.dart';
 import 'package:kordi_mobile/core/navigation/kordi_router.dart';
 import 'package:kordi_mobile/core/utils/color_extension.dart';
@@ -46,7 +47,7 @@ class CollectionDetailsPage extends StatelessWidget {
       KordiDialog.showException(
         context,
         KordiException.customMessage(
-          message: 'Something went wrong with navigation.',
+          message: S.current.navigationExceptionMessage,
         ),
       );
       CollectionPageRoute().go(context);
