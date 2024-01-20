@@ -107,6 +107,23 @@ class _ChangePasswordFormState extends State<_ChangePasswordForm> {
                             ),
                           ),
                         ),
+                        Builder(
+                          builder: (context) {
+                            if (!state.isPasswordDifferent) {
+                              return Padding(
+                                padding: const EdgeInsets.all(8),
+                                child: Text(
+                                  S.current
+                                      .changePasswordPagePasswordIsDifferent,
+                                  style: TextStyle(
+                                    color: colorScheme.error,
+                                  ),
+                                ),
+                              );
+                            }
+                            return Container();
+                          },
+                        ),
                         ElevatedButton(
                           style: ButtonStyle(
                             minimumSize: MaterialStateProperty.all(
