@@ -32,6 +32,7 @@ class _CreateCollectionFirstStepState extends State<CreateCollectionFirstStep> {
     return BlocBuilder<CreateCollectionFormBloc, CreateCollectionFormState>(
       builder: (context, state) {
         return ListView(
+          shrinkWrap: true,
           children: [
             Card(
               margin: const EdgeInsets.symmetric(
@@ -78,6 +79,7 @@ class _CreateCollectionFirstStepState extends State<CreateCollectionFirstStep> {
                   vertical: 8,
                 ),
                 child: Column(
+                  mainAxisSize: MainAxisSize.min,
                   children: [
                     Padding(
                       padding: const EdgeInsets.only(bottom: 8),
@@ -164,6 +166,7 @@ class _CreateCollectionFirstStepState extends State<CreateCollectionFirstStep> {
                   vertical: 8,
                 ),
                 child: Column(
+                  mainAxisSize: MainAxisSize.min,
                   children: [
                     Padding(
                       padding: const EdgeInsets.only(bottom: 8),
@@ -200,6 +203,7 @@ class _CreateCollectionFirstStepState extends State<CreateCollectionFirstStep> {
                               }
                             },
                             child: Column(
+                              mainAxisSize: MainAxisSize.min,
                               children: [
                                 Container(
                                   padding: const EdgeInsets.all(12),
@@ -212,6 +216,7 @@ class _CreateCollectionFirstStepState extends State<CreateCollectionFirstStep> {
                                     ),
                                   ),
                                   child: Column(
+                                    mainAxisSize: MainAxisSize.min,
                                     children: [
                                       Builder(
                                         builder: (context) {
@@ -305,7 +310,7 @@ class _CreateCollectionFirstStepState extends State<CreateCollectionFirstStep> {
                 );
               },
             ),
-            Spacer(),
+            // Spacer(),
             Padding(
               padding: const EdgeInsets.symmetric(
                     horizontal: 12,
