@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
+import 'package:intl/intl.dart';
 import 'package:kordi_mobile/collections/controllers/collections_filter/collections_filter_bloc.dart';
 import 'package:kordi_mobile/collections/models/collections_models.dart';
 import 'package:kordi_mobile/collections/utils/collection_status_converter.dart';
@@ -23,6 +24,7 @@ class EditCollectionFormBloc
     on<_SetUserId>(_setUserId);
     on<_SetName>(_setName);
     on<_SetDescription>(_setDescription);
+    on<_SetEndTime>(_setEndTime);
     on<_CheckValidation>(_checkValidation);
   }
   final CollectionsFilterBloc _collectionsFilterBloc;
@@ -89,6 +91,17 @@ class EditCollectionFormBloc
     emit(
       state.copyWith(
         description: event.description,
+      ),
+    );
+  }
+
+  void _setEndTime(
+    _SetEndTime event,
+    Emitter<EditCollectionFormState> emit,
+  ) {
+    emit(
+      state.copyWith(
+        endTime: event.endTime,
       ),
     );
   }
