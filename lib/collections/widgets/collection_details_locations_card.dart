@@ -51,31 +51,43 @@ class _CollectionDetailsLocationsTile extends StatelessWidget {
                       );
                     }
                     return Column(
-                      children: state.addresses
-                          .map(
-                            (address) => Row(
-                              children: [
-                                Text('• '),
-                                Text(
-                                  address.fullAddress,
-                                  textAlign: TextAlign.left,
-                                ),
-                                IconButton(
-                                  onPressed: () async {
-                                    await _onLocationButtonOnTap(
-                                      address,
-                                      context,
-                                    );
-                                  },
-                                  icon: Icon(
-                                    Icons.map_rounded,
-                                    color: colorScheme.primary,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          S.current.collectionDetailsLocationsHint,
+                          style: theme.textTheme.bodyLarge?.copyWith(
+                            fontStyle: FontStyle.italic,
+                          ),
+                          textAlign: TextAlign.justify,
+                        ),
+                        ...state.addresses
+                            .map(
+                              (address) => Row(
+                                children: [
+                                  Text('• '),
+                                  Flexible(
+                                    child: Text(
+                                      address.fullAddress,
+                                      textAlign: TextAlign.left,
+                                    ),
                                   ),
-                                ),
-                              ],
-                            ),
-                          )
-                          .toList(),
+                                  IconButton(
+                                    onPressed: () async {
+                                      await _onLocationButtonOnTap(
+                                        address,
+                                        context,
+                                      );
+                                    },
+                                    icon: Icon(
+                                      Icons.map_rounded,
+                                      color: colorScheme.primary,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            )
+                            .toList(),
+                      ],
                     );
                   },
                 ),
