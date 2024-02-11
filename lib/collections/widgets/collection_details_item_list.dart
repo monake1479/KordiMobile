@@ -134,16 +134,24 @@ class _CollectionDetailsItemList extends StatelessWidget {
                                         ),
                                       ),
                                     ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(bottom: 8),
-                                      child: Text(
-                                        S.current
-                                            .collectionDetailsItemMaximumLabel(
-                                          item.maxAmountWithUnit,
-                                        ),
-                                      ),
+                                    Builder(
+                                      builder: (context) {
+                                        if (item.type.isUnlimited) {
+                                          return const SizedBox.shrink();
+                                        }
+                                        return Padding(
+                                          padding:
+                                              const EdgeInsets.only(bottom: 8),
+                                          child: Text(
+                                            S.current
+                                                .collectionDetailsItemMaximumLabel(
+                                              item.maxAmountWithUnit,
+                                            ),
+                                          ),
+                                        );
+                                      },
                                     ),
-                                    _DonationSlider(
+                                    _DonationSection(
                                       item: item,
                                     ),
                                   ],

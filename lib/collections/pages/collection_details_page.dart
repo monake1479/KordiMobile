@@ -9,7 +9,6 @@ import 'package:kordi_mobile/collection_items/controllers/donation_form/donation
 import 'package:kordi_mobile/collection_items/controllers/manage_collection_items/manage_collection_items_cubit.dart';
 import 'package:kordi_mobile/collection_items/models/collection_items_models.dart';
 import 'package:kordi_mobile/collections/controllers/collections_filter/collections_filter_bloc.dart';
-import 'package:kordi_mobile/collections/controllers/edit_collection_form/edit_collection_form_bloc.dart';
 import 'package:kordi_mobile/collections/models/collections_models.dart';
 import 'package:kordi_mobile/collections/widgets/comment_form_dialog.dart';
 import 'package:kordi_mobile/core/models/kordi_exception.dart';
@@ -23,6 +22,8 @@ import 'package:kordi_mobile/gen/l10n.dart';
 import 'package:kordi_mobile/user/controllers/get_user_cubit.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+part 'package:kordi_mobile/collection_items/widgets/donation_section.dart';
+part 'package:kordi_mobile/collection_items/widgets/donation_text_field.dart';
 part 'package:kordi_mobile/collection_items/widgets/donation_slider.dart';
 part 'package:kordi_mobile/collections/widgets/collection_details_comments.dart';
 part 'package:kordi_mobile/collections/widgets/collection_details_description_card.dart';
@@ -34,7 +35,9 @@ part 'package:kordi_mobile/collections/widgets/slide_comment_form.dart';
 class CollectionDetailsPage extends StatelessWidget {
   const CollectionDetailsPage({
     super.key,
+    required this.collection,
   });
+  final Collection collection;
 
   @override
   Widget build(BuildContext context) {
@@ -55,131 +58,117 @@ class CollectionDetailsPage extends StatelessWidget {
     }
     final collectionId = int.parse(collectionIdString!);
 
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (context) => getIt.get<EditCollectionFormBloc>()
-            ..add(
-              EditCollectionFormEvent.setInitial(collectionId),
+    return Scaffold(
+      body: CustomScrollView(
+        slivers: [
+          SliverAppBar(
+            expandedHeight: MediaQuery.of(context).size.height * 0.14,
+            stretch: true,
+            leading: IconButton(
+              icon: Container(
+                padding: EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: colorScheme.primary,
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 4),
+                  child: Icon(
+                    Icons.arrow_back_ios,
+                    color: colorScheme.onPrimary,
+                    shadows: [
+                      Shadow(
+                        blurRadius: 5,
+                        color: colorScheme.primary,
+                        offset: Offset(2, 2),
+                      ),
+                      Shadow(
+                        blurRadius: 5,
+                        offset: Offset(3, 2),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              onPressed: () {
+                CollectionPageRoute().go(context);
+              },
             ),
-        ),
-      ],
-      child: BlocBuilder<EditCollectionFormBloc, EditCollectionFormState>(
-        builder: (context, state) {
-          return Scaffold(
-            body: CustomScrollView(
-              slivers: [
-                SliverAppBar(
-                  expandedHeight: MediaQuery.of(context).size.height * 0.14,
-                  stretch: true,
-                  leading: IconButton(
+            actions: [
+              BlocBuilder<AuthCubit, AuthState>(
+                builder: (context, authState) {
+                  if (!authState.isAuthorized && collectionId != userId) {
+                    return const SizedBox.shrink();
+                  }
+                  return IconButton(
+                    onPressed: () {
+                      CollectionEditPageRoute(collectionId).go(context);
+                    },
                     icon: Container(
                       padding: EdgeInsets.all(8),
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         color: colorScheme.primary,
                       ),
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 4),
-                        child: Icon(
-                          Icons.arrow_back_ios,
-                          color: colorScheme.onPrimary,
-                          shadows: [
-                            Shadow(
-                              blurRadius: 5,
-                              color: colorScheme.primary,
-                              offset: Offset(2, 2),
-                            ),
-                            Shadow(
-                              blurRadius: 5,
-                              offset: Offset(3, 2),
-                            ),
-                          ],
-                        ),
+                      child: Icon(
+                        Icons.edit_square,
+                        color: colorScheme.onPrimary,
                       ),
                     ),
-                    onPressed: () {
-                      CollectionPageRoute().go(context);
-                    },
-                  ),
-                  actions: [
-                    BlocBuilder<AuthCubit, AuthState>(
-                      builder: (context, authState) {
-                        if (!authState.isAuthorized && collectionId != userId) {
-                          return const SizedBox.shrink();
-                        }
-                        return IconButton(
-                          onPressed: () {
-                            CollectionEditPageRoute(collectionId).go(context);
-                          },
-                          icon: Container(
-                            padding: EdgeInsets.all(8),
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: colorScheme.primary,
-                            ),
-                            child: Icon(
-                              Icons.edit_square,
-                              color: colorScheme.onPrimary,
-                            ),
-                          ),
-                        );
-                      },
+                  );
+                },
+              ),
+            ],
+            flexibleSpace: FlexibleSpaceBar(
+              background: ClipRRect(
+                borderRadius: BorderRadius.circular(8),
+                child: Builder(
+                  builder: (context) {
+                    if (collection.image == null) {
+                      return Assets.images.camera.svg();
+                    }
+                    return Image.memory(
+                      collection.image!,
+                      fit: BoxFit.fill,
+                    );
+                  },
+                ),
+              ),
+              centerTitle: true,
+              titlePadding: EdgeInsets.zero,
+              title: Text(
+                collection.title,
+                textAlign: TextAlign.center,
+                style: theme.textTheme.bodyMedium?.copyWith(
+                  color: (collection.image != null)
+                      ? colorScheme.onPrimary
+                      : colorScheme.onPrimary.textColorBasedOnLuminance,
+                  shadows: [
+                    Shadow(
+                      blurRadius: 5,
+                      color: colorScheme.primary,
+                      offset: Offset(2, 2),
+                    ),
+                    Shadow(
+                      blurRadius: 5,
+                      offset: Offset(3, 2),
                     ),
                   ],
-                  flexibleSpace: FlexibleSpaceBar(
-                    background: ClipRRect(
-                      borderRadius: BorderRadius.circular(8),
-                      child: Builder(
-                        builder: (context) {
-                          if (state.image == null) {
-                            return Assets.images.camera.svg();
-                          }
-                          return Image.memory(
-                            state.image!,
-                            fit: BoxFit.fill,
-                          );
-                        },
-                      ),
-                    ),
-                    centerTitle: true,
-                    titlePadding: EdgeInsets.zero,
-                    title: Text(
-                      state.name,
-                      textAlign: TextAlign.center,
-                      style: theme.textTheme.bodyMedium?.copyWith(
-                        color: (state.image != null)
-                            ? colorScheme.onPrimary
-                            : colorScheme.onPrimary.textColorBasedOnLuminance,
-                        shadows: [
-                          Shadow(
-                            blurRadius: 5,
-                            color: colorScheme.primary,
-                            offset: Offset(2, 2),
-                          ),
-                          Shadow(
-                            blurRadius: 5,
-                            offset: Offset(3, 2),
-                          ),
-                        ],
-                      ),
-                    ),
-                    stretchModes: [
-                      StretchMode.zoomBackground,
-                      StretchMode.blurBackground,
-                      StretchMode.fadeTitle,
-                    ],
-                  ),
                 ),
-                _CollectionDetailsDateCard(),
-                _CollectionDetailsDescriptionCard(),
-                _CollectionDetailsLocationsTile(),
-                _CollectionDetailsItemList(),
-                _CollectionDetailsComments(),
+              ),
+              stretchModes: [
+                StretchMode.zoomBackground,
+                StretchMode.blurBackground,
+                StretchMode.fadeTitle,
               ],
             ),
-          );
-        },
+          ),
+          _CollectionDetailsDateCard(collection.formattedEndTime),
+          _CollectionDetailsDescriptionCard(collection.description),
+          _CollectionDetailsLocationsTile(),
+          _CollectionDetailsItemList(),
+          _CollectionDetailsComments(),
+        ],
       ),
     );
   }
