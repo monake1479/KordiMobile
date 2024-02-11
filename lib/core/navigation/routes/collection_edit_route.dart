@@ -24,11 +24,14 @@ class CollectionEditPageRoute extends GoRouteData {
   Page<void> buildPage(
     BuildContext context,
     GoRouterState state,
-  ) =>
-      RightToLeftTransitionPage(
-        key: state.pageKey,
-        child: CollectionEditPage(
-          collectionId: collectionId,
-        ),
-      );
+  ) {
+    final collectionById =
+        getIt.get<CollectionsFilterBloc>().getById(collectionId);
+    return RightToLeftTransitionPage(
+      key: state.pageKey,
+      child: CollectionEditPage(
+        collection: collectionById!,
+      ),
+    );
+  }
 }

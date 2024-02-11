@@ -24,9 +24,14 @@ class CollectionDetailsPageRoute extends GoRouteData {
   Page<void> buildPage(
     BuildContext context,
     GoRouterState state,
-  ) =>
-      FadeTransitionPage(
-        key: state.pageKey,
-        child: CollectionDetailsPage(),
-      );
+  ) {
+    final collectionById =
+        getIt.get<CollectionsFilterBloc>().getById(collectionId);
+    return FadeTransitionPage(
+      key: state.pageKey,
+      child: CollectionDetailsPage(
+        collection: collectionById!,
+      ),
+    );
+  }
 }
