@@ -29,9 +29,9 @@ part 'package:kordi_mobile/collections/widgets/collection_edit_date_card.dart';
 class CollectionEditPage extends StatelessWidget {
   const CollectionEditPage({
     super.key,
-    required this.collectionId,
+    required this.collection,
   });
-  final int collectionId;
+  final Collection collection;
 
   @override
   Widget build(BuildContext context) {
@@ -49,16 +49,16 @@ class CollectionEditPage extends StatelessWidget {
           BlocProvider(
             create: (context) => getIt.get<EditCollectionFormBloc>()
               ..add(
-                EditCollectionFormEvent.setInitial(collectionId),
+                EditCollectionFormEvent.setInitial(collection.id),
               ),
           ),
           BlocProvider<ManageCollectionAddressCubit>(
             create: (context) => getIt.get<ManageCollectionAddressCubit>()
-              ..setAddresses(collectionId),
+              ..setAddresses(collection.id),
           ),
           BlocProvider<ManageCollectionItemsCubit>(
-            create: (context) =>
-                getIt.get<ManageCollectionItemsCubit>()..setItems(collectionId),
+            create: (context) => getIt.get<ManageCollectionItemsCubit>()
+              ..setItems(collection.id),
           ),
         ],
         child: BlocBuilder<EditCollectionFormBloc, EditCollectionFormState>(
@@ -105,7 +105,7 @@ class CollectionEditPage extends StatelessWidget {
                         ),
                       ),
                       onPressed: () {
-                        CollectionDetailsPageRoute(collectionId).go(context);
+                        CollectionDetailsPageRoute(collection.id).go(context);
                       },
                     ),
                     actions: [
@@ -185,8 +185,8 @@ class CollectionEditPage extends StatelessWidget {
                     ),
                   ),
                   _CollectionEditDateCard(),
-                  _CollectionEditNameCard(),
-                  _CollectionEditDescriptionCard(),
+                  _CollectionEditNameCard(collection.title),
+                  _CollectionEditDescriptionCard(collection.description),
                   _CollectionEditLocationsTile(),
                   _CollectionEditItemList(),
                 ],
@@ -218,11 +218,11 @@ class CollectionEditPage extends StatelessWidget {
     }
     await editCollectionCubit.edit(editCollectionFormState.toEditCollectionDto);
     if (manageCollectionItemsCubit.itemsChanged) {
-      await manageCollectionItemsCubit.save(collectionId);
+      await manageCollectionItemsCubit.save(collection.id);
     }
 
     if (manageCollectionAddressCubit.addressesChanged) {
-      await manageCollectionAddressCubit.save(collectionId);
+      await manageCollectionAddressCubit.save(collection.id);
     }
     if (editCollectionCubit.state.exception == null) {
       context

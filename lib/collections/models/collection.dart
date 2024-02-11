@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:intl/intl.dart';
 import 'package:kordi_mobile/collection_items/models/collection_items_models.dart';
 import 'package:kordi_mobile/collections/models/collections_models.dart';
 import 'package:kordi_mobile/collections/utils/collection_status_converter.dart';
@@ -30,6 +31,12 @@ class Collection with _$Collection {
 }
 
 extension CollectionEx on Collection {
+  String get formattedEndTime {
+    if (endTime == null) return '';
+    final DateFormat formatter = DateFormat('dd.MM.yyyy');
+    return formatter.format(endTime!);
+  }
+
   String get daysToComplete {
     final DateTime now = DateTime.now();
     final DateTime endTime = this.endTime ?? DateTime.now();

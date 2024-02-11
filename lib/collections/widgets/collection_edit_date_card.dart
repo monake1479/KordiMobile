@@ -16,13 +16,7 @@ class _CollectionEditDateCard extends StatelessWidget {
         if (state.endTime == null) {
           return SliverToBoxAdapter(child: const SizedBox.shrink());
         }
-        if (state.isLoading) {
-          return SliverToBoxAdapter(
-            child: Center(
-              child: CircularProgressIndicator(),
-            ),
-          );
-        }
+
         return SliverToBoxAdapter(
           child: Card(
             child: Padding(
