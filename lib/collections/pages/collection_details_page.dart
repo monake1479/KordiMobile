@@ -97,7 +97,7 @@ class CollectionDetailsPage extends StatelessWidget {
             actions: [
               BlocBuilder<AuthCubit, AuthState>(
                 builder: (context, authState) {
-                  if (!authState.isAuthorized && collectionId != userId) {
+                  if (!authState.isAuthorized || collection.userId != userId) {
                     return const SizedBox.shrink();
                   }
                   return IconButton(
