@@ -1,7 +1,8 @@
 part of 'package:kordi_mobile/collections/pages/collection_edit_page.dart';
 
 class _CollectionEditNameCard extends StatelessWidget {
-  const _CollectionEditNameCard();
+  const _CollectionEditNameCard(this.name);
+  final String name;
 
   @override
   Widget build(BuildContext context) {
@@ -11,14 +12,6 @@ class _CollectionEditNameCard extends StatelessWidget {
 
     return BlocBuilder<EditCollectionFormBloc, EditCollectionFormState>(
       builder: (context, state) {
-        if (state.isLoading || state.name.isEmpty) {
-          return SliverToBoxAdapter(
-            child: Center(
-              child: CircularProgressIndicator(),
-            ),
-          );
-        }
-
         return SliverToBoxAdapter(
           child: Card(
             child: Padding(
@@ -38,7 +31,7 @@ class _CollectionEditNameCard extends StatelessWidget {
                     ),
                   ),
                   TextFormField(
-                    initialValue: state.name,
+                    initialValue: name,
                     keyboardType: TextInputType.multiline,
                     decoration: InputDecoration(
                       contentPadding: const EdgeInsets.all(8),
