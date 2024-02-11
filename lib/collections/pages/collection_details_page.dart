@@ -23,6 +23,8 @@ import 'package:kordi_mobile/gen/l10n.dart';
 import 'package:kordi_mobile/user/controllers/get_user_cubit.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+part 'package:kordi_mobile/collection_items/widgets/donation_section.dart';
+part 'package:kordi_mobile/collection_items/widgets/donation_text_field.dart';
 part 'package:kordi_mobile/collection_items/widgets/donation_slider.dart';
 part 'package:kordi_mobile/collections/widgets/collection_details_comments.dart';
 part 'package:kordi_mobile/collections/widgets/collection_details_description_card.dart';

@@ -10,9 +10,17 @@ part 'donation_form_bloc.freezed.dart';
 @injectable
 class DonationFormBloc extends Bloc<DonationFormEvent, DonationFormState> {
   DonationFormBloc() : super(DonationFormState.initial()) {
+    on<_ResetAmount>(_resetAmount);
     on<_SetInitialState>(_setInitialState);
     on<_SetAmount>(_setAmount);
   }
+  void _resetAmount(
+    _ResetAmount event,
+    Emitter<DonationFormState> emit,
+  ) {
+    emit(state.copyWith(amount: 0));
+  }
+
   void _setInitialState(
     _SetInitialState event,
     Emitter<DonationFormState> emit,
@@ -27,8 +35,12 @@ class DonationFormBloc extends Bloc<DonationFormEvent, DonationFormState> {
   }
 
   void _setAmount(_SetAmount event, Emitter<DonationFormState> emit) {
-    if (event.itemCurrentAmount > event.amount) {
-      emit(state.copyWith(amount: event.itemCurrentAmount));
+    if (event.item.type.isUnlimited) {
+      emit(state.copyWith(amount: event.amount + event.item.currentAmount!));
+      return;
+    }
+    if (event.item.currentAmount! > event.amount) {
+      emit(state.copyWith(amount: event.item.currentAmount!));
       return;
     }
 
