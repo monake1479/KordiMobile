@@ -32,10 +32,11 @@ extension DonationFormStateEx on DonationFormState {
     return this.amount;
   }
 
-  DonationDto toDto(int currentAmount) {
+  DonationDto toDto(CollectionItem item) {
     int checkedAmount = this.amount;
-    if (currentAmount > 0 && checkedAmount > currentAmount) {
-      checkedAmount = this.amount - currentAmount;
+
+    if (item.currentAmount! > 0 && checkedAmount > item.currentAmount!) {
+      checkedAmount = this.amount - item.currentAmount!;
     }
     return DonationDto(
       collectionItemId: collectionItemId,
