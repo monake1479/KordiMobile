@@ -30,6 +30,7 @@ migrate_working_dir/
 .packages
 .pub-cache/
 .pub/
+.fvm/flutter_sdk
 /build/
 
 # Web related
@@ -50,3 +51,5 @@ app.*.map.json
 **/*.g.dart
 **/*.freezed.dart
 */*.config.dart
+untranslated_messages.json
+
